@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>ExhaustGasProcessHMI</name>
+            <name>ACCM_GasSyetem_MCU-HMI</name>
             <creation-uuid>df500258-0174-4122-9990-f269e1c4dc25</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

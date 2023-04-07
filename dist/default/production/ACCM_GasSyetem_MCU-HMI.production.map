@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv1_11 (A) Õ
+Microchip Technology Inc, vv1_11 (A) 
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p33EP512MU814 \
   -o \
-  dist/default/production/ExhaustGasProcessHMI.X.production.elf \
+  dist/default/production/ACCM_GasSyetem_MCU-HMI.production.elf \
   -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/PIC24E \
@@ -67,7 +67,7 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/ExhaustGasProcessHMI.X.production.map \
+  -Map=dist/default/production/ACCM_GasSyetem_MCU-HMI.production.map \
   --report-mem \
   -start-group \
   --library=pic30-elf \
@@ -4619,7 +4619,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.
 LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a
 END GROUP
-OUTPUT(dist/default/production/ExhaustGasProcessHMI.X.production.elf elf32-pic30)
+OUTPUT(dist/default/production/ACCM_GasSyetem_MCU-HMI.production.elf elf32-pic30)
 LOAD FGS
 LOAD default_isr
 LOAD data_init

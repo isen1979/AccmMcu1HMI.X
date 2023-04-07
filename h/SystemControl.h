@@ -32,8 +32,6 @@
 #define	SYSTEM_CONTROL_H
 
 #define ANDROID_HMI 1//20220315 0.0.1//
-
-
 #define RECORD_ITEM_NUM 12
 
 #define KEYBOARD_VALUE_OUT_ADDR 0xD7
@@ -44,6 +42,7 @@
 #define START_READ_SD_INDEX_ADDR 299
 #define GET_READ_SD_INDEX_ADDR 301
 #define READ_RECORD_DATA_ADDR 303
+
 #define PLAY_BACK_SHOW_CHART1_VIEW_FAR_CLOSE_BTN 437
 #define PLAY_BACK_SHOW_CHART2_VIEW_FAR_CLOSE_BTN 438
 #define PLAY_BACK_SHOW_CHART3_VIEW_FAR_CLOSE_BTN 439
@@ -170,74 +169,72 @@ enum UART2PacketEnum
 
 enum Android_HMI_CommandEnum
 {
-    Android_HMI_GetFirmwareVersionCommandEnum=0,
-    Android_HMI_GetExtFirmwareVersionCommandEnum,
-    Android_HMI_Fan1_1_GetSV_CommandEnum,
+    Android_HMI_GetFirmwareVersionCommandEnum=0,//0
+    Android_HMI_GetExtFirmwareVersionCommandEnum,//1
+    Android_HMI_Fan1_1_GetSV_CommandEnum,//2
     Android_HMI_Fan1_1_GetPI_CommandEnum,
-    Android_HMI_Fan1_1_GetD_LowLimit_CommandEnum,
+    Android_HMI_Fan1_1_GetD_LowLimit_CommandEnum,//4
     Android_HMI_Fan1_1_GetTopLimit_CommandEnum,//5
-    Android_HMI_Fan1_1_GetManualSet_CommandEnum,
+    Android_HMI_Fan1_1_GetManualSet_CommandEnum,//6
     Android_HMI_Fan2_GetTempSetSpeedTopLimit_CommandEnum,
-    Android_HMI_Fan2_GetSpeedSet_CommandEnum,
+    Android_HMI_Fan2_GetSpeedSet_CommandEnum,//8
     Android_HMI_Heater_TempSetDb_CommandEnum,
     Android_HMI_Heater_TempHH2LLSet_CommandEnum,//10
     Android_HMI_HeaterSP2LowLimitSet_CommandEnum,
-    Android_HMI_HeaterPI_Set_CommandEnum,
+    Android_HMI_HeaterPI_Set_CommandEnum,//12
     Android_HMI_HeaterD2_ManualSet_CommandEnum,//13
-    Android_HMI_MTR4_TE5ConditionSet_CommandEnum,
+    Android_HMI_MTR4_TE5ConditionSet_CommandEnum,//14
     Android_HMI_MTR4_TE5SpeedSet_CommandEnum,
     Android_HMI_MTR4_TopStopTempLowSet_CommandEnum,//16
     Android_HMI_PCD2_V21Set_CommandEnum,
-    Android_HMI_PCD20_Temp_SizeSet_CommandEnum,
+    Android_HMI_PCD20_Temp_SizeSet_CommandEnum,//18
     Android_HMI_PCD20_PISet_CommandEnum,
     Android_HMI_PCD20_D_TimeSet_CommandEnum,//20
     Android_HMI_PCD20_DeadBandTopLowLimit_PCD6TimeSet_CommandEnum,
-    Android_HMI_PCD22_Set_CommandEnum,
+    Android_HMI_PCD22_Set_CommandEnum,//22
     Android_HMI_PCD25_PCD6_TimeSet_CommandEnum,
     Android_HMI_PCD25_Limit_ManualSet_CommandEnum,//24
     
     Android_HMI_Alarm_A1_Set_CommandEnum,//25
-    Android_HMI_Alarm_A1_A2_Set_CommandEnum,
+    Android_HMI_Alarm_A1_A2_Set_CommandEnum,//26
     Android_HMI_Alarm_A2_B_Set_CommandEnum,
-    Android_HMI_HeaterTempAlarm_Set_CommandEnum,
+    Android_HMI_HeaterTempAlarm_Set_CommandEnum,//28
     Android_HMI_HeaterPDTAlarm_Set_CommandEnum,
     Android_HMI_MTR4TempAlarm_Set_CommandEnum,//30
     Android_HMI_MTR4TempPDTAlarm_Set_CommandEnum,
-    Android_HMI_D_Alarm1_Set_CommandEnum,
+    Android_HMI_D_Alarm1_Set_CommandEnum,//32
     Android_HMI_D_Alarm2_Set_CommandEnum,
-    Android_HMI_D_Alarm3__D1_Set_CommandEnum,
+    Android_HMI_D_Alarm3__D1_Set_CommandEnum,//34
     Android_HMI_D1_Alarm2_Set_CommandEnum,//35
-    Android_HMI_D1_Alarm3_Set_CommandEnum,
+    Android_HMI_D1_Alarm3_Set_CommandEnum,//36
     
      Android_HMI_Button_CommandEnum,//Philip 20220325 0.0.1
-     Android_HMI_Dummy38_CommandEnum,
+     Android_HMI_Dummy38_CommandEnum,//38
      Android_HMI_Dummy39_CommandEnum,
-     Android_HMI_Dummy40_CommandEnum,
+     Android_HMI_Dummy40_CommandEnum,//40
      Android_HMI_Dummy41_CommandEnum,
-     Android_HMI_Dummy42_CommandEnum,
+     Android_HMI_Dummy42_CommandEnum,//42
      Android_HMI_Dummy43_CommandEnum,
-     Android_HMI_Dummy44_CommandEnum,
+     Android_HMI_Dummy44_CommandEnum,//44
      Android_HMI_Dummy45_CommandEnum,
-     Android_HMI_Dummy46_CommandEnum,
+     Android_HMI_Dummy46_CommandEnum,//46
      Android_HMI_Dummy47_CommandEnum,
-     Android_HMI_Dummy48_CommandEnum,    
+     Android_HMI_Dummy48_CommandEnum,//48    
      Android_HMI_Dummy49_CommandEnum,
-     Android_HMI_WriteParameter_CommandEnum,
+     Android_HMI_WriteParameter_CommandEnum,//50
      
      Android_HMI_RunTimeTE1_3_5_6_CommandEnum,//51
-     Android_HMI_RunTimeTE8_10_11_12_CommandEnum,
+     Android_HMI_RunTimeTE8_10_11_12_CommandEnum,//52
      Android_HMI_RunTimePDT1_2_3_CommandEnum,
-     Android_HMI_FAN1_RunTime_CommandEnum,
+     Android_HMI_FAN1_RunTime_CommandEnum,//54
      Android_HMI_FAN2_RunTime_CommandEnum,//55
      Android_HMI_MTR4_RunTime_CommandEnum,
-     Android_HMI_Heater_RunTime_CommandEnum,
+     Android_HMI_Heater_RunTime_CommandEnum,//56
      Android_HMI_PCD_RunTime_CommandEnum,
-     Android_HMI_UsingCount_RunTime_CommandEnum,
+     Android_HMI_UsingCount_RunTime_CommandEnum,//58
      Android_HMI_Alarm_RunTime_CommandEnum,//Philip 20220406 0.0.1//60
-     Android_HMI_SystemStatus_RunTime_CommandEnum,//Philip 20220510 0.0.1
+     Android_HMI_SystemStatus_RunTime_CommandEnum,//60//Philip 20220510 0.0.1
      Android_HMI_Alarm1_RunTime_CommandEnum,//Philip 20220526 0.0.1
-     
-     
     
     Android_HMI_CommandEnumEnd
 };
