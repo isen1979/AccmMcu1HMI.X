@@ -48,10 +48,7 @@
         <itemPath>src/uC_HMI_Parsing.c</itemPath>
         <itemPath>src/uC_HMI_Utility.c</itemPath>
         <itemPath>src/InitialSystemTestParameter.c</itemPath>
-        <itemPath>src/COM3_TX.c</itemPath>
         <itemPath>src/RunTimeDisplayControl.c</itemPath>
-        <itemPath>src/COM2_RX_ParsingExtDevice.c</itemPath>
-        <itemPath>src/COM2_TX_ToExtDevice.c</itemPath>
         <itemPath>src/Android_HMI_Parsing.c</itemPath>
         <itemPath>src/Android_HMI_Sending.c</itemPath>
         <itemPath>src/Android_HMI_AlarmPacket_Generator.c</itemPath>
@@ -65,6 +62,9 @@
         <itemPath>src/System_Driver.c</itemPath>
         <itemPath>src/System_Control.c</itemPath>
         <itemPath>src/System_ParameterInputProcess.c</itemPath>
+        <itemPath>src/COM3_TX_Sending.c</itemPath>
+        <itemPath>src/COM2_TX_Sending_ExtDevice.c</itemPath>
+        <itemPath>src/COM2_RX_Parsing_ExtDevice.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"

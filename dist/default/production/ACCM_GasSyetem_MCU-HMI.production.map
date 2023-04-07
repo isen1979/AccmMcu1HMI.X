@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv1_11 (A) Ã
+Microchip Technology Inc, vv1_11 (A) Æ
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -37,10 +37,7 @@ Command:
   build/default/production/src/uC_HMI_Parsing.o \
   build/default/production/src/uC_HMI_Utility.o \
   build/default/production/src/InitialSystemTestParameter.o \
-  build/default/production/src/COM3_TX.o \
   build/default/production/src/RunTimeDisplayControl.o \
-  build/default/production/src/COM2_RX_ParsingExtDevice.o \
-  build/default/production/src/COM2_TX_ToExtDevice.o \
   build/default/production/src/Android_HMI_Parsing.o \
   build/default/production/src/Android_HMI_Sending.o \
   build/default/production/src/Android_HMI_AlarmPacket_Generator.o \
@@ -54,6 +51,9 @@ Command:
   build/default/production/src/System_Driver.o \
   build/default/production/src/System_Control.o \
   build/default/production/src/System_ParameterInputProcess.o \
+  build/default/production/src/COM3_TX_Sending.o \
+  build/default/production/src/COM2_TX_Sending_ExtDevice.o \
+  build/default/production/src/COM2_RX_Parsing_ExtDevice.o \
   --defsym=__MPLAB_BUILD=1 \
   -Tp33EP512MU814.gld.00 \
   --stack=16 \
@@ -135,14 +135,15 @@ section                    address      alignment gaps    total length  (dec)
 .bss                        0x2d88                   0            0x50  (80)
 .data                       0x2dd8                   0            0x10  (16)
 .bss                        0x2de8                   0            0x2a  (42)
-.data                       0x2e12                   0             0xc  (12)
-.bss                        0x2e1e                   0             0x4  (4)
-.data                       0x2e22                   0            0x10  (16)
+.data                       0x2e12                   0            0x14  (20)
+.bss                        0x2e26                   0             0x4  (4)
+.data                       0x2e2a                   0             0x8  (8)
 .bss                        0x2e32                   0             0x2  (2)
-.data                       0x2e34                   0             0x4  (4)
-.bss                        0x2e38                   0             0x2  (2)
-.data                       0x2e3a                   0             0x2  (2)
-.bss                        0x2e3c                   0             0x2  (2)
+.data                       0x2e34                   0             0x2  (2)
+.bss                        0x2e36                   0             0x2  (2)
+.data                       0x2e38                   0             0x2  (2)
+.bss                        0x2e3a                   0             0x2  (2)
+.data                       0x2e3c                   0             0x2  (2)
 
                         Total data memory used (bytes):         0x1e3e  (7742) 14%
 
@@ -255,25 +256,25 @@ External Symbols in Data Memory (by address):
                     0x2dfa                  _PlayBackDayCode
                     0x2dfe                  _IndexMonthCode
                     0x2e00                  _IndexRecordPosition
-                    0x2e02                  _U2_SendingWord
-                    0x2e04                  _U2_SendingWord2
-                    0x2e08                  _COM2_ReTryCounter
-                    0x2e09                  _COM2_Send_Index
-                    0x2e0a                  _SYS_TIME
-                    0x2e12                  _COM3_SendControlState
-                    0x2e13                  _COM3_SendCommandBufferRead
-                    0x2e14                  _COM3_SendCommandBufferWrite
-                    0x2e15                  _COM3_SendCommandBufferSize
-                    0x2e16                  _COM3_TxRetryCount
-                    0x2e18                  _FirmwareVersion
-                    0x2e1a                  _FirmwareDate
-                    0x2e1e                  _ParsingWord
-                    0x2e20                  _COM2_Rx_Size
-                    0x2e22                  _RoutineSendFlag
-                    0x2e23                  _RoutineSendIndex
-                    0x2e24                  _Android_HMI_SendState
-                    0x2e26                  _SystemInitialState
-                    0x2e28                  _DynamicStoreTimer
+                    0x2e02                  _SYS_TIME
+                    0x2e0a                  _U2_SendingWord
+                    0x2e0c                  _U2_SendingWord2
+                    0x2e10                  _COM2_ReTryCounter
+                    0x2e11                  _COM2_Send_Index
+                    0x2e12                  _FirmwareVersion
+                    0x2e14                  _FirmwareDate
+                    0x2e18                  _COM3_SendControlState
+                    0x2e19                  _COM3_SendCommandBufferRead
+                    0x2e1a                  _COM3_SendCommandBufferWrite
+                    0x2e1b                  _COM3_SendCommandBufferSize
+                    0x2e1c                  _COM3_TxRetryCount
+                    0x2e1e                  _RoutineSendFlag
+                    0x2e1f                  _RoutineSendIndex
+                    0x2e20                  _Android_HMI_SendState
+                    0x2e22                  _SystemInitialState
+                    0x2e24                  _DynamicStoreTimer
+                    0x2e26                  _ParsingWord
+                    0x2e28                  _COM2_Rx_Size
                     0x2e2a                  _LastDAC_Value
                     0x2e2c                  _EEPROM_WriteState
                     0x2e2d                  _EEPROM_ReadState
@@ -281,30 +282,30 @@ External Symbols in Data Memory (by address):
                     0x2e30                  _uC_HMI_SendingState
                     0x2e32                  _SendingWord
                     0x2e34                  _StartupFinsihFlag
-                    0x2e36                  _COM2_SendControlState
-                    0x2e38                  _COM1_Rx_Size
-                    0x2e3a                  _spitemp
-                    0x2e3c                  _SystemParameterId
+                    0x2e36                  _COM1_Rx_Size
+                    0x2e38                  _spitemp
+                    0x2e3a                  _SystemParameterId
+                    0x2e3c                  _COM2_SendControlState
 
 External Symbols in Data Memory (by name):
 
-                    0x2e24                  _Android_HMI_SendState
-                    0x2e38                  _COM1_Rx_Size
-                    0x2e08                  _COM2_ReTryCounter
-                    0x2e20                  _COM2_Rx_Size
-                    0x2e36                  _COM2_SendControlState
-                    0x2e09                  _COM2_Send_Index
+                    0x2e20                  _Android_HMI_SendState
+                    0x2e36                  _COM1_Rx_Size
+                    0x2e10                  _COM2_ReTryCounter
+                    0x2e28                  _COM2_Rx_Size
+                    0x2e3c                  _COM2_SendControlState
+                    0x2e11                  _COM2_Send_Index
                     0x2dbc                  _COM3_Rx_Size
                     0x2c5e                  _COM3_SendButtonCommandBuffer
                     0x2c2c                  _COM3_SendCommandBuffer
-                    0x2e13                  _COM3_SendCommandBufferRead
-                    0x2e15                  _COM3_SendCommandBufferSize
-                    0x2e14                  _COM3_SendCommandBufferWrite
-                    0x2e12                  _COM3_SendControlState
-                    0x2e16                  _COM3_TxRetryCount
+                    0x2e19                  _COM3_SendCommandBufferRead
+                    0x2e1b                  _COM3_SendCommandBufferSize
+                    0x2e1a                  _COM3_SendCommandBufferWrite
+                    0x2e18                  _COM3_SendControlState
+                    0x2e1c                  _COM3_TxRetryCount
                     0x2d74                  _DateTimeFileName
                     0x271c                  _DelayTimerCounter
-                    0x2e28                  _DynamicStoreTimer
+                    0x2e24                  _DynamicStoreTimer
                     0x2e2d                  _EEPROM_ReadState
                     0x2e2c                  _EEPROM_WriteState
                     0x2dd4                  _ExtFirmwareDate
@@ -314,8 +315,8 @@ External Symbols in Data Memory (by name):
                     0x2b98                  _FAN1_1_RunTimeFault
                     0x2bc2                  _FAN2_RunTimeDisplay
                     0x2b99                  _FAN2_RunTimeFault
-                    0x2e1a                  _FirmwareDate
-                    0x2e18                  _FirmwareVersion
+                    0x2e14                  _FirmwareDate
+                    0x2e12                  _FirmwareVersion
                     0x2750                  _FormatEEPROMdata
                     0x2c96                  _HMI_BtnStatus
                     0x2d52                  _IndexFileName
@@ -333,7 +334,7 @@ External Symbols in Data Memory (by name):
                     0x2b9f                  _PCD2_RunTimeAlarm
                     0x2b9e                  _PCD2_RunTimeFault
                     0x2c92                  _ParsingData
-                    0x2e1e                  _ParsingWord
+                    0x2e26                  _ParsingWord
                     0x2dfa                  _PlayBackDayCode
                     0x2d98                  _PortCounterD
                     0x2d88                  _PortCounterH
@@ -341,21 +342,21 @@ External Symbols in Data Memory (by name):
                     0x2aca                  _ReadEEPROM
                     0x2b97                  _ReadFaultTimes
                     0x2d68                  _RecordFileName
-                    0x2e22                  _RoutineSendFlag
-                    0x2e23                  _RoutineSendIndex
+                    0x2e1e                  _RoutineSendFlag
+                    0x2e1f                  _RoutineSendIndex
                     0x26fe                  _RunTimeStatus
                     0x2c9a                  _RxTextBuffer
                     0x2b9c                  _SCR_RunTimeAlarm
                     0x2bcc                  _SCR_RunTimeDisplay
                     0x2b9b                  _SCR_RunTimeFault
                     0x2b9a                  _SCR_RunTimeStatus
-                    0x2e0a                  _SYS_TIME
+                    0x2e02                  _SYS_TIME
                     0x2c28                  _SendingData
                     0x2e32                  _SendingWord
                     0x2e34                  _StartupFinsihFlag
-                    0x2e26                  _SystemInitialState
+                    0x2e22                  _SystemInitialState
                     0x24b0                  _SystemParameter
-                    0x2e3c                  _SystemParameterId
+                    0x2e3a                  _SystemParameterId
                     0x2dee                  _SystemRunTimeStatus
                     0x2cf6                  _TxTextBuffer
                     0x29e4                  _U1NewCommandReceivedFlag
@@ -367,8 +368,8 @@ External Symbols in Data Memory (by name):
                     0x29e3                  _U2NewCommandReceivedFlag
                     0x29f4                  _U2PacketLen
                     0x29f2                  _U2SendDataCount
-                    0x2e02                  _U2_SendingWord
-                    0x2e04                  _U2_SendingWord2
+                    0x2e0a                  _U2_SendingWord
+                    0x2e0c                  _U2_SendingWord2
                     0x29e2                  _U3NewCommandReceivedFlag
                     0x29fc                  _U3PacketLen
                     0x29fa                  _U3SendDataCount
@@ -410,7 +411,7 @@ External Symbols in Data Memory (by name):
                     0x25d6                  _lastSystemParameter
                     0x271a                  _pRunTimeStatus
                     0x26fc                  _pSystemParameter
-                    0x2e3a                  _spitemp
+                    0x2e38                  _spitemp
                     0x2df6                  _uCHMI_DateCode
                     0x2e30                  _uC_HMI_SendingState
                     0x1000                  _ucHMISuddenSendRegister
@@ -1257,10 +1258,7 @@ LOAD build/default/production/src/uC_HMI_Sending.o
 LOAD build/default/production/src/uC_HMI_Parsing.o
 LOAD build/default/production/src/uC_HMI_Utility.o
 LOAD build/default/production/src/InitialSystemTestParameter.o
-LOAD build/default/production/src/COM3_TX.o
 LOAD build/default/production/src/RunTimeDisplayControl.o
-LOAD build/default/production/src/COM2_RX_ParsingExtDevice.o
-LOAD build/default/production/src/COM2_TX_ToExtDevice.o
 LOAD build/default/production/src/Android_HMI_Parsing.o
 LOAD build/default/production/src/Android_HMI_Sending.o
 LOAD build/default/production/src/Android_HMI_AlarmPacket_Generator.o
@@ -1274,6 +1272,9 @@ LOAD build/default/production/src/Main.o
 LOAD build/default/production/src/System_Driver.o
 LOAD build/default/production/src/System_Control.o
 LOAD build/default/production/src/System_ParameterInputProcess.o
+LOAD build/default/production/src/COM3_TX_Sending.o
+LOAD build/default/production/src/COM2_TX_Sending_ExtDevice.o
+LOAD build/default/production/src/COM2_RX_Parsing_ExtDevice.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC33E\libp33EP512MU814-elf.a
                     0xf80004                  __FGS = 0xf80004
@@ -1364,7 +1365,7 @@ __FUID0
 .comment
  *(.comment)
 
-.debug_info       0x000000      0x2ce98
+.debug_info       0x000000      0x2cea7
  *(.debug_info)
  .debug_info      0x000000       0x142d build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_info      0x00142d       0x31ab build/default/production/src/IO_Driver.o
@@ -1382,23 +1383,23 @@ __FUID0
  .debug_info      0x00f5f4        0x358 build/default/production/src/uC_HMI_Parsing.o
  .debug_info      0x00f94c        0xc06 build/default/production/src/uC_HMI_Utility.o
  .debug_info      0x010552       0x3359 build/default/production/src/InitialSystemTestParameter.o
- .debug_info      0x0138ab       0x3576 build/default/production/src/COM3_TX.o
- .debug_info      0x016e21        0x746 build/default/production/src/RunTimeDisplayControl.o
- .debug_info      0x017567        0x32d build/default/production/src/COM2_RX_ParsingExtDevice.o
- .debug_info      0x017894        0xcd8 build/default/production/src/COM2_TX_ToExtDevice.o
- .debug_info      0x01856c       0x19ae build/default/production/src/Android_HMI_Parsing.o
- .debug_info      0x019f1a       0x33c2 build/default/production/src/Android_HMI_Sending.o
- .debug_info      0x01d2dc       0x2252 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
- .debug_info      0x01f52e       0x24ec build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
- .debug_info      0x021a1a       0x1e7e build/default/production/src/Android_HMI_WriteParameters.o
- .debug_info      0x023898       0x2014 build/default/production/src/IO_Setting.o
- .debug_info      0x0258ac        0x72d build/default/production/src/uC_Machine_HMI_Control.o
- .debug_info      0x025fd9        0x72c build/default/production/src/uC_Machine_HMI_Parsing.o
- .debug_info      0x026705        0x801 build/default/production/src/uC_Machine_HMI_Sending.o
- .debug_info      0x026f06        0x1d4 build/default/production/src/Main.o
- .debug_info      0x0270da       0x1e1f build/default/production/src/System_Driver.o
- .debug_info      0x028ef9       0x24c7 build/default/production/src/System_Control.o
- .debug_info      0x02b3c0       0x1ad8 build/default/production/src/System_ParameterInputProcess.o
+ .debug_info      0x0138ab        0x746 build/default/production/src/RunTimeDisplayControl.o
+ .debug_info      0x013ff1       0x19ae build/default/production/src/Android_HMI_Parsing.o
+ .debug_info      0x01599f       0x33c2 build/default/production/src/Android_HMI_Sending.o
+ .debug_info      0x018d61       0x2252 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+ .debug_info      0x01afb3       0x24ec build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+ .debug_info      0x01d49f       0x1e7e build/default/production/src/Android_HMI_WriteParameters.o
+ .debug_info      0x01f31d       0x2014 build/default/production/src/IO_Setting.o
+ .debug_info      0x021331        0x72d build/default/production/src/uC_Machine_HMI_Control.o
+ .debug_info      0x021a5e        0x72c build/default/production/src/uC_Machine_HMI_Parsing.o
+ .debug_info      0x02218a        0x801 build/default/production/src/uC_Machine_HMI_Sending.o
+ .debug_info      0x02298b        0x1d4 build/default/production/src/Main.o
+ .debug_info      0x022b5f       0x1e1f build/default/production/src/System_Driver.o
+ .debug_info      0x02497e       0x24c7 build/default/production/src/System_Control.o
+ .debug_info      0x026e45       0x1ad8 build/default/production/src/System_ParameterInputProcess.o
+ .debug_info      0x02891d       0x357e build/default/production/src/COM3_TX_Sending.o
+ .debug_info      0x02be9b        0xcde build/default/production/src/COM2_TX_Sending_ExtDevice.o
+ .debug_info      0x02cb79        0x32e build/default/production/src/COM2_RX_Parsing_ExtDevice.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000       0x23da
@@ -1419,25 +1420,25 @@ __FUID0
  .debug_abbrev    0x000cd8         0xc3 build/default/production/src/uC_HMI_Parsing.o
  .debug_abbrev    0x000d9b        0x16f build/default/production/src/uC_HMI_Utility.o
  .debug_abbrev    0x000f0a        0x1a3 build/default/production/src/InitialSystemTestParameter.o
- .debug_abbrev    0x0010ad        0x1c0 build/default/production/src/COM3_TX.o
- .debug_abbrev    0x00126d         0x7f build/default/production/src/RunTimeDisplayControl.o
- .debug_abbrev    0x0012ec         0xd4 build/default/production/src/COM2_RX_ParsingExtDevice.o
- .debug_abbrev    0x0013c0         0xf8 build/default/production/src/COM2_TX_ToExtDevice.o
- .debug_abbrev    0x0014b8        0x117 build/default/production/src/Android_HMI_Parsing.o
- .debug_abbrev    0x0015cf        0x22f build/default/production/src/Android_HMI_Sending.o
- .debug_abbrev    0x0017fe         0xf4 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
- .debug_abbrev    0x0018f2         0xf6 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
- .debug_abbrev    0x0019e8         0xf6 build/default/production/src/Android_HMI_WriteParameters.o
- .debug_abbrev    0x001ade        0x1de build/default/production/src/IO_Setting.o
- .debug_abbrev    0x001cbc        0x13a build/default/production/src/uC_Machine_HMI_Control.o
- .debug_abbrev    0x001df6         0xe4 build/default/production/src/uC_Machine_HMI_Parsing.o
- .debug_abbrev    0x001eda         0x5a build/default/production/src/uC_Machine_HMI_Sending.o
- .debug_abbrev    0x001f34         0x58 build/default/production/src/Main.o
- .debug_abbrev    0x001f8c        0x162 build/default/production/src/System_Driver.o
- .debug_abbrev    0x0020ee        0x184 build/default/production/src/System_Control.o
- .debug_abbrev    0x002272        0x168 build/default/production/src/System_ParameterInputProcess.o
+ .debug_abbrev    0x0010ad         0x7f build/default/production/src/RunTimeDisplayControl.o
+ .debug_abbrev    0x00112c        0x117 build/default/production/src/Android_HMI_Parsing.o
+ .debug_abbrev    0x001243        0x22f build/default/production/src/Android_HMI_Sending.o
+ .debug_abbrev    0x001472         0xf4 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+ .debug_abbrev    0x001566         0xf6 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+ .debug_abbrev    0x00165c         0xf6 build/default/production/src/Android_HMI_WriteParameters.o
+ .debug_abbrev    0x001752        0x1de build/default/production/src/IO_Setting.o
+ .debug_abbrev    0x001930        0x13a build/default/production/src/uC_Machine_HMI_Control.o
+ .debug_abbrev    0x001a6a         0xe4 build/default/production/src/uC_Machine_HMI_Parsing.o
+ .debug_abbrev    0x001b4e         0x5a build/default/production/src/uC_Machine_HMI_Sending.o
+ .debug_abbrev    0x001ba8         0x58 build/default/production/src/Main.o
+ .debug_abbrev    0x001c00        0x162 build/default/production/src/System_Driver.o
+ .debug_abbrev    0x001d62        0x184 build/default/production/src/System_Control.o
+ .debug_abbrev    0x001ee6        0x168 build/default/production/src/System_ParameterInputProcess.o
+ .debug_abbrev    0x00204e        0x1c0 build/default/production/src/COM3_TX_Sending.o
+ .debug_abbrev    0x00220e         0xf8 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+ .debug_abbrev    0x002306         0xd4 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
 
-.debug_line       0x000000       0xf2d4
+.debug_line       0x000000       0xf2e3
  *(.debug_line)
  .debug_line      0x000000        0xb42 build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_line      0x000b42        0x945 build/default/production/src/IO_Driver.o
@@ -1455,23 +1456,23 @@ __FUID0
  .debug_line      0x00417c        0x1b3 build/default/production/src/uC_HMI_Parsing.o
  .debug_line      0x00432f        0x632 build/default/production/src/uC_HMI_Utility.o
  .debug_line      0x004961       0x16c8 build/default/production/src/InitialSystemTestParameter.o
- .debug_line      0x006029       0x1445 build/default/production/src/COM3_TX.o
- .debug_line      0x00746e        0x37e build/default/production/src/RunTimeDisplayControl.o
- .debug_line      0x0077ec         0xa9 build/default/production/src/COM2_RX_ParsingExtDevice.o
- .debug_line      0x007895        0x222 build/default/production/src/COM2_TX_ToExtDevice.o
- .debug_line      0x007ab7        0x93b build/default/production/src/Android_HMI_Parsing.o
- .debug_line      0x0083f2        0xa97 build/default/production/src/Android_HMI_Sending.o
- .debug_line      0x008e89        0x79f build/default/production/src/Android_HMI_AlarmPacket_Generator.o
- .debug_line      0x009628        0xe34 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
- .debug_line      0x00a45c       0x165e build/default/production/src/Android_HMI_WriteParameters.o
- .debug_line      0x00baba        0x8f2 build/default/production/src/IO_Setting.o
- .debug_line      0x00c3ac        0x667 build/default/production/src/uC_Machine_HMI_Control.o
- .debug_line      0x00ca13        0x527 build/default/production/src/uC_Machine_HMI_Parsing.o
- .debug_line      0x00cf3a         0x58 build/default/production/src/uC_Machine_HMI_Sending.o
- .debug_line      0x00cf92        0x154 build/default/production/src/Main.o
- .debug_line      0x00d0e6        0x8f1 build/default/production/src/System_Driver.o
- .debug_line      0x00d9d7        0x625 build/default/production/src/System_Control.o
- .debug_line      0x00dffc       0x12d8 build/default/production/src/System_ParameterInputProcess.o
+ .debug_line      0x006029        0x37e build/default/production/src/RunTimeDisplayControl.o
+ .debug_line      0x0063a7        0x93b build/default/production/src/Android_HMI_Parsing.o
+ .debug_line      0x006ce2        0xa97 build/default/production/src/Android_HMI_Sending.o
+ .debug_line      0x007779        0x79f build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+ .debug_line      0x007f18        0xe34 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+ .debug_line      0x008d4c       0x165e build/default/production/src/Android_HMI_WriteParameters.o
+ .debug_line      0x00a3aa        0x8f2 build/default/production/src/IO_Setting.o
+ .debug_line      0x00ac9c        0x667 build/default/production/src/uC_Machine_HMI_Control.o
+ .debug_line      0x00b303        0x527 build/default/production/src/uC_Machine_HMI_Parsing.o
+ .debug_line      0x00b82a         0x58 build/default/production/src/uC_Machine_HMI_Sending.o
+ .debug_line      0x00b882        0x154 build/default/production/src/Main.o
+ .debug_line      0x00b9d6        0x8f1 build/default/production/src/System_Driver.o
+ .debug_line      0x00c2c7        0x625 build/default/production/src/System_Control.o
+ .debug_line      0x00c8ec       0x12d8 build/default/production/src/System_ParameterInputProcess.o
+ .debug_line      0x00dbc4       0x144d build/default/production/src/COM3_TX_Sending.o
+ .debug_line      0x00f011        0x228 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+ .debug_line      0x00f239         0xaa build/default/production/src/COM2_RX_Parsing_ExtDevice.o
 
 .debug_frame      0x000000       0x1acc
  *(.debug_frame)
@@ -1490,22 +1491,22 @@ __FUID0
  .debug_frame     0x0007b0         0x34 build/default/production/src/uC_HMI_Parsing.o
  .debug_frame     0x0007e4        0x144 build/default/production/src/uC_HMI_Utility.o
  .debug_frame     0x000928        0x234 build/default/production/src/InitialSystemTestParameter.o
- .debug_frame     0x000b5c        0x414 build/default/production/src/COM3_TX.o
- .debug_frame     0x000f70         0x84 build/default/production/src/RunTimeDisplayControl.o
- .debug_frame     0x000ff4         0x24 build/default/production/src/COM2_RX_ParsingExtDevice.o
- .debug_frame     0x001018         0x64 build/default/production/src/COM2_TX_ToExtDevice.o
- .debug_frame     0x00107c         0x44 build/default/production/src/Android_HMI_Parsing.o
- .debug_frame     0x0010c0        0x114 build/default/production/src/Android_HMI_Sending.o
- .debug_frame     0x0011d4         0xd4 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
- .debug_frame     0x0012a8        0x184 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
- .debug_frame     0x00142c         0xc4 build/default/production/src/Android_HMI_WriteParameters.o
- .debug_frame     0x0014f0         0xf4 build/default/production/src/IO_Setting.o
- .debug_frame     0x0015e4         0xf4 build/default/production/src/uC_Machine_HMI_Control.o
- .debug_frame     0x0016d8         0x64 build/default/production/src/uC_Machine_HMI_Parsing.o
- .debug_frame     0x00173c         0x24 build/default/production/src/Main.o
- .debug_frame     0x001760        0x194 build/default/production/src/System_Driver.o
- .debug_frame     0x0018f4         0xc4 build/default/production/src/System_Control.o
- .debug_frame     0x0019b8        0x114 build/default/production/src/System_ParameterInputProcess.o
+ .debug_frame     0x000b5c         0x84 build/default/production/src/RunTimeDisplayControl.o
+ .debug_frame     0x000be0         0x44 build/default/production/src/Android_HMI_Parsing.o
+ .debug_frame     0x000c24        0x114 build/default/production/src/Android_HMI_Sending.o
+ .debug_frame     0x000d38         0xd4 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+ .debug_frame     0x000e0c        0x184 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+ .debug_frame     0x000f90         0xc4 build/default/production/src/Android_HMI_WriteParameters.o
+ .debug_frame     0x001054         0xf4 build/default/production/src/IO_Setting.o
+ .debug_frame     0x001148         0xf4 build/default/production/src/uC_Machine_HMI_Control.o
+ .debug_frame     0x00123c         0x64 build/default/production/src/uC_Machine_HMI_Parsing.o
+ .debug_frame     0x0012a0         0x24 build/default/production/src/Main.o
+ .debug_frame     0x0012c4        0x194 build/default/production/src/System_Driver.o
+ .debug_frame     0x001458         0xc4 build/default/production/src/System_Control.o
+ .debug_frame     0x00151c        0x114 build/default/production/src/System_ParameterInputProcess.o
+ .debug_frame     0x001630        0x414 build/default/production/src/COM3_TX_Sending.o
+ .debug_frame     0x001a44         0x64 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+ .debug_frame     0x001aa8         0x24 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
 
 .debug_str        0x000000       0x2178
  *(.debug_str)
@@ -1521,21 +1522,21 @@ __FUID0
  .debug_str       0x000a5a         0x44 build/default/production/src/uC_HMI_Parsing.o
  .debug_str       0x000a9e         0x71 build/default/production/src/uC_HMI_Utility.o
  .debug_str       0x000b0f        0x42b build/default/production/src/InitialSystemTestParameter.o
- .debug_str       0x000f3a        0x289 build/default/production/src/COM3_TX.o
- .debug_str       0x0011c3        0x127 build/default/production/src/RunTimeDisplayControl.o
- .debug_str       0x0012ea         0x30 build/default/production/src/COM2_RX_ParsingExtDevice.o
- .debug_str       0x00131a         0x97 build/default/production/src/COM2_TX_ToExtDevice.o
- .debug_str       0x0013b1         0xb1 build/default/production/src/Android_HMI_Parsing.o
- .debug_str       0x001462        0x21a build/default/production/src/Android_HMI_Sending.o
- .debug_str       0x00167c        0x171 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
- .debug_str       0x0017ed        0x181 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
- .debug_str       0x00196e        0x181 build/default/production/src/Android_HMI_WriteParameters.o
- .debug_str       0x001aef         0xe0 build/default/production/src/IO_Setting.o
- .debug_str       0x001bcf         0xb3 build/default/production/src/uC_Machine_HMI_Control.o
- .debug_str       0x001c82         0x4a build/default/production/src/uC_Machine_HMI_Parsing.o
- .debug_str       0x001ccc         0x9e build/default/production/src/System_Driver.o
- .debug_str       0x001d6a        0x297 build/default/production/src/System_Control.o
- .debug_str       0x002001        0x177 build/default/production/src/System_ParameterInputProcess.o
+ .debug_str       0x000f3a        0x127 build/default/production/src/RunTimeDisplayControl.o
+ .debug_str       0x001061         0xb1 build/default/production/src/Android_HMI_Parsing.o
+ .debug_str       0x001112        0x21a build/default/production/src/Android_HMI_Sending.o
+ .debug_str       0x00132c        0x171 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+ .debug_str       0x00149d        0x181 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+ .debug_str       0x00161e        0x181 build/default/production/src/Android_HMI_WriteParameters.o
+ .debug_str       0x00179f         0xe0 build/default/production/src/IO_Setting.o
+ .debug_str       0x00187f         0xb3 build/default/production/src/uC_Machine_HMI_Control.o
+ .debug_str       0x001932         0x4a build/default/production/src/uC_Machine_HMI_Parsing.o
+ .debug_str       0x00197c         0x9e build/default/production/src/System_Driver.o
+ .debug_str       0x001a1a        0x297 build/default/production/src/System_Control.o
+ .debug_str       0x001cb1        0x177 build/default/production/src/System_ParameterInputProcess.o
+ .debug_str       0x001e28        0x289 build/default/production/src/COM3_TX_Sending.o
+ .debug_str       0x0020b1         0x97 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+ .debug_str       0x002148         0x30 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
 
 .debug_loc
  *(.debug_loc)
@@ -1577,39 +1578,39 @@ __FUID0
  .debug_pubnames
                   0x001042        0x70e build/default/production/src/InitialSystemTestParameter.o
  .debug_pubnames
-                  0x001750        0x8bc build/default/production/src/COM3_TX.o
+                  0x001750         0xf2 build/default/production/src/RunTimeDisplayControl.o
  .debug_pubnames
-                  0x00200c         0xf2 build/default/production/src/RunTimeDisplayControl.o
+                  0x001842         0x6f build/default/production/src/Android_HMI_Parsing.o
  .debug_pubnames
-                  0x0020fe         0x48 build/default/production/src/COM2_RX_ParsingExtDevice.o
+                  0x0018b1        0x290 build/default/production/src/Android_HMI_Sending.o
  .debug_pubnames
-                  0x002146         0xfb build/default/production/src/COM2_TX_ToExtDevice.o
+                  0x001b41        0x1cf build/default/production/src/Android_HMI_AlarmPacket_Generator.o
  .debug_pubnames
-                  0x002241         0x6f build/default/production/src/Android_HMI_Parsing.o
+                  0x001d10        0x36a build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
  .debug_pubnames
-                  0x0022b0        0x290 build/default/production/src/Android_HMI_Sending.o
+                  0x00207a        0x13b build/default/production/src/Android_HMI_WriteParameters.o
  .debug_pubnames
-                  0x002540        0x1cf build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+                  0x0021b5        0x118 build/default/production/src/IO_Setting.o
  .debug_pubnames
-                  0x00270f        0x36a build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+                  0x0022cd        0x1eb build/default/production/src/uC_Machine_HMI_Control.o
  .debug_pubnames
-                  0x002a79        0x13b build/default/production/src/Android_HMI_WriteParameters.o
+                  0x0024b8         0xca build/default/production/src/uC_Machine_HMI_Parsing.o
  .debug_pubnames
-                  0x002bb4        0x118 build/default/production/src/IO_Setting.o
+                  0x002582         0x23 build/default/production/src/uC_Machine_HMI_Sending.o
  .debug_pubnames
-                  0x002ccc        0x1eb build/default/production/src/uC_Machine_HMI_Control.o
+                  0x0025a5         0x87 build/default/production/src/Main.o
  .debug_pubnames
-                  0x002eb7         0xca build/default/production/src/uC_Machine_HMI_Parsing.o
+                  0x00262c        0x1a8 build/default/production/src/System_Driver.o
  .debug_pubnames
-                  0x002f81         0x23 build/default/production/src/uC_Machine_HMI_Sending.o
+                  0x0027d4        0x1f2 build/default/production/src/System_Control.o
  .debug_pubnames
-                  0x002fa4         0x87 build/default/production/src/Main.o
+                  0x0029c6        0x205 build/default/production/src/System_ParameterInputProcess.o
  .debug_pubnames
-                  0x00302b        0x1a8 build/default/production/src/System_Driver.o
+                  0x002bcb        0x8bc build/default/production/src/COM3_TX_Sending.o
  .debug_pubnames
-                  0x0031d3        0x1f2 build/default/production/src/System_Control.o
+                  0x003487         0xfb build/default/production/src/COM2_TX_Sending_ExtDevice.o
  .debug_pubnames
-                  0x0033c5        0x205 build/default/production/src/System_ParameterInputProcess.o
+                  0x003582         0x48 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1647,37 +1648,37 @@ __FUID0
  .debug_aranges
                   0x000150         0x18 build/default/production/src/InitialSystemTestParameter.o
  .debug_aranges
-                  0x000168         0x18 build/default/production/src/COM3_TX.o
+                  0x000168         0x18 build/default/production/src/RunTimeDisplayControl.o
  .debug_aranges
-                  0x000180         0x18 build/default/production/src/RunTimeDisplayControl.o
+                  0x000180         0x18 build/default/production/src/Android_HMI_Parsing.o
  .debug_aranges
-                  0x000198         0x18 build/default/production/src/COM2_RX_ParsingExtDevice.o
+                  0x000198         0x18 build/default/production/src/Android_HMI_Sending.o
  .debug_aranges
-                  0x0001b0         0x18 build/default/production/src/COM2_TX_ToExtDevice.o
+                  0x0001b0         0x18 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
  .debug_aranges
-                  0x0001c8         0x18 build/default/production/src/Android_HMI_Parsing.o
+                  0x0001c8         0x18 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
  .debug_aranges
-                  0x0001e0         0x18 build/default/production/src/Android_HMI_Sending.o
+                  0x0001e0         0x18 build/default/production/src/Android_HMI_WriteParameters.o
  .debug_aranges
-                  0x0001f8         0x18 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+                  0x0001f8         0x18 build/default/production/src/IO_Setting.o
  .debug_aranges
-                  0x000210         0x18 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+                  0x000210         0x18 build/default/production/src/uC_Machine_HMI_Control.o
  .debug_aranges
-                  0x000228         0x18 build/default/production/src/Android_HMI_WriteParameters.o
+                  0x000228         0x18 build/default/production/src/uC_Machine_HMI_Parsing.o
  .debug_aranges
-                  0x000240         0x18 build/default/production/src/IO_Setting.o
+                  0x000240         0x18 build/default/production/src/Main.o
  .debug_aranges
-                  0x000258         0x18 build/default/production/src/uC_Machine_HMI_Control.o
+                  0x000258         0x18 build/default/production/src/System_Driver.o
  .debug_aranges
-                  0x000270         0x18 build/default/production/src/uC_Machine_HMI_Parsing.o
+                  0x000270         0x18 build/default/production/src/System_Control.o
  .debug_aranges
-                  0x000288         0x18 build/default/production/src/Main.o
+                  0x000288         0x18 build/default/production/src/System_ParameterInputProcess.o
  .debug_aranges
-                  0x0002a0         0x18 build/default/production/src/System_Driver.o
+                  0x0002a0         0x18 build/default/production/src/COM3_TX_Sending.o
  .debug_aranges
-                  0x0002b8         0x18 build/default/production/src/System_Control.o
+                  0x0002b8         0x18 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  .debug_aranges
-                  0x0002d0         0x18 build/default/production/src/System_ParameterInputProcess.o
+                  0x0002d0         0x18 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
 
 .ivt              0x000004        0x130
                   0x000004          0x4 LONG 0x2c8 DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
@@ -4657,39 +4658,39 @@ LOAD data_init
  .debug_pubtypes
                   0x0013cd        0xbe6 build/default/production/src/InitialSystemTestParameter.o
  .debug_pubtypes
-                  0x001fb3        0x667 build/default/production/src/COM3_TX.o
+                  0x001fb3        0x156 build/default/production/src/RunTimeDisplayControl.o
  .debug_pubtypes
-                  0x00261a        0x156 build/default/production/src/RunTimeDisplayControl.o
+                  0x002109        0x13d build/default/production/src/Android_HMI_Parsing.o
  .debug_pubtypes
-                  0x002770         0x50 build/default/production/src/COM2_RX_ParsingExtDevice.o
+                  0x002246        0x34e build/default/production/src/Android_HMI_Sending.o
  .debug_pubtypes
-                  0x0027c0         0xc6 build/default/production/src/COM2_TX_ToExtDevice.o
+                  0x002594        0x553 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
  .debug_pubtypes
-                  0x002886        0x13d build/default/production/src/Android_HMI_Parsing.o
+                  0x002ae7        0x578 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
  .debug_pubtypes
-                  0x0029c3        0x34e build/default/production/src/Android_HMI_Sending.o
+                  0x00305f        0x574 build/default/production/src/Android_HMI_WriteParameters.o
  .debug_pubtypes
-                  0x002d11        0x553 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+                  0x0035d3        0x248 build/default/production/src/IO_Setting.o
  .debug_pubtypes
-                  0x003264        0x578 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+                  0x00381b         0x50 build/default/production/src/uC_Machine_HMI_Control.o
  .debug_pubtypes
-                  0x0037dc        0x574 build/default/production/src/Android_HMI_WriteParameters.o
+                  0x00386b         0x8b build/default/production/src/uC_Machine_HMI_Parsing.o
  .debug_pubtypes
-                  0x003d50        0x248 build/default/production/src/IO_Setting.o
+                  0x0038f6         0x2a build/default/production/src/uC_Machine_HMI_Sending.o
  .debug_pubtypes
-                  0x003f98         0x50 build/default/production/src/uC_Machine_HMI_Control.o
+                  0x003920         0x12 build/default/production/src/Main.o
  .debug_pubtypes
-                  0x003fe8         0x8b build/default/production/src/uC_Machine_HMI_Parsing.o
+                  0x003932        0x1b4 build/default/production/src/System_Driver.o
  .debug_pubtypes
-                  0x004073         0x2a build/default/production/src/uC_Machine_HMI_Sending.o
+                  0x003ae6        0x652 build/default/production/src/System_Control.o
  .debug_pubtypes
-                  0x00409d         0x12 build/default/production/src/Main.o
+                  0x004138        0x512 build/default/production/src/System_ParameterInputProcess.o
  .debug_pubtypes
-                  0x0040af        0x1b4 build/default/production/src/System_Driver.o
+                  0x00464a        0x667 build/default/production/src/COM3_TX_Sending.o
  .debug_pubtypes
-                  0x004263        0x652 build/default/production/src/System_Control.o
+                  0x004cb1         0xc6 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  .debug_pubtypes
-                  0x0048b5        0x512 build/default/production/src/System_ParameterInputProcess.o
+                  0x004d77         0x50 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
 
 __c30_signature
                   0x004dc8         0xea
@@ -4726,39 +4727,39 @@ __c30_signature
  __c30_signature
                   0x004e22          0x6 build/default/production/src/InitialSystemTestParameter.o
  __c30_signature
-                  0x004e28          0x6 build/default/production/src/COM3_TX.o
+                  0x004e28          0x6 build/default/production/src/RunTimeDisplayControl.o
  __c30_signature
-                  0x004e2e          0x6 build/default/production/src/RunTimeDisplayControl.o
+                  0x004e2e          0x6 build/default/production/src/Android_HMI_Parsing.o
  __c30_signature
-                  0x004e34          0x6 build/default/production/src/COM2_RX_ParsingExtDevice.o
+                  0x004e34          0x6 build/default/production/src/Android_HMI_Sending.o
  __c30_signature
-                  0x004e3a          0x6 build/default/production/src/COM2_TX_ToExtDevice.o
+                  0x004e3a          0x6 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
  __c30_signature
-                  0x004e40          0x6 build/default/production/src/Android_HMI_Parsing.o
+                  0x004e40          0x6 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
  __c30_signature
-                  0x004e46          0x6 build/default/production/src/Android_HMI_Sending.o
+                  0x004e46          0x6 build/default/production/src/Android_HMI_WriteParameters.o
  __c30_signature
-                  0x004e4c          0x6 build/default/production/src/Android_HMI_AlarmPacket_Generator.o
+                  0x004e4c          0x6 build/default/production/src/IO_Setting.o
  __c30_signature
-                  0x004e52          0x6 build/default/production/src/Android_HMI_GetParameterResponsePacketGenerator.o
+                  0x004e52          0x6 build/default/production/src/uC_Machine_HMI_Control.o
  __c30_signature
-                  0x004e58          0x6 build/default/production/src/Android_HMI_WriteParameters.o
+                  0x004e58          0x6 build/default/production/src/uC_Machine_HMI_Parsing.o
  __c30_signature
-                  0x004e5e          0x6 build/default/production/src/IO_Setting.o
+                  0x004e5e          0x6 build/default/production/src/uC_Machine_HMI_Sending.o
  __c30_signature
-                  0x004e64          0x6 build/default/production/src/uC_Machine_HMI_Control.o
+                  0x004e64          0x6 build/default/production/src/Main.o
  __c30_signature
-                  0x004e6a          0x6 build/default/production/src/uC_Machine_HMI_Parsing.o
+                  0x004e6a          0x6 build/default/production/src/System_Driver.o
  __c30_signature
-                  0x004e70          0x6 build/default/production/src/uC_Machine_HMI_Sending.o
+                  0x004e70          0x6 build/default/production/src/System_Control.o
  __c30_signature
-                  0x004e76          0x6 build/default/production/src/Main.o
+                  0x004e76          0x6 build/default/production/src/System_ParameterInputProcess.o
  __c30_signature
-                  0x004e7c          0x6 build/default/production/src/System_Driver.o
+                  0x004e7c          0x6 build/default/production/src/COM3_TX_Sending.o
  __c30_signature
-                  0x004e82          0x6 build/default/production/src/System_Control.o
+                  0x004e82          0x6 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  __c30_signature
-                  0x004e88          0x6 build/default/production/src/System_ParameterInputProcess.o
+                  0x004e88          0x6 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
  __c30_signature
                   0x004e8e          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
  __c30_signature
@@ -4838,7 +4839,7 @@ __c30_signature
                     0x2bfc                  _lastPCD20_RunTimeDisplay
                     0x2c00                  _OtherRunTimeDisplay
                     0x2c14                  _lastOtherRunTimeDisplay
- .bss               0x2c28         0x68 build/default/production/src/COM3_TX.o
+ .bss               0x2c28         0x68 build/default/production/src/COM3_TX_Sending.o
                     0x2c28                  _SendingData
                     0x2c2c                  _COM3_SendCommandBuffer
                     0x2c5e                  _COM3_SendButtonCommandBuffer
@@ -4891,38 +4892,38 @@ __c30_signature
                     0x2dfa                  _PlayBackDayCode
                     0x2dfe                  _IndexMonthCode
                     0x2e00                  _IndexRecordPosition
- .bss               0x2e02          0x8 build/default/production/src/COM2_TX_ToExtDevice.o
-                    0x2e02                  _U2_SendingWord
-                    0x2e04                  _U2_SendingWord2
-                    0x2e08                  _COM2_ReTryCounter
-                    0x2e09                  _COM2_Send_Index
- .bss               0x2e0a          0x8 build/default/production/src/IO_Setting.o
-                    0x2e0a                  _SYS_TIME
+ .bss               0x2e02          0x8 build/default/production/src/IO_Setting.o
+                    0x2e02                  _SYS_TIME
+ .bss               0x2e0a          0x8 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+                    0x2e0a                  _U2_SendingWord
+                    0x2e0c                  _U2_SendingWord2
+                    0x2e10                  _COM2_ReTryCounter
+                    0x2e11                  _COM2_Send_Index
 
-.data               0x2e12          0xc
- .data              0x2e12          0x6 build/default/production/src/COM3_TX.o
-                    0x2e12                  _COM3_SendControlState
-                    0x2e13                  _COM3_SendCommandBufferRead
-                    0x2e14                  _COM3_SendCommandBufferWrite
-                    0x2e15                  _COM3_SendCommandBufferSize
-                    0x2e16                  _COM3_TxRetryCount
- .data              0x2e18          0x6 build/default/production/src/Main.o
-                    0x2e18                  _FirmwareVersion
-                    0x2e1a                  _FirmwareDate
+.data               0x2e12         0x14
+ .data              0x2e12          0x6 build/default/production/src/Main.o
+                    0x2e12                  _FirmwareVersion
+                    0x2e14                  _FirmwareDate
+ .data              0x2e18          0x6 build/default/production/src/COM3_TX_Sending.o
+                    0x2e18                  _COM3_SendControlState
+                    0x2e19                  _COM3_SendCommandBufferRead
+                    0x2e1a                  _COM3_SendCommandBufferWrite
+                    0x2e1b                  _COM3_SendCommandBufferSize
+                    0x2e1c                  _COM3_TxRetryCount
+ .data              0x2e1e          0x4 build/default/production/src/Android_HMI_Sending.o
+                    0x2e1e                  _RoutineSendFlag
+                    0x2e1f                  _RoutineSendIndex
+                    0x2e20                  _Android_HMI_SendState
+ .data              0x2e22          0x4 build/default/production/src/System_Control.o
+                    0x2e22                  _SystemInitialState
+                    0x2e24                  _DynamicStoreTimer
 
-.bss                0x2e1e          0x4
- .bss               0x2e1e          0x4 build/default/production/src/COM2_RX_ParsingExtDevice.o
-                    0x2e1e                  _ParsingWord
-                    0x2e20                  _COM2_Rx_Size
+.bss                0x2e26          0x4
+ .bss               0x2e26          0x4 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
+                    0x2e26                  _ParsingWord
+                    0x2e28                  _COM2_Rx_Size
 
-.data               0x2e22         0x10
- .data              0x2e22          0x4 build/default/production/src/Android_HMI_Sending.o
-                    0x2e22                  _RoutineSendFlag
-                    0x2e23                  _RoutineSendIndex
-                    0x2e24                  _Android_HMI_SendState
- .data              0x2e26          0x4 build/default/production/src/System_Control.o
-                    0x2e26                  _SystemInitialState
-                    0x2e28                  _DynamicStoreTimer
+.data               0x2e2a          0x8
  .data              0x2e2a          0x2 build/default/production/src/EXT_ACD_DAC_Driver.o
                     0x2e2a                  _LastDAC_Value
  .data              0x2e2c          0x2 build/default/production/src/StorageDev.o
@@ -4937,23 +4938,25 @@ __c30_signature
  .bss               0x2e32          0x2 build/default/production/src/uC_HMI_Sending.o
                     0x2e32                  _SendingWord
 
-.data               0x2e34          0x4
+.data               0x2e34          0x2
  .data              0x2e34          0x2 build/default/production/src/uC_HMI_Parsing.o
                     0x2e34                  _StartupFinsihFlag
- .data              0x2e36          0x2 build/default/production/src/COM2_TX_ToExtDevice.o
-                    0x2e36                  _COM2_SendControlState
 
-.bss                0x2e38          0x2
- .bss               0x2e38          0x2 build/default/production/src/Android_HMI_Parsing.o
-                    0x2e38                  _COM1_Rx_Size
+.bss                0x2e36          0x2
+ .bss               0x2e36          0x2 build/default/production/src/Android_HMI_Parsing.o
+                    0x2e36                  _COM1_Rx_Size
 
-.data               0x2e3a          0x2
- .data              0x2e3a          0x2 build/default/production/src/IO_Setting.o
-                    0x2e3a                  _spitemp
+.data               0x2e38          0x2
+ .data              0x2e38          0x2 build/default/production/src/IO_Setting.o
+                    0x2e38                  _spitemp
 
-.bss                0x2e3c          0x2
- .bss               0x2e3c          0x2 build/default/production/src/System_ParameterInputProcess.o
-                    0x2e3c                  _SystemParameterId
+.bss                0x2e3a          0x2
+ .bss               0x2e3a          0x2 build/default/production/src/System_ParameterInputProcess.o
+                    0x2e3a                  _SystemParameterId
+
+.data               0x2e3c          0x2
+ .data              0x2e3c          0x2 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+                    0x2e3c                  _COM2_SendControlState
 
 .text             0x00032e       0xb448
  .text            0x00032e       0x1874 build/default/production/src/InitialSystemTestParameter.o
@@ -5020,7 +5023,7 @@ __c30_signature
                   0x00399e                  _Write_Alarm2_Parameter
                   0x003ad8                  _Write_Alarm3_Parameter
                   0x003cf2                  _Write_Alarm4_Parameter
- .text            0x003e2c        0xeee build/default/production/src/COM3_TX.o
+ .text            0x003e2c        0xeee build/default/production/src/COM3_TX_Sending.o
                   0x003e2c                  _Register_COM3_Send_ButtonCommand
                   0x003e74                  _Register_COM3_Send_Command
                   0x003eac                  _COM3_Send_All_Command
@@ -5369,7 +5372,7 @@ __c30_signature
  .dinit           0x00b776        0x10a data_init
 
 .text             0x00b880        0x1de
- .text            0x00b880         0xfa build/default/production/src/COM2_TX_ToExtDevice.o
+ .text            0x00b880         0xfa build/default/production/src/COM2_TX_Sending_ExtDevice.o
                   0x00b880                  _LoopBackResponseProcess
                   0x00b8a8                  _LoopBackResponse
                   0x00b8b4                  _COM2_Build_Send_Packet
@@ -5380,5 +5383,5 @@ __c30_signature
  .text            0x00b9ce         0x4c build/default/production/src/HMI_Control.o
                   0x00b9ce                  _DEC2BCD
                   0x00ba00                  _BCD2DEC
- .text            0x00ba1a         0x44 build/default/production/src/COM2_RX_ParsingExtDevice.o
+ .text            0x00ba1a         0x44 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
                   0x00ba1a                  _U2CommandParsing

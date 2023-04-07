@@ -77,8 +77,8 @@ extern void SendPCD22MaualControlCommand(void);
 extern void SendPCD25MaualControlCommand(void);
 extern void SendSystemAutoStartStopControlCommand(void);
 extern void SendV21MaualControlCommand(void);
-extern void SendPCD6MaualControlCommand(void);
 extern void SendPCD2MaualControlCommand(void);
+extern void SendPCD6MaualControlCommand(void);
 //Philip 20220325 0.0.1 ==============================================================================================
 extern void SendSystemResetControlCommand(void);//Philip 20220414 0.0.1
 
@@ -330,15 +330,15 @@ void Android_HMI_Parsing(void)
     {
         switch(UART1RxBuffer[0])
         {
-            case Android_HMI_GetFirmwareVersionCommandEnum :
+            case Android_HMI_GetFirmwareVersionCommandEnum ://00
                 RoutineSendFlag = 0;
                 SendFirmwareVersion(0);
                 break;
-            case Android_HMI_GetExtFirmwareVersionCommandEnum :
+            case Android_HMI_GetExtFirmwareVersionCommandEnum ://01
                 RoutineSendFlag = 0;
                 SendFirmwareVersion(1);                
                 break;
-            case Android_HMI_Fan1_1_GetSV_CommandEnum :
+            case Android_HMI_Fan1_1_GetSV_CommandEnum ://02
                 RoutineSendFlag = 0;
                 SendFan1_1_GetSV_Response();
                 break;
@@ -346,7 +346,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 SendFan1_1_GetPI_Response();
                 break;
-            case Android_HMI_Fan1_1_GetD_LowLimit_CommandEnum :
+            case Android_HMI_Fan1_1_GetD_LowLimit_CommandEnum ://04
                 RoutineSendFlag = 0;
                 SendFan1_1_GetD_LowLimit_Response();
                 break;
@@ -354,7 +354,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 SendFan1_1_Get_TopLimit_Response();
                 break;
-            case Android_HMI_Fan1_1_GetManualSet_CommandEnum :
+            case Android_HMI_Fan1_1_GetManualSet_CommandEnum ://06
                 RoutineSendFlag = 0;
                 SendFan1_1_Get_ManualSet_Response();
                 break;
@@ -362,7 +362,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetFan2TempSetSpeedTopLimit_Response();
                 break;
-            case Android_HMI_Fan2_GetSpeedSet_CommandEnum :
+            case Android_HMI_Fan2_GetSpeedSet_CommandEnum ://08
                 RoutineSendFlag = 0;
                 Send_GetFan2SpeedSetResponse();
                 break;
@@ -378,7 +378,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_Heater_GetSP2LowLimitSetResponse();
                 break;
-            case Android_HMI_HeaterPI_Set_CommandEnum :
+            case Android_HMI_HeaterPI_Set_CommandEnum ://12
                 RoutineSendFlag = 0;
                 Send_Heater_GetPI_SetResponse();
                 break;   
@@ -386,7 +386,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_Heater_GetManualSetResponse();
                 break;
-            case Android_HMI_MTR4_TE5ConditionSet_CommandEnum :
+            case Android_HMI_MTR4_TE5ConditionSet_CommandEnum ://14
                 RoutineSendFlag = 0;
                 Send_MTR4_GetTE5ConditionSetResponse();
                 break;
@@ -394,7 +394,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_MTR4_GetTE5SpeedSetResponse();
                 break;
-            case Android_HMI_MTR4_TopStopTempLowSet_CommandEnum :
+            case Android_HMI_MTR4_TopStopTempLowSet_CommandEnum ://16
                 RoutineSendFlag = 0;
                 Send_MTR4_GetTopStopLowSetResponse();
                 break;    
@@ -402,15 +402,15 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetPCD2_V21SetResponse();
                 break;
-            case Android_HMI_PCD20_Temp_SizeSet_CommandEnum :
+            case Android_HMI_PCD20_Temp_SizeSet_CommandEnum ://18
                 RoutineSendFlag = 0;
                 Send_GetPCD20_TempSizeSetResponse();
                 break;
-            case Android_HMI_PCD20_PISet_CommandEnum :
+            case Android_HMI_PCD20_PISet_CommandEnum ://19
                 RoutineSendFlag = 0;
                 Send_GetPCD20_PISetResponse();
                 break;
-            case Android_HMI_PCD20_D_TimeSet_CommandEnum :
+            case Android_HMI_PCD20_D_TimeSet_CommandEnum ://20
                 RoutineSendFlag = 0;
                 Send_GetPCD20_D_TimeSetResponse();
                 break;
@@ -418,7 +418,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse();
                 break;
-            case Android_HMI_PCD22_Set_CommandEnum :
+            case Android_HMI_PCD22_Set_CommandEnum ://22
                 RoutineSendFlag = 0;
                 Send_GetPCD22_SetResponse();
                 break;
@@ -426,7 +426,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetPCD25_PCD6TimeSetResponse();
                 break;  
-            case Android_HMI_PCD25_Limit_ManualSet_CommandEnum :
+            case Android_HMI_PCD25_Limit_ManualSet_CommandEnum ://24
                 RoutineSendFlag = 0;
                 Send_GetPCD25_Limit_ManualSetResponse();
                 break;              
@@ -435,7 +435,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetAlarm_A1_SetResponse();                
                 break;
-            case Android_HMI_Alarm_A1_A2_Set_CommandEnum :
+            case Android_HMI_Alarm_A1_A2_Set_CommandEnum ://26
                 RoutineSendFlag = 0;
                 Send_GetAlarm_A1_A2SetResponse();                
                 break;
@@ -443,7 +443,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetAlarm_A2_B_SetResponse();                
                 break;
-            case Android_HMI_HeaterTempAlarm_Set_CommandEnum :
+            case Android_HMI_HeaterTempAlarm_Set_CommandEnum ://28
                 RoutineSendFlag = 0;
                 Send_GetHeaterTempAlarm_SetResponse();                
                 break;
@@ -451,7 +451,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetHeaterPDTAlarm_SetResponse();                
                 break;          
-            case Android_HMI_MTR4TempAlarm_Set_CommandEnum :
+            case Android_HMI_MTR4TempAlarm_Set_CommandEnum ://30
                 RoutineSendFlag = 0;
                 Send_GetMTR4TempAlarm_SetResponse();                
                 break;
@@ -459,7 +459,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_Get_MTR4TempPDTAlarm_SetResponse();                
                 break;
-            case Android_HMI_D_Alarm1_Set_CommandEnum :
+            case Android_HMI_D_Alarm1_Set_CommandEnum ://32
                 RoutineSendFlag = 0;
                 Send_GetD_Alarm1_Set_SetResponse();                
                 break;
@@ -467,7 +467,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetD_Alarm2_Set_SetResponse();                
                 break;
-            case Android_HMI_D_Alarm3__D1_Set_CommandEnum :
+            case Android_HMI_D_Alarm3__D1_Set_CommandEnum ://34
                 RoutineSendFlag = 0;
                 Send_GetD_Alarm3__D1_SetResponse();                
                 break;
@@ -475,21 +475,23 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetD1_Alarm2_Set_SetResponse();                
                 break;
-            case Android_HMI_D1_Alarm3_Set_CommandEnum :
+            case Android_HMI_D1_Alarm3_Set_CommandEnum ://36
                 RoutineSendFlag = 0;
                 Send_GetD1_Alarm3_SetResponse();                
-                break;       
-            case Android_HMI_WriteParameter_CommandEnum :
+                break;
+                //Philip 20220325 0.0.1 =========================================================================                
+            case Android_HMI_Button_CommandEnum ://37
+                Android_ButtonProcess();
+                Send_LoopBackResponse();
+                break;
+                //Philip 20220325 0.0.1 ========================================================================= 
+                
+            case Android_HMI_WriteParameter_CommandEnum ://50
                 RoutineSendFlag = 0;
                 WriteParameterParsing();
                 Send_LoopBackResponse();
                 break;
-//Philip 20220325 0.0.1 =========================================================================                
-            case Android_HMI_Button_CommandEnum :
-                Android_ButtonProcess();
-                Send_LoopBackResponse();
-                break;
-//Philip 20220325 0.0.1 =========================================================================                
+               
         }
     }
 }

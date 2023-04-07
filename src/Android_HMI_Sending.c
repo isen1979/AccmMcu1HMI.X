@@ -276,7 +276,9 @@ void Get_UsingRecord_RunTime_SendPacket(void)
 //Philip 20220124 0.0.1 ====================================================================
 
 //Philip 20220406 0.0.1 =====================================================================
-void Get_AlarmStatus_RunTime_SendPacket(unsigned char flag)
+void Get_AlarmStatus_RunTime_SendPacket(unsigned char flag) 
+//flag == 0 : Android_HMI_Alarm_RunTime_CommandEnum,
+//flag == 1 : Android_HMI_Alarm1_RunTime_CommandEnum
 {   
     unsigned char i;
 //Philip 20220526 0.0.1 =====================================================================    
@@ -411,7 +413,7 @@ enum Android_HMI_SendStateEnum
     Android_HMI_SendStateEnumEnd
 };
 
-unsigned char Android_HMI_SendState=Wait_Android_HMI_StartSendStateEnum;
+unsigned char Android_HMI_SendState = Wait_Android_HMI_StartSendStateEnum;
 void Android_HMI_SendingControl(void)
 {
     switch(Android_HMI_SendState)

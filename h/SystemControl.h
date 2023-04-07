@@ -208,7 +208,7 @@ enum Android_HMI_CommandEnum
     Android_HMI_D1_Alarm2_Set_CommandEnum,//35
     Android_HMI_D1_Alarm3_Set_CommandEnum,//36
     
-     Android_HMI_Button_CommandEnum,//Philip 20220325 0.0.1
+     Android_HMI_Button_CommandEnum,//37 //Philip 20220325 0.0.1
      Android_HMI_Dummy38_CommandEnum,//38
      Android_HMI_Dummy39_CommandEnum,
      Android_HMI_Dummy40_CommandEnum,//40
@@ -228,13 +228,13 @@ enum Android_HMI_CommandEnum
      Android_HMI_RunTimePDT1_2_3_CommandEnum,
      Android_HMI_FAN1_RunTime_CommandEnum,//54
      Android_HMI_FAN2_RunTime_CommandEnum,//55
-     Android_HMI_MTR4_RunTime_CommandEnum,
-     Android_HMI_Heater_RunTime_CommandEnum,//56
-     Android_HMI_PCD_RunTime_CommandEnum,
-     Android_HMI_UsingCount_RunTime_CommandEnum,//58
-     Android_HMI_Alarm_RunTime_CommandEnum,//Philip 20220406 0.0.1//60
-     Android_HMI_SystemStatus_RunTime_CommandEnum,//60//Philip 20220510 0.0.1
-     Android_HMI_Alarm1_RunTime_CommandEnum,//Philip 20220526 0.0.1
+     Android_HMI_MTR4_RunTime_CommandEnum,//56
+     Android_HMI_Heater_RunTime_CommandEnum,
+     Android_HMI_PCD_RunTime_CommandEnum,//58
+     Android_HMI_UsingCount_RunTime_CommandEnum,
+     Android_HMI_Alarm_RunTime_CommandEnum,//60//Philip 20220406 0.0.1
+     Android_HMI_SystemStatus_RunTime_CommandEnum,//61//Philip 20220510 0.0.1
+     Android_HMI_Alarm1_RunTime_CommandEnum,//62//Philip 20220526 0.0.1
     
     Android_HMI_CommandEnumEnd
 };
