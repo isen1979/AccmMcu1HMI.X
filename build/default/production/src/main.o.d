@@ -1,5 +1,5 @@
-build/default/production/src/main.o:  \
-src/main.c  \
+build/default/production/src/Main.o:  \
+src/Main.c  \
 src/../h/Global_define.h  \
  src/../h/Item.h  \
 src/../h/LCD_driver.h  \
