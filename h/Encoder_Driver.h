@@ -1,5 +1,4 @@
 
-
 #ifndef ENCODER_DRIVER_H
 #define	ENCODER_DRIVER_H
 

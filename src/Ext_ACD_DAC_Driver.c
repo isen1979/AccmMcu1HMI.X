@@ -1,6 +1,6 @@
 #include "..\h\Global_define.h"
-#include "..\h\EXT_ACD_DAC_Driver.h"
-#include "..\h\SystemControl.h"
+#include "..\h\Ext_ACD_DAC_Driver.h"
+#include "..\h\System_Control.h"
 
 #define ADC_TIME_OUT_COUNT 2
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];

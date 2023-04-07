@@ -4,7 +4,7 @@
  *
  * Created on 2021年9月24日, 上午 9:32
  */
-#include "SystemControl.h"
+#include "System_Control.h"
 #include "COM3_Command.h"
 
 extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);

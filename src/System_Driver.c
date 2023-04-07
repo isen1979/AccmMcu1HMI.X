@@ -1,6 +1,6 @@
 #include "..\h\Global_define.h"
-#include "..\h\SYS_Driver.h"
-#include "..\h\SystemControl.h"
+#include "..\h\System_Driver.h"
+#include "..\h\System_Control.h"
 
 // System OSC
 #define SYS_CLK_60MHZ  65

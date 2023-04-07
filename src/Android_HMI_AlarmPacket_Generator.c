@@ -4,7 +4,7 @@
  *
  * Created on 2021年9月27日, 上午 11:33
  */
-#include "SystemControl.h"
+#include "System_Control.h"
 
 extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);
 extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];

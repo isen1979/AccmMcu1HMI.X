@@ -5,7 +5,7 @@
  * Created on 2020年4月20日, 上午 11:32
  */
 #include "uC_HMI_Control.h"
-#include "SystemControl.h"
+#include "System_Control.h"
 #include "COM3_Command.h"
 
 extern void RegisterSendingPacket(unsigned char state, unsigned int addr, unsigned char *data, unsigned char size);

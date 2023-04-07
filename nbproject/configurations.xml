@@ -9,19 +9,19 @@
         <itemPath>h/LCD_driver.h</itemPath>
         <itemPath>h/Item.h</itemPath>
         <itemPath>h/IO_Driver.h</itemPath>
-        <itemPath>h/EXT_ACD_DAC_Driver.h</itemPath>
-        <itemPath>h/SYS_Driver.h</itemPath>
         <itemPath>h/UART_Driver.h</itemPath>
         <itemPath>h/Data_API.h</itemPath>
         <itemPath>h/Encoder_Driver.h</itemPath>
         <itemPath>h/Datien_IO_Define.h</itemPath>
-        <itemPath>h/SystemControl.h</itemPath>
         <itemPath>h/COM2_Command.h</itemPath>
         <itemPath>h/COM3_Command.h</itemPath>
         <itemPath>h/HMI_Control.h</itemPath>
         <itemPath>h/PC_HMI.h</itemPath>
         <itemPath>h/Keyboard_Process.h</itemPath>
         <itemPath>h/uC_HMI_Control.h</itemPath>
+        <itemPath>h/System_Driver.h</itemPath>
+        <itemPath>h/System_Control.h</itemPath>
+        <itemPath>h/Ext_ACD_DAC_Driver.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -32,18 +32,12 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>src/iosetting.c</itemPath>
-        <itemPath>src/main.c</itemPath>
-        <itemPath>src/EXT_ACD_DAC_Driver.c</itemPath>
-        <itemPath>src/SYS_Driver.c</itemPath>
         <itemPath>src/IO_Driver.c</itemPath>
         <itemPath>src/User_ISR.c</itemPath>
         <itemPath>src/UART_Driver.c</itemPath>
         <itemPath>src/Data_API.c</itemPath>
         <itemPath>src/PWM_Setting.c</itemPath>
         <itemPath>src/Encoder_Driver.c</itemPath>
-        <itemPath>src/SystemControl.c</itemPath>
-        <itemPath>src/StorageDev.c</itemPath>
         <itemPath>src/InputPortScan.c</itemPath>
         <itemPath>src/HMI_Control.c</itemPath>
         <itemPath>src/COM3_RX_Parsing.c</itemPath>
@@ -51,20 +45,26 @@
         <itemPath>src/uC_HMI_Sending.c</itemPath>
         <itemPath>src/uC_HMI_Parsing.c</itemPath>
         <itemPath>src/uC_HMI_Utility.c</itemPath>
-        <itemPath>src/Machine_uC_HMI_Sending.c</itemPath>
-        <itemPath>src/Machine_uC_HMI_Parsing.c</itemPath>
-        <itemPath>src/Machine_uC_HMI_Control.c</itemPath>
-        <itemPath>src/InitialSystemTestParameter.c</itemPath>
-        <itemPath>src/SystemParameterInputProcess.c</itemPath>
-        <itemPath>src/COM3_TX.c</itemPath>
         <itemPath>src/RunTimeDisplayControl.c</itemPath>
-        <itemPath>src/COM2_RX_ParsingExtDevice.c</itemPath>
-        <itemPath>src/COM2_TX_ToExtDevice.c</itemPath>
         <itemPath>src/Android_HMI_Parsing.c</itemPath>
         <itemPath>src/Android_HMI_Sending.c</itemPath>
         <itemPath>src/Android_HMI_AlarmPacket_Generator.c</itemPath>
         <itemPath>src/Android_HMI_GetParameterResponsePacketGenerator.c</itemPath>
         <itemPath>src/Android_HMI_WriteParameters.c</itemPath>
+        <itemPath>src/IO_Setting.c</itemPath>
+        <itemPath>src/uC_Machine_HMI_Control.c</itemPath>
+        <itemPath>src/uC_Machine_HMI_Parsing.c</itemPath>
+        <itemPath>src/uC_Machine_HMI_Sending.c</itemPath>
+        <itemPath>src/Main.c</itemPath>
+        <itemPath>src/COM2_RX_Parsing_ExtDevice.c</itemPath>
+        <itemPath>src/COM2_TX_Sending_ExtDevice.c</itemPath>
+        <itemPath>src/COM3_TX_Sending.c</itemPath>
+        <itemPath>src/Storage_Device.c</itemPath>
+        <itemPath>src/System_Driver.c</itemPath>
+        <itemPath>src/System_Control.c</itemPath>
+        <itemPath>src/System_ParameterInputProcess.c</itemPath>
+        <itemPath>src/Ext_ACD_DAC_Driver.c</itemPath>
+        <itemPath>src/System_InitialTestParameter.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"

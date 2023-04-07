@@ -5,7 +5,7 @@
  * Created on 2019年10月30日, 下午 6:29
  */
 #include "..\h\Global_define.h"
-#include "..\h\SystemControl.h"
+#include "..\h\System_Control.h"
 #include "..\h\COM3_Command.h"
 #include "UART_Driver.h"
 

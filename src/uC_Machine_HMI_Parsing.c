@@ -4,7 +4,7 @@
  *
  * Created on 2020年4月21日, 上午 11:05
  */
-#include "..\h\SystemControl.h"
+#include "..\h\System_Control.h"
 #include "uC_HMI_Control.h"
 
 #define NUMBER_KEYBOARD_ENTER 0

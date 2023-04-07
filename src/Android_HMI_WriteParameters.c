@@ -5,7 +5,7 @@
  * Created on 2021年9月29日, 上午 9:18
  */
 
-#include "SystemControl.h"
+#include "System_Control.h"
 #include "COM3_Command.h"
 
 extern void Register_COM3_Send_Command(unsigned char cmd);//Philip 20220407 0.0.1

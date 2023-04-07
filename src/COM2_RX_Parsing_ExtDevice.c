@@ -4,7 +4,7 @@
  *
  * Created on 2019年10月30日, 下午 6:57
  */
-#include "..\h\SystemControl.h"
+#include "..\h\System_Control.h"
 
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
 extern unsigned int UART2TimeOutCount, UART2RxBufCount, U2SendDataCount, U2PacketLen;

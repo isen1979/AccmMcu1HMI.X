@@ -6,7 +6,7 @@
  */
 #include "..\h\Global_define.h"
 #include "..\h\IO_Driver.h"
-#include "..\h\SystemControl.h"
+#include "..\h\System_Control.h"
 
 //PWM Setting
 void InitialPWMPeriodX(void)

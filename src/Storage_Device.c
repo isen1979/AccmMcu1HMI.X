@@ -5,7 +5,7 @@
  * Created on 2018年5月17日, 下午 1:08
  */
 
-#include "..\h\SystemControl.h"
+#include "..\h\System_Control.h"
 
 #define EEPROM_MAX_READ_WRITE_REPEAT 5
 //#define SYSTEM_PARAMETER_START_ADDR 0

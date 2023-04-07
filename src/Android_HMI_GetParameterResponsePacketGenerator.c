@@ -4,7 +4,7 @@
  *
  * Created on 2021年9月28日, 上午 11:25
  */
-#include "SystemControl.h"
+#include "System_Control.h"
 
 extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_SendingWord;
