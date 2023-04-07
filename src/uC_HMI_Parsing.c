@@ -4,7 +4,7 @@
  *
  * Created on 2020年4月8日, 下午 6:01
  */
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 #include "uC_HMI_Control.h"
 
 #define UC_HMI_READ_BYTE_ACK UC_HMI_READ_BYTE

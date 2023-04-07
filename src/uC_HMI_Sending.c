@@ -4,7 +4,7 @@
  *
  * Created on 2020年4月6日, 下午 3:41
  */
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 #include "..\h\uC_HMI_Control.h"
 
 #define UC_HMI_MAX_REPEAT_COUNT 3

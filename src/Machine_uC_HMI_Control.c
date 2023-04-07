@@ -4,7 +4,7 @@
  *
  * Created on 2020年4月21日, 上午 11:16
  */
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 #include "uC_HMI_Control.h"
 
 //extern void SaveEngineerMode(void);

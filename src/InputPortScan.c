@@ -7,7 +7,7 @@
 
 #include "..\h\Global_define.h"
 #include "..\h\Data_API.h"
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 #include "..\h\IO_Driver.h"
 #include "..\h\Datien_IO_Define.h"
 

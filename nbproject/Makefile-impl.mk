@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ACCM_GasSyetem_MCU-HMI
+PROJECTNAME=ExhaustGasProcessHMI.X
 
 # Active Configuration
 DEFAULTCONF=default

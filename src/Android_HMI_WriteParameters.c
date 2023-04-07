@@ -5,16 +5,18 @@
  * Created on 2021年9月29日, 上午 9:18
  */
 
-#include "System_Control.h"
+#include "SystemControl.h"
 #include "COM3_Command.h"
 
 extern void Register_COM3_Send_Command(unsigned char cmd);//Philip 20220407 0.0.1
+
 extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_SendingWord;
 extern _PARSING_DATA U1_SendingWord2;
 
-void WriteFan1_1_Parameters(void){
+void WriteFan1_1_Parameters(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 1 :
@@ -124,7 +126,8 @@ void WriteFan1_1_Parameters(void){
     }    
 }
 
-void WriteFan2_Parameter(void){
+void WriteFan2_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 17 :
@@ -178,7 +181,8 @@ void WriteFan2_Parameter(void){
     }     
 }
 
-void Write_Heater_Parameters(void){
+void Write_Heater_Parameters(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 25 :
@@ -302,7 +306,8 @@ void Write_Heater_Parameters(void){
     }    
 }
 
-void WriteMTR4_Parameter(void){
+void WriteMTR4_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 43 :
@@ -361,7 +366,8 @@ void WriteMTR4_Parameter(void){
     }     
 }
 
-void WritePCD_2_6_V21_Parameter(void){
+void WritePCD_2_6_V21_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 52 :
@@ -403,7 +409,9 @@ void WritePCD_2_6_V21_Parameter(void){
     }
 }
 
-void WritePCD_20_Parameter(void){
+
+void WritePCD_20_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 58 :
@@ -491,7 +499,8 @@ void WritePCD_20_Parameter(void){
     }   
 }
 
-void WritePCD_22_25_Parameter(void){
+void WritePCD_22_25_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 71 :
@@ -557,7 +566,8 @@ void WritePCD_22_25_Parameter(void){
     }
 }
 
-void Write_Alarm1_Parameter(void){
+void Write_Alarm1_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 81 :
@@ -623,7 +633,9 @@ void Write_Alarm1_Parameter(void){
     }
 }
 
-void Write_Alarm2_Parameter(void){
+
+void Write_Alarm2_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 91 :
@@ -689,7 +701,8 @@ void Write_Alarm2_Parameter(void){
     }
 }
 
-void Write_Alarm3_Parameter(void){
+void Write_Alarm3_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 101 :
@@ -803,7 +816,8 @@ void Write_Alarm3_Parameter(void){
     }
 }
 
-void Write_Alarm4_Parameter(void){
+void Write_Alarm4_Parameter(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 119 :

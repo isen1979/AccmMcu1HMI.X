@@ -11,6 +11,17 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/main.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/COM2_TX_ToExtDevice.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/COM3_TX.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/SystemControl.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/StorageDev.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/Android_HMI_Parsing.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/UART_Driver.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/Encoder_Driver.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/COM3_RX_Parsing.c</file>
+            <file>file:/D:/SatTech/SourceCode/ExhaustGasProcessHMI.X/src/SystemParameterInputProcess.c</file>
+        </group>
     </open-files>
 </project-private>

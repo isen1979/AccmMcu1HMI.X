@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/IO_Driver.c src/User_ISR.c src/UART_Driver.c src/Data_API.c src/PWM_Setting.c src/Encoder_Driver.c src/InputPortScan.c src/HMI_Control.c src/COM3_RX_Parsing.c src/uC_HMI_Control.c src/uC_HMI_Sending.c src/uC_HMI_Parsing.c src/uC_HMI_Utility.c src/RunTimeDisplayControl.c src/Android_HMI_Parsing.c src/Android_HMI_Sending.c src/Android_HMI_AlarmPacket_Generator.c src/Android_HMI_GetParameterResponsePacketGenerator.c src/Android_HMI_WriteParameters.c src/IO_Setting.c src/uC_Machine_HMI_Control.c src/uC_Machine_HMI_Parsing.c src/uC_Machine_HMI_Sending.c src/Main.c src/COM2_RX_Parsing_ExtDevice.c src/COM2_TX_Sending_ExtDevice.c src/COM3_TX_Sending.c src/Storage_Device.c src/System_Driver.c src/System_Control.c src/System_ParameterInputProcess.c src/Ext_ACD_DAC_Driver.c src/System_InitialTestParameter.c
+SOURCEFILES_QUOTED_IF_SPACED=src/iosetting.c src/main.c src/EXT_ACD_DAC_Driver.c src/SYS_Driver.c src/IO_Driver.c src/User_ISR.c src/UART_Driver.c src/Data_API.c src/PWM_Setting.c src/Encoder_Driver.c src/SystemControl.c src/StorageDev.c src/InputPortScan.c src/HMI_Control.c src/COM3_RX_Parsing.c src/uC_HMI_Control.c src/uC_HMI_Sending.c src/uC_HMI_Parsing.c src/uC_HMI_Utility.c src/Machine_uC_HMI_Sending.c src/Machine_uC_HMI_Parsing.c src/Machine_uC_HMI_Control.c src/InitialSystemTestParameter.c src/SystemParameterInputProcess.c src/COM3_TX.c src/RunTimeDisplayControl.c src/COM2_RX_ParsingExtDevice.c src/COM2_TX_ToExtDevice.c src/Android_HMI_Parsing.c src/Android_HMI_Sending.c src/Android_HMI_AlarmPacket_Generator.c src/Android_HMI_GetParameterResponsePacketGenerator.c src/Android_HMI_WriteParameters.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/IO_Driver.o ${OBJECTDIR}/src/User_ISR.o ${OBJECTDIR}/src/UART_Driver.o ${OBJECTDIR}/src/Data_API.o ${OBJECTDIR}/src/PWM_Setting.o ${OBJECTDIR}/src/Encoder_Driver.o ${OBJECTDIR}/src/InputPortScan.o ${OBJECTDIR}/src/HMI_Control.o ${OBJECTDIR}/src/COM3_RX_Parsing.o ${OBJECTDIR}/src/uC_HMI_Control.o ${OBJECTDIR}/src/uC_HMI_Sending.o ${OBJECTDIR}/src/uC_HMI_Parsing.o ${OBJECTDIR}/src/uC_HMI_Utility.o ${OBJECTDIR}/src/RunTimeDisplayControl.o ${OBJECTDIR}/src/Android_HMI_Parsing.o ${OBJECTDIR}/src/Android_HMI_Sending.o ${OBJECTDIR}/src/Android_HMI_AlarmPacket_Generator.o ${OBJECTDIR}/src/Android_HMI_GetParameterResponsePacketGenerator.o ${OBJECTDIR}/src/Android_HMI_WriteParameters.o ${OBJECTDIR}/src/IO_Setting.o ${OBJECTDIR}/src/uC_Machine_HMI_Control.o ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o ${OBJECTDIR}/src/Main.o ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o ${OBJECTDIR}/src/COM3_TX_Sending.o ${OBJECTDIR}/src/Storage_Device.o ${OBJECTDIR}/src/System_Driver.o ${OBJECTDIR}/src/System_Control.o ${OBJECTDIR}/src/System_ParameterInputProcess.o ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o ${OBJECTDIR}/src/System_InitialTestParameter.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/IO_Driver.o.d ${OBJECTDIR}/src/User_ISR.o.d ${OBJECTDIR}/src/UART_Driver.o.d ${OBJECTDIR}/src/Data_API.o.d ${OBJECTDIR}/src/PWM_Setting.o.d ${OBJECTDIR}/src/Encoder_Driver.o.d ${OBJECTDIR}/src/InputPortScan.o.d ${OBJECTDIR}/src/HMI_Control.o.d ${OBJECTDIR}/src/COM3_RX_Parsing.o.d ${OBJECTDIR}/src/uC_HMI_Control.o.d ${OBJECTDIR}/src/uC_HMI_Sending.o.d ${OBJECTDIR}/src/uC_HMI_Parsing.o.d ${OBJECTDIR}/src/uC_HMI_Utility.o.d ${OBJECTDIR}/src/RunTimeDisplayControl.o.d ${OBJECTDIR}/src/Android_HMI_Parsing.o.d ${OBJECTDIR}/src/Android_HMI_Sending.o.d ${OBJECTDIR}/src/Android_HMI_AlarmPacket_Generator.o.d ${OBJECTDIR}/src/Android_HMI_GetParameterResponsePacketGenerator.o.d ${OBJECTDIR}/src/Android_HMI_WriteParameters.o.d ${OBJECTDIR}/src/IO_Setting.o.d ${OBJECTDIR}/src/uC_Machine_HMI_Control.o.d ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o.d ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o.d ${OBJECTDIR}/src/Main.o.d ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o.d ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o.d ${OBJECTDIR}/src/COM3_TX_Sending.o.d ${OBJECTDIR}/src/Storage_Device.o.d ${OBJECTDIR}/src/System_Driver.o.d ${OBJECTDIR}/src/System_Control.o.d ${OBJECTDIR}/src/System_ParameterInputProcess.o.d ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o.d ${OBJECTDIR}/src/System_InitialTestParameter.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/iosetting.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o ${OBJECTDIR}/src/SYS_Driver.o ${OBJECTDIR}/src/IO_Driver.o ${OBJECTDIR}/src/User_ISR.o ${OBJECTDIR}/src/UART_Driver.o ${OBJECTDIR}/src/Data_API.o ${OBJECTDIR}/src/PWM_Setting.o ${OBJECTDIR}/src/Encoder_Driver.o ${OBJECTDIR}/src/SystemControl.o ${OBJECTDIR}/src/StorageDev.o ${OBJECTDIR}/src/InputPortScan.o ${OBJECTDIR}/src/HMI_Control.o ${OBJECTDIR}/src/COM3_RX_Parsing.o ${OBJECTDIR}/src/uC_HMI_Control.o ${OBJECTDIR}/src/uC_HMI_Sending.o ${OBJECTDIR}/src/uC_HMI_Parsing.o ${OBJECTDIR}/src/uC_HMI_Utility.o ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o ${OBJECTDIR}/src/Machine_uC_HMI_Control.o ${OBJECTDIR}/src/InitialSystemTestParameter.o ${OBJECTDIR}/src/SystemParameterInputProcess.o ${OBJECTDIR}/src/COM3_TX.o ${OBJECTDIR}/src/RunTimeDisplayControl.o ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o ${OBJECTDIR}/src/Android_HMI_Parsing.o ${OBJECTDIR}/src/Android_HMI_Sending.o ${OBJECTDIR}/src/Android_HMI_AlarmPacket_Generator.o ${OBJECTDIR}/src/Android_HMI_GetParameterResponsePacketGenerator.o ${OBJECTDIR}/src/Android_HMI_WriteParameters.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/iosetting.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o.d ${OBJECTDIR}/src/SYS_Driver.o.d ${OBJECTDIR}/src/IO_Driver.o.d ${OBJECTDIR}/src/User_ISR.o.d ${OBJECTDIR}/src/UART_Driver.o.d ${OBJECTDIR}/src/Data_API.o.d ${OBJECTDIR}/src/PWM_Setting.o.d ${OBJECTDIR}/src/Encoder_Driver.o.d ${OBJECTDIR}/src/SystemControl.o.d ${OBJECTDIR}/src/StorageDev.o.d ${OBJECTDIR}/src/InputPortScan.o.d ${OBJECTDIR}/src/HMI_Control.o.d ${OBJECTDIR}/src/COM3_RX_Parsing.o.d ${OBJECTDIR}/src/uC_HMI_Control.o.d ${OBJECTDIR}/src/uC_HMI_Sending.o.d ${OBJECTDIR}/src/uC_HMI_Parsing.o.d ${OBJECTDIR}/src/uC_HMI_Utility.o.d ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o.d ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o.d ${OBJECTDIR}/src/Machine_uC_HMI_Control.o.d ${OBJECTDIR}/src/InitialSystemTestParameter.o.d ${OBJECTDIR}/src/SystemParameterInputProcess.o.d ${OBJECTDIR}/src/COM3_TX.o.d ${OBJECTDIR}/src/RunTimeDisplayControl.o.d ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o.d ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o.d ${OBJECTDIR}/src/Android_HMI_Parsing.o.d ${OBJECTDIR}/src/Android_HMI_Sending.o.d ${OBJECTDIR}/src/Android_HMI_AlarmPacket_Generator.o.d ${OBJECTDIR}/src/Android_HMI_GetParameterResponsePacketGenerator.o.d ${OBJECTDIR}/src/Android_HMI_WriteParameters.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/IO_Driver.o ${OBJECTDIR}/src/User_ISR.o ${OBJECTDIR}/src/UART_Driver.o ${OBJECTDIR}/src/Data_API.o ${OBJECTDIR}/src/PWM_Setting.o ${OBJECTDIR}/src/Encoder_Driver.o ${OBJECTDIR}/src/InputPortScan.o ${OBJECTDIR}/src/HMI_Control.o ${OBJECTDIR}/src/COM3_RX_Parsing.o ${OBJECTDIR}/src/uC_HMI_Control.o ${OBJECTDIR}/src/uC_HMI_Sending.o ${OBJECTDIR}/src/uC_HMI_Parsing.o ${OBJECTDIR}/src/uC_HMI_Utility.o ${OBJECTDIR}/src/RunTimeDisplayControl.o ${OBJECTDIR}/src/Android_HMI_Parsing.o ${OBJECTDIR}/src/Android_HMI_Sending.o ${OBJECTDIR}/src/Android_HMI_AlarmPacket_Generator.o ${OBJECTDIR}/src/Android_HMI_GetParameterResponsePacketGenerator.o ${OBJECTDIR}/src/Android_HMI_WriteParameters.o ${OBJECTDIR}/src/IO_Setting.o ${OBJECTDIR}/src/uC_Machine_HMI_Control.o ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o ${OBJECTDIR}/src/Main.o ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o ${OBJECTDIR}/src/COM3_TX_Sending.o ${OBJECTDIR}/src/Storage_Device.o ${OBJECTDIR}/src/System_Driver.o ${OBJECTDIR}/src/System_Control.o ${OBJECTDIR}/src/System_ParameterInputProcess.o ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o ${OBJECTDIR}/src/System_InitialTestParameter.o
+OBJECTFILES=${OBJECTDIR}/src/iosetting.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o ${OBJECTDIR}/src/SYS_Driver.o ${OBJECTDIR}/src/IO_Driver.o ${OBJECTDIR}/src/User_ISR.o ${OBJECTDIR}/src/UART_Driver.o ${OBJECTDIR}/src/Data_API.o ${OBJECTDIR}/src/PWM_Setting.o ${OBJECTDIR}/src/Encoder_Driver.o ${OBJECTDIR}/src/SystemControl.o ${OBJECTDIR}/src/StorageDev.o ${OBJECTDIR}/src/InputPortScan.o ${OBJECTDIR}/src/HMI_Control.o ${OBJECTDIR}/src/COM3_RX_Parsing.o ${OBJECTDIR}/src/uC_HMI_Control.o ${OBJECTDIR}/src/uC_HMI_Sending.o ${OBJECTDIR}/src/uC_HMI_Parsing.o ${OBJECTDIR}/src/uC_HMI_Utility.o ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o ${OBJECTDIR}/src/Machine_uC_HMI_Control.o ${OBJECTDIR}/src/InitialSystemTestParameter.o ${OBJECTDIR}/src/SystemParameterInputProcess.o ${OBJECTDIR}/src/COM3_TX.o ${OBJECTDIR}/src/RunTimeDisplayControl.o ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o ${OBJECTDIR}/src/Android_HMI_Parsing.o ${OBJECTDIR}/src/Android_HMI_Sending.o ${OBJECTDIR}/src/Android_HMI_AlarmPacket_Generator.o ${OBJECTDIR}/src/Android_HMI_GetParameterResponsePacketGenerator.o ${OBJECTDIR}/src/Android_HMI_WriteParameters.o
 
 # Source Files
-SOURCEFILES=src/IO_Driver.c src/User_ISR.c src/UART_Driver.c src/Data_API.c src/PWM_Setting.c src/Encoder_Driver.c src/InputPortScan.c src/HMI_Control.c src/COM3_RX_Parsing.c src/uC_HMI_Control.c src/uC_HMI_Sending.c src/uC_HMI_Parsing.c src/uC_HMI_Utility.c src/RunTimeDisplayControl.c src/Android_HMI_Parsing.c src/Android_HMI_Sending.c src/Android_HMI_AlarmPacket_Generator.c src/Android_HMI_GetParameterResponsePacketGenerator.c src/Android_HMI_WriteParameters.c src/IO_Setting.c src/uC_Machine_HMI_Control.c src/uC_Machine_HMI_Parsing.c src/uC_Machine_HMI_Sending.c src/Main.c src/COM2_RX_Parsing_ExtDevice.c src/COM2_TX_Sending_ExtDevice.c src/COM3_TX_Sending.c src/Storage_Device.c src/System_Driver.c src/System_Control.c src/System_ParameterInputProcess.c src/Ext_ACD_DAC_Driver.c src/System_InitialTestParameter.c
+SOURCEFILES=src/iosetting.c src/main.c src/EXT_ACD_DAC_Driver.c src/SYS_Driver.c src/IO_Driver.c src/User_ISR.c src/UART_Driver.c src/Data_API.c src/PWM_Setting.c src/Encoder_Driver.c src/SystemControl.c src/StorageDev.c src/InputPortScan.c src/HMI_Control.c src/COM3_RX_Parsing.c src/uC_HMI_Control.c src/uC_HMI_Sending.c src/uC_HMI_Parsing.c src/uC_HMI_Utility.c src/Machine_uC_HMI_Sending.c src/Machine_uC_HMI_Parsing.c src/Machine_uC_HMI_Control.c src/InitialSystemTestParameter.c src/SystemParameterInputProcess.c src/COM3_TX.c src/RunTimeDisplayControl.c src/COM2_RX_ParsingExtDevice.c src/COM2_TX_ToExtDevice.c src/Android_HMI_Parsing.c src/Android_HMI_Sending.c src/Android_HMI_AlarmPacket_Generator.c src/Android_HMI_GetParameterResponsePacketGenerator.c src/Android_HMI_WriteParameters.c
 
 
 CFLAGS=
@@ -81,13 +81,41 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=33EP512MU814
 MP_LINKER_FILE_OPTION=,--script=p33EP512MU814.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/src/iosetting.o: src/iosetting.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/iosetting.o.d 
+	@${RM} ${OBJECTDIR}/src/iosetting.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/iosetting.c  -o ${OBJECTDIR}/src/iosetting.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/iosetting.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/iosetting.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/main.o: src/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/main.o.d 
+	@${RM} ${OBJECTDIR}/src/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/main.c  -o ${OBJECTDIR}/src/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o: src/EXT_ACD_DAC_Driver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o.d 
+	@${RM} ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/EXT_ACD_DAC_Driver.c  -o ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/SYS_Driver.o: src/SYS_Driver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/SYS_Driver.o.d 
+	@${RM} ${OBJECTDIR}/src/SYS_Driver.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/SYS_Driver.c  -o ${OBJECTDIR}/src/SYS_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/SYS_Driver.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/SYS_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/src/IO_Driver.o: src/IO_Driver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/IO_Driver.o.d 
@@ -129,6 +157,20 @@ ${OBJECTDIR}/src/Encoder_Driver.o: src/Encoder_Driver.c  nbproject/Makefile-${CN
 	@${RM} ${OBJECTDIR}/src/Encoder_Driver.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Encoder_Driver.c  -o ${OBJECTDIR}/src/Encoder_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Encoder_Driver.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/Encoder_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/SystemControl.o: src/SystemControl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/SystemControl.o.d 
+	@${RM} ${OBJECTDIR}/src/SystemControl.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/SystemControl.c  -o ${OBJECTDIR}/src/SystemControl.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/SystemControl.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/SystemControl.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/StorageDev.o: src/StorageDev.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/StorageDev.o.d 
+	@${RM} ${OBJECTDIR}/src/StorageDev.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/StorageDev.c  -o ${OBJECTDIR}/src/StorageDev.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/StorageDev.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/StorageDev.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/src/InputPortScan.o: src/InputPortScan.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -179,12 +221,68 @@ ${OBJECTDIR}/src/uC_HMI_Utility.o: src/uC_HMI_Utility.c  nbproject/Makefile-${CN
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_HMI_Utility.c  -o ${OBJECTDIR}/src/uC_HMI_Utility.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_HMI_Utility.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/uC_HMI_Utility.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/src/Machine_uC_HMI_Sending.o: src/Machine_uC_HMI_Sending.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o.d 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Machine_uC_HMI_Sending.c  -o ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Machine_uC_HMI_Sending.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/Machine_uC_HMI_Sending.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o: src/Machine_uC_HMI_Parsing.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o.d 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Machine_uC_HMI_Parsing.c  -o ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/Machine_uC_HMI_Control.o: src/Machine_uC_HMI_Control.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Control.o.d 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Control.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Machine_uC_HMI_Control.c  -o ${OBJECTDIR}/src/Machine_uC_HMI_Control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Machine_uC_HMI_Control.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/Machine_uC_HMI_Control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/InitialSystemTestParameter.o: src/InitialSystemTestParameter.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/InitialSystemTestParameter.o.d 
+	@${RM} ${OBJECTDIR}/src/InitialSystemTestParameter.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/InitialSystemTestParameter.c  -o ${OBJECTDIR}/src/InitialSystemTestParameter.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/InitialSystemTestParameter.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/InitialSystemTestParameter.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/SystemParameterInputProcess.o: src/SystemParameterInputProcess.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/SystemParameterInputProcess.o.d 
+	@${RM} ${OBJECTDIR}/src/SystemParameterInputProcess.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/SystemParameterInputProcess.c  -o ${OBJECTDIR}/src/SystemParameterInputProcess.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/SystemParameterInputProcess.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/SystemParameterInputProcess.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/COM3_TX.o: src/COM3_TX.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/COM3_TX.o.d 
+	@${RM} ${OBJECTDIR}/src/COM3_TX.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM3_TX.c  -o ${OBJECTDIR}/src/COM3_TX.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM3_TX.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/COM3_TX.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/src/RunTimeDisplayControl.o: src/RunTimeDisplayControl.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/RunTimeDisplayControl.o.d 
 	@${RM} ${OBJECTDIR}/src/RunTimeDisplayControl.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/RunTimeDisplayControl.c  -o ${OBJECTDIR}/src/RunTimeDisplayControl.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/RunTimeDisplayControl.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/RunTimeDisplayControl.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o: src/COM2_RX_ParsingExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o.d 
+	@${RM} ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_RX_ParsingExtDevice.c  -o ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/COM2_TX_ToExtDevice.o: src/COM2_TX_ToExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o.d 
+	@${RM} ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_TX_ToExtDevice.c  -o ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_TX_ToExtDevice.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/COM2_TX_ToExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/src/Android_HMI_Parsing.o: src/Android_HMI_Parsing.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -221,105 +319,35 @@ ${OBJECTDIR}/src/Android_HMI_WriteParameters.o: src/Android_HMI_WriteParameters.
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Android_HMI_WriteParameters.c  -o ${OBJECTDIR}/src/Android_HMI_WriteParameters.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Android_HMI_WriteParameters.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/Android_HMI_WriteParameters.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/src/IO_Setting.o: src/IO_Setting.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/IO_Setting.o.d 
-	@${RM} ${OBJECTDIR}/src/IO_Setting.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/IO_Setting.c  -o ${OBJECTDIR}/src/IO_Setting.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/IO_Setting.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/IO_Setting.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/uC_Machine_HMI_Control.o: src/uC_Machine_HMI_Control.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Control.o.d 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_Machine_HMI_Control.c  -o ${OBJECTDIR}/src/uC_Machine_HMI_Control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_Machine_HMI_Control.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/uC_Machine_HMI_Control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o: src/uC_Machine_HMI_Parsing.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o.d 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_Machine_HMI_Parsing.c  -o ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/uC_Machine_HMI_Sending.o: src/uC_Machine_HMI_Sending.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o.d 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_Machine_HMI_Sending.c  -o ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_Machine_HMI_Sending.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/uC_Machine_HMI_Sending.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/Main.o: src/Main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/Main.o.d 
-	@${RM} ${OBJECTDIR}/src/Main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Main.c  -o ${OBJECTDIR}/src/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/Main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o: src/COM2_RX_Parsing_ExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o.d 
-	@${RM} ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_RX_Parsing_ExtDevice.c  -o ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o: src/COM2_TX_Sending_ExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o.d 
-	@${RM} ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_TX_Sending_ExtDevice.c  -o ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/COM3_TX_Sending.o: src/COM3_TX_Sending.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/COM3_TX_Sending.o.d 
-	@${RM} ${OBJECTDIR}/src/COM3_TX_Sending.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM3_TX_Sending.c  -o ${OBJECTDIR}/src/COM3_TX_Sending.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM3_TX_Sending.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/COM3_TX_Sending.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/Storage_Device.o: src/Storage_Device.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/Storage_Device.o.d 
-	@${RM} ${OBJECTDIR}/src/Storage_Device.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Storage_Device.c  -o ${OBJECTDIR}/src/Storage_Device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Storage_Device.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/Storage_Device.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_Driver.o: src/System_Driver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_Driver.o.d 
-	@${RM} ${OBJECTDIR}/src/System_Driver.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_Driver.c  -o ${OBJECTDIR}/src/System_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_Driver.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_Control.o: src/System_Control.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_Control.o.d 
-	@${RM} ${OBJECTDIR}/src/System_Control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_Control.c  -o ${OBJECTDIR}/src/System_Control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_Control.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_Control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_ParameterInputProcess.o: src/System_ParameterInputProcess.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_ParameterInputProcess.o.d 
-	@${RM} ${OBJECTDIR}/src/System_ParameterInputProcess.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_ParameterInputProcess.c  -o ${OBJECTDIR}/src/System_ParameterInputProcess.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_ParameterInputProcess.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_ParameterInputProcess.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o: src/Ext_ACD_DAC_Driver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o.d 
-	@${RM} ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Ext_ACD_DAC_Driver.c  -o ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_InitialTestParameter.o: src/System_InitialTestParameter.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_InitialTestParameter.o.d 
-	@${RM} ${OBJECTDIR}/src/System_InitialTestParameter.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_InitialTestParameter.c  -o ${OBJECTDIR}/src/System_InitialTestParameter.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_InitialTestParameter.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_InitialTestParameter.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 else
+${OBJECTDIR}/src/iosetting.o: src/iosetting.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/iosetting.o.d 
+	@${RM} ${OBJECTDIR}/src/iosetting.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/iosetting.c  -o ${OBJECTDIR}/src/iosetting.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/iosetting.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/iosetting.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/main.o: src/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/main.o.d 
+	@${RM} ${OBJECTDIR}/src/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/main.c  -o ${OBJECTDIR}/src/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o: src/EXT_ACD_DAC_Driver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o.d 
+	@${RM} ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/EXT_ACD_DAC_Driver.c  -o ${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/EXT_ACD_DAC_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/SYS_Driver.o: src/SYS_Driver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/SYS_Driver.o.d 
+	@${RM} ${OBJECTDIR}/src/SYS_Driver.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/SYS_Driver.c  -o ${OBJECTDIR}/src/SYS_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/SYS_Driver.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/SYS_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/src/IO_Driver.o: src/IO_Driver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/IO_Driver.o.d 
@@ -361,6 +389,20 @@ ${OBJECTDIR}/src/Encoder_Driver.o: src/Encoder_Driver.c  nbproject/Makefile-${CN
 	@${RM} ${OBJECTDIR}/src/Encoder_Driver.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Encoder_Driver.c  -o ${OBJECTDIR}/src/Encoder_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Encoder_Driver.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/Encoder_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/SystemControl.o: src/SystemControl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/SystemControl.o.d 
+	@${RM} ${OBJECTDIR}/src/SystemControl.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/SystemControl.c  -o ${OBJECTDIR}/src/SystemControl.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/SystemControl.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/SystemControl.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/StorageDev.o: src/StorageDev.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/StorageDev.o.d 
+	@${RM} ${OBJECTDIR}/src/StorageDev.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/StorageDev.c  -o ${OBJECTDIR}/src/StorageDev.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/StorageDev.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/StorageDev.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/src/InputPortScan.o: src/InputPortScan.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -411,12 +453,68 @@ ${OBJECTDIR}/src/uC_HMI_Utility.o: src/uC_HMI_Utility.c  nbproject/Makefile-${CN
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_HMI_Utility.c  -o ${OBJECTDIR}/src/uC_HMI_Utility.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_HMI_Utility.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/uC_HMI_Utility.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/src/Machine_uC_HMI_Sending.o: src/Machine_uC_HMI_Sending.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o.d 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Machine_uC_HMI_Sending.c  -o ${OBJECTDIR}/src/Machine_uC_HMI_Sending.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Machine_uC_HMI_Sending.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/Machine_uC_HMI_Sending.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o: src/Machine_uC_HMI_Parsing.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o.d 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Machine_uC_HMI_Parsing.c  -o ${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/Machine_uC_HMI_Parsing.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/Machine_uC_HMI_Control.o: src/Machine_uC_HMI_Control.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Control.o.d 
+	@${RM} ${OBJECTDIR}/src/Machine_uC_HMI_Control.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Machine_uC_HMI_Control.c  -o ${OBJECTDIR}/src/Machine_uC_HMI_Control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Machine_uC_HMI_Control.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/Machine_uC_HMI_Control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/InitialSystemTestParameter.o: src/InitialSystemTestParameter.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/InitialSystemTestParameter.o.d 
+	@${RM} ${OBJECTDIR}/src/InitialSystemTestParameter.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/InitialSystemTestParameter.c  -o ${OBJECTDIR}/src/InitialSystemTestParameter.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/InitialSystemTestParameter.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/InitialSystemTestParameter.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/SystemParameterInputProcess.o: src/SystemParameterInputProcess.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/SystemParameterInputProcess.o.d 
+	@${RM} ${OBJECTDIR}/src/SystemParameterInputProcess.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/SystemParameterInputProcess.c  -o ${OBJECTDIR}/src/SystemParameterInputProcess.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/SystemParameterInputProcess.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/SystemParameterInputProcess.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/COM3_TX.o: src/COM3_TX.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/COM3_TX.o.d 
+	@${RM} ${OBJECTDIR}/src/COM3_TX.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM3_TX.c  -o ${OBJECTDIR}/src/COM3_TX.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM3_TX.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/COM3_TX.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/src/RunTimeDisplayControl.o: src/RunTimeDisplayControl.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/RunTimeDisplayControl.o.d 
 	@${RM} ${OBJECTDIR}/src/RunTimeDisplayControl.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/RunTimeDisplayControl.c  -o ${OBJECTDIR}/src/RunTimeDisplayControl.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/RunTimeDisplayControl.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/RunTimeDisplayControl.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o: src/COM2_RX_ParsingExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o.d 
+	@${RM} ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_RX_ParsingExtDevice.c  -o ${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/COM2_RX_ParsingExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/src/COM2_TX_ToExtDevice.o: src/COM2_TX_ToExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o.d 
+	@${RM} ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_TX_ToExtDevice.c  -o ${OBJECTDIR}/src/COM2_TX_ToExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_TX_ToExtDevice.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/src/COM2_TX_ToExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/src/Android_HMI_Parsing.o: src/Android_HMI_Parsing.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -453,104 +551,6 @@ ${OBJECTDIR}/src/Android_HMI_WriteParameters.o: src/Android_HMI_WriteParameters.
 	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Android_HMI_WriteParameters.c  -o ${OBJECTDIR}/src/Android_HMI_WriteParameters.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Android_HMI_WriteParameters.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/src/Android_HMI_WriteParameters.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/src/IO_Setting.o: src/IO_Setting.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/IO_Setting.o.d 
-	@${RM} ${OBJECTDIR}/src/IO_Setting.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/IO_Setting.c  -o ${OBJECTDIR}/src/IO_Setting.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/IO_Setting.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/IO_Setting.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/uC_Machine_HMI_Control.o: src/uC_Machine_HMI_Control.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Control.o.d 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_Machine_HMI_Control.c  -o ${OBJECTDIR}/src/uC_Machine_HMI_Control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_Machine_HMI_Control.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/uC_Machine_HMI_Control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o: src/uC_Machine_HMI_Parsing.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o.d 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_Machine_HMI_Parsing.c  -o ${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/uC_Machine_HMI_Parsing.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/uC_Machine_HMI_Sending.o: src/uC_Machine_HMI_Sending.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o.d 
-	@${RM} ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/uC_Machine_HMI_Sending.c  -o ${OBJECTDIR}/src/uC_Machine_HMI_Sending.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/uC_Machine_HMI_Sending.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/uC_Machine_HMI_Sending.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/Main.o: src/Main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/Main.o.d 
-	@${RM} ${OBJECTDIR}/src/Main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Main.c  -o ${OBJECTDIR}/src/Main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Main.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/Main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o: src/COM2_RX_Parsing_ExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o.d 
-	@${RM} ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_RX_Parsing_ExtDevice.c  -o ${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/COM2_RX_Parsing_ExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o: src/COM2_TX_Sending_ExtDevice.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o.d 
-	@${RM} ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM2_TX_Sending_ExtDevice.c  -o ${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/COM2_TX_Sending_ExtDevice.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/COM3_TX_Sending.o: src/COM3_TX_Sending.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/COM3_TX_Sending.o.d 
-	@${RM} ${OBJECTDIR}/src/COM3_TX_Sending.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/COM3_TX_Sending.c  -o ${OBJECTDIR}/src/COM3_TX_Sending.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/COM3_TX_Sending.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/COM3_TX_Sending.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/Storage_Device.o: src/Storage_Device.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/Storage_Device.o.d 
-	@${RM} ${OBJECTDIR}/src/Storage_Device.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Storage_Device.c  -o ${OBJECTDIR}/src/Storage_Device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Storage_Device.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/Storage_Device.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_Driver.o: src/System_Driver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_Driver.o.d 
-	@${RM} ${OBJECTDIR}/src/System_Driver.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_Driver.c  -o ${OBJECTDIR}/src/System_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_Driver.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_Control.o: src/System_Control.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_Control.o.d 
-	@${RM} ${OBJECTDIR}/src/System_Control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_Control.c  -o ${OBJECTDIR}/src/System_Control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_Control.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_Control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_ParameterInputProcess.o: src/System_ParameterInputProcess.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_ParameterInputProcess.o.d 
-	@${RM} ${OBJECTDIR}/src/System_ParameterInputProcess.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_ParameterInputProcess.c  -o ${OBJECTDIR}/src/System_ParameterInputProcess.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_ParameterInputProcess.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_ParameterInputProcess.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o: src/Ext_ACD_DAC_Driver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o.d 
-	@${RM} ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/Ext_ACD_DAC_Driver.c  -o ${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/Ext_ACD_DAC_Driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/src/System_InitialTestParameter.o: src/System_InitialTestParameter.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/System_InitialTestParameter.o.d 
-	@${RM} ${OBJECTDIR}/src/System_InitialTestParameter.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  src/System_InitialTestParameter.c  -o ${OBJECTDIR}/src/System_InitialTestParameter.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/System_InitialTestParameter.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -mlarge-data -mlarge-scalar -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/src/System_InitialTestParameter.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -568,15 +568,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -Wl,,--defsym=__MPLAB_BUILD=1,--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem$(MP_EXTRA_LD_POST) 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -Wl,,--defsym=__MPLAB_BUILD=1,--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem$(MP_EXTRA_LD_POST) 
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -Wl,,--defsym=__MPLAB_BUILD=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem$(MP_EXTRA_LD_POST) 
-	${MP_CC_DIR}\\xc16-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/AccmGasSyetemMCUHMI.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} -a  -omf=elf  
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -I"h" -Wl,,--defsym=__MPLAB_BUILD=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem$(MP_EXTRA_LD_POST) 
+	${MP_CC_DIR}\\xc16-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/ExhaustGasProcessHMI.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} -a  -omf=elf  
 	
 endif
 

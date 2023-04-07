@@ -4,7 +4,7 @@
  *
  * Created on 2019年10月30日, 下午 6:56
  */
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 #include "..\h\HMI_Control.h"
 #include "COM3_Command.h"
 

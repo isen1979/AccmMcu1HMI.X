@@ -4,7 +4,7 @@
  *
  * Created on 2021年4月7日, 上午 9:58
  */
-#include "System_Control.h"
+#include "SystemControl.h"
 
 #define FAN1_1_ALARM_ADDR 15
 #define FNA2_ALARM_ADDR 40

@@ -5,7 +5,7 @@
  * Created on 2021年4月15日, 下午 3:51
  */
 
-#include "System_Control.h"
+#include "SystemControl.h"
 
 extern void uC_HMI_Send_FAN1_Display(void);
 extern void uC_HMI_Send_FAN2_Display(void);

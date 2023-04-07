@@ -4,16 +4,21 @@
  *
  * Created on 2021年9月24日, 上午 9:31
  */
-#include "System_Control.h"
+#include "SystemControl.h"
 #include "COM3_Command.h"
 
+extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_SendingWord;
 extern _PARSING_DATA U1_SendingWord2;
-extern _HMI_BUTTON_STATUS HMI_BtnStatus;
-extern _RUNTIME_STATUS RunTimeStatus;
-extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
+extern unsigned char RoutineSendFlag;
 
+extern _HMI_BUTTON_STATUS HMI_BtnStatus;//Philip 20220325 0.0.1
+extern _RUNTIME_STATUS RunTimeStatus;//Philip 20220510 0.0.1
+extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;//Philip 20220510 0.0.1
+
+extern void SaveRunTimeStatus(void);//Philip 20220510 0.0.1
+extern unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigned int crc_data);
 extern void SendFirmwareVersion(unsigned char flag);//flag == 0 : Firmware Version, flag == 1 : External Device Firmware Version
 extern void SendFan1_1_GetSV_Response(void);
 extern void SendFan1_1_GetPI_Response(void);
@@ -38,38 +43,19 @@ extern void Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse(void);
 extern void Send_GetPCD22_SetResponse(void);
 extern void Send_GetPCD25_PCD6TimeSetResponse(void);
 extern void Send_GetPCD25_Limit_ManualSetResponse(void);
+
 extern void Send_GetAlarm_A1_SetResponse(void);
 extern void Send_GetAlarm_A1_A2SetResponse(void);
 extern void Send_GetAlarm_A2_B_SetResponse(void);
 extern void Send_GetHeaterTempAlarm_SetResponse(void);
 extern void Send_GetHeaterPDTAlarm_SetResponse(void);
 extern void Send_GetMTR4TempAlarm_SetResponse(void);
-extern void Send_GetMTR4TempPDTAlarm_SetResponse(void);
+extern void Send_Get_MTR4TempPDTAlarm_SetResponse(void);
 extern void Send_GetD_Alarm1_Set_SetResponse(void);
 extern void Send_GetD_Alarm2_Set_SetResponse(void);
 extern void Send_GetD_Alarm3__D1_SetResponse(void);
 extern void Send_GetD1_Alarm2_Set_SetResponse(void);
 extern void Send_GetD1_Alarm3_SetResponse(void);
-extern void SendMTR4MaualControlCommand(void);
-extern void SendFAN1MaualControlCommand(void);
-extern void SendFAN2MaualControlCommand(void);
-extern void SendPCD20MaualControlCommand(void);
-extern void SendPCD22MaualControlCommand(void);
-extern void SendPCD25MaualControlCommand(void);
-extern void SendSystemAutoStartStopControlCommand(void);
-extern void SendV21MaualControlCommand(void);
-extern void SendPCD6MaualControlCommand(void);
-extern void SendPCD2MaualControlCommand(void);
-extern void SendSystemResetControlCommand(void);
-extern void Send_LoopBackResponse(void);
-extern void SaveSystemParameter(unsigned int addr);
-extern void SendSystemAutoGasInControlCommand(void);
-extern void SendSystemGasInOutControlCommand(void);
-extern void SendSystemManualControlCommand(void);
-extern void SendFAN1_1_PID_OnControlCommand(void);
-extern void SendFAN1_1_PID_AutoControlCommand(void);
-extern void Send_PCD_20_PID_AutoControlCommand(void);
-extern void SendHeater_PID_AutoControlCommand(void);
 
 extern void WriteFan1_1_Parameters(void);
 extern void WriteFan2_Parameter(void);
@@ -82,14 +68,36 @@ extern void Write_Alarm1_Parameter(void);
 extern void Write_Alarm2_Parameter(void);
 extern void Write_Alarm3_Parameter(void);
 extern void Write_Alarm4_Parameter(void);
+//Philip 20220325 0.0.1 ==============================================================================================
+extern void SendMTR4MaualControlCommand(void);
+extern void SendFAN1MaualControlCommand(void);
+extern void SendFAN2MaualControlCommand(void);
+extern void SendPCD20MaualControlCommand(void);
+extern void SendPCD22MaualControlCommand(void);
+extern void SendPCD25MaualControlCommand(void);
+extern void SendSystemAutoStartStopControlCommand(void);
+extern void SendV21MaualControlCommand(void);
+extern void SendPCD6MaualControlCommand(void);
+extern void SendPCD2MaualControlCommand(void);
+//Philip 20220325 0.0.1 ==============================================================================================
+extern void SendSystemResetControlCommand(void);//Philip 20220414 0.0.1
 
-extern void SaveRunTimeStatus(void);
-extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
-extern unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigned int crc_data);
-extern unsigned char RoutineSendFlag;
+extern void Send_LoopBackResponse(void);
+extern void SaveSystemParameter(unsigned int addr);
+//Philip 20220530 0.0.1 ====================================================
+extern void SendSystemAutoGasInControlCommand(void);
+extern void SendSystemGasInOutControlCommand(void);
+extern void SendSystemManualControlCommand(void);
+extern void SendFAN1_1_PID_OnControlCommand(void);
+extern void SendFAN1_1_PID_AutoControlCommand(void);
+extern void Send_PCD_20_PID_AutoControlCommand(void);
+extern void SendHeater_PID_AutoControlCommand(void);
+//Philip 20220530 0.0.1 ====================================================
+
 unsigned char COM1_Rx_Size;
 
-void WriteParameterParsing(void){
+void WriteParameterParsing(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 1 :case 2 :case 3 :case 4 :case 5 :case 6 :case 7 :case 8 :case 9 :case 10 :
@@ -133,7 +141,9 @@ void WriteParameterParsing(void){
     SaveSystemParameter(SYSTEM_PARAMETER_START_ADDR);
 }
 
-void Android_ButtonProcess(void){
+//Philip 20220325 0.0.1 =========================================================================
+void Android_ButtonProcess(void)
+{
     switch(UART1RxBuffer[1])
     {
         case 1 ://PCD2 Open
@@ -307,8 +317,10 @@ void Android_ButtonProcess(void){
 //Philip 20220526 0.0.1 ====================================================================            
     }
 }
+//Philip 20220325 0.0.1 =========================================================================
 
-void Android_HMI_Parsing(void){
+void Android_HMI_Parsing(void)
+{
     unsigned int crc_data;
     U1_SendingWord.Byte[0] = UART1RxBuffer[COM1_Rx_Size - 1];
     U1_SendingWord.Byte[1] = UART1RxBuffer[COM1_Rx_Size - 2];
@@ -445,7 +457,7 @@ void Android_HMI_Parsing(void){
                 break;
             case Android_HMI_MTR4TempPDTAlarm_Set_CommandEnum :
                 RoutineSendFlag = 0;
-                Send_GetMTR4TempPDTAlarm_SetResponse();                
+                Send_Get_MTR4TempPDTAlarm_SetResponse();                
                 break;
             case Android_HMI_D_Alarm1_Set_CommandEnum :
                 RoutineSendFlag = 0;

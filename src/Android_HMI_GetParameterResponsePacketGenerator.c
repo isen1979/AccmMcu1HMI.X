@@ -4,7 +4,7 @@
  *
  * Created on 2021年9月28日, 上午 11:25
  */
-#include "System_Control.h"
+#include "SystemControl.h"
 
 extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_SendingWord;
@@ -12,10 +12,14 @@ extern _PARSING_DATA U1_SendingWord2;
 extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
 extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 extern unsigned int UART1TimeOutCount, UART1RxBufCount, U1SendDataCount, U1PacketLen;
+
+
 extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);
 
+
 //U1_SendingWord2.value = ExtFirmwareDate;
-void SendFan1_1_GetSV_Response(void){
+void SendFan1_1_GetSV_Response(void)
+{
     UART1TxBuffer[0] = Android_HMI_Fan1_1_GetSV_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.FAN1_1.value.SuperHighPressureAlarmSet;
@@ -35,7 +39,8 @@ void SendFan1_1_GetSV_Response(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void SendFan1_1_GetPI_Response(void){
+void SendFan1_1_GetPI_Response(void)
+{
     UART1TxBuffer[0] = Android_HMI_Fan1_1_GetPI_CommandEnum;
 
     U1_SendingWord2.value = SystemParameter.FAN1_1.value.PID_P;
@@ -53,7 +58,8 @@ void SendFan1_1_GetPI_Response(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void SendFan1_1_GetD_LowLimit_Response(void){
+void SendFan1_1_GetD_LowLimit_Response(void)
+{
     UART1TxBuffer[0] = Android_HMI_Fan1_1_GetD_LowLimit_CommandEnum;
 
     U1_SendingWord2.value = SystemParameter.FAN1_1.value.PID_I;//Philip 20220408 0.0.1
@@ -72,7 +78,8 @@ void SendFan1_1_GetD_LowLimit_Response(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void SendFan1_1_Get_TopLimit_Response(void){
+void SendFan1_1_Get_TopLimit_Response(void)
+{
     UART1TxBuffer[0] = Android_HMI_Fan1_1_GetTopLimit_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.FAN1_1.value.FAN1_High2;
@@ -92,7 +99,8 @@ void SendFan1_1_Get_TopLimit_Response(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void SendFan1_1_Get_ManualSet_Response(void){
+void SendFan1_1_Get_ManualSet_Response(void)
+{
     UART1TxBuffer[0] = Android_HMI_Fan1_1_GetManualSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.FAN1_1.value.ManualStartFrequency;
@@ -112,7 +120,8 @@ void SendFan1_1_Get_ManualSet_Response(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_GetFan2TempSetSpeedTopLimit_Response(void){
+void Send_GetFan2TempSetSpeedTopLimit_Response(void)
+{
     UART1TxBuffer[0] = Android_HMI_Fan2_GetTempSetSpeedTopLimit_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.FAN_2.value.FAN_2_Target_Temp1;
@@ -132,7 +141,8 @@ void Send_GetFan2TempSetSpeedTopLimit_Response(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_GetFan2SpeedSetResponse(void){
+void Send_GetFan2SpeedSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_Fan2_GetSpeedSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.FAN_2.value.FAN_2_Low;
@@ -152,7 +162,8 @@ void Send_GetFan2SpeedSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_HeaterGetTempSetDbResponse(void){
+void Send_HeaterGetTempSetDbResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_Heater_TempSetDb_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.HeaterSet.value.OP_Temp;
@@ -172,7 +183,8 @@ void Send_HeaterGetTempSetDbResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_Heater_Get_HH2LLSetResponse(void){
+void Send_Heater_Get_HH2LLSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_Heater_TempHH2LLSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.HeaterSet.value.SuperHighTemp;
@@ -192,7 +204,8 @@ void Send_Heater_Get_HH2LLSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_Heater_GetSP2LowLimitSetResponse(void){
+void Send_Heater_GetSP2LowLimitSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_HeaterSP2LowLimitSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.HeaterSet.value.MoreThanSP_StopTemp;
@@ -212,7 +225,8 @@ void Send_Heater_GetSP2LowLimitSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_Heater_GetPI_SetResponse(void){
+void Send_Heater_GetPI_SetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_HeaterPI_Set_CommandEnum;
 
     U1_SendingWord2.value = SystemParameter.HeaterSet.value.PID_P;
@@ -230,7 +244,8 @@ void Send_Heater_GetPI_SetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_Heater_GetManualSetResponse(void){
+void Send_Heater_GetManualSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_HeaterD2_ManualSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.HeaterSet.value.PID_D;
@@ -250,7 +265,8 @@ void Send_Heater_GetManualSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_MTR4_GetTE5ConditionSetResponse(void){
+void Send_MTR4_GetTE5ConditionSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_MTR4_TE5ConditionSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Wheel.value.T5_CheckTemp1;
@@ -270,7 +286,8 @@ void Send_MTR4_GetTE5ConditionSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_MTR4_GetTE5SpeedSetResponse(void){
+void Send_MTR4_GetTE5SpeedSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_MTR4_TE5SpeedSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Wheel.value.T5_CheckTemp1Frequency;
@@ -290,7 +307,8 @@ void Send_MTR4_GetTE5SpeedSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }
 
-void Send_MTR4_GetTopStopLowSetResponse(void){
+void Send_MTR4_GetTopStopLowSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_MTR4_TopStopTempLowSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Wheel.value.TopLimitFrequency;
@@ -310,7 +328,8 @@ void Send_MTR4_GetTopStopLowSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];
 }                
 
-void Send_GetPCD2_V21SetResponse(void){
+void Send_GetPCD2_V21SetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD2_V21Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD2.Value.FaultDelayTime;
@@ -330,7 +349,8 @@ void Send_GetPCD2_V21SetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
 }
 
-void Send_GetPCD20_TempSizeSetResponse(void){
+void Send_GetPCD20_TempSizeSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD20_Temp_SizeSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD_20.value.OP_Temp;
@@ -350,7 +370,8 @@ void Send_GetPCD20_TempSizeSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetPCD20_PISetResponse(void){
+void Send_GetPCD20_PISetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD20_PISet_CommandEnum;
 
     U1_SendingWord2.value = SystemParameter.PCD_20.value.PID_P;
@@ -368,7 +389,8 @@ void Send_GetPCD20_PISetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetPCD20_D_TimeSetResponse(void){
+void Send_GetPCD20_D_TimeSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD20_D_TimeSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD_20.value.PID_D;
@@ -388,7 +410,8 @@ void Send_GetPCD20_D_TimeSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse(void){
+void Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD20_DeadBandTopLowLimit_PCD6TimeSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD_20.value.DeadBand;
@@ -408,7 +431,8 @@ void Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetPCD22_SetResponse(void){
+void Send_GetPCD22_SetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD22_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD_22.value.FaultDelayTime;
@@ -428,7 +452,8 @@ void Send_GetPCD22_SetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetPCD25_PCD6TimeSetResponse(void){
+void Send_GetPCD25_PCD6TimeSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD25_PCD6_TimeSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD_25.value.FaultDelayTime;
@@ -448,7 +473,8 @@ void Send_GetPCD25_PCD6TimeSetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetPCD25_Limit_ManualSetResponse(void){
+void Send_GetPCD25_Limit_ManualSetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_PCD25_Limit_ManualSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD_25.value.TopLimit;

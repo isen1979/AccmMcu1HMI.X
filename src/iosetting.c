@@ -1,5 +1,5 @@
 #include "..\h\Global_define.h"
-#include "..\h\Ext_ACD_DAC_Driver.h"
+#include "..\h\EXT_ACD_DAC_Driver.h"
 #define SPI_MASTER      1
 #define SPI_SLAVE	0
 #define SPI1_MODE	SPI_MASTER

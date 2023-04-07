@@ -5,7 +5,7 @@
  * Created on 2020年4月17日, 下午 5:13
  */
 #include "..\h\uC_HMI_Control.h"
-#include "System_Control.h"
+#include "SystemControl.h"
 
 extern _SENDING_WORD SendingWord;
 extern _SENDING_DATA SendingData;

@@ -4,20 +4,21 @@
  *
  * Created on 2021年9月27日, 上午 11:33
  */
-#include "System_Control.h"
+#include "SystemControl.h"
 
 extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);
-extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
-extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
-extern unsigned int UART1TimeOutCount, UART1RxBufCount, U1SendDataCount, U1PacketLen;
 
 extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_SendingWord;
 extern _PARSING_DATA U1_SendingWord2;
+extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
+extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
+extern unsigned int UART1TimeOutCount, UART1RxBufCount, U1SendDataCount, U1PacketLen;
 
-void Send_GetAlarm_A1_SetResponse(void){
+void Send_GetAlarm_A1_SetResponse(void)
+{
     UART1TxBuffer[0] = Android_HMI_Alarm_A1_Set_CommandEnum;
-    
+
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeASet.A1_TE8;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
@@ -35,7 +36,8 @@ void Send_GetAlarm_A1_SetResponse(void){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetAlarm_A1_A2SetResponse(){
+void Send_GetAlarm_A1_A2SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_Alarm_A1_A2_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeASet.A1_TE5GTwhenFAN2Stop;
@@ -55,9 +57,10 @@ void Send_GetAlarm_A1_A2SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetAlarm_A2_B_SetResponse(){
+void Send_GetAlarm_A2_B_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_Alarm_A2_B_Set_CommandEnum;
-    
+
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeASet.A2_TE3Offset;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
@@ -75,9 +78,10 @@ void Send_GetAlarm_A2_B_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetHeaterTempAlarm_SetResponse(){
+void Send_GetHeaterTempAlarm_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_HeaterTempAlarm_Set_CommandEnum;
-    
+
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.BurnSystemAlarmSet.SuperHighTE11;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
@@ -95,7 +99,8 @@ void Send_GetHeaterTempAlarm_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetHeaterPDTAlarm_SetResponse(){
+void Send_GetHeaterPDTAlarm_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_HeaterPDTAlarm_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.BurnSystemAlarmSet.SuperHighPDT2;
@@ -115,7 +120,8 @@ void Send_GetHeaterPDTAlarm_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetMTR4TempAlarm_SetResponse(){
+void Send_GetMTR4TempAlarm_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_MTR4TempAlarm_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.WheelAlarmSet.SuperHighTE3;
@@ -135,7 +141,8 @@ void Send_GetMTR4TempAlarm_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetMTR4TempPDTAlarm_SetResponse(){
+void Send_Get_MTR4TempPDTAlarm_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_MTR4TempPDTAlarm_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.WheelAlarmSet.SuperHighTE5;
@@ -155,7 +162,8 @@ void Send_GetMTR4TempPDTAlarm_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetD_Alarm1_Set_SetResponse(){
+void Send_GetD_Alarm1_Set_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_D_Alarm1_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE3;
@@ -175,7 +183,8 @@ void Send_GetD_Alarm1_Set_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];     
 }
 
-void Send_GetD_Alarm2_Set_SetResponse(){
+void Send_GetD_Alarm2_Set_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_D_Alarm2_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE8;
@@ -195,7 +204,8 @@ void Send_GetD_Alarm2_Set_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];        
 }
 
-void Send_GetD_Alarm3__D1_SetResponse(){
+void Send_GetD_Alarm3__D1_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_D_Alarm3__D1_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE12;
@@ -215,7 +225,8 @@ void Send_GetD_Alarm3__D1_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetD1_Alarm2_Set_SetResponse(){
+void Send_GetD1_Alarm2_Set_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_D1_Alarm2_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE1;
@@ -235,7 +246,8 @@ void Send_GetD1_Alarm2_Set_SetResponse(){
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];      
 }
 
-void Send_GetD1_Alarm3_SetResponse(){
+void Send_GetD1_Alarm3_SetResponse()
+{
     UART1TxBuffer[0] = Android_HMI_D1_Alarm3_Set_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT2;

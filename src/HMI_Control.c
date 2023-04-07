@@ -2,7 +2,7 @@
 #include "..\h\UART_Driver.h"
 //#include "..\h\LCD_driver.h"
 #include "..\h\HMI_Control.h"
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 
 unsigned char DEC2BCD(unsigned char dec)
 {

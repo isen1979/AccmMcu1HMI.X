@@ -4,7 +4,7 @@
  *
  * Created on 2021年4月9日, 下午 4:15
  */
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 
 extern _SYSTEM_PARAMETER SystemParameter;
 

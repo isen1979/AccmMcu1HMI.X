@@ -4,7 +4,7 @@
  *
  * Created on 2020年4月6日, 下午 3:38
  */
-#include "..\h\System_Control.h"
+#include "..\h\SystemControl.h"
 #include "uC_HMI_Control.h"
 
 extern void uC_HMI_RunWriteSingleLongWordSend(unsigned int addr, long Value);

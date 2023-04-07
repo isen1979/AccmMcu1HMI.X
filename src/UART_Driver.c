@@ -1,7 +1,7 @@
 #include "..\h\Global_define.h"
 #include "..\h\UART_Driver.h"
-#include "..\h\System_Driver.h"
-#include "..\h\System_Control.h"
+#include "..\h\SYS_Driver.h"
+#include "..\h\SystemControl.h"
 
 #define UARTRXTimeOutCNT 10
 

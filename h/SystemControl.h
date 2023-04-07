@@ -30,8 +30,12 @@
 // more than once.  
 #ifndef SYSTEM_CONTROL_H
 #define	SYSTEM_CONTROL_H
-#define ANDROID_HMI 1
+
+#define ANDROID_HMI 1//20220315 0.0.1//
+
+
 #define RECORD_ITEM_NUM 12
+
 #define KEYBOARD_VALUE_OUT_ADDR 0xD7
 #define SYSTEM_PARAMETER_INPUT_ID_ADDR 0xE6
 #define RECORD_POSITION_ADDR 272
@@ -40,7 +44,6 @@
 #define START_READ_SD_INDEX_ADDR 299
 #define GET_READ_SD_INDEX_ADDR 301
 #define READ_RECORD_DATA_ADDR 303
-
 #define PLAY_BACK_SHOW_CHART1_VIEW_FAR_CLOSE_BTN 437
 #define PLAY_BACK_SHOW_CHART2_VIEW_FAR_CLOSE_BTN 438
 #define PLAY_BACK_SHOW_CHART3_VIEW_FAR_CLOSE_BTN 439
@@ -54,7 +57,6 @@
 #define PLAY_BACK_CHART2_NEXT_DAY_ADDR 461
 #define PLAY_BACK_CHART3_PREV_DAY_ADDR 462
 #define PLAY_BACK_CHART3_NEXT_DAY_ADDR 463
-
 #define START_CHART1_PLAY_BACK_ADDR 472
 #define START_CHART2_PLAY_BACK_ADDR 473
 #define START_CHART3_PLAY_BACK_ADDR 474
@@ -71,6 +73,7 @@
 #define PCD22_MANUAL_CLOSE_BTN 617
 #define PCD25_MANUAL_OPEN_BTN 618
 #define PCD25_MANUAL_CLOSE_BTN 619
+//Philip 20220324 0.0.1 ===========================
 #define PCD2_MANUAL_OPEN_BTN 640
 #define PCD2_MANUAL_CLOSE_BTN 641
 #define PCD6_MANUAL_OPEN_BTN 642
@@ -79,7 +82,7 @@
 #define V21_MANUAL_CLOSE_BTN 645
 #define SYSTEM_AUTO_START_BTN 646
 #define SYSTEM_AUTO_STOP_BTN 647
-
+//Philip 20220324 0.0.1 ===========================
 #define BUTTON_STATE1_ADDR 51
 #define BUTTON_STATE2_ADDR 52
 #define BUTTON_STATE3_ADDR 53
@@ -99,6 +102,7 @@
 #define ADC_MAX_NUM 4
 #define REFERENCE_POSITION 0
 #define UART1_SENDING_DELAY_TIME 10
+
 #define UART1_BUFFER_SIZE 100
 #define UART1_PACKET_SIZE 11
 
@@ -166,46 +170,46 @@ enum UART2PacketEnum
 
 enum Android_HMI_CommandEnum
 {
-    Android_HMI_GetFirmwareVersionCommandEnum=0,//00
-    Android_HMI_GetExtFirmwareVersionCommandEnum,//01
-    Android_HMI_Fan1_1_GetSV_CommandEnum,//02
-    Android_HMI_Fan1_1_GetPI_CommandEnum,//03
-    Android_HMI_Fan1_1_GetD_LowLimit_CommandEnum,//04
-    Android_HMI_Fan1_1_GetTopLimit_CommandEnum,//05
+    Android_HMI_GetFirmwareVersionCommandEnum=0,
+    Android_HMI_GetExtFirmwareVersionCommandEnum,
+    Android_HMI_Fan1_1_GetSV_CommandEnum,
+    Android_HMI_Fan1_1_GetPI_CommandEnum,
+    Android_HMI_Fan1_1_GetD_LowLimit_CommandEnum,
+    Android_HMI_Fan1_1_GetTopLimit_CommandEnum,//5
     Android_HMI_Fan1_1_GetManualSet_CommandEnum,
     Android_HMI_Fan2_GetTempSetSpeedTopLimit_CommandEnum,
-    Android_HMI_Fan2_GetSpeedSet_CommandEnum,//08
+    Android_HMI_Fan2_GetSpeedSet_CommandEnum,
     Android_HMI_Heater_TempSetDb_CommandEnum,
     Android_HMI_Heater_TempHH2LLSet_CommandEnum,//10
     Android_HMI_HeaterSP2LowLimitSet_CommandEnum,
-    Android_HMI_HeaterPI_Set_CommandEnum,//12
-    Android_HMI_HeaterD2_ManualSet_CommandEnum,
-    Android_HMI_MTR4_TE5ConditionSet_CommandEnum,//14
+    Android_HMI_HeaterPI_Set_CommandEnum,
+    Android_HMI_HeaterD2_ManualSet_CommandEnum,//13
+    Android_HMI_MTR4_TE5ConditionSet_CommandEnum,
     Android_HMI_MTR4_TE5SpeedSet_CommandEnum,
     Android_HMI_MTR4_TopStopTempLowSet_CommandEnum,//16
     Android_HMI_PCD2_V21Set_CommandEnum,
-    Android_HMI_PCD20_Temp_SizeSet_CommandEnum,//18
+    Android_HMI_PCD20_Temp_SizeSet_CommandEnum,
     Android_HMI_PCD20_PISet_CommandEnum,
     Android_HMI_PCD20_D_TimeSet_CommandEnum,//20
-    Android_HMI_PCD20_DeadBandTopLowLimit_PCD6TimeSet_CommandEnum,//21
-    Android_HMI_PCD22_Set_CommandEnum,//22
-    Android_HMI_PCD25_PCD6_TimeSet_CommandEnum,//23
+    Android_HMI_PCD20_DeadBandTopLowLimit_PCD6TimeSet_CommandEnum,
+    Android_HMI_PCD22_Set_CommandEnum,
+    Android_HMI_PCD25_PCD6_TimeSet_CommandEnum,
     Android_HMI_PCD25_Limit_ManualSet_CommandEnum,//24
     
     Android_HMI_Alarm_A1_Set_CommandEnum,//25
-    Android_HMI_Alarm_A1_A2_Set_CommandEnum,//26
+    Android_HMI_Alarm_A1_A2_Set_CommandEnum,
     Android_HMI_Alarm_A2_B_Set_CommandEnum,
-    Android_HMI_HeaterTempAlarm_Set_CommandEnum,//28
+    Android_HMI_HeaterTempAlarm_Set_CommandEnum,
     Android_HMI_HeaterPDTAlarm_Set_CommandEnum,
     Android_HMI_MTR4TempAlarm_Set_CommandEnum,//30
     Android_HMI_MTR4TempPDTAlarm_Set_CommandEnum,
-    Android_HMI_D_Alarm1_Set_CommandEnum,//32
+    Android_HMI_D_Alarm1_Set_CommandEnum,
     Android_HMI_D_Alarm2_Set_CommandEnum,
-    Android_HMI_D_Alarm3__D1_Set_CommandEnum,//34
-    Android_HMI_D1_Alarm2_Set_CommandEnum,
-    Android_HMI_D1_Alarm3_Set_CommandEnum,//36
+    Android_HMI_D_Alarm3__D1_Set_CommandEnum,
+    Android_HMI_D1_Alarm2_Set_CommandEnum,//35
+    Android_HMI_D1_Alarm3_Set_CommandEnum,
     
-     Android_HMI_Button_CommandEnum,//37
+     Android_HMI_Button_CommandEnum,//Philip 20220325 0.0.1
      Android_HMI_Dummy38_CommandEnum,
      Android_HMI_Dummy39_CommandEnum,
      Android_HMI_Dummy40_CommandEnum,
@@ -221,18 +225,20 @@ enum Android_HMI_CommandEnum
      Android_HMI_WriteParameter_CommandEnum,
      
      Android_HMI_RunTimeTE1_3_5_6_CommandEnum,//51
-     Android_HMI_RunTimeTE8_10_11_12_CommandEnum,//52
-     Android_HMI_RunTimePDT1_2_3_CommandEnum,//53
-     Android_HMI_FAN1_RunTime_CommandEnum,//54
+     Android_HMI_RunTimeTE8_10_11_12_CommandEnum,
+     Android_HMI_RunTimePDT1_2_3_CommandEnum,
+     Android_HMI_FAN1_RunTime_CommandEnum,
      Android_HMI_FAN2_RunTime_CommandEnum,//55
-     Android_HMI_MTR4_RunTime_CommandEnum,//56
-     Android_HMI_Heater_RunTime_CommandEnum,//57
-     Android_HMI_PCD_RunTime_CommandEnum,//58
-     Android_HMI_UsingCount_RunTime_CommandEnum,//59
-     Android_HMI_Alarm_RunTime_CommandEnum,//60
-     Android_HMI_SystemStatus_RunTime_CommandEnum,//61
-     Android_HMI_Alarm1_RunTime_CommandEnum,//62
-
+     Android_HMI_MTR4_RunTime_CommandEnum,
+     Android_HMI_Heater_RunTime_CommandEnum,
+     Android_HMI_PCD_RunTime_CommandEnum,
+     Android_HMI_UsingCount_RunTime_CommandEnum,
+     Android_HMI_Alarm_RunTime_CommandEnum,//Philip 20220406 0.0.1//60
+     Android_HMI_SystemStatus_RunTime_CommandEnum,//Philip 20220510 0.0.1
+     Android_HMI_Alarm1_RunTime_CommandEnum,//Philip 20220526 0.0.1
+     
+     
+    
     Android_HMI_CommandEnumEnd
 };
 
@@ -991,5 +997,5 @@ extern "C" {
 }
 #endif /* __cplusplus */
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#endif	/* SYSTEM_CONTROL_H */
 
