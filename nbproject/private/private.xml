@@ -11,6 +11,12 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/03.SourceCode/PRJ_Saitech/Saitech_Exhaust_MCU1_HMI/ACCM_GasSyetem_MCU-HMI/src/Android_HMI_Sending.c</file>
+            <file>file:/D:/03.SourceCode/PRJ_Saitech/Saitech_Exhaust_MCU1_HMI/ACCM_GasSyetem_MCU-HMI/src/Android_HMI_Parsing.c</file>
+            <file>file:/D:/03.SourceCode/PRJ_Saitech/Saitech_Exhaust_MCU1_HMI/ACCM_GasSyetem_MCU-HMI/src/Android_HMI_GetParameterResponsePacketGenerator.c</file>
+            <file>file:/D:/03.SourceCode/PRJ_Saitech/Saitech_Exhaust_MCU1_HMI/ACCM_GasSyetem_MCU-HMI/h/SystemControl.h</file>
+            <file>file:/D:/03.SourceCode/PRJ_Saitech/Saitech_Exhaust_MCU1_HMI/ACCM_GasSyetem_MCU-HMI/src/COM3_TX_Sending.c</file>
+        </group>
     </open-files>
 </project-private>
