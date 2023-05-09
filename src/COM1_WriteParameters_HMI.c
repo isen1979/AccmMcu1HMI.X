@@ -23,25 +23,25 @@ void WriteFan1_1_Parameters(void)
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
             SystemParameter.FAN1_1.value.SuperHighPressureAlarmSet = U1_SendingWord.WordData;
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);//Philip 20220408 0.0.1
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);
             break;
         case 2 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
             SystemParameter.FAN1_1.value.HighPressureAlarmSet = U1_SendingWord.WordData;
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);//Philip 20220408 0.0.1
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);
             break;
         case 3 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
             SystemParameter.FAN1_1.value.LowPressureAlarmSet = U1_SendingWord.WordData;
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);//Philip 20220408 0.0.1
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);
             break;
         case 4 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
             SystemParameter.FAN1_1.value.SuperLowPressureAlarmSet = U1_SendingWord.WordData;
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);//Philip 20220408 0.0.1
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);
             break;
         case 5 :
             U1_SendingWord2.data[0] = UART1RxBuffer[2];
@@ -49,25 +49,21 @@ void WriteFan1_1_Parameters(void)
             U1_SendingWord2.data[2] = UART1RxBuffer[4];
             U1_SendingWord2.data[3] = UART1RxBuffer[5];
             SystemParameter.FAN1_1.value.PID_P = U1_SendingWord2.value;
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter4_Command_Enum);//Philip 20220408 0.0.1
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter4_Command_Enum);
             break;
-        case 6 :
-//Philip 20220408 0.0.1 =======================================================================================            
+        case 6 :            
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
             SystemParameter.FAN1_1.value.PID_I = U1_SendingWord.WordData;
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter2_Command_Enum);
-//Philip 20220408 0.0.1 =======================================================================================            
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter2_Command_Enum);           
             break;
-        case 7 :
-//Philip 20220408 0.0.1 =======================================================================================            
+        case 7 :          
             U1_SendingWord2.data[0] = UART1RxBuffer[2];
             U1_SendingWord2.data[1] = UART1RxBuffer[3];
             U1_SendingWord2.data[2] = UART1RxBuffer[4];
             U1_SendingWord2.data[3] = UART1RxBuffer[5];
             SystemParameter.FAN1_1.value.PID_D = U1_SendingWord2.value;
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter4_Command_Enum);
-//Philip 20220408 0.0.1 =======================================================================================            
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter4_Command_Enum);            
             break;       
         case 8 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
@@ -75,11 +71,9 @@ void WriteFan1_1_Parameters(void)
             SystemParameter.FAN1_1.value.DeadBand = U1_SendingWord.WordData;
             Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter3_Command_Enum);//Philip 20220408 0.0.1
             break;
-        case 9 :
-//Philip 20220408 0.0.1 =======================================================================================            
+        case 9 :         
             SystemParameter.FAN1_1.value.FAN1_LowLimit = UART1RxBuffer[2];
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter3_Command_Enum);
-//Philip 20220408 0.0.1 =======================================================================================            
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter3_Command_Enum);        
             break;   
         case 10 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
@@ -99,11 +93,9 @@ void WriteFan1_1_Parameters(void)
             SystemParameter.FAN1_1.value.FAN1_1_2_DelayTime = U1_SendingWord.WordData;
             Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter3_Command_Enum);//Philip 20220408 0.0.1
             break;
-        case 13 :
-//Philip 20220408 0.0.1 =======================================================================================            
+        case 13 :            
             SystemParameter.FAN1_1.value.ManualStartFrequency = UART1RxBuffer[2];
-            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter3_Command_Enum);
-//Philip 20220408 0.0.1 =======================================================================================            
+            Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter3_Command_Enum);           
             break;   
         case 14 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
