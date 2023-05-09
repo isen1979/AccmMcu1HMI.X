@@ -42,18 +42,12 @@
         <itemPath>src/StorageDev.c</itemPath>
         <itemPath>src/InputPortScan.c</itemPath>
         <itemPath>src/HMI_Control.c</itemPath>
-        <itemPath>src/COM3_RX_Parsing.c</itemPath>
         <itemPath>src/uC_HMI_Control.c</itemPath>
         <itemPath>src/uC_HMI_Sending.c</itemPath>
         <itemPath>src/uC_HMI_Parsing.c</itemPath>
         <itemPath>src/uC_HMI_Utility.c</itemPath>
         <itemPath>src/InitialSystemTestParameter.c</itemPath>
         <itemPath>src/RunTimeDisplayControl.c</itemPath>
-        <itemPath>src/Android_HMI_Parsing.c</itemPath>
-        <itemPath>src/Android_HMI_Sending.c</itemPath>
-        <itemPath>src/Android_HMI_AlarmPacket_Generator.c</itemPath>
-        <itemPath>src/Android_HMI_GetParameterResponsePacketGenerator.c</itemPath>
-        <itemPath>src/Android_HMI_WriteParameters.c</itemPath>
         <itemPath>src/IO_Setting.c</itemPath>
         <itemPath>src/uC_Machine_HMI_Control.c</itemPath>
         <itemPath>src/uC_Machine_HMI_Parsing.c</itemPath>
@@ -62,9 +56,15 @@
         <itemPath>src/System_Driver.c</itemPath>
         <itemPath>src/System_Control.c</itemPath>
         <itemPath>src/System_ParameterInputProcess.c</itemPath>
-        <itemPath>src/COM3_TX_Sending.c</itemPath>
         <itemPath>src/COM2_TX_Sending_ExtDevice.c</itemPath>
         <itemPath>src/COM2_RX_Parsing_ExtDevice.c</itemPath>
+        <itemPath>src/COM3_RX_Parsing_ActMcu.c</itemPath>
+        <itemPath>src/COM3_TX_Sending_ActMcu.c</itemPath>
+        <itemPath>src/COM1_Sending_HMI.c</itemPath>
+        <itemPath>src/COM1_WriteParameters_HMI.c</itemPath>
+        <itemPath>src/COM1_GetParameterResponsePacketGenerator.c</itemPath>
+        <itemPath>src/COM1_Parsing_HMI.c</itemPath>
+        <itemPath>src/COM1_AlarmPacket_Generator.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
