@@ -19,6 +19,7 @@ extern void COM3_Send_Heater_Command(void);
 extern void SetSelectItemFontColor(char id);
 extern void uC_HMI_RunReadByteSend(unsigned int addr, unsigned char count);
 char SystemParameterId;
+
 void GetSystemParameterId(unsigned int addr, unsigned char count, unsigned char id)
 {    
     switch(addr)
@@ -778,8 +779,6 @@ void GetPCD22_25SystemParameter(unsigned char FloatCount, long Value)
             break;
     }    
 }
-
-
 
 extern void Set_uCHMI_RtcDate(unsigned int Year, unsigned int Month, unsigned int Day);
 extern void Set_uCHMI_RtcTime(unsigned int Hour, unsigned int Min, unsigned int Sec);

@@ -1246,7 +1246,7 @@ void Send_uC_HMI_Display(void)
     uC_HMI_Send_Other_Display();
 }
 
-void Send_uCHMI_SystemParameter(void)
+void uC_HMI_Send_SystemParameter(void)
 {
     Send_FAN1_uCHMI_SystemParameter();
     Send_FAN2_uCHMI_SystemParameter();

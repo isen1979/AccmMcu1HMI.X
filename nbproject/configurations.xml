@@ -46,7 +46,6 @@
         <itemPath>src/uC_HMI_Sending.c</itemPath>
         <itemPath>src/uC_HMI_Parsing.c</itemPath>
         <itemPath>src/uC_HMI_Utility.c</itemPath>
-        <itemPath>src/InitialSystemTestParameter.c</itemPath>
         <itemPath>src/RunTimeDisplayControl.c</itemPath>
         <itemPath>src/IO_Setting.c</itemPath>
         <itemPath>src/uC_Machine_HMI_Control.c</itemPath>
@@ -65,6 +64,7 @@
         <itemPath>src/COM1_GetParameterResponsePacketGenerator.c</itemPath>
         <itemPath>src/COM1_Parsing_HMI.c</itemPath>
         <itemPath>src/COM1_AlarmPacket_Generator.c</itemPath>
+        <itemPath>src/uC_InitialTestParameter.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"

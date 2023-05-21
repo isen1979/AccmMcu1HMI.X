@@ -625,7 +625,6 @@ void Write_Alarm1_Parameter(void)
     }
 }
 
-
 void Write_Alarm2_Parameter(void)
 {
     switch(UART1RxBuffer[1])

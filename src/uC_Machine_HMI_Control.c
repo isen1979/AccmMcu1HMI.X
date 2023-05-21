@@ -17,7 +17,7 @@ extern void uC_HMI_RunReadLongWordSend(unsigned int addr, unsigned char count);
 extern void uC_HMI_RunReadWordSend(unsigned int addr, unsigned char count);
 extern void uC_HMI_RunWriteTextVariableSend(unsigned int addr, unsigned char Count);
 extern void uC_HMI_RunWriteMultiWordSend(unsigned int addr, unsigned char length, unsigned char *data);
-extern void Send_uCHMI_SystemParameter(void);
+extern void uC_HMI_Send_SystemParameter(void);
 extern void uC_HMI_SetPage(unsigned int page);
 
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
@@ -97,7 +97,7 @@ void Get_uCHMI_DateCode(unsigned int addr, long Value)
             SendRecordFileName();
             SetReadSDIndex();
             uC_HMI_SetPage(11);//Show the First Page
-            Send_uCHMI_SystemParameter();
+            uC_HMI_Send_SystemParameter();
             StartGetReadSDIndex();            
             break;
     }

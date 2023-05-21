@@ -9,22 +9,26 @@
 #include "..\h\COM3_Command.h"
 #include "UART_Driver.h"
 
-
 #define COM3_NEXT_TX_DELAY_TIME 10
 #define COM3_TX_RETRY_DELAY_TIME 20
 #define MAX_COM3_RETRY_COUNT 3
+#define COM3_MAX_RETRY_COUNT 3
+#define COM3_NEXT_TX_PACKET_DELAY 30
+#define COM3_MAX_SENDING_COMMAND_BUFFER_SIZE 50
 
 extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);
 extern unsigned char IsReadEEPROM_DataFinish(void);
 extern unsigned char IsCOM3_TX_Busy(void);
 extern void Get_ExtControllerFirmware(void);
 
+extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
+extern _SYSTEM_PARAMETER SystemParameter;
+extern _RUNTIME_STATUS RunTimeStatus;
 extern _HMI_BUTTON_STATUS HMI_BtnStatus;
+extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
 extern unsigned char UART3TxBuffer[UART3_BUFFER_SIZE];
 extern unsigned char UART3RxBuffer[UART3_BUFFER_SIZE];
-extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
-extern _SYSTEM_PARAMETER SystemParameter;
 extern unsigned int UART3TimeOutCount, UART3RxBufCount, U3SendDataCount, U3PacketLen;
 
 enum COM3_SendControlStateEnum
@@ -37,18 +41,14 @@ enum COM3_SendControlStateEnum
       
     COM3_SendControlStateEnumEnd
 };
-#define COM3_MAX_RETRY_COUNT 3
-#define COM3_NEXT_TX_PACKET_DELAY 30
-#define COM3_MAX_SENDING_COMMAND_BUFFER_SIZE 50
 
 _SENDING_DATA SendingData;
-unsigned char COM3_SendControlState=COM3_WaitStartSendControlStateEnum;
+unsigned char COM3_SendControlState =COM3_WaitStartSendControlStateEnum;
 unsigned char COM3_SendCommandBuffer[COM3_MAX_SENDING_COMMAND_BUFFER_SIZE];
-unsigned char COM3_SendButtonCommandBuffer[COM3_MAX_SENDING_COMMAND_BUFFER_SIZE];//Philip 20220530 0.0.1
-unsigned char COM3_SendCommandBufferRead=0, COM3_SendCommandBufferWrite=0, COM3_SendCommandBufferSize=0;
+unsigned char COM3_SendButtonCommandBuffer[COM3_MAX_SENDING_COMMAND_BUFFER_SIZE];
+unsigned char COM3_SendIndex=0, COM3_SendCommandBufferWrite=0, COM3_SendCommandBufferSize=0;
 unsigned char COM3_TxRetryCount=0;
 
-//Philip 20220530 0.0.1 ====================================================================
 void Register_COM3_Send_ButtonCommand(unsigned char cmd, unsigned char ButtonId)
 {
     COM3_SendCommandBuffer[COM3_SendCommandBufferWrite] = cmd;
@@ -58,7 +58,6 @@ void Register_COM3_Send_ButtonCommand(unsigned char cmd, unsigned char ButtonId)
     if( COM3_SendCommandBufferWrite >= COM3_MAX_SENDING_COMMAND_BUFFER_SIZE )
         COM3_SendCommandBufferWrite = 0;
 }
-//Philip 20220530 0.0.1 ====================================================================
 
 void Register_COM3_Send_Command(unsigned char cmd)
 {
@@ -79,7 +78,6 @@ void COM3_Send_All_Command(void)
     Register_COM3_Send_Command(COM3_Button_Status_Command_Enum);//Philip 20220530 0.0.1 
 }
 
-//Philip 20220530 0.0.1 ====================================================================================
 void SendSystemResetControlCommand(void)
 {
     Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_SetFaultResetEnum);
@@ -166,7 +164,7 @@ void SendSystemManualControlCommand(void)
 {
     Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_MANUAL_MODE_SET_Enum);
 }
-//Philip 20220530 0.0.1 ==============================================================================================
+
 void COM3_Send_FAN1_Command(void)
 {
     Register_COM3_Send_Command(COM3_TxSet_FAN1_Parameter1_Command_Enum);
@@ -219,17 +217,17 @@ void COM3_Send_Heater_Command(void)
 
 void CheckSendingAck(void)
 {
-    if( UART3RxBuffer[COM3_PacketCommandItemEnum] == COM3_SendCommandBuffer[COM3_SendCommandBufferRead] )
+    if( UART3RxBuffer[COM3_PacketCommandItemEnum] == COM3_SendCommandBuffer[COM3_SendIndex] )
     {
         Get_ExtControllerFirmware();
         if( COM3_SendCommandBufferSize > 0 )
         {
             COM3_TxRetryCount = 0;
             COM3_SendCommandBufferSize--;
-            COM3_SendCommandBuffer[COM3_SendCommandBufferRead] = COM3_TxNOP_Command_Enum;
-            COM3_SendCommandBufferRead++;
-            if( COM3_SendCommandBufferRead >= COM3_MAX_SENDING_COMMAND_BUFFER_SIZE )
-                COM3_SendCommandBufferRead = 0;
+            COM3_SendCommandBuffer[COM3_SendIndex] = COM3_TxNOP_Command_Enum;
+            COM3_SendIndex++;
+            if( COM3_SendIndex >= COM3_MAX_SENDING_COMMAND_BUFFER_SIZE )
+                COM3_SendIndex = 0;
         }
     }
 }
@@ -330,7 +328,6 @@ void COM3_TxPCD25_Manual_Control(void)
     }
 }
 
-//Philip 20220325 0.0.1 =================================================================================
 void COM3_TxPCD2_Manual_Control(void)
 {
     UART3TxBuffer[0] = COM3_Button_Command_Enum;
@@ -394,18 +391,13 @@ void COM3_SystemAutoStartStop_Control(void)
         HMI_BtnStatus.SystemAutoStopBtn = 0;
     }    
 }
-//Philip 20220325 0.0.1 =================================================================================
 
-//Philip 20220407 0.0.1 =================================================================================
 void COM3_SystemFaultReset_Control(void)
 {
     UART3TxBuffer[0] = COM3_Button_Command_Enum;
     UART3TxBuffer[1] = Android_HMI_SetFaultResetEnum;
 }
-//Philip 20220407 0.0.1 =================================================================================
 
-//Philip 20220530 0.0.1 ============================================================ 
-extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
 void COM3_AutoGasInControl(void)
 {
     UART3TxBuffer[0] = COM3_Button_Command_Enum;
@@ -454,24 +446,19 @@ void COM3_PCD_20_PID_AutoControl(void)
     UART3TxBuffer[1] = Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum;
     UART3TxBuffer[2] = SystemRunTimeStatus.ByteData[0];    
 }
-//Philip 20220530 0.0.1 ============================================================            
 
-
-//Philip 20220516 0.0.1 ==================================================================================
-extern _RUNTIME_STATUS RunTimeStatus;
 void COM3_Send_ButtonStatus(void)
 {
     UART3TxBuffer[0] = COM3_Button_Status_Command_Enum;
     UART3TxBuffer[1] = SystemRunTimeStatus.ByteData[0];
 }
-//Philip 20220516 0.0.1 ==================================================================================
 
 void COM3_TxSet_FAN1_Parameter(void)
 {
     unsigned char i, id;
     
-    id = COM3_SendCommandBuffer[COM3_SendCommandBufferRead] - COM3_TxSet_FAN1_Parameter1_Command_Enum;
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    id = COM3_SendCommandBuffer[COM3_SendIndex] - COM3_TxSet_FAN1_Parameter1_Command_Enum;
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     switch(id)
     {
         case 0 :
@@ -499,13 +486,12 @@ void COM3_TxSet_FAN1_Parameter(void)
     }
 }
 
-
 void COM3_TxSet_FAN2_Parameter(void)
 {
     unsigned char i, id;
     
-    id = COM3_SendCommandBuffer[COM3_SendCommandBufferRead] - COM3_TxSet_FAN2_Parameter1_Command_Enum;
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    id = COM3_SendCommandBuffer[COM3_SendIndex] - COM3_TxSet_FAN2_Parameter1_Command_Enum;
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     switch(id)
     {
         case 0 :
@@ -524,8 +510,8 @@ void COM3_TxSet_MTR4_Parameter(void)
 {
     unsigned char i, id;
     
-    id = COM3_SendCommandBuffer[COM3_SendCommandBufferRead] - COM3_TxSet_MTR4_Parameter1_Command_Enum;
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    id = COM3_SendCommandBuffer[COM3_SendIndex] - COM3_TxSet_MTR4_Parameter1_Command_Enum;
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     switch(id)
     {
         case 0 :
@@ -547,8 +533,8 @@ void COM3_TxSet_PCD20_Parameter(void)
 {
     unsigned char i, id;
     
-    id = COM3_SendCommandBuffer[COM3_SendCommandBufferRead] - COM3_TxSet_PCD20_Parameter1_Command_Enum;
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    id = COM3_SendCommandBuffer[COM3_SendIndex] - COM3_TxSet_PCD20_Parameter1_Command_Enum;
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     switch(id)
     {
         case 0 :
@@ -574,7 +560,7 @@ void COM3_TxSet_PCD22_Parameter(void)
 {
     unsigned char i;
     
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     for(i=0;i<8;i++)
         UART3TxBuffer[i+1] = SystemParameter.PCD_22.Byte[i];
 }
@@ -583,8 +569,8 @@ void COM3_TxSet_PCD25_Parameter(void)
 {
     unsigned char i, id;
     
-    id = COM3_SendCommandBuffer[COM3_SendCommandBufferRead] - COM3_TxSet_PCD25_Parameter1_Command_Enum;
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    id = COM3_SendCommandBuffer[COM3_SendIndex] - COM3_TxSet_PCD25_Parameter1_Command_Enum;
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     switch(id)
     {
         case 0 :
@@ -602,8 +588,8 @@ void COM3_TxSet_Heater_Parameter(void)
 {
     unsigned char i, id;
     
-    id = COM3_SendCommandBuffer[COM3_SendCommandBufferRead] - COM3_TxSet_Heater_Parameter1_Command_Enum;
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    id = COM3_SendCommandBuffer[COM3_SendIndex] - COM3_TxSet_Heater_Parameter1_Command_Enum;
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     switch(id)
     {
         case 0 :
@@ -628,12 +614,12 @@ void COM3_TxSet_Heater_Parameter(void)
             break;            
     }
 }
-//Philip 20220330 0.0.1 ========================================================================================
+
 void COM3_TxSet_PCD2_PCD6_Parameter(void)
 {
     unsigned char i;
     
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     for(i=0;i<4;i++)
     {
         UART3TxBuffer[i+1] = SystemParameter.PCD2.ByteData[i];
@@ -645,7 +631,7 @@ void COM3_TxSet_V21_Parameter(void)
 {
     unsigned char i;
     
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     for(i=0;i<4;i++)
         UART3TxBuffer[i+1] = SystemParameter.V21.ByteData[i];
 }
@@ -654,12 +640,25 @@ void COM3_TxSet_Alarm_Parameter(void)
 {
     unsigned char i, offset;
     
-    offset = (COM3_SendCommandBuffer[COM3_SendCommandBufferRead] - COM3_RxSetAlarm_Parameter1_CommandEnum) * 8;
-    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendCommandBufferRead];
+    offset = (COM3_SendCommandBuffer[COM3_SendIndex] - COM3_RxSetAlarm_Parameter1_CommandEnum) * 8;
+    UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex];
     for(i=0;i<8;i++)
         UART3TxBuffer[i+1] = SystemParameter.Alarm.ByteData[i+offset];
+    
+    /*
+     * 這段程式碼是設定某種警報參數的功能。首先，它從一個命令緩衝區(COM3_SendCommandBuffer)中讀取一個命令，
+     * 然後基於該命令計算一個偏移量(offset)。然後它將該命令放入UART3TxBuffer的第一個位置，接著透過一個迴圈來填充UART3TxBuffer中的剩餘部分。
+     * 每一個元素都是從系統參數(SystemParameter.Alarm.ByteData)中相應的偏移量位置獲取的。
+     * 解析每行代碼：
+     * unsigned char i, offset; 定義兩個無符號字符變量i和offset。
+     * offset = (COM3_SendCommandBuffer[COM3_SendIndex] - COM3_RxSetAlarm_Parameter1_CommandEnum) * 8; 從COM3_SendCommandBuffer中讀取一個命令，並計算出一個偏移量。
+     * UART3TxBuffer[0] = COM3_SendCommandBuffer[COM3_SendIndex]; 將讀取的命令放入UART3TxBuffer的第一個位置。
+     * for(i=0;i<8;i++) 這是一個for迴圈，用於逐個填充UART3TxBuffer中的元素。
+        * UART3TxBuffer[i+1] = SystemParameter.Alarm.ByteData[i+offset]; 在每次迴圈中，將UART3TxBuffer的下一個元素設置為SystemParameter.Alarm.ByteData的對應偏移量位置的值。
+        * 這段程式碼的主要目的是將特定的警報參數放入UART3TxBuffer中，以便在某種通信協議中使用。
+        */
 }
-//Philip 20220330 0.0.1 ========================================================================================
+
 void COM3_TxRequestFirmwareVersionCommand(void)
 {
     unsigned char i;
@@ -669,7 +668,6 @@ void COM3_TxRequestFirmwareVersionCommand(void)
         UART3TxBuffer[i+1] = 0;
 }
 
-//Philip 20220530 0.0.1 ======================================================================
 void Send_Button_Command(unsigned char id)
 {
     switch(id)
@@ -731,8 +729,6 @@ void Send_Button_Command(unsigned char id)
     }
 }
 
-
-
 void COM3_CreateCRC(void)
 {
     unsigned int crc_data;
@@ -745,7 +741,6 @@ void COM3_CreateCRC(void)
     U3PacketLen = UART3_PACKET_SIZE;        
 }
 
-
 void COM3_SendingCommandControl(void)
 {
     if( COM3_SendCommandBufferSize > 0 )
@@ -757,13 +752,13 @@ void COM3_SendingCommandControl(void)
             //Show Fault
             COM3_TxRetryCount = 0;
             COM3_SendCommandBufferSize--;
-            COM3_SendCommandBuffer[COM3_SendCommandBufferRead] = COM3_TxNOP_Command_Enum;
-            COM3_SendCommandBufferRead++;
-            if( COM3_SendCommandBufferRead >= COM3_MAX_SENDING_COMMAND_BUFFER_SIZE )
-                COM3_SendCommandBufferRead = 0;            
+            COM3_SendCommandBuffer[COM3_SendIndex] = COM3_TxNOP_Command_Enum;
+            COM3_SendIndex++;
+            if( COM3_SendIndex >= COM3_MAX_SENDING_COMMAND_BUFFER_SIZE )
+                COM3_SendIndex = 0;            
         }
 
-        switch(COM3_SendCommandBuffer[COM3_SendCommandBufferRead])
+        switch(COM3_SendCommandBuffer[COM3_SendIndex])
         {
             case COM3_TxSet_FAN1_Parameter1_Command_Enum :
             case COM3_TxSet_FAN1_Parameter2_Command_Enum :
@@ -800,7 +795,6 @@ void COM3_SendingCommandControl(void)
                 COM3_TxSet_PCD25_Parameter();
                 COM3_CreateCRC();
                 break;
-//Philip 20220330 0.0.1 ==================================================
             case COM3_RxSet_PCD2_PCD6_Parameter_Command_Enum :
                 COM3_TxSet_PCD2_PCD6_Parameter();
                 COM3_CreateCRC();
@@ -823,8 +817,7 @@ void COM3_SendingCommandControl(void)
             case COM3_RxSetAlarm_Parameter12_CommandEnum :                
                 COM3_TxSet_Alarm_Parameter();
                 COM3_CreateCRC();
-                break;             
-//Philip 20220330 0.0.1 ==================================================                
+                break;                          
             case COM3_TxSet_Heater_Parameter1_Command_Enum :
             case COM3_TxSet_Heater_Parameter2_Command_Enum :
             case COM3_TxSet_Heater_Parameter3_Command_Enum :
@@ -842,17 +835,17 @@ void COM3_SendingCommandControl(void)
                 COM3_CreateCRC();
                 break;
             case COM3_Button_Command_Enum :
-                Send_Button_Command(COM3_SendButtonCommandBuffer[COM3_SendCommandBufferRead]);
+                Send_Button_Command(COM3_SendButtonCommandBuffer[COM3_SendIndex]);
                 COM3_CreateCRC();
                 break;              
             default :
                 if( COM3_SendCommandBufferSize > 0 )
                 {
                     COM3_SendCommandBufferSize--;
-                    COM3_SendCommandBuffer[COM3_SendCommandBufferRead] = COM3_TxNOP_Command_Enum;
-                    COM3_SendCommandBufferRead++;
-                    if( COM3_SendCommandBufferRead >= COM3_MAX_SENDING_COMMAND_BUFFER_SIZE )
-                        COM3_SendCommandBufferRead = 0;                  
+                    COM3_SendCommandBuffer[COM3_SendIndex] = COM3_TxNOP_Command_Enum;
+                    COM3_SendIndex++;
+                    if( COM3_SendIndex >= COM3_MAX_SENDING_COMMAND_BUFFER_SIZE )
+                        COM3_SendIndex = 0;                  
                 }
                 COM3_SendControlState = COM3_WaitStartSendControlStateEnum;
                 break;
