@@ -225,14 +225,10 @@ void Android_ButtonProcess(void)
         case 20 :
             HMI_BtnStatus.MTR4ManualCloseBtn = 1;
             SendMTR4MaualControlCommand();
-            break;  
-//Philip 20220407 0.0.1 ====================================================================            
+            break;              
         case 21 ://SystemReset
             SendSystemResetControlCommand();//Philip 20220414 0.0.1
             break;
-//Philip 20220407 0.0.1 ====================================================================
-
-//Philip 20220510 0.0.1 ==================================================================== 
         case 22 ://Gas In Type Select
             RunTimeStatus.AutoGasIn = ~RunTimeStatus.AutoGasIn;
             SystemRunTimeStatus.Value.AutoGasIn = RunTimeStatus.AutoGasIn;//Philip 20220527 0.0.1
@@ -251,9 +247,6 @@ void Android_ButtonProcess(void)
             SystemRunTimeStatus.Value.GasOut = 1;
             SendSystemGasInOutControlCommand();//Philip 20220530 0.0.1
             break; 
-//Philip 20220510 0.0.1 ====================================================================
-            
-//Philip 20220525 0.0.1 ====================================================================
         case 25 ://FAN1_1_PID_ON
             RunTimeStatus.FAN1_1_PID_ON = ~RunTimeStatus.FAN1_1_PID_ON;//Philip 20220526 0.0.1
             SystemRunTimeStatus.Value.FAN1_1_PID_ON = RunTimeStatus.FAN1_1_PID_ON;
@@ -302,8 +295,6 @@ void Android_ButtonProcess(void)
             SaveRunTimeStatus();
             SendHeater_PID_AutoControlCommand();//Philip 20220530 0.0.1
             break;               
-//Philip 20220525 0.0.1 ====================================================================
-//Philip 20220526 0.0.1 ====================================================================
         case 32 ://SystemManualMode
             SystemRunTimeStatus.Value.SystemManualMode = 1;
             SaveRunTimeStatus();
@@ -314,10 +305,9 @@ void Android_ButtonProcess(void)
             SaveRunTimeStatus();
             SendSystemManualControlCommand();//Philip 20220530 0.0.1
             break;
-//Philip 20220526 0.0.1 ====================================================================            
+        
     }
 }
-//Philip 20220325 0.0.1 =========================================================================
 
 void Android_HMI_Parsing(void)
 {
@@ -414,7 +404,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 Send_GetPCD20_D_TimeSetResponse();
                 break;
-            case Android_HMI_PCD20_DeadBandTopLowLimit_PCD6TimeSet_CommandEnum :
+            case Android_HMI_PCD20_DeadTopLowLimit_PCD6TimeSet_CommandEnum :
                 RoutineSendFlag = 0;
                 Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse();
                 break;

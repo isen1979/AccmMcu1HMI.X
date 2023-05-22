@@ -190,7 +190,7 @@ enum Android_HMI_CommandEnum
     Android_HMI_PCD20_Temp_SizeSet_CommandEnum,//18
     Android_HMI_PCD20_PISet_CommandEnum,
     Android_HMI_PCD20_D_TimeSet_CommandEnum,//20
-    Android_HMI_PCD20_DeadBandTopLowLimit_PCD6TimeSet_CommandEnum,
+    Android_HMI_PCD20_DeadTopLowLimit_PCD6TimeSet_CommandEnum,
     Android_HMI_PCD22_Set_CommandEnum,//22
     Android_HMI_PCD25_PCD6_TimeSet_CommandEnum,
     Android_HMI_PCD25_Limit_ManualSet_CommandEnum,//24

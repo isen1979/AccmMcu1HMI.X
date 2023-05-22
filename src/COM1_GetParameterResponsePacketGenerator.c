@@ -412,7 +412,7 @@ void Send_GetPCD20_D_TimeSetResponse(void)
 
 void Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse(void)
 {
-    UART1TxBuffer[0] = Android_HMI_PCD20_DeadBandTopLowLimit_PCD6TimeSet_CommandEnum;
+    UART1TxBuffer[0] = Android_HMI_PCD20_DeadTopLowLimit_PCD6TimeSet_CommandEnum;
 
     U1_SendingWord.WordData = SystemParameter.PCD_20.value.DeadBand;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];

@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv1_11 (A) Ï
+Microchip Technology Inc, vv1_11 (A) ß
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -1364,7 +1364,7 @@ __FUID0
 .comment
  *(.comment)
 
-.debug_info       0x000000      0x2cd71
+.debug_info       0x000000      0x2cd61
  *(.debug_info)
  .debug_info      0x000000       0x1424 build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_info      0x001424       0x31a2 build/default/production/src/IO_Driver.o
@@ -1393,12 +1393,12 @@ __FUID0
  .debug_info      0x01857b        0x325 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
  .debug_info      0x0188a0       0x2921 build/default/production/src/COM3_RX_Parsing_ActMcu.o
  .debug_info      0x01b1c1       0x357a build/default/production/src/COM3_TX_Sending_ActMcu.o
- .debug_info      0x01e73b       0x33b6 build/default/production/src/COM1_Sending_HMI.o
- .debug_info      0x021af1       0x1e72 build/default/production/src/COM1_WriteParameters_HMI.o
- .debug_info      0x023963       0x24dc build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_info      0x025e3f       0x19a2 build/default/production/src/COM1_Parsing_HMI.o
- .debug_info      0x0277e1       0x2242 build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_info      0x029a23       0x334e build/default/production/src/uC_InitialTestParameter.o
+ .debug_info      0x01e73b       0x33b2 build/default/production/src/COM1_Sending_HMI.o
+ .debug_info      0x021aed       0x1e72 build/default/production/src/COM1_WriteParameters_HMI.o
+ .debug_info      0x02395f       0x24d8 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+ .debug_info      0x025e37       0x199e build/default/production/src/COM1_Parsing_HMI.o
+ .debug_info      0x0277d5       0x223e build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_info      0x029a13       0x334e build/default/production/src/uC_InitialTestParameter.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000       0x23c9
