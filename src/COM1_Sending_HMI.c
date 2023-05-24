@@ -67,7 +67,7 @@ void Send_LoopBackResponse(void)
 extern _FAN1_1_RUNTIME_DISPLAY FAN1_1_RunTimeDisplay;
 extern _FAN2_RUNTIME_DISPLAY FAN2_RunTimeDisplay;
 extern _MTR4_RUNTIME_DISPLAY MTR4_RunTimeDisplay;
-extern _SCR_RUNTIME_DISPLAY SCR_RunTimeDisplay;
+extern _HEATER_RUNTIME_DISPLAY HEATER_RunTimeDisplay;
 extern _OTHER_RUNTIME_DISPLAY OtherRunTimeDisplay;
 extern _PCD20_RUNTIME_DISPLAY PCD20_RunTimeDisplay;
 extern _RUNTIME_STATUS RunTimeStatus;//Philip 20220124 0.0.1
@@ -103,7 +103,7 @@ void Get_TE8_10_11_12_SendPacket(void)
     U1_SendingWord.WordData = OtherRunTimeDisplay.TE10;
     UART1TxBuffer[3] = U1_SendingWord.Byte[0];
     UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SCR_RunTimeDisplay.TE11;
+    U1_SendingWord.WordData = HEATER_RunTimeDisplay.TE11;
     UART1TxBuffer[5] = U1_SendingWord.Byte[0];
     UART1TxBuffer[6] = U1_SendingWord.Byte[1];
     U1_SendingWord.WordData = FAN2_RunTimeDisplay.TE12;
@@ -210,13 +210,13 @@ void Get_MTR4_RunTime_SendPacket(void)
 void Get_Input_Heater_RunTime_SendPacket(void)//Philip 20220406 0.0.1
 {
     UART1TxBuffer[0] = Android_HMI_Heater_RunTime_CommandEnum;
-    U1_SendingWord.WordData = SCR_RunTimeDisplay.RealOutputPercent;
+    U1_SendingWord.WordData = HEATER_RunTimeDisplay.RealOutputPercent;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SCR_RunTimeDisplay.OvenSP;
+    U1_SendingWord.WordData = HEATER_RunTimeDisplay.OvenSP;
     UART1TxBuffer[3] = U1_SendingWord.Byte[0];
     UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SCR_RunTimeDisplay.OvenSV;
+    U1_SendingWord.WordData = HEATER_RunTimeDisplay.OvenSV;
     UART1TxBuffer[5] = U1_SendingWord.Byte[0];
     UART1TxBuffer[6] = U1_SendingWord.Byte[1];
 //Philip 20220406 0.0.1 =============================================

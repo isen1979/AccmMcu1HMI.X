@@ -824,8 +824,6 @@ typedef union __RUNTIME_V21_FAULT
     
 } _RUNTIME_V21_FAULT;
 
-
-
 typedef struct __RUNTIME_V21_ALARM_BITMAP
 {
     unsigned char OpenAlarm : 1;
@@ -858,7 +856,7 @@ typedef struct __FAN2_RUNTIME_DISPLAY
     unsigned int ErrorCode;
 } _FAN2_RUNTIME_DISPLAY;
 
-typedef struct __SCR_RUNTIME_DISPLAY
+typedef struct __HEATER_RUNTIME_DISPLAY
 {
     unsigned int RealOutputPercent;
     unsigned int OvenSP;
@@ -866,7 +864,7 @@ typedef struct __SCR_RUNTIME_DISPLAY
     int AverageTemperature;
     int TE11;//A;
     int TE14;//1B;
-} _SCR_RUNTIME_DISPLAY;
+} _HEATER_RUNTIME_DISPLAY;
 
 typedef struct __MTR4_RUNTIME_DISPLAY
 {
@@ -904,28 +902,27 @@ typedef struct __HMI_BUTTON_STATUS
     unsigned char MTR4ManualCloseBtn : 1;
     unsigned char PCD20ManualOpenBtn : 1;
     unsigned char PCD20ManualCloseBtn : 1;
+    
     unsigned char FAN1ManualOpenBtn : 1;
     unsigned char FAN1ManualCloseBtn : 1;
     unsigned char FAN2ManualOpenBtn : 1;
     unsigned char FAN2ManualCloseBtn : 1;
-//Philip 20220324 0.0.1 ===========================    
+
     unsigned char PCD2ManualOpenBtn : 1;
     unsigned char PCD2ManualCloseBtn : 1;
     unsigned char PCD6ManualOpenBtn : 1;
     unsigned char PCD6ManualCloseBtn : 1; 
-//Philip 20220324 0.0.1 ===========================    
+    
     unsigned char PCD22ManualOpenBtn : 1;
     unsigned char PCD22ManualCloseBtn : 1;
     unsigned char PCD25ManualOpenBtn : 1;
     unsigned char PCD25ManualCloseBtn : 1;
 
-//Philip 20220324 0.0.1 ===========================    
     unsigned char V21ManualOpenBtn : 1;
     unsigned char V21ManualCloseBtn : 1;     
     unsigned char SystemAutoStartBtn : 1;
     unsigned char SystemAutoStopBtn : 1;
     unsigned char Dummy : 4;
-//Philip 20220324 0.0.1 ===========================    
 } _HMI_BUTTON_STATUS;
 
 

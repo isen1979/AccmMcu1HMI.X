@@ -152,7 +152,7 @@ enum COM3_RX_CommandEnum
     
     COM3_RX_FAN1_FAN2_Current_TypeEnum,//Philip 20220406 0.0.1
     COM3_RX_SystemRunStatusEnum,//Philip 20220517 0.0.1
-    COM3_RX_RunTimeHeaterFNA1_1_StatusEnum,//Philip 20220518 0.0.1
+    COM3_RX_RunTimeHeaterFAN1_StatusEnum,//Philip 20220518 0.0.1
     
     COM3_RX_ALARM1_STATUS_TypeEnum,//Philip 20220526 0.0.1
     

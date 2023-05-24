@@ -19,22 +19,28 @@ extern void Set_Output_bit_Status(unsigned char bitnum);
 extern void Clear_Output_bit_Status(unsigned char bitnum);
 extern void CheckSendingAck(void);
 
+extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
+extern _MTR4_RUNTIME_DISPLAY MTR4_RunTimeDisplay;
+extern _OTHER_RUNTIME_DISPLAY OtherRunTimeDisplay;
+extern _FAN2_RUNTIME_DISPLAY FAN2_RunTimeDisplay;
 extern _FAN1_1_RUNTIME_DISPLAY FAN1_1_RunTimeDisplay;
-extern _SCR_RUNTIME_DISPLAY SCR_RunTimeDisplay;
+extern _HEATER_RUNTIME_DISPLAY HEATER_RunTimeDisplay;
 extern _PCD20_RUNTIME_DISPLAY PCD20_RunTimeDisplay, lastPCD20_RunTimeDisplay;
 extern _SYSTEM_PARAMETER SystemParameter;
 extern unsigned char UART3RxBuffer[UART3_BUFFER_SIZE];
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
 extern unsigned char KeyboardIndex;
 extern unsigned char KeyboardResponseFlag, KeyboardFirmeareVersionResponseFlag, KeyboardScanResponseFlag;
+extern void Send_uCHMI_AuxControllerFirmwareVersion(void);
 
 _PARSING_DATA U3_ParsingData;
 _PARSING_WORD U3_ParsingWord;
+_IO_STATUS ioStatus;
+_ALARM_STATUS alarmStatus;
 unsigned char COM3_Rx_Size;
-
-extern _MTR4_RUNTIME_DISPLAY MTR4_RunTimeDisplay;
-extern _OTHER_RUNTIME_DISPLAY OtherRunTimeDisplay;
-extern _FAN2_RUNTIME_DISPLAY FAN2_RunTimeDisplay;
+unsigned int ExtFirmwareVersion;
+unsigned long ExtFirmwareDate;
+unsigned int U3_CommnunicationFaultCount=0;
 
 void COM3_GET_TE01_TE06_CMD(void)
 {
@@ -82,7 +88,7 @@ void COM3_GET_TE10_PT1_CMD(void)
 
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem3Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem4Enum];
-    SCR_RunTimeDisplay.TE11 = U3_ParsingWord.WordData;
+    HEATER_RunTimeDisplay.TE11 = U3_ParsingWord.WordData;
     
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem5Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem6Enum];
@@ -91,7 +97,6 @@ void COM3_GET_TE10_PT1_CMD(void)
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem7Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem8Enum];
     OtherRunTimeDisplay.PT1 = U3_ParsingWord.WordData;
-//    SCR_RunTimeDisplay.TE14 = U3_ParsingWord.WordData;
 }
 
 void COM3_GET_ROTATOR_PDT5_CMD(void)
@@ -131,9 +136,6 @@ void COM3_GET_FAN1_1_PCD25_CMD(void)
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem8Enum];
     OtherRunTimeDisplay.PCD25_RealOpenSize = U3_ParsingWord.WordData;
 }
-//Philip 20220330 0.0.1 ========================================================================
-_IO_STATUS ioStatus;
-_ALARM_STATUS alarmStatus;
 
 void COM3_GET_IO_STATUS_CMD(void)
 {
@@ -145,8 +147,7 @@ void COM3_GET_IO_STATUS_CMD(void)
 
 void COM3_GET_ALARM_STATUS_CMD(void)
 {
-    unsigned char i;
-//Philip 20220526 0.0.1 ==============================================================================    
+    unsigned char i;    
     switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
     {
         case COM3_RX_ALARM_STATUS_TypeEnum :
@@ -158,10 +159,8 @@ void COM3_GET_ALARM_STATUS_CMD(void)
                 alarmStatus.ByteData[i+8] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
             break;
     }
-//Philip 20220526 0.0.1 ==============================================================================     
 }
-//Philip 20220330 0.0.1 ========================================================================
-//Philip 20220406 0.0.1 ========================================================================
+
 void COM3_GET_FAN1_FAN2_Current_CMD(void)
 {
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem1Enum];
@@ -180,10 +179,7 @@ void COM3_GET_FAN1_FAN2_Current_CMD(void)
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem8Enum];
     FAN2_RunTimeDisplay.ErrorCode = U3_ParsingWord.WordData;
 }
-//Philip 20220406 0.0.1 ========================================================================
 
-//Philip 20220517 0.01 ===============================================================================
-extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
 void COM3_GET_SystemRunStatus(void)
 {
     SystemRunTimeStatus.Value.SystemAutoStopStatus = UART3RxBuffer[COM3_PacketValueItem1Enum];
@@ -201,31 +197,23 @@ void COM3_GET_SystemRunStatus(void)
     FAN2_RunTimeDisplay.ErrorCode = U3_ParsingWord.WordData;
 */
 }
-//Philip 20220517 0.01 ===============================================================================
 
-//Philip 20220518 0.01 ===============================================================================
 void GetRunTimeHeaterFAN1_1_Status(void)
 {
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem1Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem2Enum];
-    SCR_RunTimeDisplay.RealOutputPercent = U3_ParsingWord.WordData;
+    HEATER_RunTimeDisplay.RealOutputPercent = U3_ParsingWord.WordData;
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem3Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem4Enum];
-    SCR_RunTimeDisplay.OvenSP = U3_ParsingWord.WordData;//SP
+    HEATER_RunTimeDisplay.OvenSP = U3_ParsingWord.WordData;//SP
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem5Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem6Enum];
-    SCR_RunTimeDisplay.OvenSV = U3_ParsingWord.WordData;//SV
-//Philip 20220519 0.0.1 ====================================================    
+    HEATER_RunTimeDisplay.OvenSV = U3_ParsingWord.WordData;//SV   
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem7Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem8Enum];
-    FAN1_1_RunTimeDisplay.PID_Output = U3_ParsingWord.WordData;
-//Philip 20220519 0.0.1 ====================================================    
+    FAN1_1_RunTimeDisplay.PID_Output = U3_ParsingWord.WordData;  
 }
-//Philip 20220518 0.01 ===============================================================================
 
-extern void Send_uCHMI_AuxControllerFirmwareVersion(void);
-unsigned int ExtFirmwareVersion;
-unsigned long ExtFirmwareDate;
 void Get_ExtControllerFirmware(void)
 {
     switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
@@ -246,7 +234,6 @@ void Get_ExtControllerFirmware(void)
     }
 }
 
-unsigned int U3_CommnunicationFaultCount=0;
 void U3CommandParsing(void)
 {
     unsigned int crc_data;
@@ -270,8 +257,7 @@ void U3CommandParsing(void)
                 break;
             case COM3_RX_FAN1_1_PCD25_TypeEnum :
                 COM3_GET_FAN1_1_PCD25_CMD();
-                break;
-//Philip 20220330 0.0.1 ========================================================================  
+                break; 
             case COM3_RX_IO_STATUS_TypeEnum :
                 COM3_GET_IO_STATUS_CMD();
                 break;
@@ -279,22 +265,15 @@ void U3CommandParsing(void)
             case COM3_RX_ALARM1_STATUS_TypeEnum ://Philip 20220526 0.0.1
                 COM3_GET_ALARM_STATUS_CMD();
                 break;
-//Philip 20220330 0.0.1 ========================================================================
-//Philip 20220330 0.0.1 ========================================================================
             case COM3_RX_FAN1_FAN2_Current_TypeEnum :
                 COM3_GET_FAN1_FAN2_Current_CMD();
-                break;
-//Philip 20220330 0.0.1 ========================================================================    
-//Philip 20220517 0.01 ====================================================================================                
+                break;              
             case COM3_RX_SystemRunStatusEnum :
                 COM3_GET_SystemRunStatus();
-                break;
-//Philip 20220517 0.01 ====================================================================================
-//Philip 20220518 0.0.1 ========================================================================================================                
-            case COM3_RX_RunTimeHeaterFNA1_1_StatusEnum ://Philip 20220519 0.0.1
+                break;             
+            case COM3_RX_RunTimeHeaterFAN1_StatusEnum ://Philip 20220519 0.0.1
                 GetRunTimeHeaterFAN1_1_Status();//Philip 20220519 0.0.1
-                break;
-//Philip 20220518 0.0.1 ========================================================================================================                
+                break;                
             default :
                 CheckSendingAck();
                 break;

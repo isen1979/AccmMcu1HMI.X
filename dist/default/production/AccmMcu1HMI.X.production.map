@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv1_11 (A) ß
+Microchip Technology Inc, vv1_11 (A) Í
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -211,7 +211,7 @@ External Symbols in Data Memory (by address):
                     0x2bae                  _FAN1_1_RunTimeDisplay
                     0x2bb8                  _lastFAN2_RunTimeDisplay
                     0x2bc2                  _FAN2_RunTimeDisplay
-                    0x2bcc                  _SCR_RunTimeDisplay
+                    0x2bcc                  _HEATER_RunTimeDisplay
                     0x2bd8                  _lastSCR_RunTimeDisplay
                     0x2be4                  _MTR4_RunTimeDisplay
                     0x2bee                  _lastMTR4_RunTimeDisplay
@@ -239,9 +239,9 @@ External Symbols in Data Memory (by address):
                     0x2da6                  _ExternalPortCounter
                     0x2db6                  _U3_ParsingData
                     0x2dba                  _U3_ParsingWord
-                    0x2dbc                  _COM3_Rx_Size
-                    0x2dbe                  _ioStatus
-                    0x2dc2                  _alarmStatus
+                    0x2dbc                  _ioStatus
+                    0x2dc0                  _alarmStatus
+                    0x2dd0                  _COM3_Rx_Size
                     0x2dd2                  _ExtFirmwareVersion
                     0x2dd4                  _ExtFirmwareDate
                     0x2dd8                  _lastInputPortValue
@@ -294,7 +294,7 @@ External Symbols in Data Memory (by name):
                     0x2e24                  _COM2_Rx_Size
                     0x2e38                  _COM2_SendControlState
                     0x2e11                  _COM2_Send_Index
-                    0x2dbc                  _COM3_Rx_Size
+                    0x2dd0                  _COM3_Rx_Size
                     0x2c5e                  _COM3_SendButtonCommandBuffer
                     0x2c2c                  _COM3_SendCommandBuffer
                     0x2e1b                  _COM3_SendCommandBufferSize
@@ -317,6 +317,7 @@ External Symbols in Data Memory (by name):
                     0x2e14                  _FirmwareDate
                     0x2e12                  _FirmwareVersion
                     0x2750                  _FormatEEPROMdata
+                    0x2bcc                  _HEATER_RunTimeDisplay
                     0x2c96                  _HMI_BtnStatus
                     0x2d52                  _IndexFileName
                     0x2dfe                  _IndexMonthCode
@@ -346,7 +347,6 @@ External Symbols in Data Memory (by name):
                     0x26fe                  _RunTimeStatus
                     0x2c9a                  _RxTextBuffer
                     0x2b9c                  _SCR_RunTimeAlarm
-                    0x2bcc                  _SCR_RunTimeDisplay
                     0x2b9b                  _SCR_RunTimeFault
                     0x2b9a                  _SCR_RunTimeStatus
                     0x2e02                  _SYS_TIME
@@ -393,8 +393,8 @@ External Symbols in Data Memory (by name):
                     0x29fe                  _WriteEEPROM
                     0x2b96                  _WriteFaultTimes
                     0x2454                  _WriteTextVariableBuffer
-                    0x2dc2                  _alarmStatus
-                    0x2dbe                  _ioStatus
+                    0x2dc0                  _alarmStatus
+                    0x2dbc                  _ioStatus
                     0x2da4                  _lastExternalInput
                     0x2ba4                  _lastFAN1_1_RunTimeDisplay
                     0x2bb8                  _lastFAN2_RunTimeDisplay
@@ -1364,7 +1364,7 @@ __FUID0
 .comment
  *(.comment)
 
-.debug_info       0x000000      0x2cd61
+.debug_info       0x000000      0x2cd77
  *(.debug_info)
  .debug_info      0x000000       0x1424 build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_info      0x001424       0x31a2 build/default/production/src/IO_Driver.o
@@ -1380,25 +1380,25 @@ __FUID0
  .debug_info      0x00c68a        0x5db build/default/production/src/uC_HMI_Sending.o
  .debug_info      0x00cc65        0x34f build/default/production/src/uC_HMI_Parsing.o
  .debug_info      0x00cfb4        0xbfd build/default/production/src/uC_HMI_Utility.o
- .debug_info      0x00dbb1        0x73d build/default/production/src/RunTimeDisplayControl.o
- .debug_info      0x00e2ee       0x200b build/default/production/src/IO_Setting.o
- .debug_info      0x0102f9        0x724 build/default/production/src/uC_Machine_HMI_Control.o
- .debug_info      0x010a1d        0x723 build/default/production/src/uC_Machine_HMI_Parsing.o
- .debug_info      0x011140        0x7f8 build/default/production/src/uC_Machine_HMI_Sending.o
- .debug_info      0x011938        0x1cb build/default/production/src/Main.o
- .debug_info      0x011b03       0x1e16 build/default/production/src/System_Driver.o
- .debug_info      0x013919       0x24be build/default/production/src/System_Control.o
- .debug_info      0x015dd7       0x1acf build/default/production/src/System_ParameterInputProcess.o
- .debug_info      0x0178a6        0xcd5 build/default/production/src/COM2_TX_Sending_ExtDevice.o
- .debug_info      0x01857b        0x325 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
- .debug_info      0x0188a0       0x2921 build/default/production/src/COM3_RX_Parsing_ActMcu.o
- .debug_info      0x01b1c1       0x357a build/default/production/src/COM3_TX_Sending_ActMcu.o
- .debug_info      0x01e73b       0x33b2 build/default/production/src/COM1_Sending_HMI.o
- .debug_info      0x021aed       0x1e72 build/default/production/src/COM1_WriteParameters_HMI.o
- .debug_info      0x02395f       0x24d8 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_info      0x025e37       0x199e build/default/production/src/COM1_Parsing_HMI.o
- .debug_info      0x0277d5       0x223e build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_info      0x029a13       0x334e build/default/production/src/uC_InitialTestParameter.o
+ .debug_info      0x00dbb1        0x743 build/default/production/src/RunTimeDisplayControl.o
+ .debug_info      0x00e2f4       0x200b build/default/production/src/IO_Setting.o
+ .debug_info      0x0102ff        0x724 build/default/production/src/uC_Machine_HMI_Control.o
+ .debug_info      0x010a23        0x723 build/default/production/src/uC_Machine_HMI_Parsing.o
+ .debug_info      0x011146        0x7f8 build/default/production/src/uC_Machine_HMI_Sending.o
+ .debug_info      0x01193e        0x1cb build/default/production/src/Main.o
+ .debug_info      0x011b09       0x1e16 build/default/production/src/System_Driver.o
+ .debug_info      0x01391f       0x24be build/default/production/src/System_Control.o
+ .debug_info      0x015ddd       0x1acf build/default/production/src/System_ParameterInputProcess.o
+ .debug_info      0x0178ac        0xcd5 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+ .debug_info      0x018581        0x325 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
+ .debug_info      0x0188a6       0x2925 build/default/production/src/COM3_RX_Parsing_ActMcu.o
+ .debug_info      0x01b1cb       0x357a build/default/production/src/COM3_TX_Sending_ActMcu.o
+ .debug_info      0x01e745       0x33b8 build/default/production/src/COM1_Sending_HMI.o
+ .debug_info      0x021afd       0x1e72 build/default/production/src/COM1_WriteParameters_HMI.o
+ .debug_info      0x02396f       0x24d8 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+ .debug_info      0x025e47       0x199e build/default/production/src/COM1_Parsing_HMI.o
+ .debug_info      0x0277e5       0x223e build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_info      0x029a23       0x3354 build/default/production/src/uC_InitialTestParameter.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000       0x23c9
@@ -1507,7 +1507,7 @@ __FUID0
  .debug_frame     0x0017c4         0xd4 build/default/production/src/COM1_AlarmPacket_Generator.o
  .debug_frame     0x001898        0x234 build/default/production/src/uC_InitialTestParameter.o
 
-.debug_str        0x000000       0x216c
+.debug_str        0x000000       0x2178
  *(.debug_str)
  .debug_str       0x000000         0xaa build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_str       0x0000aa        0x10e build/default/production/src/IO_Driver.o
@@ -1519,23 +1519,23 @@ __FUID0
  .debug_str       0x000890         0x89 build/default/production/src/uC_HMI_Sending.o
  .debug_str       0x000919         0x44 build/default/production/src/uC_HMI_Parsing.o
  .debug_str       0x00095d         0x71 build/default/production/src/uC_HMI_Utility.o
- .debug_str       0x0009ce        0x127 build/default/production/src/RunTimeDisplayControl.o
- .debug_str       0x000af5         0xe0 build/default/production/src/IO_Setting.o
- .debug_str       0x000bd5         0xb3 build/default/production/src/uC_Machine_HMI_Control.o
- .debug_str       0x000c88         0x4a build/default/production/src/uC_Machine_HMI_Parsing.o
- .debug_str       0x000cd2         0x9e build/default/production/src/System_Driver.o
- .debug_str       0x000d70        0x297 build/default/production/src/System_Control.o
- .debug_str       0x001007        0x177 build/default/production/src/System_ParameterInputProcess.o
- .debug_str       0x00117e         0x97 build/default/production/src/COM2_TX_Sending_ExtDevice.o
- .debug_str       0x001215         0x30 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
- .debug_str       0x001245        0x141 build/default/production/src/COM3_RX_Parsing_ActMcu.o
- .debug_str       0x001386        0x27d build/default/production/src/COM3_TX_Sending_ActMcu.o
- .debug_str       0x001603        0x21a build/default/production/src/COM1_Sending_HMI.o
- .debug_str       0x00181d        0x181 build/default/production/src/COM1_WriteParameters_HMI.o
- .debug_str       0x00199e        0x181 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_str       0x001b1f         0xb1 build/default/production/src/COM1_Parsing_HMI.o
- .debug_str       0x001bd0        0x171 build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_str       0x001d41        0x42b build/default/production/src/uC_InitialTestParameter.o
+ .debug_str       0x0009ce        0x12a build/default/production/src/RunTimeDisplayControl.o
+ .debug_str       0x000af8         0xe0 build/default/production/src/IO_Setting.o
+ .debug_str       0x000bd8         0xb3 build/default/production/src/uC_Machine_HMI_Control.o
+ .debug_str       0x000c8b         0x4a build/default/production/src/uC_Machine_HMI_Parsing.o
+ .debug_str       0x000cd5         0x9e build/default/production/src/System_Driver.o
+ .debug_str       0x000d73        0x297 build/default/production/src/System_Control.o
+ .debug_str       0x00100a        0x177 build/default/production/src/System_ParameterInputProcess.o
+ .debug_str       0x001181         0x97 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+ .debug_str       0x001218         0x30 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
+ .debug_str       0x001248        0x144 build/default/production/src/COM3_RX_Parsing_ActMcu.o
+ .debug_str       0x00138c        0x27d build/default/production/src/COM3_TX_Sending_ActMcu.o
+ .debug_str       0x001609        0x21d build/default/production/src/COM1_Sending_HMI.o
+ .debug_str       0x001826        0x181 build/default/production/src/COM1_WriteParameters_HMI.o
+ .debug_str       0x0019a7        0x181 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+ .debug_str       0x001b28         0xb1 build/default/production/src/COM1_Parsing_HMI.o
+ .debug_str       0x001bd9        0x171 build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_str       0x001d4a        0x42e build/default/production/src/uC_InitialTestParameter.o
 
 .debug_loc
  *(.debug_loc)
@@ -1544,7 +1544,7 @@ __FUID0
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000       0x35bf
+                  0x000000       0x35c2
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0xbb build/default/production/src/EXT_ACD_DAC_Driver.o
@@ -1609,7 +1609,7 @@ __FUID0
  .debug_pubnames
                   0x002ce1        0x1cf build/default/production/src/COM1_AlarmPacket_Generator.o
  .debug_pubnames
-                  0x002eb0        0x70f build/default/production/src/uC_InitialTestParameter.o
+                  0x002eb0        0x712 build/default/production/src/uC_InitialTestParameter.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -4625,7 +4625,7 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x0002e8       0x4adf
+                  0x0002e8       0x4af7
  .debug_pubtypes
                   0x0002e8        0x18e build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_pubtypes
@@ -4653,124 +4653,124 @@ LOAD data_init
  .debug_pubtypes
                   0x00102f         0x87 build/default/production/src/uC_HMI_Utility.o
  .debug_pubtypes
-                  0x0010b6        0x156 build/default/production/src/RunTimeDisplayControl.o
+                  0x0010b6        0x15c build/default/production/src/RunTimeDisplayControl.o
  .debug_pubtypes
-                  0x00120c        0x248 build/default/production/src/IO_Setting.o
+                  0x001212        0x248 build/default/production/src/IO_Setting.o
  .debug_pubtypes
-                  0x001454         0x50 build/default/production/src/uC_Machine_HMI_Control.o
+                  0x00145a         0x50 build/default/production/src/uC_Machine_HMI_Control.o
  .debug_pubtypes
-                  0x0014a4         0x8b build/default/production/src/uC_Machine_HMI_Parsing.o
+                  0x0014aa         0x8b build/default/production/src/uC_Machine_HMI_Parsing.o
  .debug_pubtypes
-                  0x00152f         0x2a build/default/production/src/uC_Machine_HMI_Sending.o
+                  0x001535         0x2a build/default/production/src/uC_Machine_HMI_Sending.o
  .debug_pubtypes
-                  0x001559         0x12 build/default/production/src/Main.o
+                  0x00155f         0x12 build/default/production/src/Main.o
  .debug_pubtypes
-                  0x00156b        0x1b4 build/default/production/src/System_Driver.o
+                  0x001571        0x1b4 build/default/production/src/System_Driver.o
  .debug_pubtypes
-                  0x00171f        0x652 build/default/production/src/System_Control.o
+                  0x001725        0x652 build/default/production/src/System_Control.o
  .debug_pubtypes
-                  0x001d71        0x512 build/default/production/src/System_ParameterInputProcess.o
+                  0x001d77        0x512 build/default/production/src/System_ParameterInputProcess.o
  .debug_pubtypes
-                  0x002283         0xc6 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+                  0x002289         0xc6 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  .debug_pubtypes
-                  0x002349         0x50 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
+                  0x00234f         0x50 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
  .debug_pubtypes
-                  0x002399        0x317 build/default/production/src/COM3_RX_Parsing_ActMcu.o
+                  0x00239f        0x31d build/default/production/src/COM3_RX_Parsing_ActMcu.o
  .debug_pubtypes
-                  0x0026b0        0x667 build/default/production/src/COM3_TX_Sending_ActMcu.o
+                  0x0026bc        0x667 build/default/production/src/COM3_TX_Sending_ActMcu.o
  .debug_pubtypes
-                  0x002d17        0x34e build/default/production/src/COM1_Sending_HMI.o
+                  0x002d23        0x354 build/default/production/src/COM1_Sending_HMI.o
  .debug_pubtypes
-                  0x003065        0x574 build/default/production/src/COM1_WriteParameters_HMI.o
+                  0x003077        0x574 build/default/production/src/COM1_WriteParameters_HMI.o
  .debug_pubtypes
-                  0x0035d9        0x578 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+                  0x0035eb        0x578 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
  .debug_pubtypes
-                  0x003b51        0x13d build/default/production/src/COM1_Parsing_HMI.o
+                  0x003b63        0x13d build/default/production/src/COM1_Parsing_HMI.o
  .debug_pubtypes
-                  0x003c8e        0x553 build/default/production/src/COM1_AlarmPacket_Generator.o
+                  0x003ca0        0x553 build/default/production/src/COM1_AlarmPacket_Generator.o
  .debug_pubtypes
-                  0x0041e1        0xbe6 build/default/production/src/uC_InitialTestParameter.o
+                  0x0041f3        0xbec build/default/production/src/uC_InitialTestParameter.o
 
 __c30_signature
-                  0x004dc8         0xea
+                  0x004de0         0xea
  __c30_signature
-                  0x004dc8          0x6 build/default/production/src/EXT_ACD_DAC_Driver.o
+                  0x004de0          0x6 build/default/production/src/EXT_ACD_DAC_Driver.o
  __c30_signature
-                  0x004dce          0x6 build/default/production/src/IO_Driver.o
+                  0x004de6          0x6 build/default/production/src/IO_Driver.o
  __c30_signature
-                  0x004dd4          0x6 build/default/production/src/User_ISR.o
+                  0x004dec          0x6 build/default/production/src/User_ISR.o
  __c30_signature
-                  0x004dda          0x6 build/default/production/src/UART_Driver.o
+                  0x004df2          0x6 build/default/production/src/UART_Driver.o
  __c30_signature
-                  0x004de0          0x6 build/default/production/src/Data_API.o
+                  0x004df8          0x6 build/default/production/src/Data_API.o
  __c30_signature
-                  0x004de6          0x6 build/default/production/src/PWM_Setting.o
+                  0x004dfe          0x6 build/default/production/src/PWM_Setting.o
  __c30_signature
-                  0x004dec          0x6 build/default/production/src/Encoder_Driver.o
+                  0x004e04          0x6 build/default/production/src/Encoder_Driver.o
  __c30_signature
-                  0x004df2          0x6 build/default/production/src/StorageDev.o
+                  0x004e0a          0x6 build/default/production/src/StorageDev.o
  __c30_signature
-                  0x004df8          0x6 build/default/production/src/InputPortScan.o
+                  0x004e10          0x6 build/default/production/src/InputPortScan.o
  __c30_signature
-                  0x004dfe          0x6 build/default/production/src/HMI_Control.o
+                  0x004e16          0x6 build/default/production/src/HMI_Control.o
  __c30_signature
-                  0x004e04          0x6 build/default/production/src/uC_HMI_Control.o
+                  0x004e1c          0x6 build/default/production/src/uC_HMI_Control.o
  __c30_signature
-                  0x004e0a          0x6 build/default/production/src/uC_HMI_Sending.o
+                  0x004e22          0x6 build/default/production/src/uC_HMI_Sending.o
  __c30_signature
-                  0x004e10          0x6 build/default/production/src/uC_HMI_Parsing.o
+                  0x004e28          0x6 build/default/production/src/uC_HMI_Parsing.o
  __c30_signature
-                  0x004e16          0x6 build/default/production/src/uC_HMI_Utility.o
+                  0x004e2e          0x6 build/default/production/src/uC_HMI_Utility.o
  __c30_signature
-                  0x004e1c          0x6 build/default/production/src/RunTimeDisplayControl.o
+                  0x004e34          0x6 build/default/production/src/RunTimeDisplayControl.o
  __c30_signature
-                  0x004e22          0x6 build/default/production/src/IO_Setting.o
+                  0x004e3a          0x6 build/default/production/src/IO_Setting.o
  __c30_signature
-                  0x004e28          0x6 build/default/production/src/uC_Machine_HMI_Control.o
+                  0x004e40          0x6 build/default/production/src/uC_Machine_HMI_Control.o
  __c30_signature
-                  0x004e2e          0x6 build/default/production/src/uC_Machine_HMI_Parsing.o
+                  0x004e46          0x6 build/default/production/src/uC_Machine_HMI_Parsing.o
  __c30_signature
-                  0x004e34          0x6 build/default/production/src/uC_Machine_HMI_Sending.o
+                  0x004e4c          0x6 build/default/production/src/uC_Machine_HMI_Sending.o
  __c30_signature
-                  0x004e3a          0x6 build/default/production/src/Main.o
+                  0x004e52          0x6 build/default/production/src/Main.o
  __c30_signature
-                  0x004e40          0x6 build/default/production/src/System_Driver.o
+                  0x004e58          0x6 build/default/production/src/System_Driver.o
  __c30_signature
-                  0x004e46          0x6 build/default/production/src/System_Control.o
+                  0x004e5e          0x6 build/default/production/src/System_Control.o
  __c30_signature
-                  0x004e4c          0x6 build/default/production/src/System_ParameterInputProcess.o
+                  0x004e64          0x6 build/default/production/src/System_ParameterInputProcess.o
  __c30_signature
-                  0x004e52          0x6 build/default/production/src/COM2_TX_Sending_ExtDevice.o
+                  0x004e6a          0x6 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  __c30_signature
-                  0x004e58          0x6 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
+                  0x004e70          0x6 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
  __c30_signature
-                  0x004e5e          0x6 build/default/production/src/COM3_RX_Parsing_ActMcu.o
+                  0x004e76          0x6 build/default/production/src/COM3_RX_Parsing_ActMcu.o
  __c30_signature
-                  0x004e64          0x6 build/default/production/src/COM3_TX_Sending_ActMcu.o
+                  0x004e7c          0x6 build/default/production/src/COM3_TX_Sending_ActMcu.o
  __c30_signature
-                  0x004e6a          0x6 build/default/production/src/COM1_Sending_HMI.o
+                  0x004e82          0x6 build/default/production/src/COM1_Sending_HMI.o
  __c30_signature
-                  0x004e70          0x6 build/default/production/src/COM1_WriteParameters_HMI.o
+                  0x004e88          0x6 build/default/production/src/COM1_WriteParameters_HMI.o
  __c30_signature
-                  0x004e76          0x6 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+                  0x004e8e          0x6 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
  __c30_signature
-                  0x004e7c          0x6 build/default/production/src/COM1_Parsing_HMI.o
+                  0x004e94          0x6 build/default/production/src/COM1_Parsing_HMI.o
  __c30_signature
-                  0x004e82          0x6 build/default/production/src/COM1_AlarmPacket_Generator.o
+                  0x004e9a          0x6 build/default/production/src/COM1_AlarmPacket_Generator.o
  __c30_signature
-                  0x004e88          0x6 build/default/production/src/uC_InitialTestParameter.o
+                  0x004ea0          0x6 build/default/production/src/uC_InitialTestParameter.o
  __c30_signature
-                  0x004e8e          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
+                  0x004ea6          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x004e94          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
+                  0x004eac          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
  __c30_signature
-                  0x004e9a          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsi3.epeo)
+                  0x004eb2          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsi3.epeo)
  __c30_signature
-                  0x004ea0          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(modsi3.epeo)
+                  0x004eb8          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(modsi3.epeo)
  __c30_signature
-                  0x004ea6          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(udivsi3.epeo)
+                  0x004ebe          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(udivsi3.epeo)
  __c30_signature
-                  0x004eac          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(umodsi3.epeo)
+                  0x004ec4          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(umodsi3.epeo)
 
 .bss                0x1000       0x1d52
  .bss               0x1000       0x14b0 build/default/production/src/uC_HMI_Utility.o
@@ -4830,7 +4830,7 @@ __c30_signature
                     0x2bae                  _FAN1_1_RunTimeDisplay
                     0x2bb8                  _lastFAN2_RunTimeDisplay
                     0x2bc2                  _FAN2_RunTimeDisplay
-                    0x2bcc                  _SCR_RunTimeDisplay
+                    0x2bcc                  _HEATER_RunTimeDisplay
                     0x2bd8                  _lastSCR_RunTimeDisplay
                     0x2be4                  _MTR4_RunTimeDisplay
                     0x2bee                  _lastMTR4_RunTimeDisplay
@@ -4868,9 +4868,9 @@ __c30_signature
  .bss               0x2db6         0x22 build/default/production/src/COM3_RX_Parsing_ActMcu.o
                     0x2db6                  _U3_ParsingData
                     0x2dba                  _U3_ParsingWord
-                    0x2dbc                  _COM3_Rx_Size
-                    0x2dbe                  _ioStatus
-                    0x2dc2                  _alarmStatus
+                    0x2dbc                  _ioStatus
+                    0x2dc0                  _alarmStatus
+                    0x2dd0                  _COM3_Rx_Size
                     0x2dd2                  _ExtFirmwareVersion
                     0x2dd4                  _ExtFirmwareDate
 

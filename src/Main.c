@@ -19,10 +19,8 @@ _FAS( AWRP_OFF & APL_OFF & APLK_OFF );
 _FPOR(FPWRT_PWR2 & BOREN_ON & ALTI2C1_OFF & ALTI2C2_OFF );
 _FICD( RSTPRI_PF & ICS_PGD1 & JTAGEN_OFF );
 
-
-
 unsigned int FirmwareVersion=1;//2;
-unsigned long FirmwareDate=20220531;//20220124;//20210820;
+unsigned long FirmwareDate = 20230523; //Isen：20230523
 
 extern void INIT_PWM(void);
 extern void INIT_PWMX(void);
