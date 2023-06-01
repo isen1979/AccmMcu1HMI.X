@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv1_11 (A) Í
+Microchip Technology Inc, vv1_11 (A) Ç
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -111,11 +111,11 @@ Program Memory  [Origin = 0x200, Length = 0x555fe]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x12e           0x1c5  (453)
-.text                        0x32e              0xb448         0x10e6c  (69228)
-.dinit                      0xb776               0x10a           0x18f  (399)
-.text                       0xb880               0x1de           0x2cd  (717)
+.text                        0x32e              0xb46c         0x10ea2  (69282)
+.dinit                      0xb79a               0x10a           0x18f  (399)
+.text                       0xb8a4               0x1de           0x2cd  (717)
 
-                     Total program memory used (bytes):        0x1148d  (70797) 13%
+                     Total program memory used (bytes):        0x114c3  (70851) 13%
 
 
 Auxflash Memory  [Origin = 0x7fc000, Length = 0x3ff8]
@@ -419,8 +419,8 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x000222                  __psv_init
-                  0x00022e                  __data_init
                   0x00022e                  __data_init_extended
+                  0x00022e                  __data_init
                   0x0002c8                  __DefaultInterrupt
                   0x0002cc                  ___divsi3
                   0x0002ea                  ___modsi3
@@ -491,423 +491,425 @@ External Symbols in Program Memory (by address):
                   0x003e74                  _Register_COM3_Send_Command
                   0x003eac                  _COM3_Send_All_Command
                   0x003eca                  _SendSystemResetControlCommand
-                  0x003ed6                  _SendMTR4MaualControlCommand
-                  0x003ee2                  _SendFAN1MaualControlCommand
-                  0x003eee                  _SendFAN2MaualControlCommand
-                  0x003efa                  _SendPCD20MaualControlCommand
-                  0x003f06                  _SendPCD22MaualControlCommand
-                  0x003f12                  _SendPCD25MaualControlCommand
-                  0x003f1e                  _SendPCD2MaualControlCommand
-                  0x003f2a                  _SendPCD6MaualControlCommand
-                  0x003f36                  _SendV21MaualControlCommand
-                  0x003f42                  _SendSystemAutoStartStopControlCommand
-                  0x003f4e                  _SendSystemAutoGasInControlCommand
-                  0x003f5a                  _SendSystemGasInOutControlCommand
-                  0x003f66                  _SendSystemManualModeControl
-                  0x003f72                  _SendFAN1_1_PID_OnControlCommand
-                  0x003f7e                  _SendFAN1_1_PID_AutoControlCommand
-                  0x003f8a                  _SendHeater_PID_AutoControlCommand
-                  0x003f96                  _Send_PCD_20_PID_AutoControlCommand
-                  0x003fa2                  _SendSystemManualControlCommand
-                  0x003fae                  _COM3_Send_FAN1_Command
-                  0x003fc8                  _COM3_Send_FAN2_Command
-                  0x003fd6                  _COM3_Send_MTR4_Command
-                  0x003fe8                  _COM3_Send_PCD20_Command
-                  0x003ffe                  _COM3_Send_PCD22_Command
-                  0x004008                  _COM3_Send_PCD25_Command
-                  0x004016                  _COM3_Send_Heater_Command
-                  0x004030                  _CheckSendingAck
-                  0x00408c                  _COM3_TxRotatorManual_Control
-                  0x0040d4                  _COM3_TxFAN1_Manual_Control
-                  0x00411c                  _COM3_TxFAN2_Manual_Control
-                  0x004164                  _COM3_TxPCD20_Manual_Control
-                  0x0041ac                  _COM3_TxPCD22_Manual_Control
-                  0x0041f4                  _COM3_TxPCD25_Manual_Control
-                  0x00423c                  _COM3_TxPCD2_Manual_Control
-                  0x004284                  _COM3_TxPCD6_Manual_Control
-                  0x0042cc                  _COM3_TxV21_Manual_Control
-                  0x004314                  _COM3_SystemAutoStartStop_Control
-                  0x00435c                  _COM3_SystemFaultReset_Control
-                  0x00436e                  _COM3_AutoGasInControl
-                  0x004388                  _COM3_GasInOutControl
-                  0x0043a2                  _COM3_SystemManualControl
-                  0x0043bc                  _COM3_FAN1_1_PID_OnControl
-                  0x0043d6                  _COM3_FAN1_1_PID_AutoControl
-                  0x0043f0                  _COM3_Heater_PID_AutoControl
-                  0x00440a                  _COM3_PCD_20_PID_AutoControl
-                  0x004424                  _COM3_Send_ButtonStatus
-                  0x004438                  _COM3_TxSet_FAN1_Parameter
-                  0x004546                  _COM3_TxSet_FAN2_Parameter
-                  0x0045d0                  _COM3_TxSet_MTR4_Parameter
-                  0x004688                  _COM3_TxSet_PCD20_Parameter
-                  0x004776                  _COM3_TxSet_PCD22_Parameter
-                  0x0047b4                  _COM3_TxSet_PCD25_Parameter
-                  0x00483e                  _COM3_TxSet_Heater_Parameter
-                  0x00495a                  _COM3_TxSet_PCD2_PCD6_Parameter
-                  0x0049b2                  _COM3_TxSet_V21_Parameter
-                  0x0049f0                  _COM3_TxSet_Alarm_Parameter
-                  0x004a4c                  _COM3_TxRequestFirmwareVersionCommand
-                  0x004a74                  _Send_Button_Command
-                  0x004b02                  _COM3_CreateCRC
-                  0x004b2a                  _COM3_SendingCommandControl
-                  0x004ca0                  _COM3_SendControl
-                  0x004d1a                  _SendFan1_1_GetSV_Response
-                  0x004d8e                  _SendFan1_1_GetPI_Response
-                  0x004e02                  _SendFan1_1_GetD_LowLimit_Response
-                  0x004e7a                  _SendFan1_1_Get_TopLimit_Response
-                  0x004eee                  _SendFan1_1_Get_ManualSet_Response
-                  0x004f6a                  _Send_GetFan2TempSetSpeedTopLimit_Response
-                  0x004fde                  _Send_GetFan2SpeedSetResponse
-                  0x005052                  _Send_HeaterGetTempSetDbResponse
-                  0x0050c6                  _Send_Heater_Get_HH2LLSetResponse
-                  0x00513a                  _Send_Heater_GetSP2LowLimitSetResponse
-                  0x0051ae                  _Send_Heater_GetPI_SetResponse
-                  0x005222                  _Send_Heater_GetManualSetResponse
-                  0x005296                  _Send_MTR4_GetTE5ConditionSetResponse
-                  0x00530a                  _Send_MTR4_GetTE5SpeedSetResponse
-                  0x00537e                  _Send_MTR4_GetTopStopLowSetResponse
-                  0x0053f2                  _Send_GetPCD2_V21SetResponse
-                  0x005466                  _Send_GetPCD20_TempSizeSetResponse
-                  0x0054da                  _Send_GetPCD20_PISetResponse
-                  0x00554e                  _Send_GetPCD20_D_TimeSetResponse
-                  0x0055c6                  _Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse
-                  0x00563a                  _Send_GetPCD22_SetResponse
-                  0x0056ae                  _Send_GetPCD25_PCD6TimeSetResponse
-                  0x005722                  _Send_GetPCD25_Limit_ManualSetResponse
-                  0x005796                  _I2C_EEPROM_WRITE
-                  0x005856                  _I2C_EEPROM_READ
-                  0x00596e                  _WriteSystemParameterToI2C_EEPROM
-                  0x005abe                  _RegisterWriteEEPROM
-                  0x005b22                  _RegisterReadEEPROM
-                  0x005ba2                  _Built_EEPROM_WriteBuf
-                  0x005be4                  _RunWriteProcess
-                  0x005d7e                  _Get_EEPROM_Data
-                  0x005dae                  _RunReadProcess
-                  0x005f1e                  _RunEEPROM_ReadWriteProcess
-                  0x005f70                  _IsReadEEPROM_DataFinish
-                  0x005f90                  _Initial_EEPROM_Read_Write_Process
-                  0x005fba                  _INIT_IOPORT
-                  0x006004                  _enable_ext_interrupt
-                  0x0060da                  _enable_capture_timebace
-                  0x006182                  _enable_capture_io
-                  0x0062de                  _get_total_input_status
-                  0x0062fa                  _Set_Output_bit_Status
-                  0x006378                  _Clear_Output_bit_Status
-                  0x0063f6                  _InverseOutPutBit
-                  0x0065ec                  _InverseOutput
-                  0x00678e                  _SendFirmwareVersion
-                  0x006828                  _Send_LoopBackResponse
-                  0x006850                  _Get_TE1_3_5_6_SendPacket
-                  0x0068cc                  _Get_TE8_10_11_12_SendPacket
-                  0x006948                  _Get_PDT1_2_3_SendPacket
-                  0x0069c4                  _Get_FAN1_RunTime_SendPacket
-                  0x006a40                  _Get_FAN2_RunTime_SendPacket
-                  0x006abc                  _Get_MTR4_RunTime_SendPacket
-                  0x006b34                  _Get_Input_Heater_RunTime_SendPacket
-                  0x006bb0                  _Get_PCD_RunTime_SendPacket
-                  0x006c28                  _Get_UsingRecord_RunTime_SendPacket
-                  0x006ca4                  _Get_AlarmStatus_RunTime_SendPacket
-                  0x006d34                  _Get_SystemStatus_RunTime_SendPacket
-                  0x006df6                  _RoutineSendingProcess
-                  0x006eae                  _ResponseSendingProcess
-                  0x006ebc                  _Android_HMI_SendingControl
-                  0x006f2a                  _INIT_ADC
-                  0x006faa                  _ADC_GET_VAL
-                  0x00703e                  _UNSYNC_ADC_GET_VAL
-                  0x007078                  _DAC_REG_RW
-                  0x0071e6                  _GET_DAC_OUTPUT_DATA
-                  0x00735e                  _SET_DAC_OUTPUT
-                  0x00749c                  _INIT_DAC
-                  0x007590                  _Inverter_Control_By_DAC
-                  0x0075e8                  _WriteParameterParsing
-                  0x00773c                  _Android_ButtonProcess
-                  0x007a5a                  _Android_HMI_Parsing
-                  0x007c9c                  _Send_GetAlarm_A1_SetResponse
-                  0x007d10                  _Send_GetAlarm_A1_A2SetResponse
-                  0x007d84                  _Send_GetAlarm_A2_B_SetResponse
-                  0x007df8                  _Send_GetHeaterTempAlarm_SetResponse
-                  0x007e6c                  _Send_GetHeaterPDTAlarm_SetResponse
-                  0x007ee0                  _Send_GetMTR4TempAlarm_SetResponse
-                  0x007f54                  _Send_Get_MTR4TempPDTAlarm_SetResponse
-                  0x007fc8                  _Send_GetD_Alarm1_Set_SetResponse
-                  0x00803c                  _Send_GetD_Alarm2_Set_SetResponse
-                  0x0080b0                  _Send_GetD_Alarm3__D1_SetResponse
-                  0x008124                  _Send_GetD1_Alarm2_Set_SetResponse
-                  0x008198                  _Send_GetD1_Alarm3_SetResponse
-                  0x00820c                  _INIT_SPI1
-                  0x00827a                  _spi1_txrx
-                  0x0082a8                  _spi1_txrx16
-                  0x0082dc                  _INIT_EXT_IO
-                  0x0083a0                  _EXTIO_SET_OUTPUT
-                  0x0083f0                  _EXTIO_GET_OUTPUT
-                  0x008450                  _EXTIO_GET_INPUT
-                  0x0084b0                  _INIT_I2C
-                  0x0084c2                  _i2c_send_byte
-                  0x008538                  _msb_lsb_change
-                  0x008594                  _i2c_wr
-                  0x00868a                  _INIT_EXT_RTC
-                  0x0086be                  _INIT_INT_RTC
-                  0x0086f0                  _UPDATE_SYS_TIME
-                  0x00874c                  _Initial_uCHMI_SuddenSendBuffer
-                  0x008780                  _RegisterSendingPacket
-                  0x00882c                  _uC_HMI_RunReadByteSend
-                  0x00884e                  _uC_HMI_RunReadWordSend
-                  0x008870                  _uC_HMI_RunReadLongWordSend
-                  0x008892                  _uC_HMI_RunReadTextVariableSend
-                  0x0088b6                  _uC_HMI_RunWriteSingleByteSend
-                  0x0088e2                  _uC_HMI_RunWriteMultiByteSend
-                  0x008900                  _uC_HMI_RunWriteSingleWordSend
-                  0x008938                  _uC_HMI_RunWriteMultiWordSend
-                  0x008956                  _uC_HMI_RunWriteSingleLongWordSend
-                  0x008996                  _uC_HMI_RunWriteMultiLongWordSend
-                  0x0089b4                  _uC_HMI_RunWriteTextVariableSend
-                  0x008a14                  _uC_HMI_RunDeleteTextVariableSend
-                  0x008a34                  _Set_uCHMI_RtcDate
-                  0x008aae                  _Set_uCHMI_RtcTime
-                  0x008b28                  _uC_HMI_Check_Ack
-                  0x008b52                  _uC_HMI_CRC_CREATE
-                  0x008bda                  _uC_HMI_CRC_Check_OK
-                  0x008c24                  _SendRecordFileName
-                  0x008cfc                  _Get_uCHMI_DateCodeSend
-                  0x008d08                  _SetReadSDIndex
-                  0x008d14                  _StartGetReadSDIndex
-                  0x008d20                  _ReadSD_RecordData
-                  0x008d2c                  _Get_uCHMI_DateCode
-                  0x008d5e                  _SetRecordPosition
-                  0x008dd8                  _GetReadSDIndex
-                  0x008e42                  _SendChartRecordFileName
-                  0x008f86                  _PlayBackUpdateChartTimeDisplay
-                  0x008fc8                  _StartChart1PlayBack
-                  0x008fec                  _StartChart2PlayBack
-                  0x009010                  _StartChart3PlayBack
-                  0x009034                  _SetPlayBackDay
-                  0x0090da                  _INIT_OSC
-                  0x009142                  _delay_ms
-                  0x009176                  _delay_ns
-                  0x009198                  _INIT_TIMER1
-                  0x009212                  _enable_timer1
-                  0x009224                  _disable_timer1
-                  0x009236                  __T1Interrupt
-                  0x00925c                  _INIT_TIMER3
-                  0x0092f2                  _enable_timer3
-                  0x009304                  _disable_timer3
-                  0x009316                  __T3Interrupt
-                  0x00931e                  _INIT_TIMER5
-                  0x0093b4                  _enable_timer5
-                  0x0093c6                  _disable_timer5
-                  0x0093d8                  __T5Interrupt
-                  0x0093e0                  _clear_memory
-                  0x00940a                  _INIT_TIMER7
-                  0x0094a0                  _enable_timer7
-                  0x0094b2                  _disable_timer7
-                  0x0094c4                  __T7Interrupt
-                  0x0094cc                  _INIT_TIMER9
-                  0x009562                  _enable_timer9
-                  0x009574                  _disable_timer9
-                  0x009586                  __T9Interrupt
-                  0x00958e                  _ClearUART1_Counter
-                  0x0095ac                  _ClearUART2_Counter
-                  0x0095c4                  _ClearUART3_Counter
-                  0x0095dc                  _StartUART1WaitTimer
-                  0x0095e6                  _StartUART2WaitTimer
-                  0x0095f0                  _StartUART3WaitTimer
-                  0x0095fa                  _INIT_UART1
-                  0x00965c                  _INIT_UART2
-                  0x0096e6                  _INIT_UART3
-                  0x009768                  _uart1_tx
-                  0x009776                  _uart2_tx
-                  0x009784                  _uart2_rx
-                  0x0097a0                  _uart3_tx
-                  0x0097ae                  _IsCOM1_TX_Busy
-                  0x0097c4                  _IsCOM2_TX_Busy
-                  0x0097da                  _IsCOM3_TX_Busy
-                  0x0097f0                  _uart3_rx
-                  0x00980c                  __U1TXInterrupt
-                  0x009818                  __U1RXInterrupt
-                  0x00984c                  __U2RXInterrupt
-                  0x009880                  __U3RXInterrupt
-                  0x0098b4                  _UARTRXTimeOutCheck
-                  0x009944                  _CommandParsingProcess
-                  0x00997c                  _SEND_U1_RS422CMD_Process
-                  0x00999e                  _SEND_U2_RS422_CMD_Process
-                  0x0099c0                  _SEND_U3_RS422_CMD_Process
-                  0x0099e2                  _GetReadByteData
-                  0x009a10                  _GetReadWordData
-                  0x009a7a                  _GetReadLongWordData
-                  0x009b4e                  _GetReadTextData
-                  0x009bce                  _MachineUcHMI_EventProcess
-                  0x009e36                  _COM3_GET_TE01_TE06_CMD
-                  0x009e8c                  _COM3_GET_TE08_PDT1_FAN2_CMD
-                  0x009ee2                  _COM3_GET_TE10_PT1_CMD
-                  0x009f38                  _COM3_GET_ROTATOR_PDT5_CMD
-                  0x009f8e                  _COM3_GET_FAN1_1_PCD25_CMD
-                  0x009fe4                  _COM3_GET_IO_STATUS_CMD
-                  0x00a00e                  _COM3_GET_ALARM_STATUS_CMD
-                  0x00a076                  _COM3_GET_FAN1_FAN2_Current_CMD
-                  0x00a0cc                  _COM3_GET_SystemRunStatus
-                  0x00a0ea                  _GetRunTimeHeaterFAN1_1_Status
-                  0x00a140                  _Get_ExtControllerFirmware
-                  0x00a1a6                  _U3CommandParsing
-                  0x00a244                  _DelayTimer
-                  0x00a282                  _LoadSystemParameter
-                  0x00a2ae                  _SaveSystemParameter
-                  0x00a2d4                  _LoadRunTimeStatus
-                  0x00a2fa                  _SaveRunTimeStatus
-                  0x00a34c                  _InitialSystemParameter
-                  0x00a352                  _FormatEEPROM
-                  0x00a398                  _Initial_OutputPorts
-                  0x00a45e                  _Initial_OutputPortsHigh
-                  0x00a524                  _DynamicStoreRunTimeData
-                  0x00a53c                  _SystemControl
-                  0x00a5f6                  _ScanPortH
-                  0x00a6bc                  _ScanPortJ
-                  0x00a6c2                  _ScanPortD
-                  0x00a788                  _ExternalInputScan
-                  0x00a8b6                  _ScanInputPort
-                  0x00a8c2                  _data16_strdec
-                  0x00aa38                  _strdec_to_data
-                  0x00aaaa                  _CRC_CREATE
-                  0x00ab1a                  _CRC_CHECK
-                  0x00ab40                  _INIT_QEIX
-                  0x00abec                  _INIT_QEIY
-                  0x00ac94                  _GET_ENCX
-                  0x00acb4                  _GET_ENCY
-                  0x00acd4                  _GET_INDEX_X
-                  0x00acf4                  _GET_INDEX_Y
-                  0x00ad14                  _INIT_LIMITX
-                  0x00ad1e                  _INIT_LIMITY
-                  0x00ad28                  _get_limit_x1
-                  0x00ad3e                  _get_limit_x2
-                  0x00ad54                  _get_limit_y1
-                  0x00ad6a                  _get_limit_y2
-                  0x00ad7e                  _GetEncoderY_Value
-                  0x00ada8                  _ClearEncoderY_Value
-                  0x00adb6                  _InitialPWMPeriodX
-                  0x00add0                  _InitialPWMPeriodY
-                  0x00adea                  _INIT_PWMX
-                  0x00ae30                  _INIT_PWMY
-                  0x00ae7a                  _PWMX_EN
-                  0x00ae90                  _PWMX_DIS
-                  0x00aea0                  _PWMY_EN
-                  0x00aeb6                  _PWMY_DIS
-                  0x00aec6                  _INIT_PWM
-                  0x00b014                  _uC_HMI_Send_Packet
-                  0x00b148                  _IsAckReceived
-                  0x00b19e                  _uC_HMI_SendingControl
-                  0x00b25c                  _OpenDialog
-                  0x00b282                  _CloseDialog
-                  0x00b2a4                  _uC_HMI_SetPage
-                  0x00b2b6                  _SetSelectItemFontColor
-                  0x00b492                  _ShowFAN1_RunTimeDisplayControl
-                  0x00b4d6                  _ShowFAN2_RunTimeDisplayControl
-                  0x00b50e                  _SCR_RunTimeDisplayContorl
-                  0x00b552                  _PCD20_RunTimeDisplayControl
-                  0x00b58a                  _ShowMTR4RunTimeDisplayControl
-                  0x00b5ce                  _ShowRunTimeOtherDisplayControl
-                  0x00b62a                  _ShowRunTimeDisplay
-                  0x00b63c                  _uC_HMI_ParsingProcess
-                  0x00b744                  _uC_HMI_Parsing
-                  0x00b880                  _LoopBackResponseProcess
-                  0x00b8a8                  _LoopBackResponse
-                  0x00b8b4                  _COM2_Build_Send_Packet
-                  0x00b8e6                  _COM2_SendControl_Process
-                  0x00b972                  _COM2_SendControl
-                  0x00b97a                  _main
-                  0x00b9ce                  _DEC2BCD
-                  0x00ba00                  _BCD2DEC
-                  0x00ba1a                  _U2CommandParsing
+                  0x003ed6                  _SendFunctionResetControlCommand
+                  0x003ee2                  _SendFaultOFFControlCommand
+                  0x003eee                  _SendMTR4MaualControlCommand
+                  0x003efa                  _SendFAN1MaualControlCommand
+                  0x003f06                  _SendFAN2MaualControlCommand
+                  0x003f12                  _SendPCD20MaualControlCommand
+                  0x003f1e                  _SendPCD22MaualControlCommand
+                  0x003f2a                  _SendPCD25MaualControlCommand
+                  0x003f36                  _SendPCD2MaualControlCommand
+                  0x003f42                  _SendPCD6MaualControlCommand
+                  0x003f4e                  _SendV21MaualControlCommand
+                  0x003f5a                  _SendSystemAutoStartStopControlCommand
+                  0x003f66                  _SendSystemAutoGasInControlCommand
+                  0x003f72                  _SendSystemGasInOutControlCommand
+                  0x003f7e                  _SendSystemManualModeControl
+                  0x003f8a                  _SendFAN1_1_PID_OnControlCommand
+                  0x003f96                  _SendFAN1_1_PID_AutoControlCommand
+                  0x003fa2                  _SendHeater_PID_AutoControlCommand
+                  0x003fae                  _Send_PCD_20_PID_AutoControlCommand
+                  0x003fba                  _SendSystemManualControlCommand
+                  0x003fc6                  _COM3_Send_FAN1_Command
+                  0x003fe0                  _COM3_Send_FAN2_Command
+                  0x003fee                  _COM3_Send_MTR4_Command
+                  0x004000                  _COM3_Send_PCD20_Command
+                  0x004016                  _COM3_Send_PCD22_Command
+                  0x004020                  _COM3_Send_PCD25_Command
+                  0x00402e                  _COM3_Send_Heater_Command
+                  0x004048                  _CheckSendingAck
+                  0x0040a4                  _COM3_TxRotatorManual_Control
+                  0x0040ec                  _COM3_TxFAN1_Manual_Control
+                  0x004134                  _COM3_TxFAN2_Manual_Control
+                  0x00417c                  _COM3_TxPCD20_Manual_Control
+                  0x0041c4                  _COM3_TxPCD22_Manual_Control
+                  0x00420c                  _COM3_TxPCD25_Manual_Control
+                  0x004254                  _COM3_TxPCD2_Manual_Control
+                  0x00429c                  _COM3_TxPCD6_Manual_Control
+                  0x0042e4                  _COM3_TxV21_Manual_Control
+                  0x00432c                  _COM3_SystemAutoStartStop_Control
+                  0x004374                  _COM3_SystemFaultReset_Control
+                  0x004386                  _COM3_AutoGasInControl
+                  0x0043a0                  _COM3_GasInOutControl
+                  0x0043ba                  _COM3_SystemManualControl
+                  0x0043d4                  _COM3_FAN1_1_PID_OnControl
+                  0x0043ee                  _COM3_FAN1_1_PID_AutoControl
+                  0x004408                  _COM3_Heater_PID_AutoControl
+                  0x004422                  _COM3_PCD_20_PID_AutoControl
+                  0x00443c                  _COM3_Send_ButtonStatus
+                  0x004450                  _COM3_TxSet_FAN1_Parameter
+                  0x00455e                  _COM3_TxSet_FAN2_Parameter
+                  0x0045e8                  _COM3_TxSet_MTR4_Parameter
+                  0x0046a0                  _COM3_TxSet_PCD20_Parameter
+                  0x00478e                  _COM3_TxSet_PCD22_Parameter
+                  0x0047cc                  _COM3_TxSet_PCD25_Parameter
+                  0x004856                  _COM3_TxSet_Heater_Parameter
+                  0x004972                  _COM3_TxSet_PCD2_PCD6_Parameter
+                  0x0049ca                  _COM3_TxSet_V21_Parameter
+                  0x004a08                  _COM3_TxSet_Alarm_Parameter
+                  0x004a64                  _COM3_TxRequestFirmwareVersionCommand
+                  0x004a8c                  _Send_Button_Command
+                  0x004b1a                  _COM3_CreateCRC
+                  0x004b42                  _COM3_SendingCommandControl
+                  0x004cb8                  _COM3_SendControl
+                  0x004d32                  _SendFan1_1_GetSV_Response
+                  0x004da6                  _SendFan1_1_GetPI_Response
+                  0x004e1a                  _SendFan1_1_GetD_LowLimit_Response
+                  0x004e92                  _SendFan1_1_Get_TopLimit_Response
+                  0x004f06                  _SendFan1_1_Get_ManualSet_Response
+                  0x004f82                  _Send_GetFan2TempSetSpeedTopLimit_Response
+                  0x004ff6                  _Send_GetFan2SpeedSetResponse
+                  0x00506a                  _Send_HeaterGetTempSetDbResponse
+                  0x0050de                  _Send_Heater_Get_HH2LLSetResponse
+                  0x005152                  _Send_Heater_GetSP2LowLimitSetResponse
+                  0x0051c6                  _Send_Heater_GetPI_SetResponse
+                  0x00523a                  _Send_Heater_GetManualSetResponse
+                  0x0052ae                  _Send_MTR4_GetTE5ConditionSetResponse
+                  0x005322                  _Send_MTR4_GetTE5SpeedSetResponse
+                  0x005396                  _Send_MTR4_GetTopStopLowSetResponse
+                  0x00540a                  _Send_GetPCD2_V21SetResponse
+                  0x00547e                  _Send_GetPCD20_TempSizeSetResponse
+                  0x0054f2                  _Send_GetPCD20_PISetResponse
+                  0x005566                  _Send_GetPCD20_D_TimeSetResponse
+                  0x0055de                  _Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse
+                  0x005652                  _Send_GetPCD22_SetResponse
+                  0x0056c6                  _Send_GetPCD25_PCD6TimeSetResponse
+                  0x00573a                  _Send_GetPCD25_Limit_ManualSetResponse
+                  0x0057ae                  _I2C_EEPROM_WRITE
+                  0x00586e                  _I2C_EEPROM_READ
+                  0x005986                  _WriteSystemParameterToI2C_EEPROM
+                  0x005ad6                  _RegisterWriteEEPROM
+                  0x005b3a                  _RegisterReadEEPROM
+                  0x005bba                  _Built_EEPROM_WriteBuf
+                  0x005bfc                  _RunWriteProcess
+                  0x005d96                  _Get_EEPROM_Data
+                  0x005dc6                  _RunReadProcess
+                  0x005f36                  _RunEEPROM_ReadWriteProcess
+                  0x005f88                  _IsReadEEPROM_DataFinish
+                  0x005fa8                  _Initial_EEPROM_Read_Write_Process
+                  0x005fd2                  _INIT_IOPORT
+                  0x00601c                  _enable_ext_interrupt
+                  0x0060f2                  _enable_capture_timebace
+                  0x00619a                  _enable_capture_io
+                  0x0062f6                  _get_total_input_status
+                  0x006312                  _Set_Output_bit_Status
+                  0x006390                  _Clear_Output_bit_Status
+                  0x00640e                  _InverseOutPutBit
+                  0x006604                  _InverseOutput
+                  0x0067a6                  _SendFirmwareVersion
+                  0x006840                  _Send_LoopBackResponse
+                  0x006868                  _Get_TE1_3_5_6_SendPacket
+                  0x0068e4                  _Get_TE8_10_11_12_SendPacket
+                  0x006960                  _Get_PDT1_2_3_SendPacket
+                  0x0069dc                  _Get_FAN1_RunTime_SendPacket
+                  0x006a58                  _Get_FAN2_RunTime_SendPacket
+                  0x006ad4                  _Get_MTR4_RunTime_SendPacket
+                  0x006b4c                  _Get_Input_Heater_RunTime_SendPacket
+                  0x006bc8                  _Get_PCD_RunTime_SendPacket
+                  0x006c40                  _Get_UsingRecord_RunTime_SendPacket
+                  0x006cbc                  _Get_AlarmStatus_RunTime_SendPacket
+                  0x006d4c                  _Get_SystemStatus_RunTime_SendPacket
+                  0x006e0e                  _RoutineSendingProcess
+                  0x006ec6                  _ResponseSendingProcess
+                  0x006ed4                  _Android_HMI_SendingControl
+                  0x006f42                  _WriteParameterParsing
+                  0x007096                  _Android_ButtonProcess
+                  0x0073c0                  _Android_HMI_Parsing
+                  0x007602                  _INIT_ADC
+                  0x007682                  _ADC_GET_VAL
+                  0x007716                  _UNSYNC_ADC_GET_VAL
+                  0x007750                  _DAC_REG_RW
+                  0x0078be                  _GET_DAC_OUTPUT_DATA
+                  0x007a36                  _SET_DAC_OUTPUT
+                  0x007b74                  _INIT_DAC
+                  0x007c68                  _Inverter_Control_By_DAC
+                  0x007cc0                  _Send_GetAlarm_A1_SetResponse
+                  0x007d34                  _Send_GetAlarm_A1_A2SetResponse
+                  0x007da8                  _Send_GetAlarm_A2_B_SetResponse
+                  0x007e1c                  _Send_GetHeaterTempAlarm_SetResponse
+                  0x007e90                  _Send_GetHeaterPDTAlarm_SetResponse
+                  0x007f04                  _Send_GetMTR4TempAlarm_SetResponse
+                  0x007f78                  _Send_Get_MTR4TempPDTAlarm_SetResponse
+                  0x007fec                  _Send_GetD_Alarm1_Set_SetResponse
+                  0x008060                  _Send_GetD_Alarm2_Set_SetResponse
+                  0x0080d4                  _Send_GetD_Alarm3__D1_SetResponse
+                  0x008148                  _Send_GetD1_Alarm2_Set_SetResponse
+                  0x0081bc                  _Send_GetD1_Alarm3_SetResponse
+                  0x008230                  _INIT_SPI1
+                  0x00829e                  _spi1_txrx
+                  0x0082cc                  _spi1_txrx16
+                  0x008300                  _INIT_EXT_IO
+                  0x0083c4                  _EXTIO_SET_OUTPUT
+                  0x008414                  _EXTIO_GET_OUTPUT
+                  0x008474                  _EXTIO_GET_INPUT
+                  0x0084d4                  _INIT_I2C
+                  0x0084e6                  _i2c_send_byte
+                  0x00855c                  _msb_lsb_change
+                  0x0085b8                  _i2c_wr
+                  0x0086ae                  _INIT_EXT_RTC
+                  0x0086e2                  _INIT_INT_RTC
+                  0x008714                  _UPDATE_SYS_TIME
+                  0x008770                  _Initial_uCHMI_SuddenSendBuffer
+                  0x0087a4                  _RegisterSendingPacket
+                  0x008850                  _uC_HMI_RunReadByteSend
+                  0x008872                  _uC_HMI_RunReadWordSend
+                  0x008894                  _uC_HMI_RunReadLongWordSend
+                  0x0088b6                  _uC_HMI_RunReadTextVariableSend
+                  0x0088da                  _uC_HMI_RunWriteSingleByteSend
+                  0x008906                  _uC_HMI_RunWriteMultiByteSend
+                  0x008924                  _uC_HMI_RunWriteSingleWordSend
+                  0x00895c                  _uC_HMI_RunWriteMultiWordSend
+                  0x00897a                  _uC_HMI_RunWriteSingleLongWordSend
+                  0x0089ba                  _uC_HMI_RunWriteMultiLongWordSend
+                  0x0089d8                  _uC_HMI_RunWriteTextVariableSend
+                  0x008a38                  _uC_HMI_RunDeleteTextVariableSend
+                  0x008a58                  _Set_uCHMI_RtcDate
+                  0x008ad2                  _Set_uCHMI_RtcTime
+                  0x008b4c                  _uC_HMI_Check_Ack
+                  0x008b76                  _uC_HMI_CRC_CREATE
+                  0x008bfe                  _uC_HMI_CRC_Check_OK
+                  0x008c48                  _SendRecordFileName
+                  0x008d20                  _Get_uCHMI_DateCodeSend
+                  0x008d2c                  _SetReadSDIndex
+                  0x008d38                  _StartGetReadSDIndex
+                  0x008d44                  _ReadSD_RecordData
+                  0x008d50                  _Get_uCHMI_DateCode
+                  0x008d82                  _SetRecordPosition
+                  0x008dfc                  _GetReadSDIndex
+                  0x008e66                  _SendChartRecordFileName
+                  0x008faa                  _PlayBackUpdateChartTimeDisplay
+                  0x008fec                  _StartChart1PlayBack
+                  0x009010                  _StartChart2PlayBack
+                  0x009034                  _StartChart3PlayBack
+                  0x009058                  _SetPlayBackDay
+                  0x0090fe                  _INIT_OSC
+                  0x009166                  _delay_ms
+                  0x00919a                  _delay_ns
+                  0x0091bc                  _INIT_TIMER1
+                  0x009236                  _enable_timer1
+                  0x009248                  _disable_timer1
+                  0x00925a                  __T1Interrupt
+                  0x009280                  _INIT_TIMER3
+                  0x009316                  _enable_timer3
+                  0x009328                  _disable_timer3
+                  0x00933a                  __T3Interrupt
+                  0x009342                  _INIT_TIMER5
+                  0x0093d8                  _enable_timer5
+                  0x0093ea                  _disable_timer5
+                  0x0093fc                  __T5Interrupt
+                  0x009404                  _clear_memory
+                  0x00942e                  _INIT_TIMER7
+                  0x0094c4                  _enable_timer7
+                  0x0094d6                  _disable_timer7
+                  0x0094e8                  __T7Interrupt
+                  0x0094f0                  _INIT_TIMER9
+                  0x009586                  _enable_timer9
+                  0x009598                  _disable_timer9
+                  0x0095aa                  __T9Interrupt
+                  0x0095b2                  _ClearUART1_Counter
+                  0x0095d0                  _ClearUART2_Counter
+                  0x0095e8                  _ClearUART3_Counter
+                  0x009600                  _StartUART1WaitTimer
+                  0x00960a                  _StartUART2WaitTimer
+                  0x009614                  _StartUART3WaitTimer
+                  0x00961e                  _INIT_UART1
+                  0x009680                  _INIT_UART2
+                  0x00970a                  _INIT_UART3
+                  0x00978c                  _uart1_tx
+                  0x00979a                  _uart2_tx
+                  0x0097a8                  _uart2_rx
+                  0x0097c4                  _uart3_tx
+                  0x0097d2                  _IsCOM1_TX_Busy
+                  0x0097e8                  _IsCOM2_TX_Busy
+                  0x0097fe                  _IsCOM3_TX_Busy
+                  0x009814                  _uart3_rx
+                  0x009830                  __U1TXInterrupt
+                  0x00983c                  __U1RXInterrupt
+                  0x009870                  __U2RXInterrupt
+                  0x0098a4                  __U3RXInterrupt
+                  0x0098d8                  _UARTRXTimeOutCheck
+                  0x009968                  _CommandParsingProcess
+                  0x0099a0                  _SEND_U1_RS422CMD_Process
+                  0x0099c2                  _SEND_U2_RS422_CMD_Process
+                  0x0099e4                  _SEND_U3_RS422_CMD_Process
+                  0x009a06                  _GetReadByteData
+                  0x009a34                  _GetReadWordData
+                  0x009a9e                  _GetReadLongWordData
+                  0x009b72                  _GetReadTextData
+                  0x009bf2                  _MachineUcHMI_EventProcess
+                  0x009e5a                  _COM3_GET_TE01_TE06_CMD
+                  0x009eb0                  _COM3_GET_TE08_PDT1_FAN2_CMD
+                  0x009f06                  _COM3_GET_TE10_PT1_CMD
+                  0x009f5c                  _COM3_GET_ROTATOR_PDT5_CMD
+                  0x009fb2                  _COM3_GET_FAN1_1_PCD25_CMD
+                  0x00a008                  _COM3_GET_IO_STATUS_CMD
+                  0x00a032                  _COM3_GET_ALARM_STATUS_CMD
+                  0x00a09a                  _COM3_GET_FAN1_FAN2_Current_CMD
+                  0x00a0f0                  _COM3_GET_SystemRunStatus
+                  0x00a10e                  _GetRunTimeHeaterFAN1_1_Status
+                  0x00a164                  _Get_ExtControllerFirmware
+                  0x00a1ca                  _U3CommandParsing
+                  0x00a268                  _DelayTimer
+                  0x00a2a6                  _LoadSystemParameter
+                  0x00a2d2                  _SaveSystemParameter
+                  0x00a2f8                  _LoadRunTimeStatus
+                  0x00a31e                  _SaveRunTimeStatus
+                  0x00a370                  _InitialSystemParameter
+                  0x00a376                  _FormatEEPROM
+                  0x00a3bc                  _Initial_OutputPorts
+                  0x00a482                  _Initial_OutputPortsHigh
+                  0x00a548                  _DynamicStoreRunTimeData
+                  0x00a560                  _SystemControl
+                  0x00a61a                  _ScanPortH
+                  0x00a6e0                  _ScanPortJ
+                  0x00a6e6                  _ScanPortD
+                  0x00a7ac                  _ExternalInputScan
+                  0x00a8da                  _ScanInputPort
+                  0x00a8e6                  _data16_strdec
+                  0x00aa5c                  _strdec_to_data
+                  0x00aace                  _CRC_CREATE
+                  0x00ab3e                  _CRC_CHECK
+                  0x00ab64                  _INIT_QEIX
+                  0x00ac10                  _INIT_QEIY
+                  0x00acb8                  _GET_ENCX
+                  0x00acd8                  _GET_ENCY
+                  0x00acf8                  _GET_INDEX_X
+                  0x00ad18                  _GET_INDEX_Y
+                  0x00ad38                  _INIT_LIMITX
+                  0x00ad42                  _INIT_LIMITY
+                  0x00ad4c                  _get_limit_x1
+                  0x00ad62                  _get_limit_x2
+                  0x00ad78                  _get_limit_y1
+                  0x00ad8e                  _get_limit_y2
+                  0x00ada2                  _GetEncoderY_Value
+                  0x00adcc                  _ClearEncoderY_Value
+                  0x00adda                  _InitialPWMPeriodX
+                  0x00adf4                  _InitialPWMPeriodY
+                  0x00ae0e                  _INIT_PWMX
+                  0x00ae54                  _INIT_PWMY
+                  0x00ae9e                  _PWMX_EN
+                  0x00aeb4                  _PWMX_DIS
+                  0x00aec4                  _PWMY_EN
+                  0x00aeda                  _PWMY_DIS
+                  0x00aeea                  _INIT_PWM
+                  0x00b038                  _uC_HMI_Send_Packet
+                  0x00b16c                  _IsAckReceived
+                  0x00b1c2                  _uC_HMI_SendingControl
+                  0x00b280                  _OpenDialog
+                  0x00b2a6                  _CloseDialog
+                  0x00b2c8                  _uC_HMI_SetPage
+                  0x00b2da                  _SetSelectItemFontColor
+                  0x00b4b6                  _ShowFAN1_RunTimeDisplayControl
+                  0x00b4fa                  _ShowFAN2_RunTimeDisplayControl
+                  0x00b532                  _SCR_RunTimeDisplayContorl
+                  0x00b576                  _PCD20_RunTimeDisplayControl
+                  0x00b5ae                  _ShowMTR4RunTimeDisplayControl
+                  0x00b5f2                  _ShowRunTimeOtherDisplayControl
+                  0x00b64e                  _ShowRunTimeDisplay
+                  0x00b660                  _uC_HMI_ParsingProcess
+                  0x00b768                  _uC_HMI_Parsing
+                  0x00b8a4                  _LoopBackResponseProcess
+                  0x00b8cc                  _LoopBackResponse
+                  0x00b8d8                  _COM2_Build_Send_Packet
+                  0x00b90a                  _COM2_SendControl_Process
+                  0x00b996                  _COM2_SendControl
+                  0x00b99e                  _main
+                  0x00b9f2                  _DEC2BCD
+                  0x00ba24                  _BCD2DEC
+                  0x00ba3e                  _U2CommandParsing
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x006faa                  _ADC_GET_VAL
-                  0x00773c                  _Android_ButtonProcess
-                  0x007a5a                  _Android_HMI_Parsing
-                  0x006ebc                  _Android_HMI_SendingControl
-                  0x00ba00                  _BCD2DEC
-                  0x005ba2                  _Built_EEPROM_WriteBuf
-                  0x00b8b4                  _COM2_Build_Send_Packet
-                  0x00b972                  _COM2_SendControl
-                  0x00b8e6                  _COM2_SendControl_Process
-                  0x00436e                  _COM3_AutoGasInControl
-                  0x004b02                  _COM3_CreateCRC
-                  0x0043d6                  _COM3_FAN1_1_PID_AutoControl
-                  0x0043bc                  _COM3_FAN1_1_PID_OnControl
-                  0x00a00e                  _COM3_GET_ALARM_STATUS_CMD
-                  0x009f8e                  _COM3_GET_FAN1_1_PCD25_CMD
-                  0x00a076                  _COM3_GET_FAN1_FAN2_Current_CMD
-                  0x009fe4                  _COM3_GET_IO_STATUS_CMD
-                  0x009f38                  _COM3_GET_ROTATOR_PDT5_CMD
-                  0x00a0cc                  _COM3_GET_SystemRunStatus
-                  0x009e36                  _COM3_GET_TE01_TE06_CMD
-                  0x009e8c                  _COM3_GET_TE08_PDT1_FAN2_CMD
-                  0x009ee2                  _COM3_GET_TE10_PT1_CMD
-                  0x004388                  _COM3_GasInOutControl
-                  0x0043f0                  _COM3_Heater_PID_AutoControl
-                  0x00440a                  _COM3_PCD_20_PID_AutoControl
-                  0x004ca0                  _COM3_SendControl
+                  0x007682                  _ADC_GET_VAL
+                  0x007096                  _Android_ButtonProcess
+                  0x0073c0                  _Android_HMI_Parsing
+                  0x006ed4                  _Android_HMI_SendingControl
+                  0x00ba24                  _BCD2DEC
+                  0x005bba                  _Built_EEPROM_WriteBuf
+                  0x00b8d8                  _COM2_Build_Send_Packet
+                  0x00b996                  _COM2_SendControl
+                  0x00b90a                  _COM2_SendControl_Process
+                  0x004386                  _COM3_AutoGasInControl
+                  0x004b1a                  _COM3_CreateCRC
+                  0x0043ee                  _COM3_FAN1_1_PID_AutoControl
+                  0x0043d4                  _COM3_FAN1_1_PID_OnControl
+                  0x00a032                  _COM3_GET_ALARM_STATUS_CMD
+                  0x009fb2                  _COM3_GET_FAN1_1_PCD25_CMD
+                  0x00a09a                  _COM3_GET_FAN1_FAN2_Current_CMD
+                  0x00a008                  _COM3_GET_IO_STATUS_CMD
+                  0x009f5c                  _COM3_GET_ROTATOR_PDT5_CMD
+                  0x00a0f0                  _COM3_GET_SystemRunStatus
+                  0x009e5a                  _COM3_GET_TE01_TE06_CMD
+                  0x009eb0                  _COM3_GET_TE08_PDT1_FAN2_CMD
+                  0x009f06                  _COM3_GET_TE10_PT1_CMD
+                  0x0043a0                  _COM3_GasInOutControl
+                  0x004408                  _COM3_Heater_PID_AutoControl
+                  0x004422                  _COM3_PCD_20_PID_AutoControl
+                  0x004cb8                  _COM3_SendControl
                   0x003eac                  _COM3_Send_All_Command
-                  0x004424                  _COM3_Send_ButtonStatus
-                  0x003fae                  _COM3_Send_FAN1_Command
-                  0x003fc8                  _COM3_Send_FAN2_Command
-                  0x004016                  _COM3_Send_Heater_Command
-                  0x003fd6                  _COM3_Send_MTR4_Command
-                  0x003fe8                  _COM3_Send_PCD20_Command
-                  0x003ffe                  _COM3_Send_PCD22_Command
-                  0x004008                  _COM3_Send_PCD25_Command
-                  0x004b2a                  _COM3_SendingCommandControl
-                  0x004314                  _COM3_SystemAutoStartStop_Control
-                  0x00435c                  _COM3_SystemFaultReset_Control
-                  0x0043a2                  _COM3_SystemManualControl
-                  0x0040d4                  _COM3_TxFAN1_Manual_Control
-                  0x00411c                  _COM3_TxFAN2_Manual_Control
-                  0x004164                  _COM3_TxPCD20_Manual_Control
-                  0x0041ac                  _COM3_TxPCD22_Manual_Control
-                  0x0041f4                  _COM3_TxPCD25_Manual_Control
-                  0x00423c                  _COM3_TxPCD2_Manual_Control
-                  0x004284                  _COM3_TxPCD6_Manual_Control
-                  0x004a4c                  _COM3_TxRequestFirmwareVersionCommand
-                  0x00408c                  _COM3_TxRotatorManual_Control
-                  0x0049f0                  _COM3_TxSet_Alarm_Parameter
-                  0x004438                  _COM3_TxSet_FAN1_Parameter
-                  0x004546                  _COM3_TxSet_FAN2_Parameter
-                  0x00483e                  _COM3_TxSet_Heater_Parameter
-                  0x0045d0                  _COM3_TxSet_MTR4_Parameter
-                  0x004688                  _COM3_TxSet_PCD20_Parameter
-                  0x004776                  _COM3_TxSet_PCD22_Parameter
-                  0x0047b4                  _COM3_TxSet_PCD25_Parameter
-                  0x00495a                  _COM3_TxSet_PCD2_PCD6_Parameter
-                  0x0049b2                  _COM3_TxSet_V21_Parameter
-                  0x0042cc                  _COM3_TxV21_Manual_Control
-                  0x00ab1a                  _CRC_CHECK
-                  0x00aaaa                  _CRC_CREATE
-                  0x004030                  _CheckSendingAck
-                  0x00ada8                  _ClearEncoderY_Value
-                  0x00958e                  _ClearUART1_Counter
-                  0x0095ac                  _ClearUART2_Counter
-                  0x0095c4                  _ClearUART3_Counter
-                  0x006378                  _Clear_Output_bit_Status
-                  0x00b282                  _CloseDialog
-                  0x009944                  _CommandParsingProcess
-                  0x007078                  _DAC_REG_RW
-                  0x00b9ce                  _DEC2BCD
-                  0x00a244                  _DelayTimer
-                  0x00a524                  _DynamicStoreRunTimeData
-                  0x008450                  _EXTIO_GET_INPUT
-                  0x0083f0                  _EXTIO_GET_OUTPUT
-                  0x0083a0                  _EXTIO_SET_OUTPUT
-                  0x00a788                  _ExternalInputScan
-                  0x00a352                  _FormatEEPROM
-                  0x0071e6                  _GET_DAC_OUTPUT_DATA
-                  0x00ac94                  _GET_ENCX
-                  0x00acb4                  _GET_ENCY
-                  0x00acd4                  _GET_INDEX_X
-                  0x00acf4                  _GET_INDEX_Y
+                  0x00443c                  _COM3_Send_ButtonStatus
+                  0x003fc6                  _COM3_Send_FAN1_Command
+                  0x003fe0                  _COM3_Send_FAN2_Command
+                  0x00402e                  _COM3_Send_Heater_Command
+                  0x003fee                  _COM3_Send_MTR4_Command
+                  0x004000                  _COM3_Send_PCD20_Command
+                  0x004016                  _COM3_Send_PCD22_Command
+                  0x004020                  _COM3_Send_PCD25_Command
+                  0x004b42                  _COM3_SendingCommandControl
+                  0x00432c                  _COM3_SystemAutoStartStop_Control
+                  0x004374                  _COM3_SystemFaultReset_Control
+                  0x0043ba                  _COM3_SystemManualControl
+                  0x0040ec                  _COM3_TxFAN1_Manual_Control
+                  0x004134                  _COM3_TxFAN2_Manual_Control
+                  0x00417c                  _COM3_TxPCD20_Manual_Control
+                  0x0041c4                  _COM3_TxPCD22_Manual_Control
+                  0x00420c                  _COM3_TxPCD25_Manual_Control
+                  0x004254                  _COM3_TxPCD2_Manual_Control
+                  0x00429c                  _COM3_TxPCD6_Manual_Control
+                  0x004a64                  _COM3_TxRequestFirmwareVersionCommand
+                  0x0040a4                  _COM3_TxRotatorManual_Control
+                  0x004a08                  _COM3_TxSet_Alarm_Parameter
+                  0x004450                  _COM3_TxSet_FAN1_Parameter
+                  0x00455e                  _COM3_TxSet_FAN2_Parameter
+                  0x004856                  _COM3_TxSet_Heater_Parameter
+                  0x0045e8                  _COM3_TxSet_MTR4_Parameter
+                  0x0046a0                  _COM3_TxSet_PCD20_Parameter
+                  0x00478e                  _COM3_TxSet_PCD22_Parameter
+                  0x0047cc                  _COM3_TxSet_PCD25_Parameter
+                  0x004972                  _COM3_TxSet_PCD2_PCD6_Parameter
+                  0x0049ca                  _COM3_TxSet_V21_Parameter
+                  0x0042e4                  _COM3_TxV21_Manual_Control
+                  0x00ab3e                  _CRC_CHECK
+                  0x00aace                  _CRC_CREATE
+                  0x004048                  _CheckSendingAck
+                  0x00adcc                  _ClearEncoderY_Value
+                  0x0095b2                  _ClearUART1_Counter
+                  0x0095d0                  _ClearUART2_Counter
+                  0x0095e8                  _ClearUART3_Counter
+                  0x006390                  _Clear_Output_bit_Status
+                  0x00b2a6                  _CloseDialog
+                  0x009968                  _CommandParsingProcess
+                  0x007750                  _DAC_REG_RW
+                  0x00b9f2                  _DEC2BCD
+                  0x00a268                  _DelayTimer
+                  0x00a548                  _DynamicStoreRunTimeData
+                  0x008474                  _EXTIO_GET_INPUT
+                  0x008414                  _EXTIO_GET_OUTPUT
+                  0x0083c4                  _EXTIO_SET_OUTPUT
+                  0x00a7ac                  _ExternalInputScan
+                  0x00a376                  _FormatEEPROM
+                  0x0078be                  _GET_DAC_OUTPUT_DATA
+                  0x00acb8                  _GET_ENCX
+                  0x00acd8                  _GET_ENCY
+                  0x00acf8                  _GET_INDEX_X
+                  0x00ad18                  _GET_INDEX_Y
                   0x0029c4                  _GetAlarmTypeASystemParameter
                   0x002a5a                  _GetAlarmTypeBSystemParameter
                   0x002c32                  _GetAlarmTypeD1SystemParameter
                   0x002a9e                  _GetBurnSystemAlarmSystemParameter
-                  0x00ad7e                  _GetEncoderY_Value
+                  0x00ada2                  _GetEncoderY_Value
                   0x0022be                  _GetFAN1_1_SystemParameter
                   0x002408                  _GetFAN2_SystemParameter
                   0x001bd2                  _GetFloatTypeKeyBoardValue
@@ -915,175 +917,177 @@ External Symbols in Program Memory (by name):
                   0x00287c                  _GetPCD22_25SystemParameter
                   0x0027c2                  _GetPCD2_V21_SystemParameter
                   0x00268a                  _GetPCD6_20_SystemParameter
-                  0x0099e2                  _GetReadByteData
-                  0x009a7a                  _GetReadLongWordData
-                  0x008dd8                  _GetReadSDIndex
-                  0x009b4e                  _GetReadTextData
-                  0x009a10                  _GetReadWordData
-                  0x00a0ea                  _GetRunTimeHeaterFAN1_1_Status
+                  0x009a06                  _GetReadByteData
+                  0x009a9e                  _GetReadLongWordData
+                  0x008dfc                  _GetReadSDIndex
+                  0x009b72                  _GetReadTextData
+                  0x009a34                  _GetReadWordData
+                  0x00a10e                  _GetRunTimeHeaterFAN1_1_Status
                   0x002490                  _GetSCR_SystemParameter
                   0x001ba2                  _GetSystemParameterId
                   0x002b24                  _GetWheelAlarmSystemParameter
                   0x0025ca                  _GetWheel_SystemParameter
-                  0x006ca4                  _Get_AlarmStatus_RunTime_SendPacket
-                  0x005d7e                  _Get_EEPROM_Data
-                  0x00a140                  _Get_ExtControllerFirmware
-                  0x0069c4                  _Get_FAN1_RunTime_SendPacket
-                  0x006a40                  _Get_FAN2_RunTime_SendPacket
-                  0x006b34                  _Get_Input_Heater_RunTime_SendPacket
-                  0x006abc                  _Get_MTR4_RunTime_SendPacket
-                  0x006bb0                  _Get_PCD_RunTime_SendPacket
-                  0x006948                  _Get_PDT1_2_3_SendPacket
-                  0x006d34                  _Get_SystemStatus_RunTime_SendPacket
-                  0x006850                  _Get_TE1_3_5_6_SendPacket
-                  0x0068cc                  _Get_TE8_10_11_12_SendPacket
-                  0x006c28                  _Get_UsingRecord_RunTime_SendPacket
-                  0x008d2c                  _Get_uCHMI_DateCode
-                  0x008cfc                  _Get_uCHMI_DateCodeSend
-                  0x005856                  _I2C_EEPROM_READ
-                  0x005796                  _I2C_EEPROM_WRITE
-                  0x006f2a                  _INIT_ADC
-                  0x00749c                  _INIT_DAC
-                  0x0082dc                  _INIT_EXT_IO
-                  0x00868a                  _INIT_EXT_RTC
-                  0x0084b0                  _INIT_I2C
-                  0x0086be                  _INIT_INT_RTC
-                  0x005fba                  _INIT_IOPORT
-                  0x00ad14                  _INIT_LIMITX
-                  0x00ad1e                  _INIT_LIMITY
-                  0x0090da                  _INIT_OSC
-                  0x00aec6                  _INIT_PWM
-                  0x00adea                  _INIT_PWMX
-                  0x00ae30                  _INIT_PWMY
-                  0x00ab40                  _INIT_QEIX
-                  0x00abec                  _INIT_QEIY
-                  0x00820c                  _INIT_SPI1
-                  0x009198                  _INIT_TIMER1
-                  0x00925c                  _INIT_TIMER3
-                  0x00931e                  _INIT_TIMER5
-                  0x00940a                  _INIT_TIMER7
-                  0x0094cc                  _INIT_TIMER9
-                  0x0095fa                  _INIT_UART1
-                  0x00965c                  _INIT_UART2
-                  0x0096e6                  _INIT_UART3
-                  0x00adb6                  _InitialPWMPeriodX
-                  0x00add0                  _InitialPWMPeriodY
-                  0x00a34c                  _InitialSystemParameter
-                  0x005f90                  _Initial_EEPROM_Read_Write_Process
-                  0x00a398                  _Initial_OutputPorts
-                  0x00a45e                  _Initial_OutputPortsHigh
-                  0x00874c                  _Initial_uCHMI_SuddenSendBuffer
-                  0x0063f6                  _InverseOutPutBit
-                  0x0065ec                  _InverseOutput
-                  0x007590                  _Inverter_Control_By_DAC
-                  0x00b148                  _IsAckReceived
-                  0x0097ae                  _IsCOM1_TX_Busy
-                  0x0097c4                  _IsCOM2_TX_Busy
-                  0x0097da                  _IsCOM3_TX_Busy
-                  0x005f70                  _IsReadEEPROM_DataFinish
-                  0x00a2d4                  _LoadRunTimeStatus
-                  0x00a282                  _LoadSystemParameter
-                  0x00b8a8                  _LoopBackResponse
-                  0x00b880                  _LoopBackResponseProcess
-                  0x009bce                  _MachineUcHMI_EventProcess
-                  0x00b25c                  _OpenDialog
-                  0x00b552                  _PCD20_RunTimeDisplayControl
-                  0x00ae90                  _PWMX_DIS
-                  0x00ae7a                  _PWMX_EN
-                  0x00aeb6                  _PWMY_DIS
-                  0x00aea0                  _PWMY_EN
-                  0x008f86                  _PlayBackUpdateChartTimeDisplay
-                  0x008d20                  _ReadSD_RecordData
-                  0x005b22                  _RegisterReadEEPROM
-                  0x008780                  _RegisterSendingPacket
-                  0x005abe                  _RegisterWriteEEPROM
+                  0x006cbc                  _Get_AlarmStatus_RunTime_SendPacket
+                  0x005d96                  _Get_EEPROM_Data
+                  0x00a164                  _Get_ExtControllerFirmware
+                  0x0069dc                  _Get_FAN1_RunTime_SendPacket
+                  0x006a58                  _Get_FAN2_RunTime_SendPacket
+                  0x006b4c                  _Get_Input_Heater_RunTime_SendPacket
+                  0x006ad4                  _Get_MTR4_RunTime_SendPacket
+                  0x006bc8                  _Get_PCD_RunTime_SendPacket
+                  0x006960                  _Get_PDT1_2_3_SendPacket
+                  0x006d4c                  _Get_SystemStatus_RunTime_SendPacket
+                  0x006868                  _Get_TE1_3_5_6_SendPacket
+                  0x0068e4                  _Get_TE8_10_11_12_SendPacket
+                  0x006c40                  _Get_UsingRecord_RunTime_SendPacket
+                  0x008d50                  _Get_uCHMI_DateCode
+                  0x008d20                  _Get_uCHMI_DateCodeSend
+                  0x00586e                  _I2C_EEPROM_READ
+                  0x0057ae                  _I2C_EEPROM_WRITE
+                  0x007602                  _INIT_ADC
+                  0x007b74                  _INIT_DAC
+                  0x008300                  _INIT_EXT_IO
+                  0x0086ae                  _INIT_EXT_RTC
+                  0x0084d4                  _INIT_I2C
+                  0x0086e2                  _INIT_INT_RTC
+                  0x005fd2                  _INIT_IOPORT
+                  0x00ad38                  _INIT_LIMITX
+                  0x00ad42                  _INIT_LIMITY
+                  0x0090fe                  _INIT_OSC
+                  0x00aeea                  _INIT_PWM
+                  0x00ae0e                  _INIT_PWMX
+                  0x00ae54                  _INIT_PWMY
+                  0x00ab64                  _INIT_QEIX
+                  0x00ac10                  _INIT_QEIY
+                  0x008230                  _INIT_SPI1
+                  0x0091bc                  _INIT_TIMER1
+                  0x009280                  _INIT_TIMER3
+                  0x009342                  _INIT_TIMER5
+                  0x00942e                  _INIT_TIMER7
+                  0x0094f0                  _INIT_TIMER9
+                  0x00961e                  _INIT_UART1
+                  0x009680                  _INIT_UART2
+                  0x00970a                  _INIT_UART3
+                  0x00adda                  _InitialPWMPeriodX
+                  0x00adf4                  _InitialPWMPeriodY
+                  0x00a370                  _InitialSystemParameter
+                  0x005fa8                  _Initial_EEPROM_Read_Write_Process
+                  0x00a3bc                  _Initial_OutputPorts
+                  0x00a482                  _Initial_OutputPortsHigh
+                  0x008770                  _Initial_uCHMI_SuddenSendBuffer
+                  0x00640e                  _InverseOutPutBit
+                  0x006604                  _InverseOutput
+                  0x007c68                  _Inverter_Control_By_DAC
+                  0x00b16c                  _IsAckReceived
+                  0x0097d2                  _IsCOM1_TX_Busy
+                  0x0097e8                  _IsCOM2_TX_Busy
+                  0x0097fe                  _IsCOM3_TX_Busy
+                  0x005f88                  _IsReadEEPROM_DataFinish
+                  0x00a2f8                  _LoadRunTimeStatus
+                  0x00a2a6                  _LoadSystemParameter
+                  0x00b8cc                  _LoopBackResponse
+                  0x00b8a4                  _LoopBackResponseProcess
+                  0x009bf2                  _MachineUcHMI_EventProcess
+                  0x00b280                  _OpenDialog
+                  0x00b576                  _PCD20_RunTimeDisplayControl
+                  0x00aeb4                  _PWMX_DIS
+                  0x00ae9e                  _PWMX_EN
+                  0x00aeda                  _PWMY_DIS
+                  0x00aec4                  _PWMY_EN
+                  0x008faa                  _PlayBackUpdateChartTimeDisplay
+                  0x008d44                  _ReadSD_RecordData
+                  0x005b3a                  _RegisterReadEEPROM
+                  0x0087a4                  _RegisterSendingPacket
+                  0x005ad6                  _RegisterWriteEEPROM
                   0x003e2c                  _Register_COM3_Send_ButtonCommand
                   0x003e74                  _Register_COM3_Send_Command
-                  0x006eae                  _ResponseSendingProcess
-                  0x006df6                  _RoutineSendingProcess
-                  0x005f1e                  _RunEEPROM_ReadWriteProcess
-                  0x005dae                  _RunReadProcess
-                  0x005be4                  _RunWriteProcess
-                  0x00b50e                  _SCR_RunTimeDisplayContorl
-                  0x00997c                  _SEND_U1_RS422CMD_Process
-                  0x00999e                  _SEND_U2_RS422_CMD_Process
-                  0x0099c0                  _SEND_U3_RS422_CMD_Process
-                  0x00735e                  _SET_DAC_OUTPUT
-                  0x00a2fa                  _SaveRunTimeStatus
-                  0x00a2ae                  _SaveSystemParameter
-                  0x00a8b6                  _ScanInputPort
-                  0x00a6c2                  _ScanPortD
-                  0x00a5f6                  _ScanPortH
-                  0x00a6bc                  _ScanPortJ
-                  0x008e42                  _SendChartRecordFileName
-                  0x003ee2                  _SendFAN1MaualControlCommand
-                  0x003f7e                  _SendFAN1_1_PID_AutoControlCommand
-                  0x003f72                  _SendFAN1_1_PID_OnControlCommand
-                  0x003eee                  _SendFAN2MaualControlCommand
-                  0x004e02                  _SendFan1_1_GetD_LowLimit_Response
-                  0x004d8e                  _SendFan1_1_GetPI_Response
-                  0x004d1a                  _SendFan1_1_GetSV_Response
-                  0x004eee                  _SendFan1_1_Get_ManualSet_Response
-                  0x004e7a                  _SendFan1_1_Get_TopLimit_Response
-                  0x00678e                  _SendFirmwareVersion
-                  0x003f8a                  _SendHeater_PID_AutoControlCommand
-                  0x003ed6                  _SendMTR4MaualControlCommand
-                  0x003efa                  _SendPCD20MaualControlCommand
-                  0x003f06                  _SendPCD22MaualControlCommand
-                  0x003f12                  _SendPCD25MaualControlCommand
-                  0x003f1e                  _SendPCD2MaualControlCommand
-                  0x003f2a                  _SendPCD6MaualControlCommand
-                  0x008c24                  _SendRecordFileName
-                  0x003f4e                  _SendSystemAutoGasInControlCommand
-                  0x003f42                  _SendSystemAutoStartStopControlCommand
-                  0x003f5a                  _SendSystemGasInOutControlCommand
-                  0x003fa2                  _SendSystemManualControlCommand
-                  0x003f66                  _SendSystemManualModeControl
+                  0x006ec6                  _ResponseSendingProcess
+                  0x006e0e                  _RoutineSendingProcess
+                  0x005f36                  _RunEEPROM_ReadWriteProcess
+                  0x005dc6                  _RunReadProcess
+                  0x005bfc                  _RunWriteProcess
+                  0x00b532                  _SCR_RunTimeDisplayContorl
+                  0x0099a0                  _SEND_U1_RS422CMD_Process
+                  0x0099c2                  _SEND_U2_RS422_CMD_Process
+                  0x0099e4                  _SEND_U3_RS422_CMD_Process
+                  0x007a36                  _SET_DAC_OUTPUT
+                  0x00a31e                  _SaveRunTimeStatus
+                  0x00a2d2                  _SaveSystemParameter
+                  0x00a8da                  _ScanInputPort
+                  0x00a6e6                  _ScanPortD
+                  0x00a61a                  _ScanPortH
+                  0x00a6e0                  _ScanPortJ
+                  0x008e66                  _SendChartRecordFileName
+                  0x003efa                  _SendFAN1MaualControlCommand
+                  0x003f96                  _SendFAN1_1_PID_AutoControlCommand
+                  0x003f8a                  _SendFAN1_1_PID_OnControlCommand
+                  0x003f06                  _SendFAN2MaualControlCommand
+                  0x004e1a                  _SendFan1_1_GetD_LowLimit_Response
+                  0x004da6                  _SendFan1_1_GetPI_Response
+                  0x004d32                  _SendFan1_1_GetSV_Response
+                  0x004f06                  _SendFan1_1_Get_ManualSet_Response
+                  0x004e92                  _SendFan1_1_Get_TopLimit_Response
+                  0x003ee2                  _SendFaultOFFControlCommand
+                  0x0067a6                  _SendFirmwareVersion
+                  0x003ed6                  _SendFunctionResetControlCommand
+                  0x003fa2                  _SendHeater_PID_AutoControlCommand
+                  0x003eee                  _SendMTR4MaualControlCommand
+                  0x003f12                  _SendPCD20MaualControlCommand
+                  0x003f1e                  _SendPCD22MaualControlCommand
+                  0x003f2a                  _SendPCD25MaualControlCommand
+                  0x003f36                  _SendPCD2MaualControlCommand
+                  0x003f42                  _SendPCD6MaualControlCommand
+                  0x008c48                  _SendRecordFileName
+                  0x003f66                  _SendSystemAutoGasInControlCommand
+                  0x003f5a                  _SendSystemAutoStartStopControlCommand
+                  0x003f72                  _SendSystemGasInOutControlCommand
+                  0x003fba                  _SendSystemManualControlCommand
+                  0x003f7e                  _SendSystemManualModeControl
                   0x003eca                  _SendSystemResetControlCommand
-                  0x003f36                  _SendV21MaualControlCommand
+                  0x003f4e                  _SendV21MaualControlCommand
                   0x0014d8                  _Send_AlarmTypeA_uCHMI_SystemParameter
                   0x00162c                  _Send_AlarmTypeB_uCHMI_SystemParameter
                   0x0019fc                  _Send_AlarmTypeD1_uCHMI_SystemParameter
                   0x0018a8                  _Send_AlarmTypeD_uCHMI_SystemParameter
                   0x001680                  _Send_BurnSystemAlarm_uCHMI_SystemParameter
-                  0x004a74                  _Send_Button_Command
+                  0x004a8c                  _Send_Button_Command
                   0x000950                  _Send_FAN1_uCHMI_LongWordSystemParamter
                   0x0009e4                  _Send_FAN1_uCHMI_SystemParameter
                   0x000bc6                  _Send_FAN2_uCHMI_SystemParameter
-                  0x007d10                  _Send_GetAlarm_A1_A2SetResponse
-                  0x007c9c                  _Send_GetAlarm_A1_SetResponse
-                  0x007d84                  _Send_GetAlarm_A2_B_SetResponse
-                  0x008124                  _Send_GetD1_Alarm2_Set_SetResponse
-                  0x008198                  _Send_GetD1_Alarm3_SetResponse
-                  0x007fc8                  _Send_GetD_Alarm1_Set_SetResponse
-                  0x00803c                  _Send_GetD_Alarm2_Set_SetResponse
-                  0x0080b0                  _Send_GetD_Alarm3__D1_SetResponse
-                  0x004fde                  _Send_GetFan2SpeedSetResponse
-                  0x004f6a                  _Send_GetFan2TempSetSpeedTopLimit_Response
-                  0x007e6c                  _Send_GetHeaterPDTAlarm_SetResponse
-                  0x007df8                  _Send_GetHeaterTempAlarm_SetResponse
-                  0x007ee0                  _Send_GetMTR4TempAlarm_SetResponse
-                  0x00554e                  _Send_GetPCD20_D_TimeSetResponse
-                  0x0055c6                  _Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse
-                  0x0054da                  _Send_GetPCD20_PISetResponse
-                  0x005466                  _Send_GetPCD20_TempSizeSetResponse
-                  0x00563a                  _Send_GetPCD22_SetResponse
-                  0x005722                  _Send_GetPCD25_Limit_ManualSetResponse
-                  0x0056ae                  _Send_GetPCD25_PCD6TimeSetResponse
-                  0x0053f2                  _Send_GetPCD2_V21SetResponse
-                  0x007f54                  _Send_Get_MTR4TempPDTAlarm_SetResponse
-                  0x005052                  _Send_HeaterGetTempSetDbResponse
-                  0x005222                  _Send_Heater_GetManualSetResponse
-                  0x0051ae                  _Send_Heater_GetPI_SetResponse
-                  0x00513a                  _Send_Heater_GetSP2LowLimitSetResponse
-                  0x0050c6                  _Send_Heater_Get_HH2LLSetResponse
+                  0x007d34                  _Send_GetAlarm_A1_A2SetResponse
+                  0x007cc0                  _Send_GetAlarm_A1_SetResponse
+                  0x007da8                  _Send_GetAlarm_A2_B_SetResponse
+                  0x008148                  _Send_GetD1_Alarm2_Set_SetResponse
+                  0x0081bc                  _Send_GetD1_Alarm3_SetResponse
+                  0x007fec                  _Send_GetD_Alarm1_Set_SetResponse
+                  0x008060                  _Send_GetD_Alarm2_Set_SetResponse
+                  0x0080d4                  _Send_GetD_Alarm3__D1_SetResponse
+                  0x004ff6                  _Send_GetFan2SpeedSetResponse
+                  0x004f82                  _Send_GetFan2TempSetSpeedTopLimit_Response
+                  0x007e90                  _Send_GetHeaterPDTAlarm_SetResponse
+                  0x007e1c                  _Send_GetHeaterTempAlarm_SetResponse
+                  0x007f04                  _Send_GetMTR4TempAlarm_SetResponse
+                  0x005566                  _Send_GetPCD20_D_TimeSetResponse
+                  0x0055de                  _Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse
+                  0x0054f2                  _Send_GetPCD20_PISetResponse
+                  0x00547e                  _Send_GetPCD20_TempSizeSetResponse
+                  0x005652                  _Send_GetPCD22_SetResponse
+                  0x00573a                  _Send_GetPCD25_Limit_ManualSetResponse
+                  0x0056c6                  _Send_GetPCD25_PCD6TimeSetResponse
+                  0x00540a                  _Send_GetPCD2_V21SetResponse
+                  0x007f78                  _Send_Get_MTR4TempPDTAlarm_SetResponse
+                  0x00506a                  _Send_HeaterGetTempSetDbResponse
+                  0x00523a                  _Send_Heater_GetManualSetResponse
+                  0x0051c6                  _Send_Heater_GetPI_SetResponse
+                  0x005152                  _Send_Heater_GetSP2LowLimitSetResponse
+                  0x0050de                  _Send_Heater_Get_HH2LLSetResponse
                   0x000cda                  _Send_Heater_uCHMI_SystemParameter
-                  0x006828                  _Send_LoopBackResponse
-                  0x005296                  _Send_MTR4_GetTE5ConditionSetResponse
-                  0x00530a                  _Send_MTR4_GetTE5SpeedSetResponse
-                  0x00537e                  _Send_MTR4_GetTopStopLowSetResponse
+                  0x006840                  _Send_LoopBackResponse
+                  0x0052ae                  _Send_MTR4_GetTE5ConditionSetResponse
+                  0x005322                  _Send_MTR4_GetTE5SpeedSetResponse
+                  0x005396                  _Send_MTR4_GetTopStopLowSetResponse
                   0x001384                  _Send_PCD22_25_uCHMI_SystemParameter
-                  0x003f96                  _Send_PCD_20_PID_AutoControlCommand
+                  0x003fae                  _Send_PCD_20_PID_AutoControlCommand
                   0x001086                  _Send_PCD_20_uCHMI_LongWordSystemParameter
                   0x0012f0                  _Send_PCD_2_V21_uCHMI_SystemParameter
                   0x00115a                  _Send_PCD_6_20_uCHMI_SystemParameter
@@ -1094,40 +1098,40 @@ External Symbols in Program Memory (by name):
                   0x0008bc                  _Send_uCHMI_AuxControllerFirmwareVersion
                   0x000828                  _Send_uCHMI_ControllerFirmwareVersion
                   0x001b76                  _Send_uC_HMI_Display
-                  0x009034                  _SetPlayBackDay
-                  0x008d08                  _SetReadSDIndex
-                  0x008d5e                  _SetRecordPosition
-                  0x00b2b6                  _SetSelectItemFontColor
+                  0x009058                  _SetPlayBackDay
+                  0x008d2c                  _SetReadSDIndex
+                  0x008d82                  _SetRecordPosition
+                  0x00b2da                  _SetSelectItemFontColor
                   0x002924                  _SetSystemDateTime
-                  0x0062fa                  _Set_Output_bit_Status
-                  0x008a34                  _Set_uCHMI_RtcDate
-                  0x008aae                  _Set_uCHMI_RtcTime
-                  0x00b492                  _ShowFAN1_RunTimeDisplayControl
-                  0x00b4d6                  _ShowFAN2_RunTimeDisplayControl
-                  0x00b58a                  _ShowMTR4RunTimeDisplayControl
-                  0x00b62a                  _ShowRunTimeDisplay
-                  0x00b5ce                  _ShowRunTimeOtherDisplayControl
-                  0x008fc8                  _StartChart1PlayBack
-                  0x008fec                  _StartChart2PlayBack
-                  0x009010                  _StartChart3PlayBack
-                  0x008d14                  _StartGetReadSDIndex
-                  0x0095dc                  _StartUART1WaitTimer
-                  0x0095e6                  _StartUART2WaitTimer
-                  0x0095f0                  _StartUART3WaitTimer
-                  0x00a53c                  _SystemControl
-                  0x00ba1a                  _U2CommandParsing
-                  0x00a1a6                  _U3CommandParsing
-                  0x0098b4                  _UARTRXTimeOutCheck
-                  0x00703e                  _UNSYNC_ADC_GET_VAL
-                  0x0086f0                  _UPDATE_SYS_TIME
+                  0x006312                  _Set_Output_bit_Status
+                  0x008a58                  _Set_uCHMI_RtcDate
+                  0x008ad2                  _Set_uCHMI_RtcTime
+                  0x00b4b6                  _ShowFAN1_RunTimeDisplayControl
+                  0x00b4fa                  _ShowFAN2_RunTimeDisplayControl
+                  0x00b5ae                  _ShowMTR4RunTimeDisplayControl
+                  0x00b64e                  _ShowRunTimeDisplay
+                  0x00b5f2                  _ShowRunTimeOtherDisplayControl
+                  0x008fec                  _StartChart1PlayBack
+                  0x009010                  _StartChart2PlayBack
+                  0x009034                  _StartChart3PlayBack
+                  0x008d38                  _StartGetReadSDIndex
+                  0x009600                  _StartUART1WaitTimer
+                  0x00960a                  _StartUART2WaitTimer
+                  0x009614                  _StartUART3WaitTimer
+                  0x00a560                  _SystemControl
+                  0x00ba3e                  _U2CommandParsing
+                  0x00a1ca                  _U3CommandParsing
+                  0x0098d8                  _UARTRXTimeOutCheck
+                  0x007716                  _UNSYNC_ADC_GET_VAL
+                  0x008714                  _UPDATE_SYS_TIME
                   0x002d8a                  _WriteFan1_1_Parameters
                   0x002f80                  _WriteFan2_Parameter
                   0x00338c                  _WriteMTR4_Parameter
                   0x003570                  _WritePCD_20_Parameter
                   0x00372a                  _WritePCD_22_25_Parameter
                   0x0034a6                  _WritePCD_2_6_V21_Parameter
-                  0x0075e8                  _WriteParameterParsing
-                  0x00596e                  _WriteSystemParameterToI2C_EEPROM
+                  0x006f42                  _WriteParameterParsing
+                  0x005986                  _WriteSystemParameterToI2C_EEPROM
                   0x003864                  _Write_Alarm1_Parameter
                   0x00399e                  _Write_Alarm2_Parameter
                   0x003ad8                  _Write_Alarm3_Parameter
@@ -1135,15 +1139,15 @@ External Symbols in Program Memory (by name):
                   0x003082                  _Write_Heater_Parameters
                   0x0002c8                  __DefaultInterrupt
                   0xf80004                  __FGS.sec
-                  0x009236                  __T1Interrupt
-                  0x009316                  __T3Interrupt
-                  0x0093d8                  __T5Interrupt
-                  0x0094c4                  __T7Interrupt
-                  0x009586                  __T9Interrupt
-                  0x009818                  __U1RXInterrupt
-                  0x00980c                  __U1TXInterrupt
-                  0x00984c                  __U2RXInterrupt
-                  0x009880                  __U3RXInterrupt
+                  0x00925a                  __T1Interrupt
+                  0x00933a                  __T3Interrupt
+                  0x0093fc                  __T5Interrupt
+                  0x0094e8                  __T7Interrupt
+                  0x0095aa                  __T9Interrupt
+                  0x00983c                  __U1RXInterrupt
+                  0x009830                  __U1TXInterrupt
+                  0x009870                  __U2RXInterrupt
+                  0x0098a4                  __U3RXInterrupt
                   0x0002cc                  ___divsi3
                   0x0002ea                  ___modsi3
                   0x000308                  ___udivsi3
@@ -1152,52 +1156,52 @@ External Symbols in Program Memory (by name):
                   0x00022e                  __data_init_extended
                   0x000222                  __psv_init
                   0x000200                  __resetPRI
-                  0x0093e0                  _clear_memory
-                  0x00a8c2                  _data16_strdec
-                  0x009142                  _delay_ms
-                  0x009176                  _delay_ns
-                  0x009224                  _disable_timer1
-                  0x009304                  _disable_timer3
-                  0x0093c6                  _disable_timer5
-                  0x0094b2                  _disable_timer7
-                  0x009574                  _disable_timer9
-                  0x006182                  _enable_capture_io
-                  0x0060da                  _enable_capture_timebace
-                  0x006004                  _enable_ext_interrupt
-                  0x009212                  _enable_timer1
-                  0x0092f2                  _enable_timer3
-                  0x0093b4                  _enable_timer5
-                  0x0094a0                  _enable_timer7
-                  0x009562                  _enable_timer9
-                  0x00ad28                  _get_limit_x1
-                  0x00ad3e                  _get_limit_x2
-                  0x00ad54                  _get_limit_y1
-                  0x00ad6a                  _get_limit_y2
-                  0x0062de                  _get_total_input_status
-                  0x0084c2                  _i2c_send_byte
-                  0x008594                  _i2c_wr
-                  0x00b97a                  _main
-                  0x008538                  _msb_lsb_change
-                  0x00827a                  _spi1_txrx
-                  0x0082a8                  _spi1_txrx16
-                  0x00aa38                  _strdec_to_data
-                  0x008b52                  _uC_HMI_CRC_CREATE
-                  0x008bda                  _uC_HMI_CRC_Check_OK
-                  0x008b28                  _uC_HMI_Check_Ack
-                  0x00b744                  _uC_HMI_Parsing
-                  0x00b63c                  _uC_HMI_ParsingProcess
-                  0x008a14                  _uC_HMI_RunDeleteTextVariableSend
-                  0x00882c                  _uC_HMI_RunReadByteSend
-                  0x008870                  _uC_HMI_RunReadLongWordSend
-                  0x008892                  _uC_HMI_RunReadTextVariableSend
-                  0x00884e                  _uC_HMI_RunReadWordSend
-                  0x0088e2                  _uC_HMI_RunWriteMultiByteSend
-                  0x008996                  _uC_HMI_RunWriteMultiLongWordSend
-                  0x008938                  _uC_HMI_RunWriteMultiWordSend
-                  0x0088b6                  _uC_HMI_RunWriteSingleByteSend
-                  0x008956                  _uC_HMI_RunWriteSingleLongWordSend
-                  0x008900                  _uC_HMI_RunWriteSingleWordSend
-                  0x0089b4                  _uC_HMI_RunWriteTextVariableSend
+                  0x009404                  _clear_memory
+                  0x00a8e6                  _data16_strdec
+                  0x009166                  _delay_ms
+                  0x00919a                  _delay_ns
+                  0x009248                  _disable_timer1
+                  0x009328                  _disable_timer3
+                  0x0093ea                  _disable_timer5
+                  0x0094d6                  _disable_timer7
+                  0x009598                  _disable_timer9
+                  0x00619a                  _enable_capture_io
+                  0x0060f2                  _enable_capture_timebace
+                  0x00601c                  _enable_ext_interrupt
+                  0x009236                  _enable_timer1
+                  0x009316                  _enable_timer3
+                  0x0093d8                  _enable_timer5
+                  0x0094c4                  _enable_timer7
+                  0x009586                  _enable_timer9
+                  0x00ad4c                  _get_limit_x1
+                  0x00ad62                  _get_limit_x2
+                  0x00ad78                  _get_limit_y1
+                  0x00ad8e                  _get_limit_y2
+                  0x0062f6                  _get_total_input_status
+                  0x0084e6                  _i2c_send_byte
+                  0x0085b8                  _i2c_wr
+                  0x00b99e                  _main
+                  0x00855c                  _msb_lsb_change
+                  0x00829e                  _spi1_txrx
+                  0x0082cc                  _spi1_txrx16
+                  0x00aa5c                  _strdec_to_data
+                  0x008b76                  _uC_HMI_CRC_CREATE
+                  0x008bfe                  _uC_HMI_CRC_Check_OK
+                  0x008b4c                  _uC_HMI_Check_Ack
+                  0x00b768                  _uC_HMI_Parsing
+                  0x00b660                  _uC_HMI_ParsingProcess
+                  0x008a38                  _uC_HMI_RunDeleteTextVariableSend
+                  0x008850                  _uC_HMI_RunReadByteSend
+                  0x008894                  _uC_HMI_RunReadLongWordSend
+                  0x0088b6                  _uC_HMI_RunReadTextVariableSend
+                  0x008872                  _uC_HMI_RunReadWordSend
+                  0x008906                  _uC_HMI_RunWriteMultiByteSend
+                  0x0089ba                  _uC_HMI_RunWriteMultiLongWordSend
+                  0x00895c                  _uC_HMI_RunWriteMultiWordSend
+                  0x0088da                  _uC_HMI_RunWriteSingleByteSend
+                  0x00897a                  _uC_HMI_RunWriteSingleLongWordSend
+                  0x008924                  _uC_HMI_RunWriteSingleWordSend
+                  0x0089d8                  _uC_HMI_RunWriteTextVariableSend
                   0x00032e                  _uC_HMI_Send_FAN1_1_Alarm
                   0x0003d0                  _uC_HMI_Send_FAN1_Display
                   0x00033e                  _uC_HMI_Send_FAN2_Alarm
@@ -1207,19 +1211,19 @@ External Symbols in Program Memory (by name):
                   0x00039c                  _uC_HMI_Send_PCD20_AlarmFault
                   0x0006a0                  _uC_HMI_Send_PCD20_Display
                   0x000382                  _uC_HMI_Send_PCD2_AlarmFault
-                  0x00b014                  _uC_HMI_Send_Packet
+                  0x00b038                  _uC_HMI_Send_Packet
                   0x00034e                  _uC_HMI_Send_SCR_AlarmFaultStatus
                   0x000518                  _uC_HMI_Send_SCR_Display
                   0x001b88                  _uC_HMI_Send_SystemParameter
                   0x0003b6                  _uC_HMI_Send_V21_AlarmFault
                   0x000372                  _uC_HMI_Send_Wheel_Fault
-                  0x00b19e                  _uC_HMI_SendingControl
-                  0x00b2a4                  _uC_HMI_SetPage
-                  0x009768                  _uart1_tx
-                  0x009784                  _uart2_rx
-                  0x009776                  _uart2_tx
-                  0x0097f0                  _uart3_rx
-                  0x0097a0                  _uart3_tx
+                  0x00b1c2                  _uC_HMI_SendingControl
+                  0x00b2c8                  _uC_HMI_SetPage
+                  0x00978c                  _uart1_tx
+                  0x0097a8                  _uart2_rx
+                  0x00979a                  _uart2_tx
+                  0x009814                  _uart3_rx
+                  0x0097c4                  _uart3_tx
 
 Memory Configuration
 
@@ -1364,7 +1368,7 @@ __FUID0
 .comment
  *(.comment)
 
-.debug_info       0x000000      0x2cd77
+.debug_info       0x000000      0x2cee8
  *(.debug_info)
  .debug_info      0x000000       0x1424 build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_info      0x001424       0x31a2 build/default/production/src/IO_Driver.o
@@ -1391,17 +1395,17 @@ __FUID0
  .debug_info      0x015ddd       0x1acf build/default/production/src/System_ParameterInputProcess.o
  .debug_info      0x0178ac        0xcd5 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  .debug_info      0x018581        0x325 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
- .debug_info      0x0188a6       0x2925 build/default/production/src/COM3_RX_Parsing_ActMcu.o
- .debug_info      0x01b1cb       0x357a build/default/production/src/COM3_TX_Sending_ActMcu.o
- .debug_info      0x01e745       0x33b8 build/default/production/src/COM1_Sending_HMI.o
- .debug_info      0x021afd       0x1e72 build/default/production/src/COM1_WriteParameters_HMI.o
- .debug_info      0x02396f       0x24d8 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_info      0x025e47       0x199e build/default/production/src/COM1_Parsing_HMI.o
- .debug_info      0x0277e5       0x223e build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_info      0x029a23       0x3354 build/default/production/src/uC_InitialTestParameter.o
+ .debug_info      0x0188a6       0x2928 build/default/production/src/COM3_RX_Parsing_ActMcu.o
+ .debug_info      0x01b1ce       0x367f build/default/production/src/COM3_TX_Sending_ActMcu.o
+ .debug_info      0x01e84d       0x33bb build/default/production/src/COM1_Sending_HMI.o
+ .debug_info      0x021c08       0x1e72 build/default/production/src/COM1_WriteParameters_HMI.o
+ .debug_info      0x023a7a       0x24d8 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+ .debug_info      0x025f52       0x1a04 build/default/production/src/COM1_Parsing_HMI.o
+ .debug_info      0x027956       0x223e build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_info      0x029b94       0x3354 build/default/production/src/uC_InitialTestParameter.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x23c9
+.debug_abbrev     0x000000       0x2412
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x16a build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_abbrev    0x00016a        0x141 build/default/production/src/IO_Driver.o
@@ -1433,11 +1437,11 @@ __FUID0
  .debug_abbrev    0x001c00        0x22f build/default/production/src/COM1_Sending_HMI.o
  .debug_abbrev    0x001e2f         0xf6 build/default/production/src/COM1_WriteParameters_HMI.o
  .debug_abbrev    0x001f25         0xf6 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_abbrev    0x00201b        0x117 build/default/production/src/COM1_Parsing_HMI.o
- .debug_abbrev    0x002132         0xf4 build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_abbrev    0x002226        0x1a3 build/default/production/src/uC_InitialTestParameter.o
+ .debug_abbrev    0x00201b        0x160 build/default/production/src/COM1_Parsing_HMI.o
+ .debug_abbrev    0x00217b         0xf4 build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_abbrev    0x00226f        0x1a3 build/default/production/src/uC_InitialTestParameter.o
 
-.debug_line       0x000000       0xf2d7
+.debug_line       0x000000       0xf33b
  *(.debug_line)
  .debug_line      0x000000        0xb42 build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_line      0x000b42        0x945 build/default/production/src/IO_Driver.o
@@ -1465,15 +1469,15 @@ __FUID0
  .debug_line      0x007ef9        0x228 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  .debug_line      0x008121         0xaa build/default/production/src/COM2_RX_Parsing_ExtDevice.o
  .debug_line      0x0081cb        0x607 build/default/production/src/COM3_RX_Parsing_ActMcu.o
- .debug_line      0x0087d2       0x1454 build/default/production/src/COM3_TX_Sending_ActMcu.o
- .debug_line      0x009c26        0xa94 build/default/production/src/COM1_Sending_HMI.o
- .debug_line      0x00a6ba       0x165b build/default/production/src/COM1_WriteParameters_HMI.o
- .debug_line      0x00bd15        0xe2d build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_line      0x00cb42        0x938 build/default/production/src/COM1_Parsing_HMI.o
- .debug_line      0x00d47a        0x798 build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_line      0x00dc12       0x16c5 build/default/production/src/uC_InitialTestParameter.o
+ .debug_line      0x0087d2       0x1498 build/default/production/src/COM3_TX_Sending_ActMcu.o
+ .debug_line      0x009c6a        0xa94 build/default/production/src/COM1_Sending_HMI.o
+ .debug_line      0x00a6fe       0x165b build/default/production/src/COM1_WriteParameters_HMI.o
+ .debug_line      0x00bd59        0xe2d build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+ .debug_line      0x00cb86        0x958 build/default/production/src/COM1_Parsing_HMI.o
+ .debug_line      0x00d4de        0x798 build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_line      0x00dc76       0x16c5 build/default/production/src/uC_InitialTestParameter.o
 
-.debug_frame      0x000000       0x1acc
+.debug_frame      0x000000       0x1aec
  *(.debug_frame)
  .debug_frame     0x000000         0x94 build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_frame     0x000094         0xa4 build/default/production/src/IO_Driver.o
@@ -1499,13 +1503,13 @@ __FUID0
  .debug_frame     0x000eb4         0x64 build/default/production/src/COM2_TX_Sending_ExtDevice.o
  .debug_frame     0x000f18         0x24 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
  .debug_frame     0x000f3c         0xd4 build/default/production/src/COM3_RX_Parsing_ActMcu.o
- .debug_frame     0x001010        0x414 build/default/production/src/COM3_TX_Sending_ActMcu.o
- .debug_frame     0x001424        0x114 build/default/production/src/COM1_Sending_HMI.o
- .debug_frame     0x001538         0xc4 build/default/production/src/COM1_WriteParameters_HMI.o
- .debug_frame     0x0015fc        0x184 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_frame     0x001780         0x44 build/default/production/src/COM1_Parsing_HMI.o
- .debug_frame     0x0017c4         0xd4 build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_frame     0x001898        0x234 build/default/production/src/uC_InitialTestParameter.o
+ .debug_frame     0x001010        0x434 build/default/production/src/COM3_TX_Sending_ActMcu.o
+ .debug_frame     0x001444        0x114 build/default/production/src/COM1_Sending_HMI.o
+ .debug_frame     0x001558         0xc4 build/default/production/src/COM1_WriteParameters_HMI.o
+ .debug_frame     0x00161c        0x184 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+ .debug_frame     0x0017a0         0x44 build/default/production/src/COM1_Parsing_HMI.o
+ .debug_frame     0x0017e4         0xd4 build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_frame     0x0018b8        0x234 build/default/production/src/uC_InitialTestParameter.o
 
 .debug_str        0x000000       0x2178
  *(.debug_str)
@@ -1544,7 +1548,7 @@ __FUID0
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000       0x35c2
+                  0x000000       0x3605
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0xbb build/default/production/src/EXT_ACD_DAC_Driver.o
@@ -1597,19 +1601,19 @@ __FUID0
  .debug_pubnames
                   0x001a7d        0x210 build/default/production/src/COM3_RX_Parsing_ActMcu.o
  .debug_pubnames
-                  0x001c8d        0x8b0 build/default/production/src/COM3_TX_Sending_ActMcu.o
+                  0x001c8d        0x8f3 build/default/production/src/COM3_TX_Sending_ActMcu.o
  .debug_pubnames
-                  0x00253d        0x290 build/default/production/src/COM1_Sending_HMI.o
+                  0x002580        0x290 build/default/production/src/COM1_Sending_HMI.o
  .debug_pubnames
-                  0x0027cd        0x13b build/default/production/src/COM1_WriteParameters_HMI.o
+                  0x002810        0x13b build/default/production/src/COM1_WriteParameters_HMI.o
  .debug_pubnames
-                  0x002908        0x36a build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+                  0x00294b        0x36a build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
  .debug_pubnames
-                  0x002c72         0x6f build/default/production/src/COM1_Parsing_HMI.o
+                  0x002cb5         0x6f build/default/production/src/COM1_Parsing_HMI.o
  .debug_pubnames
-                  0x002ce1        0x1cf build/default/production/src/COM1_AlarmPacket_Generator.o
+                  0x002d24        0x1cf build/default/production/src/COM1_AlarmPacket_Generator.o
  .debug_pubnames
-                  0x002eb0        0x712 build/default/production/src/uC_InitialTestParameter.o
+                  0x002ef3        0x712 build/default/production/src/uC_InitialTestParameter.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1691,16 +1695,16 @@ __FUID0
                   0x000014          0x4 LONG 0x2c8 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x2c8 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x2c8 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x9236 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x925a DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001c          0x4 LONG 0x2c8 DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x2c8 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x2c8 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000022          0x4 LONG 0x2c8 DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000024          0x4 LONG 0x9316 DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000024          0x4 LONG 0x933a DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000026          0x4 LONG 0x2c8 DEFINED (__SPI1ErrInterrupt)?ABSOLUTE (__SPI1ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000028          0x4 LONG 0x2c8 DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00002a          0x4 LONG 0x9818 DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00002c          0x4 LONG 0x980c DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00002a          0x4 LONG 0x983c DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00002c          0x4 LONG 0x9830 DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00002e          0x4 LONG 0x2c8 DEFINED (__AD1Interrupt)?ABSOLUTE (__AD1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000030          0x4 LONG 0x2c8 DEFINED (__DMA1Interrupt)?ABSOLUTE (__DMA1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000032          0x4 LONG 0x2c8 DEFINED (__NVMInterrupt)?ABSOLUTE (__NVMInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1716,9 +1720,9 @@ __FUID0
                   0x000046          0x4 LONG 0x2c8 DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000048          0x4 LONG 0x2c8 DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004a          0x4 LONG 0x2c8 DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00004c          0x4 LONG 0x93d8 DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00004c          0x4 LONG 0x93fc DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004e          0x4 LONG 0x2c8 DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000050          0x4 LONG 0x984c DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000050          0x4 LONG 0x9870 DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000052          0x4 LONG 0x2c8 DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000054          0x4 LONG 0x2c8 DEFINED (__SPI2ErrInterrupt)?ABSOLUTE (__SPI2ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000056          0x4 LONG 0x2c8 DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1736,11 +1740,11 @@ __FUID0
                   0x00006e          0x4 LONG 0x2c8 DEFINED (__PMPInterrupt)?ABSOLUTE (__PMPInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000070          0x4 LONG 0x2c8 DEFINED (__DMA4Interrupt)?ABSOLUTE (__DMA4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000072          0x4 LONG 0x2c8 DEFINED (__T6Interrupt)?ABSOLUTE (__T6Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000074          0x4 LONG 0x94c4 DEFINED (__T7Interrupt)?ABSOLUTE (__T7Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000074          0x4 LONG 0x94e8 DEFINED (__T7Interrupt)?ABSOLUTE (__T7Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000076          0x4 LONG 0x2c8 DEFINED (__SI2C2Interrupt)?ABSOLUTE (__SI2C2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000078          0x4 LONG 0x2c8 DEFINED (__MI2C2Interrupt)?ABSOLUTE (__MI2C2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00007a          0x4 LONG 0x2c8 DEFINED (__T8Interrupt)?ABSOLUTE (__T8Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00007c          0x4 LONG 0x9586 DEFINED (__T9Interrupt)?ABSOLUTE (__T9Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00007c          0x4 LONG 0x95aa DEFINED (__T9Interrupt)?ABSOLUTE (__T9Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00007e          0x4 LONG 0x2c8 DEFINED (__INT3Interrupt)?ABSOLUTE (__INT3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000080          0x4 LONG 0x2c8 DEFINED (__INT4Interrupt)?ABSOLUTE (__INT4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000082          0x4 LONG 0x2c8 DEFINED (__C2RxRdyInterrupt)?ABSOLUTE (__C2RxRdyInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1770,7 +1774,7 @@ __FUID0
                   0x0000b2          0x4 LONG 0x2c8 DEFINED (__Interrupt79)?ABSOLUTE (__Interrupt79):ABSOLUTE (__DefaultInterrupt)
                   0x0000b4          0x4 LONG 0x2c8 DEFINED (__Interrupt80)?ABSOLUTE (__Interrupt80):ABSOLUTE (__DefaultInterrupt)
                   0x0000b6          0x4 LONG 0x2c8 DEFINED (__U3ErrInterrupt)?ABSOLUTE (__U3ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000b8          0x4 LONG 0x9880 DEFINED (__U3RXInterrupt)?ABSOLUTE (__U3RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000b8          0x4 LONG 0x98a4 DEFINED (__U3RXInterrupt)?ABSOLUTE (__U3RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000ba          0x4 LONG 0x2c8 DEFINED (__U3TXInterrupt)?ABSOLUTE (__U3TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000bc          0x4 LONG 0x2c8 DEFINED (__Interrupt84)?ABSOLUTE (__Interrupt84):ABSOLUTE (__DefaultInterrupt)
                   0x0000be          0x4 LONG 0x2c8 DEFINED (__Interrupt85)?ABSOLUTE (__Interrupt85):ABSOLUTE (__DefaultInterrupt)
@@ -4955,7 +4959,7 @@ __c30_signature
  .bss               0x2e3c          0x2 build/default/production/src/COM1_Parsing_HMI.o
                     0x2e3c                  _COM1_Rx_Size
 
-.text             0x00032e       0xb448
+.text             0x00032e       0xb46c
  .text            0x00032e       0x1874 build/default/production/src/uC_InitialTestParameter.o
                   0x00032e                  _uC_HMI_Send_FAN1_1_Alarm
                   0x00033e                  _uC_HMI_Send_FAN2_Alarm
@@ -5020,365 +5024,367 @@ __c30_signature
                   0x00399e                  _Write_Alarm2_Parameter
                   0x003ad8                  _Write_Alarm3_Parameter
                   0x003cf2                  _Write_Alarm4_Parameter
- .text            0x003e2c        0xeee build/default/production/src/COM3_TX_Sending_ActMcu.o
+ .text            0x003e2c        0xf06 build/default/production/src/COM3_TX_Sending_ActMcu.o
                   0x003e2c                  _Register_COM3_Send_ButtonCommand
                   0x003e74                  _Register_COM3_Send_Command
                   0x003eac                  _COM3_Send_All_Command
                   0x003eca                  _SendSystemResetControlCommand
-                  0x003ed6                  _SendMTR4MaualControlCommand
-                  0x003ee2                  _SendFAN1MaualControlCommand
-                  0x003eee                  _SendFAN2MaualControlCommand
-                  0x003efa                  _SendPCD20MaualControlCommand
-                  0x003f06                  _SendPCD22MaualControlCommand
-                  0x003f12                  _SendPCD25MaualControlCommand
-                  0x003f1e                  _SendPCD2MaualControlCommand
-                  0x003f2a                  _SendPCD6MaualControlCommand
-                  0x003f36                  _SendV21MaualControlCommand
-                  0x003f42                  _SendSystemAutoStartStopControlCommand
-                  0x003f4e                  _SendSystemAutoGasInControlCommand
-                  0x003f5a                  _SendSystemGasInOutControlCommand
-                  0x003f66                  _SendSystemManualModeControl
-                  0x003f72                  _SendFAN1_1_PID_OnControlCommand
-                  0x003f7e                  _SendFAN1_1_PID_AutoControlCommand
-                  0x003f8a                  _SendHeater_PID_AutoControlCommand
-                  0x003f96                  _Send_PCD_20_PID_AutoControlCommand
-                  0x003fa2                  _SendSystemManualControlCommand
-                  0x003fae                  _COM3_Send_FAN1_Command
-                  0x003fc8                  _COM3_Send_FAN2_Command
-                  0x003fd6                  _COM3_Send_MTR4_Command
-                  0x003fe8                  _COM3_Send_PCD20_Command
-                  0x003ffe                  _COM3_Send_PCD22_Command
-                  0x004008                  _COM3_Send_PCD25_Command
-                  0x004016                  _COM3_Send_Heater_Command
-                  0x004030                  _CheckSendingAck
-                  0x00408c                  _COM3_TxRotatorManual_Control
-                  0x0040d4                  _COM3_TxFAN1_Manual_Control
-                  0x00411c                  _COM3_TxFAN2_Manual_Control
-                  0x004164                  _COM3_TxPCD20_Manual_Control
-                  0x0041ac                  _COM3_TxPCD22_Manual_Control
-                  0x0041f4                  _COM3_TxPCD25_Manual_Control
-                  0x00423c                  _COM3_TxPCD2_Manual_Control
-                  0x004284                  _COM3_TxPCD6_Manual_Control
-                  0x0042cc                  _COM3_TxV21_Manual_Control
-                  0x004314                  _COM3_SystemAutoStartStop_Control
-                  0x00435c                  _COM3_SystemFaultReset_Control
-                  0x00436e                  _COM3_AutoGasInControl
-                  0x004388                  _COM3_GasInOutControl
-                  0x0043a2                  _COM3_SystemManualControl
-                  0x0043bc                  _COM3_FAN1_1_PID_OnControl
-                  0x0043d6                  _COM3_FAN1_1_PID_AutoControl
-                  0x0043f0                  _COM3_Heater_PID_AutoControl
-                  0x00440a                  _COM3_PCD_20_PID_AutoControl
-                  0x004424                  _COM3_Send_ButtonStatus
-                  0x004438                  _COM3_TxSet_FAN1_Parameter
-                  0x004546                  _COM3_TxSet_FAN2_Parameter
-                  0x0045d0                  _COM3_TxSet_MTR4_Parameter
-                  0x004688                  _COM3_TxSet_PCD20_Parameter
-                  0x004776                  _COM3_TxSet_PCD22_Parameter
-                  0x0047b4                  _COM3_TxSet_PCD25_Parameter
-                  0x00483e                  _COM3_TxSet_Heater_Parameter
-                  0x00495a                  _COM3_TxSet_PCD2_PCD6_Parameter
-                  0x0049b2                  _COM3_TxSet_V21_Parameter
-                  0x0049f0                  _COM3_TxSet_Alarm_Parameter
-                  0x004a4c                  _COM3_TxRequestFirmwareVersionCommand
-                  0x004a74                  _Send_Button_Command
-                  0x004b02                  _COM3_CreateCRC
-                  0x004b2a                  _COM3_SendingCommandControl
-                  0x004ca0                  _COM3_SendControl
- .text            0x004d1a        0xa7c build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
-                  0x004d1a                  _SendFan1_1_GetSV_Response
-                  0x004d8e                  _SendFan1_1_GetPI_Response
-                  0x004e02                  _SendFan1_1_GetD_LowLimit_Response
-                  0x004e7a                  _SendFan1_1_Get_TopLimit_Response
-                  0x004eee                  _SendFan1_1_Get_ManualSet_Response
-                  0x004f6a                  _Send_GetFan2TempSetSpeedTopLimit_Response
-                  0x004fde                  _Send_GetFan2SpeedSetResponse
-                  0x005052                  _Send_HeaterGetTempSetDbResponse
-                  0x0050c6                  _Send_Heater_Get_HH2LLSetResponse
-                  0x00513a                  _Send_Heater_GetSP2LowLimitSetResponse
-                  0x0051ae                  _Send_Heater_GetPI_SetResponse
-                  0x005222                  _Send_Heater_GetManualSetResponse
-                  0x005296                  _Send_MTR4_GetTE5ConditionSetResponse
-                  0x00530a                  _Send_MTR4_GetTE5SpeedSetResponse
-                  0x00537e                  _Send_MTR4_GetTopStopLowSetResponse
-                  0x0053f2                  _Send_GetPCD2_V21SetResponse
-                  0x005466                  _Send_GetPCD20_TempSizeSetResponse
-                  0x0054da                  _Send_GetPCD20_PISetResponse
-                  0x00554e                  _Send_GetPCD20_D_TimeSetResponse
-                  0x0055c6                  _Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse
-                  0x00563a                  _Send_GetPCD22_SetResponse
-                  0x0056ae                  _Send_GetPCD25_PCD6TimeSetResponse
-                  0x005722                  _Send_GetPCD25_Limit_ManualSetResponse
- .text            0x005796        0x824 build/default/production/src/StorageDev.o
-                  0x005796                  _I2C_EEPROM_WRITE
-                  0x005856                  _I2C_EEPROM_READ
-                  0x00596e                  _WriteSystemParameterToI2C_EEPROM
-                  0x005abe                  _RegisterWriteEEPROM
-                  0x005b22                  _RegisterReadEEPROM
-                  0x005ba2                  _Built_EEPROM_WriteBuf
-                  0x005be4                  _RunWriteProcess
-                  0x005d7e                  _Get_EEPROM_Data
-                  0x005dae                  _RunReadProcess
-                  0x005f1e                  _RunEEPROM_ReadWriteProcess
-                  0x005f70                  _IsReadEEPROM_DataFinish
-                  0x005f90                  _Initial_EEPROM_Read_Write_Process
- .text            0x005fba        0x7d4 build/default/production/src/IO_Driver.o
-                  0x005fba                  _INIT_IOPORT
-                  0x006004                  _enable_ext_interrupt
-                  0x0060da                  _enable_capture_timebace
-                  0x006182                  _enable_capture_io
-                  0x0062de                  _get_total_input_status
-                  0x0062fa                  _Set_Output_bit_Status
-                  0x006378                  _Clear_Output_bit_Status
-                  0x0063f6                  _InverseOutPutBit
-                  0x0065ec                  _InverseOutput
- .text            0x00678e        0x79c build/default/production/src/COM1_Sending_HMI.o
-                  0x00678e                  _SendFirmwareVersion
-                  0x006828                  _Send_LoopBackResponse
-                  0x006850                  _Get_TE1_3_5_6_SendPacket
-                  0x0068cc                  _Get_TE8_10_11_12_SendPacket
-                  0x006948                  _Get_PDT1_2_3_SendPacket
-                  0x0069c4                  _Get_FAN1_RunTime_SendPacket
-                  0x006a40                  _Get_FAN2_RunTime_SendPacket
-                  0x006abc                  _Get_MTR4_RunTime_SendPacket
-                  0x006b34                  _Get_Input_Heater_RunTime_SendPacket
-                  0x006bb0                  _Get_PCD_RunTime_SendPacket
-                  0x006c28                  _Get_UsingRecord_RunTime_SendPacket
-                  0x006ca4                  _Get_AlarmStatus_RunTime_SendPacket
-                  0x006d34                  _Get_SystemStatus_RunTime_SendPacket
-                  0x006df6                  _RoutineSendingProcess
-                  0x006eae                  _ResponseSendingProcess
-                  0x006ebc                  _Android_HMI_SendingControl
- .text            0x006f2a        0x6be build/default/production/src/EXT_ACD_DAC_Driver.o
-                  0x006f2a                  _INIT_ADC
-                  0x006faa                  _ADC_GET_VAL
-                  0x00703e                  _UNSYNC_ADC_GET_VAL
-                  0x007078                  _DAC_REG_RW
-                  0x0071e6                  _GET_DAC_OUTPUT_DATA
-                  0x00735e                  _SET_DAC_OUTPUT
-                  0x00749c                  _INIT_DAC
-                  0x007590                  _Inverter_Control_By_DAC
- .text            0x0075e8        0x6b4 build/default/production/src/COM1_Parsing_HMI.o
-                  0x0075e8                  _WriteParameterParsing
-                  0x00773c                  _Android_ButtonProcess
-                  0x007a5a                  _Android_HMI_Parsing
- .text            0x007c9c        0x570 build/default/production/src/COM1_AlarmPacket_Generator.o
-                  0x007c9c                  _Send_GetAlarm_A1_SetResponse
-                  0x007d10                  _Send_GetAlarm_A1_A2SetResponse
-                  0x007d84                  _Send_GetAlarm_A2_B_SetResponse
-                  0x007df8                  _Send_GetHeaterTempAlarm_SetResponse
-                  0x007e6c                  _Send_GetHeaterPDTAlarm_SetResponse
-                  0x007ee0                  _Send_GetMTR4TempAlarm_SetResponse
-                  0x007f54                  _Send_Get_MTR4TempPDTAlarm_SetResponse
-                  0x007fc8                  _Send_GetD_Alarm1_Set_SetResponse
-                  0x00803c                  _Send_GetD_Alarm2_Set_SetResponse
-                  0x0080b0                  _Send_GetD_Alarm3__D1_SetResponse
-                  0x008124                  _Send_GetD1_Alarm2_Set_SetResponse
-                  0x008198                  _Send_GetD1_Alarm3_SetResponse
- .text            0x00820c        0x540 build/default/production/src/IO_Setting.o
-                  0x00820c                  _INIT_SPI1
-                  0x00827a                  _spi1_txrx
-                  0x0082a8                  _spi1_txrx16
-                  0x0082dc                  _INIT_EXT_IO
-                  0x0083a0                  _EXTIO_SET_OUTPUT
-                  0x0083f0                  _EXTIO_GET_OUTPUT
-                  0x008450                  _EXTIO_GET_INPUT
-                  0x0084b0                  _INIT_I2C
-                  0x0084c2                  _i2c_send_byte
-                  0x008538                  _msb_lsb_change
-                  0x008594                  _i2c_wr
-                  0x00868a                  _INIT_EXT_RTC
-                  0x0086be                  _INIT_INT_RTC
-                  0x0086f0                  _UPDATE_SYS_TIME
- .text            0x00874c        0x4d8 build/default/production/src/uC_HMI_Utility.o
-                  0x00874c                  _Initial_uCHMI_SuddenSendBuffer
-                  0x008780                  _RegisterSendingPacket
-                  0x00882c                  _uC_HMI_RunReadByteSend
-                  0x00884e                  _uC_HMI_RunReadWordSend
-                  0x008870                  _uC_HMI_RunReadLongWordSend
-                  0x008892                  _uC_HMI_RunReadTextVariableSend
-                  0x0088b6                  _uC_HMI_RunWriteSingleByteSend
-                  0x0088e2                  _uC_HMI_RunWriteMultiByteSend
-                  0x008900                  _uC_HMI_RunWriteSingleWordSend
-                  0x008938                  _uC_HMI_RunWriteMultiWordSend
-                  0x008956                  _uC_HMI_RunWriteSingleLongWordSend
-                  0x008996                  _uC_HMI_RunWriteMultiLongWordSend
-                  0x0089b4                  _uC_HMI_RunWriteTextVariableSend
-                  0x008a14                  _uC_HMI_RunDeleteTextVariableSend
-                  0x008a34                  _Set_uCHMI_RtcDate
-                  0x008aae                  _Set_uCHMI_RtcTime
-                  0x008b28                  _uC_HMI_Check_Ack
-                  0x008b52                  _uC_HMI_CRC_CREATE
-                  0x008bda                  _uC_HMI_CRC_Check_OK
- .text            0x008c24        0x4b6 build/default/production/src/uC_Machine_HMI_Control.o
-                  0x008c24                  _SendRecordFileName
-                  0x008cfc                  _Get_uCHMI_DateCodeSend
-                  0x008d08                  _SetReadSDIndex
-                  0x008d14                  _StartGetReadSDIndex
-                  0x008d20                  _ReadSD_RecordData
-                  0x008d2c                  _Get_uCHMI_DateCode
-                  0x008d5e                  _SetRecordPosition
-                  0x008dd8                  _GetReadSDIndex
-                  0x008e42                  _SendChartRecordFileName
-                  0x008f86                  _PlayBackUpdateChartTimeDisplay
-                  0x008fc8                  _StartChart1PlayBack
-                  0x008fec                  _StartChart2PlayBack
-                  0x009010                  _StartChart3PlayBack
-                  0x009034                  _SetPlayBackDay
- .text            0x0090da        0x4b4 build/default/production/src/System_Driver.o
-                  0x0090da                  _INIT_OSC
-                  0x009142                  _delay_ms
-                  0x009176                  _delay_ns
-                  0x009198                  _INIT_TIMER1
-                  0x009212                  _enable_timer1
-                  0x009224                  _disable_timer1
-                  0x009236                  __T1Interrupt
-                  0x00925c                  _INIT_TIMER3
-                  0x0092f2                  _enable_timer3
-                  0x009304                  _disable_timer3
-                  0x009316                  __T3Interrupt
-                  0x00931e                  _INIT_TIMER5
-                  0x0093b4                  _enable_timer5
-                  0x0093c6                  _disable_timer5
-                  0x0093d8                  __T5Interrupt
-                  0x0093e0                  _clear_memory
-                  0x00940a                  _INIT_TIMER7
-                  0x0094a0                  _enable_timer7
-                  0x0094b2                  _disable_timer7
-                  0x0094c4                  __T7Interrupt
-                  0x0094cc                  _INIT_TIMER9
-                  0x009562                  _enable_timer9
-                  0x009574                  _disable_timer9
-                  0x009586                  __T9Interrupt
- .text            0x00958e        0x454 build/default/production/src/UART_Driver.o
-                  0x00958e                  _ClearUART1_Counter
-                  0x0095ac                  _ClearUART2_Counter
-                  0x0095c4                  _ClearUART3_Counter
-                  0x0095dc                  _StartUART1WaitTimer
-                  0x0095e6                  _StartUART2WaitTimer
-                  0x0095f0                  _StartUART3WaitTimer
-                  0x0095fa                  _INIT_UART1
-                  0x00965c                  _INIT_UART2
-                  0x0096e6                  _INIT_UART3
-                  0x009768                  _uart1_tx
-                  0x009776                  _uart2_tx
-                  0x009784                  _uart2_rx
-                  0x0097a0                  _uart3_tx
-                  0x0097ae                  _IsCOM1_TX_Busy
-                  0x0097c4                  _IsCOM2_TX_Busy
-                  0x0097da                  _IsCOM3_TX_Busy
-                  0x0097f0                  _uart3_rx
-                  0x00980c                  __U1TXInterrupt
-                  0x009818                  __U1RXInterrupt
-                  0x00984c                  __U2RXInterrupt
-                  0x009880                  __U3RXInterrupt
-                  0x0098b4                  _UARTRXTimeOutCheck
-                  0x009944                  _CommandParsingProcess
-                  0x00997c                  _SEND_U1_RS422CMD_Process
-                  0x00999e                  _SEND_U2_RS422_CMD_Process
-                  0x0099c0                  _SEND_U3_RS422_CMD_Process
- .text            0x0099e2        0x454 build/default/production/src/uC_Machine_HMI_Parsing.o
-                  0x0099e2                  _GetReadByteData
-                  0x009a10                  _GetReadWordData
-                  0x009a7a                  _GetReadLongWordData
-                  0x009b4e                  _GetReadTextData
-                  0x009bce                  _MachineUcHMI_EventProcess
- .text            0x009e36        0x40e build/default/production/src/COM3_RX_Parsing_ActMcu.o
-                  0x009e36                  _COM3_GET_TE01_TE06_CMD
-                  0x009e8c                  _COM3_GET_TE08_PDT1_FAN2_CMD
-                  0x009ee2                  _COM3_GET_TE10_PT1_CMD
-                  0x009f38                  _COM3_GET_ROTATOR_PDT5_CMD
-                  0x009f8e                  _COM3_GET_FAN1_1_PCD25_CMD
-                  0x009fe4                  _COM3_GET_IO_STATUS_CMD
-                  0x00a00e                  _COM3_GET_ALARM_STATUS_CMD
-                  0x00a076                  _COM3_GET_FAN1_FAN2_Current_CMD
-                  0x00a0cc                  _COM3_GET_SystemRunStatus
-                  0x00a0ea                  _GetRunTimeHeaterFAN1_1_Status
-                  0x00a140                  _Get_ExtControllerFirmware
-                  0x00a1a6                  _U3CommandParsing
- .text            0x00a244        0x3b2 build/default/production/src/System_Control.o
-                  0x00a244                  _DelayTimer
-                  0x00a282                  _LoadSystemParameter
-                  0x00a2ae                  _SaveSystemParameter
-                  0x00a2d4                  _LoadRunTimeStatus
-                  0x00a2fa                  _SaveRunTimeStatus
-                  0x00a34c                  _InitialSystemParameter
-                  0x00a352                  _FormatEEPROM
-                  0x00a398                  _Initial_OutputPorts
-                  0x00a45e                  _Initial_OutputPortsHigh
-                  0x00a524                  _DynamicStoreRunTimeData
-                  0x00a53c                  _SystemControl
- .text            0x00a5f6        0x2cc build/default/production/src/InputPortScan.o
-                  0x00a5f6                  _ScanPortH
-                  0x00a6bc                  _ScanPortJ
-                  0x00a6c2                  _ScanPortD
-                  0x00a788                  _ExternalInputScan
-                  0x00a8b6                  _ScanInputPort
- .text            0x00a8c2        0x27e build/default/production/src/Data_API.o
-                  0x00a8c2                  _data16_strdec
-                  0x00aa38                  _strdec_to_data
-                  0x00aaaa                  _CRC_CREATE
-                  0x00ab1a                  _CRC_CHECK
- .text            0x00ab40        0x276 build/default/production/src/Encoder_Driver.o
-                  0x00ab40                  _INIT_QEIX
-                  0x00abec                  _INIT_QEIY
-                  0x00ac94                  _GET_ENCX
-                  0x00acb4                  _GET_ENCY
-                  0x00acd4                  _GET_INDEX_X
-                  0x00acf4                  _GET_INDEX_Y
-                  0x00ad14                  _INIT_LIMITX
-                  0x00ad1e                  _INIT_LIMITY
-                  0x00ad28                  _get_limit_x1
-                  0x00ad3e                  _get_limit_x2
-                  0x00ad54                  _get_limit_y1
-                  0x00ad6a                  _get_limit_y2
-                  0x00ad7e                  _GetEncoderY_Value
-                  0x00ada8                  _ClearEncoderY_Value
- .text            0x00adb6        0x25e build/default/production/src/PWM_Setting.o
-                  0x00adb6                  _InitialPWMPeriodX
-                  0x00add0                  _InitialPWMPeriodY
-                  0x00adea                  _INIT_PWMX
-                  0x00ae30                  _INIT_PWMY
-                  0x00ae7a                  _PWMX_EN
-                  0x00ae90                  _PWMX_DIS
-                  0x00aea0                  _PWMY_EN
-                  0x00aeb6                  _PWMY_DIS
-                  0x00aec6                  _INIT_PWM
- .text            0x00b014        0x248 build/default/production/src/uC_HMI_Sending.o
-                  0x00b014                  _uC_HMI_Send_Packet
-                  0x00b148                  _IsAckReceived
-                  0x00b19e                  _uC_HMI_SendingControl
- .text            0x00b25c        0x236 build/default/production/src/uC_HMI_Control.o
-                  0x00b25c                  _OpenDialog
-                  0x00b282                  _CloseDialog
-                  0x00b2a4                  _uC_HMI_SetPage
-                  0x00b2b6                  _SetSelectItemFontColor
- .text            0x00b492        0x1aa build/default/production/src/RunTimeDisplayControl.o
-                  0x00b492                  _ShowFAN1_RunTimeDisplayControl
-                  0x00b4d6                  _ShowFAN2_RunTimeDisplayControl
-                  0x00b50e                  _SCR_RunTimeDisplayContorl
-                  0x00b552                  _PCD20_RunTimeDisplayControl
-                  0x00b58a                  _ShowMTR4RunTimeDisplayControl
-                  0x00b5ce                  _ShowRunTimeOtherDisplayControl
-                  0x00b62a                  _ShowRunTimeDisplay
- .text            0x00b63c        0x13a build/default/production/src/uC_HMI_Parsing.o
-                  0x00b63c                  _uC_HMI_ParsingProcess
-                  0x00b744                  _uC_HMI_Parsing
+                  0x003ed6                  _SendFunctionResetControlCommand
+                  0x003ee2                  _SendFaultOFFControlCommand
+                  0x003eee                  _SendMTR4MaualControlCommand
+                  0x003efa                  _SendFAN1MaualControlCommand
+                  0x003f06                  _SendFAN2MaualControlCommand
+                  0x003f12                  _SendPCD20MaualControlCommand
+                  0x003f1e                  _SendPCD22MaualControlCommand
+                  0x003f2a                  _SendPCD25MaualControlCommand
+                  0x003f36                  _SendPCD2MaualControlCommand
+                  0x003f42                  _SendPCD6MaualControlCommand
+                  0x003f4e                  _SendV21MaualControlCommand
+                  0x003f5a                  _SendSystemAutoStartStopControlCommand
+                  0x003f66                  _SendSystemAutoGasInControlCommand
+                  0x003f72                  _SendSystemGasInOutControlCommand
+                  0x003f7e                  _SendSystemManualModeControl
+                  0x003f8a                  _SendFAN1_1_PID_OnControlCommand
+                  0x003f96                  _SendFAN1_1_PID_AutoControlCommand
+                  0x003fa2                  _SendHeater_PID_AutoControlCommand
+                  0x003fae                  _Send_PCD_20_PID_AutoControlCommand
+                  0x003fba                  _SendSystemManualControlCommand
+                  0x003fc6                  _COM3_Send_FAN1_Command
+                  0x003fe0                  _COM3_Send_FAN2_Command
+                  0x003fee                  _COM3_Send_MTR4_Command
+                  0x004000                  _COM3_Send_PCD20_Command
+                  0x004016                  _COM3_Send_PCD22_Command
+                  0x004020                  _COM3_Send_PCD25_Command
+                  0x00402e                  _COM3_Send_Heater_Command
+                  0x004048                  _CheckSendingAck
+                  0x0040a4                  _COM3_TxRotatorManual_Control
+                  0x0040ec                  _COM3_TxFAN1_Manual_Control
+                  0x004134                  _COM3_TxFAN2_Manual_Control
+                  0x00417c                  _COM3_TxPCD20_Manual_Control
+                  0x0041c4                  _COM3_TxPCD22_Manual_Control
+                  0x00420c                  _COM3_TxPCD25_Manual_Control
+                  0x004254                  _COM3_TxPCD2_Manual_Control
+                  0x00429c                  _COM3_TxPCD6_Manual_Control
+                  0x0042e4                  _COM3_TxV21_Manual_Control
+                  0x00432c                  _COM3_SystemAutoStartStop_Control
+                  0x004374                  _COM3_SystemFaultReset_Control
+                  0x004386                  _COM3_AutoGasInControl
+                  0x0043a0                  _COM3_GasInOutControl
+                  0x0043ba                  _COM3_SystemManualControl
+                  0x0043d4                  _COM3_FAN1_1_PID_OnControl
+                  0x0043ee                  _COM3_FAN1_1_PID_AutoControl
+                  0x004408                  _COM3_Heater_PID_AutoControl
+                  0x004422                  _COM3_PCD_20_PID_AutoControl
+                  0x00443c                  _COM3_Send_ButtonStatus
+                  0x004450                  _COM3_TxSet_FAN1_Parameter
+                  0x00455e                  _COM3_TxSet_FAN2_Parameter
+                  0x0045e8                  _COM3_TxSet_MTR4_Parameter
+                  0x0046a0                  _COM3_TxSet_PCD20_Parameter
+                  0x00478e                  _COM3_TxSet_PCD22_Parameter
+                  0x0047cc                  _COM3_TxSet_PCD25_Parameter
+                  0x004856                  _COM3_TxSet_Heater_Parameter
+                  0x004972                  _COM3_TxSet_PCD2_PCD6_Parameter
+                  0x0049ca                  _COM3_TxSet_V21_Parameter
+                  0x004a08                  _COM3_TxSet_Alarm_Parameter
+                  0x004a64                  _COM3_TxRequestFirmwareVersionCommand
+                  0x004a8c                  _Send_Button_Command
+                  0x004b1a                  _COM3_CreateCRC
+                  0x004b42                  _COM3_SendingCommandControl
+                  0x004cb8                  _COM3_SendControl
+ .text            0x004d32        0xa7c build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
+                  0x004d32                  _SendFan1_1_GetSV_Response
+                  0x004da6                  _SendFan1_1_GetPI_Response
+                  0x004e1a                  _SendFan1_1_GetD_LowLimit_Response
+                  0x004e92                  _SendFan1_1_Get_TopLimit_Response
+                  0x004f06                  _SendFan1_1_Get_ManualSet_Response
+                  0x004f82                  _Send_GetFan2TempSetSpeedTopLimit_Response
+                  0x004ff6                  _Send_GetFan2SpeedSetResponse
+                  0x00506a                  _Send_HeaterGetTempSetDbResponse
+                  0x0050de                  _Send_Heater_Get_HH2LLSetResponse
+                  0x005152                  _Send_Heater_GetSP2LowLimitSetResponse
+                  0x0051c6                  _Send_Heater_GetPI_SetResponse
+                  0x00523a                  _Send_Heater_GetManualSetResponse
+                  0x0052ae                  _Send_MTR4_GetTE5ConditionSetResponse
+                  0x005322                  _Send_MTR4_GetTE5SpeedSetResponse
+                  0x005396                  _Send_MTR4_GetTopStopLowSetResponse
+                  0x00540a                  _Send_GetPCD2_V21SetResponse
+                  0x00547e                  _Send_GetPCD20_TempSizeSetResponse
+                  0x0054f2                  _Send_GetPCD20_PISetResponse
+                  0x005566                  _Send_GetPCD20_D_TimeSetResponse
+                  0x0055de                  _Send_GetPCD20_DeadBandTopLowLimitPCD6SetResponse
+                  0x005652                  _Send_GetPCD22_SetResponse
+                  0x0056c6                  _Send_GetPCD25_PCD6TimeSetResponse
+                  0x00573a                  _Send_GetPCD25_Limit_ManualSetResponse
+ .text            0x0057ae        0x824 build/default/production/src/StorageDev.o
+                  0x0057ae                  _I2C_EEPROM_WRITE
+                  0x00586e                  _I2C_EEPROM_READ
+                  0x005986                  _WriteSystemParameterToI2C_EEPROM
+                  0x005ad6                  _RegisterWriteEEPROM
+                  0x005b3a                  _RegisterReadEEPROM
+                  0x005bba                  _Built_EEPROM_WriteBuf
+                  0x005bfc                  _RunWriteProcess
+                  0x005d96                  _Get_EEPROM_Data
+                  0x005dc6                  _RunReadProcess
+                  0x005f36                  _RunEEPROM_ReadWriteProcess
+                  0x005f88                  _IsReadEEPROM_DataFinish
+                  0x005fa8                  _Initial_EEPROM_Read_Write_Process
+ .text            0x005fd2        0x7d4 build/default/production/src/IO_Driver.o
+                  0x005fd2                  _INIT_IOPORT
+                  0x00601c                  _enable_ext_interrupt
+                  0x0060f2                  _enable_capture_timebace
+                  0x00619a                  _enable_capture_io
+                  0x0062f6                  _get_total_input_status
+                  0x006312                  _Set_Output_bit_Status
+                  0x006390                  _Clear_Output_bit_Status
+                  0x00640e                  _InverseOutPutBit
+                  0x006604                  _InverseOutput
+ .text            0x0067a6        0x79c build/default/production/src/COM1_Sending_HMI.o
+                  0x0067a6                  _SendFirmwareVersion
+                  0x006840                  _Send_LoopBackResponse
+                  0x006868                  _Get_TE1_3_5_6_SendPacket
+                  0x0068e4                  _Get_TE8_10_11_12_SendPacket
+                  0x006960                  _Get_PDT1_2_3_SendPacket
+                  0x0069dc                  _Get_FAN1_RunTime_SendPacket
+                  0x006a58                  _Get_FAN2_RunTime_SendPacket
+                  0x006ad4                  _Get_MTR4_RunTime_SendPacket
+                  0x006b4c                  _Get_Input_Heater_RunTime_SendPacket
+                  0x006bc8                  _Get_PCD_RunTime_SendPacket
+                  0x006c40                  _Get_UsingRecord_RunTime_SendPacket
+                  0x006cbc                  _Get_AlarmStatus_RunTime_SendPacket
+                  0x006d4c                  _Get_SystemStatus_RunTime_SendPacket
+                  0x006e0e                  _RoutineSendingProcess
+                  0x006ec6                  _ResponseSendingProcess
+                  0x006ed4                  _Android_HMI_SendingControl
+ .text            0x006f42        0x6c0 build/default/production/src/COM1_Parsing_HMI.o
+                  0x006f42                  _WriteParameterParsing
+                  0x007096                  _Android_ButtonProcess
+                  0x0073c0                  _Android_HMI_Parsing
+ .text            0x007602        0x6be build/default/production/src/EXT_ACD_DAC_Driver.o
+                  0x007602                  _INIT_ADC
+                  0x007682                  _ADC_GET_VAL
+                  0x007716                  _UNSYNC_ADC_GET_VAL
+                  0x007750                  _DAC_REG_RW
+                  0x0078be                  _GET_DAC_OUTPUT_DATA
+                  0x007a36                  _SET_DAC_OUTPUT
+                  0x007b74                  _INIT_DAC
+                  0x007c68                  _Inverter_Control_By_DAC
+ .text            0x007cc0        0x570 build/default/production/src/COM1_AlarmPacket_Generator.o
+                  0x007cc0                  _Send_GetAlarm_A1_SetResponse
+                  0x007d34                  _Send_GetAlarm_A1_A2SetResponse
+                  0x007da8                  _Send_GetAlarm_A2_B_SetResponse
+                  0x007e1c                  _Send_GetHeaterTempAlarm_SetResponse
+                  0x007e90                  _Send_GetHeaterPDTAlarm_SetResponse
+                  0x007f04                  _Send_GetMTR4TempAlarm_SetResponse
+                  0x007f78                  _Send_Get_MTR4TempPDTAlarm_SetResponse
+                  0x007fec                  _Send_GetD_Alarm1_Set_SetResponse
+                  0x008060                  _Send_GetD_Alarm2_Set_SetResponse
+                  0x0080d4                  _Send_GetD_Alarm3__D1_SetResponse
+                  0x008148                  _Send_GetD1_Alarm2_Set_SetResponse
+                  0x0081bc                  _Send_GetD1_Alarm3_SetResponse
+ .text            0x008230        0x540 build/default/production/src/IO_Setting.o
+                  0x008230                  _INIT_SPI1
+                  0x00829e                  _spi1_txrx
+                  0x0082cc                  _spi1_txrx16
+                  0x008300                  _INIT_EXT_IO
+                  0x0083c4                  _EXTIO_SET_OUTPUT
+                  0x008414                  _EXTIO_GET_OUTPUT
+                  0x008474                  _EXTIO_GET_INPUT
+                  0x0084d4                  _INIT_I2C
+                  0x0084e6                  _i2c_send_byte
+                  0x00855c                  _msb_lsb_change
+                  0x0085b8                  _i2c_wr
+                  0x0086ae                  _INIT_EXT_RTC
+                  0x0086e2                  _INIT_INT_RTC
+                  0x008714                  _UPDATE_SYS_TIME
+ .text            0x008770        0x4d8 build/default/production/src/uC_HMI_Utility.o
+                  0x008770                  _Initial_uCHMI_SuddenSendBuffer
+                  0x0087a4                  _RegisterSendingPacket
+                  0x008850                  _uC_HMI_RunReadByteSend
+                  0x008872                  _uC_HMI_RunReadWordSend
+                  0x008894                  _uC_HMI_RunReadLongWordSend
+                  0x0088b6                  _uC_HMI_RunReadTextVariableSend
+                  0x0088da                  _uC_HMI_RunWriteSingleByteSend
+                  0x008906                  _uC_HMI_RunWriteMultiByteSend
+                  0x008924                  _uC_HMI_RunWriteSingleWordSend
+                  0x00895c                  _uC_HMI_RunWriteMultiWordSend
+                  0x00897a                  _uC_HMI_RunWriteSingleLongWordSend
+                  0x0089ba                  _uC_HMI_RunWriteMultiLongWordSend
+                  0x0089d8                  _uC_HMI_RunWriteTextVariableSend
+                  0x008a38                  _uC_HMI_RunDeleteTextVariableSend
+                  0x008a58                  _Set_uCHMI_RtcDate
+                  0x008ad2                  _Set_uCHMI_RtcTime
+                  0x008b4c                  _uC_HMI_Check_Ack
+                  0x008b76                  _uC_HMI_CRC_CREATE
+                  0x008bfe                  _uC_HMI_CRC_Check_OK
+ .text            0x008c48        0x4b6 build/default/production/src/uC_Machine_HMI_Control.o
+                  0x008c48                  _SendRecordFileName
+                  0x008d20                  _Get_uCHMI_DateCodeSend
+                  0x008d2c                  _SetReadSDIndex
+                  0x008d38                  _StartGetReadSDIndex
+                  0x008d44                  _ReadSD_RecordData
+                  0x008d50                  _Get_uCHMI_DateCode
+                  0x008d82                  _SetRecordPosition
+                  0x008dfc                  _GetReadSDIndex
+                  0x008e66                  _SendChartRecordFileName
+                  0x008faa                  _PlayBackUpdateChartTimeDisplay
+                  0x008fec                  _StartChart1PlayBack
+                  0x009010                  _StartChart2PlayBack
+                  0x009034                  _StartChart3PlayBack
+                  0x009058                  _SetPlayBackDay
+ .text            0x0090fe        0x4b4 build/default/production/src/System_Driver.o
+                  0x0090fe                  _INIT_OSC
+                  0x009166                  _delay_ms
+                  0x00919a                  _delay_ns
+                  0x0091bc                  _INIT_TIMER1
+                  0x009236                  _enable_timer1
+                  0x009248                  _disable_timer1
+                  0x00925a                  __T1Interrupt
+                  0x009280                  _INIT_TIMER3
+                  0x009316                  _enable_timer3
+                  0x009328                  _disable_timer3
+                  0x00933a                  __T3Interrupt
+                  0x009342                  _INIT_TIMER5
+                  0x0093d8                  _enable_timer5
+                  0x0093ea                  _disable_timer5
+                  0x0093fc                  __T5Interrupt
+                  0x009404                  _clear_memory
+                  0x00942e                  _INIT_TIMER7
+                  0x0094c4                  _enable_timer7
+                  0x0094d6                  _disable_timer7
+                  0x0094e8                  __T7Interrupt
+                  0x0094f0                  _INIT_TIMER9
+                  0x009586                  _enable_timer9
+                  0x009598                  _disable_timer9
+                  0x0095aa                  __T9Interrupt
+ .text            0x0095b2        0x454 build/default/production/src/UART_Driver.o
+                  0x0095b2                  _ClearUART1_Counter
+                  0x0095d0                  _ClearUART2_Counter
+                  0x0095e8                  _ClearUART3_Counter
+                  0x009600                  _StartUART1WaitTimer
+                  0x00960a                  _StartUART2WaitTimer
+                  0x009614                  _StartUART3WaitTimer
+                  0x00961e                  _INIT_UART1
+                  0x009680                  _INIT_UART2
+                  0x00970a                  _INIT_UART3
+                  0x00978c                  _uart1_tx
+                  0x00979a                  _uart2_tx
+                  0x0097a8                  _uart2_rx
+                  0x0097c4                  _uart3_tx
+                  0x0097d2                  _IsCOM1_TX_Busy
+                  0x0097e8                  _IsCOM2_TX_Busy
+                  0x0097fe                  _IsCOM3_TX_Busy
+                  0x009814                  _uart3_rx
+                  0x009830                  __U1TXInterrupt
+                  0x00983c                  __U1RXInterrupt
+                  0x009870                  __U2RXInterrupt
+                  0x0098a4                  __U3RXInterrupt
+                  0x0098d8                  _UARTRXTimeOutCheck
+                  0x009968                  _CommandParsingProcess
+                  0x0099a0                  _SEND_U1_RS422CMD_Process
+                  0x0099c2                  _SEND_U2_RS422_CMD_Process
+                  0x0099e4                  _SEND_U3_RS422_CMD_Process
+ .text            0x009a06        0x454 build/default/production/src/uC_Machine_HMI_Parsing.o
+                  0x009a06                  _GetReadByteData
+                  0x009a34                  _GetReadWordData
+                  0x009a9e                  _GetReadLongWordData
+                  0x009b72                  _GetReadTextData
+                  0x009bf2                  _MachineUcHMI_EventProcess
+ .text            0x009e5a        0x40e build/default/production/src/COM3_RX_Parsing_ActMcu.o
+                  0x009e5a                  _COM3_GET_TE01_TE06_CMD
+                  0x009eb0                  _COM3_GET_TE08_PDT1_FAN2_CMD
+                  0x009f06                  _COM3_GET_TE10_PT1_CMD
+                  0x009f5c                  _COM3_GET_ROTATOR_PDT5_CMD
+                  0x009fb2                  _COM3_GET_FAN1_1_PCD25_CMD
+                  0x00a008                  _COM3_GET_IO_STATUS_CMD
+                  0x00a032                  _COM3_GET_ALARM_STATUS_CMD
+                  0x00a09a                  _COM3_GET_FAN1_FAN2_Current_CMD
+                  0x00a0f0                  _COM3_GET_SystemRunStatus
+                  0x00a10e                  _GetRunTimeHeaterFAN1_1_Status
+                  0x00a164                  _Get_ExtControllerFirmware
+                  0x00a1ca                  _U3CommandParsing
+ .text            0x00a268        0x3b2 build/default/production/src/System_Control.o
+                  0x00a268                  _DelayTimer
+                  0x00a2a6                  _LoadSystemParameter
+                  0x00a2d2                  _SaveSystemParameter
+                  0x00a2f8                  _LoadRunTimeStatus
+                  0x00a31e                  _SaveRunTimeStatus
+                  0x00a370                  _InitialSystemParameter
+                  0x00a376                  _FormatEEPROM
+                  0x00a3bc                  _Initial_OutputPorts
+                  0x00a482                  _Initial_OutputPortsHigh
+                  0x00a548                  _DynamicStoreRunTimeData
+                  0x00a560                  _SystemControl
+ .text            0x00a61a        0x2cc build/default/production/src/InputPortScan.o
+                  0x00a61a                  _ScanPortH
+                  0x00a6e0                  _ScanPortJ
+                  0x00a6e6                  _ScanPortD
+                  0x00a7ac                  _ExternalInputScan
+                  0x00a8da                  _ScanInputPort
+ .text            0x00a8e6        0x27e build/default/production/src/Data_API.o
+                  0x00a8e6                  _data16_strdec
+                  0x00aa5c                  _strdec_to_data
+                  0x00aace                  _CRC_CREATE
+                  0x00ab3e                  _CRC_CHECK
+ .text            0x00ab64        0x276 build/default/production/src/Encoder_Driver.o
+                  0x00ab64                  _INIT_QEIX
+                  0x00ac10                  _INIT_QEIY
+                  0x00acb8                  _GET_ENCX
+                  0x00acd8                  _GET_ENCY
+                  0x00acf8                  _GET_INDEX_X
+                  0x00ad18                  _GET_INDEX_Y
+                  0x00ad38                  _INIT_LIMITX
+                  0x00ad42                  _INIT_LIMITY
+                  0x00ad4c                  _get_limit_x1
+                  0x00ad62                  _get_limit_x2
+                  0x00ad78                  _get_limit_y1
+                  0x00ad8e                  _get_limit_y2
+                  0x00ada2                  _GetEncoderY_Value
+                  0x00adcc                  _ClearEncoderY_Value
+ .text            0x00adda        0x25e build/default/production/src/PWM_Setting.o
+                  0x00adda                  _InitialPWMPeriodX
+                  0x00adf4                  _InitialPWMPeriodY
+                  0x00ae0e                  _INIT_PWMX
+                  0x00ae54                  _INIT_PWMY
+                  0x00ae9e                  _PWMX_EN
+                  0x00aeb4                  _PWMX_DIS
+                  0x00aec4                  _PWMY_EN
+                  0x00aeda                  _PWMY_DIS
+                  0x00aeea                  _INIT_PWM
+ .text            0x00b038        0x248 build/default/production/src/uC_HMI_Sending.o
+                  0x00b038                  _uC_HMI_Send_Packet
+                  0x00b16c                  _IsAckReceived
+                  0x00b1c2                  _uC_HMI_SendingControl
+ .text            0x00b280        0x236 build/default/production/src/uC_HMI_Control.o
+                  0x00b280                  _OpenDialog
+                  0x00b2a6                  _CloseDialog
+                  0x00b2c8                  _uC_HMI_SetPage
+                  0x00b2da                  _SetSelectItemFontColor
+ .text            0x00b4b6        0x1aa build/default/production/src/RunTimeDisplayControl.o
+                  0x00b4b6                  _ShowFAN1_RunTimeDisplayControl
+                  0x00b4fa                  _ShowFAN2_RunTimeDisplayControl
+                  0x00b532                  _SCR_RunTimeDisplayContorl
+                  0x00b576                  _PCD20_RunTimeDisplayControl
+                  0x00b5ae                  _ShowMTR4RunTimeDisplayControl
+                  0x00b5f2                  _ShowRunTimeOtherDisplayControl
+                  0x00b64e                  _ShowRunTimeDisplay
+ .text            0x00b660        0x13a build/default/production/src/uC_HMI_Parsing.o
+                  0x00b660                  _uC_HMI_ParsingProcess
+                  0x00b768                  _uC_HMI_Parsing
 
-.dinit            0x00b776        0x10a
- .dinit           0x00b776        0x10a data_init
+.dinit            0x00b79a        0x10a
+ .dinit           0x00b79a        0x10a data_init
 
-.text             0x00b880        0x1de
- .text            0x00b880         0xfa build/default/production/src/COM2_TX_Sending_ExtDevice.o
-                  0x00b880                  _LoopBackResponseProcess
-                  0x00b8a8                  _LoopBackResponse
-                  0x00b8b4                  _COM2_Build_Send_Packet
-                  0x00b8e6                  _COM2_SendControl_Process
-                  0x00b972                  _COM2_SendControl
- .text            0x00b97a         0x54 build/default/production/src/Main.o
-                  0x00b97a                  _main
- .text            0x00b9ce         0x4c build/default/production/src/HMI_Control.o
-                  0x00b9ce                  _DEC2BCD
-                  0x00ba00                  _BCD2DEC
- .text            0x00ba1a         0x44 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
-                  0x00ba1a                  _U2CommandParsing
+.text             0x00b8a4        0x1de
+ .text            0x00b8a4         0xfa build/default/production/src/COM2_TX_Sending_ExtDevice.o
+                  0x00b8a4                  _LoopBackResponseProcess
+                  0x00b8cc                  _LoopBackResponse
+                  0x00b8d8                  _COM2_Build_Send_Packet
+                  0x00b90a                  _COM2_SendControl_Process
+                  0x00b996                  _COM2_SendControl
+ .text            0x00b99e         0x54 build/default/production/src/Main.o
+                  0x00b99e                  _main
+ .text            0x00b9f2         0x4c build/default/production/src/HMI_Control.o
+                  0x00b9f2                  _DEC2BCD
+                  0x00ba24                  _BCD2DEC
+ .text            0x00ba3e         0x44 build/default/production/src/COM2_RX_Parsing_ExtDevice.o
+                  0x00ba3e                  _U2CommandParsing

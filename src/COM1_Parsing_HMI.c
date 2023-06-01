@@ -305,6 +305,12 @@ void Android_ButtonProcess(void)
             SaveRunTimeStatus();
             SendSystemManualControlCommand();//Philip 20220530 0.0.1
             break;
+        case 34 ://SysOPFaultOFFBtn
+            SendFaultOFFControlCommand();
+            break;
+        case 35 ://SysOPFunctionResetBtn
+            SendFunctionResetControlCommand();
+            break;
         
     }
 }

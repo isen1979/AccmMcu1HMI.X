@@ -119,20 +119,24 @@ enum Android_HMI_Button_Command_Enum
     Android_HMI_PCD20ManualControlEnum,
     Android_HMI_PCD22ManualControlEnum,//5
     Android_HMI_PCD25ManualControlEnum,    
-    Android_HMI_PCD2ManualControlEnum,
+    Android_HMI_PCD2ManualControlEnum,//7
     Android_HMI_PCD6ManualControlEnum,
     Android_HMI_V21ManualControlEnum,
     Android_HMI_SystemAutoStartStopControlEnum,//10
-    Android_HMI_SetFaultResetEnum,
+    Android_HMI_System_Fault_RESET_Enum,
     Android_HMI_AUTO_GAS_IN_SET_Enum,
     Android_HMI_GAS_IN_OUT_SET_Enum,
     Android_HMI_MANUAL_MODE_SET_Enum,
     Android_HMI_FAN1_1_PID_ON_SET_Enum,//15
     Android_HMI_FAN1_1_PID_AUTO_STATE_SET_Enum,
     Android_HMI_HEATER_PID_AUTO_STATE_SET_Enum,
-    Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum,
+    Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum,//18
+    Android_HMI_System_Function_RESET_Enum,
+    Android_HMI_System_Fault_STATE_SET_Enum,//20
+    Android_HMI_System_Alarm_STATE_SET_Enum,
+    Android_HMI_System_Run_STATE_SET_Enum,//22
     
-    Android_HMI_Button_Command_EnumEnd//19
+    Android_HMI_Button_Command_EnumEnd
 };
 //Philip 20220530 0.0.1 ===========================================================================
 

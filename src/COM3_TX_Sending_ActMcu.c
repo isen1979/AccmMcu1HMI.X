@@ -80,7 +80,17 @@ void COM3_Send_All_Command(void)
 
 void SendSystemResetControlCommand(void)
 {
-    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_SetFaultResetEnum);
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_System_Fault_RESET_Enum);
+}
+
+void SendFunctionResetControlCommand(void)
+{
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_System_Function_RESET_Enum);
+}
+
+void SendFaultOFFControlCommand(void)
+{
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_System_Fault_STATE_SET_Enum);
 }
 
 void SendMTR4MaualControlCommand(void)
@@ -395,7 +405,7 @@ void COM3_SystemAutoStartStop_Control(void)
 void COM3_SystemFaultReset_Control(void)
 {
     UART3TxBuffer[0] = COM3_Button_Command_Enum;
-    UART3TxBuffer[1] = Android_HMI_SetFaultResetEnum;
+    UART3TxBuffer[1] = Android_HMI_System_Fault_RESET_Enum;
 }
 
 void COM3_AutoGasInControl(void)
@@ -702,7 +712,7 @@ void Send_Button_Command(unsigned char id)
         case Android_HMI_SystemAutoStartStopControlEnum :
             COM3_SystemAutoStartStop_Control();
             break;       
-        case Android_HMI_SetFaultResetEnum :
+        case Android_HMI_System_Fault_RESET_Enum :
             COM3_SystemFaultReset_Control();
             break;
         case Android_HMI_AUTO_GAS_IN_SET_Enum :
