@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv1_11 (A) Ç
+Microchip Technology Inc, vv1_11 (A) Ï
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -1368,7 +1368,7 @@ __FUID0
 .comment
  *(.comment)
 
-.debug_info       0x000000      0x2cee8
+.debug_info       0x000000      0x2ce82
  *(.debug_info)
  .debug_info      0x000000       0x1424 build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_info      0x001424       0x31a2 build/default/production/src/IO_Driver.o
@@ -1400,12 +1400,12 @@ __FUID0
  .debug_info      0x01e84d       0x33bb build/default/production/src/COM1_Sending_HMI.o
  .debug_info      0x021c08       0x1e72 build/default/production/src/COM1_WriteParameters_HMI.o
  .debug_info      0x023a7a       0x24d8 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_info      0x025f52       0x1a04 build/default/production/src/COM1_Parsing_HMI.o
- .debug_info      0x027956       0x223e build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_info      0x029b94       0x3354 build/default/production/src/uC_InitialTestParameter.o
+ .debug_info      0x025f52       0x199e build/default/production/src/COM1_Parsing_HMI.o
+ .debug_info      0x0278f0       0x223e build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_info      0x029b2e       0x3354 build/default/production/src/uC_InitialTestParameter.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x2412
+.debug_abbrev     0x000000       0x23c9
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x16a build/default/production/src/EXT_ACD_DAC_Driver.o
  .debug_abbrev    0x00016a        0x141 build/default/production/src/IO_Driver.o
@@ -1437,9 +1437,9 @@ __FUID0
  .debug_abbrev    0x001c00        0x22f build/default/production/src/COM1_Sending_HMI.o
  .debug_abbrev    0x001e2f         0xf6 build/default/production/src/COM1_WriteParameters_HMI.o
  .debug_abbrev    0x001f25         0xf6 build/default/production/src/COM1_GetParameterResponsePacketGenerator.o
- .debug_abbrev    0x00201b        0x160 build/default/production/src/COM1_Parsing_HMI.o
- .debug_abbrev    0x00217b         0xf4 build/default/production/src/COM1_AlarmPacket_Generator.o
- .debug_abbrev    0x00226f        0x1a3 build/default/production/src/uC_InitialTestParameter.o
+ .debug_abbrev    0x00201b        0x117 build/default/production/src/COM1_Parsing_HMI.o
+ .debug_abbrev    0x002132         0xf4 build/default/production/src/COM1_AlarmPacket_Generator.o
+ .debug_abbrev    0x002226        0x1a3 build/default/production/src/uC_InitialTestParameter.o
 
 .debug_line       0x000000       0xf33b
  *(.debug_line)

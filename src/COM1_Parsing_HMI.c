@@ -92,6 +92,8 @@ extern void SendFAN1_1_PID_OnControlCommand(void);
 extern void SendFAN1_1_PID_AutoControlCommand(void);
 extern void Send_PCD_20_PID_AutoControlCommand(void);
 extern void SendHeater_PID_AutoControlCommand(void);
+extern void SendFaultOFFControlCommand(void);
+extern void SendFunctionResetControlCommand(void);
 //Philip 20220530 0.0.1 ====================================================
 
 unsigned char COM1_Rx_Size;
