@@ -4,6 +4,10 @@
 #define SPI_SLAVE	0
 #define SPI1_MODE	SPI_MASTER
 
+
+
+
+
 //SPI
 
 void INIT_SPI1(void)

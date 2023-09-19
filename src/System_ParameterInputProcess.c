@@ -955,19 +955,19 @@ void GetWheelAlarmSystemParameter(unsigned char FloatCount, long Value)
             SystemParameter.Alarm.Value.WheelAlarmSet.SuperHighPDT1 = Value;
             break;
         case -27 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE3 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE3 = Value;
             break;
         case -28 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE3 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE3 = Value;
             break;
         case -29 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE5 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE5 = Value;
             break;
         case -30 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE5 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE5 = Value;
             break;
         case -31 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE8 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE8 = Value;
             break;
         case -32 :
             SystemParameter.Alarm.Value.WheelAlarmSet.SuperLowTE8 = Value;
@@ -982,19 +982,19 @@ void GetWheelAlarmSystemParameter(unsigned char FloatCount, long Value)
             SystemParameter.Alarm.Value.WheelAlarmSet.SuperLowPDT1 = Value;
             break;
         case -36 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE8 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE8 = Value;
             break;
         case -37 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE11 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE11 = Value;
             break;
         case -38 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE11 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE11 = Value;
             break;
         case -39 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE12 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE12 = Value;
             break;
         case -40 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE12 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE12 = Value;
             break;            
     }
     
@@ -1031,34 +1031,34 @@ void GetAlarmTypeD1SystemParameter(unsigned char FloatCount, long Value)
     switch(SystemParameterId)
     {   
         case -41 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE14 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE10 = Value;
             break;
         case -42 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE14 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE10 = Value;
             break;
         case -43 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE1 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE6 = Value;
             break;
         case -44 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE1 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE6 = Value;
             break;
         case -45 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT1 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT1 = Value;
             break;
         case -46 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT1 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT1 = Value;
             break;
         case -47 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT2 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT2 = Value;
             break;
         case -48 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT2 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT2 = Value;
             break;
         case -49 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT3 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT3 = Value;
             break;
         case -50 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT3 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT3 = Value;
             break;          
     }
     

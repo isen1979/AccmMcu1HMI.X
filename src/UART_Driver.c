@@ -5,12 +5,13 @@
 
 #define UARTRXTimeOutCNT 10
 
-//extern void StartUART2WaitTimer(void);
-//extern void StartUART3WaitTimer(void);
-//extern void ClearUART2_Counter(void);
-//extern void ClearUART3_Counter(void);
-
-extern void Initial_uCHMI_SuddenSendBuffer(void);
+extern void Android_HMI_Parsing(void);
+extern void Android_HMI_SendingControl(void);
+extern void U2CommandParsing(void);
+extern void U3CommandParsing(void);
+//Isen：20230913-1，讀取UART1的數據並立即回傳
+extern char readUART1Data(void);
+extern unsigned char COM2_Rx_Size, COM3_Rx_Size;
 
 unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
@@ -27,8 +28,6 @@ unsigned int UART1TimeOutCount, UART1RxBufCount, U1SendDataCount, U1PacketLen;
 unsigned int UART2TimeOutCount, UART2RxBufCount, U2SendDataCount, U2PacketLen;
 unsigned int UART3TimeOutCount, UART3RxBufCount, U3SendDataCount, U3PacketLen;
 
-
-
 void ClearUART1_Counter(void)
 {
     U1NewCommandReceivedFlag = 0;
@@ -36,7 +35,6 @@ void ClearUART1_Counter(void)
     U1PacketLen=0;
     UART1RxBufCount = 0;
     UART1TimeOutCount = 0;    
-    Initial_uCHMI_SuddenSendBuffer();
 }
 
 void ClearUART2_Counter(void)
@@ -72,16 +70,12 @@ void StartUART3WaitTimer(void)
 
 void INIT_UART1(unsigned int baud_rate,unsigned int parity,unsigned int stopbit)
 {
-//    unsigned char buf_clear_cnt=0;
     // This is an EXAMPLE, so brutal typing goes into explaining all bit sets
-
     // The HPC16 board has a DB9 connector wired to UART1, so we will
     // be configuring this port only
-
     // configure U1MODE
     U1MODE=0; //8,n,1
     U1MODE=parity|stopbit;
-
     U1BRG = baud_rate;
 
     // Load all values in for U1STA SFR
@@ -98,14 +92,13 @@ void INIT_UART1(unsigned int baud_rate,unsigned int parity,unsigned int stopbit)
     //Set UART1 TX RX Pin
     RPOR4bits.RP79R = UART1TX;  // TX1 in RP79
     _TRISD15=0;  //tx output
-    RPINR18bits.U1RXR=RPI78;  // RX1 in RPI78
+    RPINR18bits.U1RXR = RPI78;  // RX1 in RPI78
     _TRISD14=1;  //rx input
     _TRISK15=0;
     UART1_DE=DE_ENABLE;
     
     ClearUART1_Counter();
 }
-
 
 void INIT_UART2(unsigned int baud_rate,unsigned int parity,unsigned int stopbit,unsigned char txrx_isr_en)
 {
@@ -142,6 +135,7 @@ void INIT_UART2(unsigned int baud_rate,unsigned int parity,unsigned int stopbit,
     
     ClearUART2_Counter();
 }
+
 void INIT_UART3(unsigned int baud_rate,unsigned int parity,unsigned int stopbit,unsigned char txrx_isr_en)
 {
     U3MODE=0; //8,n,1
@@ -177,19 +171,12 @@ void INIT_UART3(unsigned int baud_rate,unsigned int parity,unsigned int stopbit,
 
 void uart1_tx(unsigned char txdata)
 {
-//    UART1_DE=DE_ENABLE;
     U1TXREG = txdata;
-//    while(!U1STAbits.TRMT);  //wait tx finish
-//    UART1_DE=DE_DISABLE;
 }
-
 
 void uart2_tx(unsigned char txdata)
 {
-//    UART2_DE=DE_ENABLE;
     U2TXREG = txdata;
-//    while(!U2STAbits.TRMT);  //wait tx finish
-//    UART2_DE=DE_DISABLE;
 }
 
 unsigned char uart2_rx(void)
@@ -203,10 +190,7 @@ unsigned char uart2_rx(void)
 
 void uart3_tx(unsigned char txdata)
 {
-//    UART3_DE=DE_ENABLE;
     U3TXREG = txdata;
-//    while(!U3STAbits.TRMT);  //wait rx finish
-//    UART3_DE=DE_DISABLE;
 }
 
 unsigned char IsCOM1_TX_Busy(void)
@@ -216,7 +200,6 @@ unsigned char IsCOM1_TX_Busy(void)
     else
         return 0;
 }
-
 
 unsigned char IsCOM2_TX_Busy(void)
 {
@@ -234,7 +217,6 @@ unsigned char IsCOM3_TX_Busy(void)
         return 0;
 }
 
-
 unsigned char uart3_rx(void)
 {
     unsigned char uart3_rxdata=0;
@@ -251,25 +233,17 @@ void __attribute__( ( interrupt , no_auto_psv ) ) _U1TXInterrupt( void )
     IEC0bits.U1TXIE=1;
 }
 
-
 void __attribute__( ( interrupt , no_auto_psv ) ) _U1RXInterrupt( void )
 {
     IEC0bits.U1RXIE=0;
     IFS0bits.U1RXIF = 0;
-//    UART1TimeOutCount = 0;
+
     UART1RxBuffer[UART1RxBufCount++] = U1RXREG;
-//    if( UART1RxBufCount >= UART1_PACKET_SIZE )
-//    {
-//        UART1RxBufCount = 0;
-//        U1NewCommandReceivedFlag = 1;
-//    }
-    
     StartUART1WaitTimer();
     
     IEC0bits.U1RXIE=1;
     U1STAbits.OERR = 0;
 }
-
 
 void __attribute__( ( interrupt , no_auto_psv ) ) _U2RXInterrupt( void )
 {	
@@ -287,26 +261,18 @@ void __attribute__( ( interrupt , no_auto_psv ) ) _U3RXInterrupt( void )
 {	
     IEC5bits.U3RXIE=0;
     IFS5bits.U3RXIF = 0;
-      
-	UART3RxBuffer[UART3RxBufCount++]=U3RXREG;
-/*    
-    if( UART3RxBufCount >= UART3_PACKET_SIZE )
-    {
-        UART3RxBufCount = 0;
-        U3NewCommandReceivedFlag = 1;
-    }
-*/    
-    
-    StartUART3WaitTimer();
 
+    UART3RxBuffer[UART3RxBufCount++]=U3RXREG; 
+    StartUART3WaitTimer();
     
 	IEC5bits.U3RXIE=1;
 	U3STAbits.OERR = 0;
 }
+
 #ifdef ANDROID_HMI
 extern unsigned char COM1_Rx_Size;
 #endif
-extern unsigned char COM2_Rx_Size, COM3_Rx_Size;
+
 void UARTRXTimeOutCheck(void)
 {
     UART1TimeOutCount++;
@@ -318,13 +284,13 @@ void UARTRXTimeOutCheck(void)
         UART1TimeOutCount = UARTRXTimeOutCNT;
         if( UART1RxBufCount > 0 )
         {            
-#ifdef ANDROID_HMI
+        #ifdef ANDROID_HMI
             COM1_Rx_Size = UART1RxBufCount;
             U1NewCommandReceivedFlag = 1;
-#else            
+        #else            
             if( (UART1RxBuffer[0] == 0xAF) && (UART1RxBuffer[UART1RxBufCount - 1] == 0xEF) )
                 U1NewCommandReceivedFlag = 1;
-#endif           
+        #endif           
             UART1RxBufCount = 0;
         }
     }     
@@ -335,7 +301,6 @@ void UARTRXTimeOutCheck(void)
         if( UART2RxBufCount >= UART2_PACKET_SIZE )
         {
             COM2_Rx_Size = UART2RxBufCount;
-            UART2RxBufCount = 0;
             U2NewCommandReceivedFlag = 1;
         }
         else if( UART2RxBufCount > 0 )
@@ -349,48 +314,55 @@ void UARTRXTimeOutCheck(void)
         {
             if( UART3RxBufCount > 4 )
             {
-                U3NewCommandReceivedFlag = 1;
                 COM3_Rx_Size = UART3RxBufCount;
+                U3NewCommandReceivedFlag = 1;
             }
             UART3RxBufCount = 0;            
         }
     }
 }
-extern void Android_HMI_Parsing(void);
-extern void Android_HMI_SendingControl(void);
-extern void uC_HMI_Parsing(void);
-extern void uC_HMI_SendingControl(void);
-extern void U2CommandParsing(void);
-extern void U3CommandParsing(void);
+
+//Isen：20230913-1，發送數據到UART1
+void sendUART1Data(char receivedData) {
+    while (U1STAbits.UTXBF); // 等待傳輸緩衝區有空間
+    U1TXREG = receivedData; // 將數據放入傳輸暫存器，開始傳輸
+    IFS0bits.U1RXIF = 0; // 清除接收中斷標誌
+}
+
+//Isen：20230913-1，檢查是否接收到有效數據
+void echoUART1Data(void) {
+    char receivedData = readUART1Data(); // 使用先前提供的函數讀取數據
+    if (receivedData != 0) { // 檢查是否接收到有效數據
+        sendUART1Data(receivedData); // 將數據回傳到終端機
+    }
+}
 
 void CommandParsingProcess(void)
-{
-    if(U3NewCommandReceivedFlag == 1)
-    {
-        U3NewCommandReceivedFlag = 0;
-        U3CommandParsing();
+{        
+    if(U1NewCommandReceivedFlag == 1)   
+    { 
+    #ifdef ANDROID_HMI
+        Android_HMI_Parsing();
+    #endif
+        U1NewCommandReceivedFlag = 0;
     }
     
     if(U2NewCommandReceivedFlag == 1)
-    {
-        U2NewCommandReceivedFlag = 0;
+    {       
         U2CommandParsing();
+        U2NewCommandReceivedFlag = 0;
     }
     
-    if(U1NewCommandReceivedFlag == 1)   
-    { 
-#ifdef ANDROID_HMI
-        Android_HMI_Parsing();
-#else        
-        uC_HMI_Parsing();
-#endif
-        U1NewCommandReceivedFlag = 0;
-    }
+    if(U3NewCommandReceivedFlag == 1)
+    {
+        U3CommandParsing();
+        U3NewCommandReceivedFlag = 0;
+    }    
+    
 #ifdef ANDROID_HMI
     Android_HMI_SendingControl();
-#else     
-    uC_HMI_SendingControl();
 #endif
+    
 }
 
 void SEND_U1_RS422CMD_Process(void)

@@ -29,7 +29,6 @@ extern void SetPlayBackDay(unsigned char ChartId, unsigned char IncDecFlag);//De
 extern void PlayBackUpdateChartTimeDisplay(unsigned char ChartId);
 extern void GetSystemParameterId(unsigned int addr, unsigned char count, unsigned char id);
 extern void GetKeyBoardValue(unsigned int addr, unsigned char count, long Value);
-extern void uC_HMI_SetPage(unsigned int page);
 extern void SendMTR4MaualControlCommand(void);
 extern void SendFAN1MaualControlCommand(void);
 extern void SendFAN2MaualControlCommand(void);
@@ -118,8 +117,8 @@ void GetReadLongWordData(void)
         }
     }
 }
+
 extern void uC_HMI_RunDeleteTextVariableSend(unsigned int addr);
-extern unsigned int TxTextBuffer[MAX_WRITE_TEXT_SIZE];
 unsigned int RxTextBuffer[MAX_READ_TEXT_SIZE];
 void GetReadTextData(void)
 {

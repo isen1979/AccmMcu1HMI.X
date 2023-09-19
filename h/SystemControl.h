@@ -208,8 +208,8 @@ enum Android_HMI_CommandEnum
     Android_HMI_D1_Alarm2_Set_CommandEnum,//35
     Android_HMI_D1_Alarm3_Set_CommandEnum,//36
     
-     Android_HMI_Button_CommandEnum,//37 //Philip 20220325 0.0.1
-     Android_HMI_Dummy38_CommandEnum,//38
+     Android_HMI_Button_CommandEnum,//37
+     Android_HMI_OtherTempAlarm_Set_CommandEnum,//38，Isen：20230817新增
      Android_HMI_Dummy39_CommandEnum,
      Android_HMI_Dummy40_CommandEnum,//40
      Android_HMI_Dummy41_CommandEnum,
@@ -232,9 +232,9 @@ enum Android_HMI_CommandEnum
      Android_HMI_Heater_RunTime_CommandEnum,
      Android_HMI_PCD_RunTime_CommandEnum,//58
      Android_HMI_UsingCount_RunTime_CommandEnum,
-     Android_HMI_Alarm_RunTime_CommandEnum,//60//Philip 20220406 0.0.1
-     Android_HMI_SystemStatus_RunTime_CommandEnum,//61//Philip 20220510 0.0.1
-     Android_HMI_Alarm1_RunTime_CommandEnum,//62//Philip 20220526 0.0.1
+     Android_HMI_Alarm_RunTime_CommandEnum,//60
+     Android_HMI_SystemStatus_RunTime_CommandEnum,//61，Isen：對應HMI內的case 61 ://System Runtime Status
+     Android_HMI_Alarm1_RunTime_CommandEnum,//62
     
     Android_HMI_CommandEnumEnd
 };
@@ -286,7 +286,6 @@ typedef struct __RUNTIME_SHOW_STATUS_BITMAP
     unsigned char V21_CloseAlarm : 1;    
     unsigned char Dummy4 : 2;        
  //Byte[5] =======================================================================      
-    
     
     unsigned int PT_1;//Byte[4], Pressure Sensor at the Process Side
     unsigned int PDT_1;//Byte[6], Pressure Sensor at the Wheel Input Side
@@ -557,29 +556,29 @@ typedef struct __WHEEL_ALARM_SET
 
 typedef struct __ALARM_TYPE_D_SET
 {
-    int SuperHighTE3;
-    int SuperLowTE3;
-    int SuperHighTE5;
-    int SuperLowTE5;
-    int SuperHighTE8;
-    int SuperLowTE8;
-    int SuperHighTE11;
-    int SuperLowTE11;
-    int SuperHighTE12;
-    int SuperLowTE12;
+    int HighTE3;//Isen：20230817修改名稱
+    int LowTE3;//Isen：20230817修改名稱
+    int HighTE5;//Isen：20230817修改名稱
+    int LowTE5;//Isen：20230817修改名稱
+    int HighTE8;//Isen：20230817修改名稱
+    int LowTE8;//Isen：20230817修改名稱
+    int HighTE11;//Isen：20230817修改名稱
+    int LowTE11;//Isen：20230817修改名稱
+    int HighTE12;//Isen：20230817修改名稱
+    int LowTE12;//Isen：20230817修改名稱
 //D1
-    int SuperHighTE14;
-    int SuperLowTE14;
-    int SuperHighTE1;
-    int SuperLowTE1;
-    int SuperHighPDT1;
-    int SuperLowPDT1;    
-    int SuperHighPDT2;
-    int SuperLowPDT2;
-    int SuperHighPDT3;
-    int SuperLowPDT3;
+    int HighTE10;//Isen：20230817修改名稱
+    int LowTE10;//Isen：20230817修改名稱
+    int HighTE6;//Isen：20230817修改名稱
+    int LowTE6;//Isen：20230817修改名稱
+    int HighPDT1;//Isen：20230817修改名稱
+    int LowPDT1;//Isen：20230817修改名稱    
+    int HighPDT2;//Isen：20230817修改名稱
+    int LowPDT2;//Isen：20230817修改名稱
+    int HighPDT3;//Isen：20230817修改名稱
+    int LowPDT3;//Isen：20230817修改名稱
 } _ALARM_TYPE_D_SET;
-//Philip 20220527 0.0.1 =========================Temp and PDT change from unsigned int to int===============
+
 typedef struct __ALARM_SET_PARAMETER_VALUE
 {
     _ALARM_TYPE_A_SET AlarmTypeASet;//20Bytes==>202Bytes
@@ -625,19 +624,20 @@ typedef struct __SYSTEM_PARAMETER
 
 typedef struct __RUNTIME_STATUS
 {
-//Philip 20220124 0.0.1 ===============================================================    
     unsigned long UsingCount;
     unsigned long UsingHours;
     unsigned long WriteEEPROM_Count;
+    
     unsigned int AutoGasIn : 1;
     unsigned int FAN1_1_PID_ON : 1;//0 : for PID OFF, 1 : for PID ON
     unsigned int FAN1_1_PID_Auto : 1;//0 : for Manual, 1 : for Auto
     unsigned int PCD20_PID_Auto : 1;//0 : for Manual, 1 : for Auto
     unsigned int Heater_PID_Auto : 1;//0 : for Manual, 1 : for Auto
-    unsigned int Dummy : 11;
-//Philip 20220124 0.0.1 ===============================================================    
-} _RUNTIME_STATUS;//1+1+4+4+4=14Bytes = 1 Pages, Next Address = Now Address + 16
-//#define RUNTIME_STATUS_START_ADDR 128
+    unsigned int OnFaultLED : 1;//0 : for OFF, 1 : for ON //Isen：20230703新增
+    unsigned int OnAlarmLED : 1;//0 : for OFF, 1 : for ON //Isen：20230703新增
+    unsigned int Dummy : 9; //Isen：20230703修改陳大哥所預留的Dummy原有11目前餘9可用
+    //Isen：20230703更新，4(bytes)+4(bytes)+4(bytes) + 7(bit已用) + 9(bit未用) = 14Bytes = 1 Pages, Next Address = Now Address + 16
+} _RUNTIME_STATUS;
 #define RUNTIME_STATUS_SIZE 14
 
 typedef struct __RUNTIME_FAN1_1_ALARM_BITMAP
@@ -922,9 +922,11 @@ typedef struct __HMI_BUTTON_STATUS
     unsigned char V21ManualCloseBtn : 1;     
     unsigned char SystemAutoStartBtn : 1;
     unsigned char SystemAutoStopBtn : 1;
-    unsigned char Dummy : 4;
+    
+    unsigned char FaultResetBtn : 1;
+    unsigned char FunctionResetBtn : 1;
+    unsigned char Dummy : 2;
 } _HMI_BUTTON_STATUS;
-
 
 typedef union __SENDING_DATA
 {

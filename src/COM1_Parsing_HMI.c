@@ -8,17 +8,17 @@
 #include "COM3_Command.h"
 
 extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
+extern unsigned char RoutineSendFlag;
+extern unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigned int crc_data);
+
 extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_SendingWord;
 extern _PARSING_DATA U1_SendingWord2;
-extern unsigned char RoutineSendFlag;
+extern _HMI_BUTTON_STATUS HMI_BtnStatus;
+extern _RUNTIME_STATUS RunTimeStatus;
+extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
 
-extern _HMI_BUTTON_STATUS HMI_BtnStatus;//Philip 20220325 0.0.1
-extern _RUNTIME_STATUS RunTimeStatus;//Philip 20220510 0.0.1
-extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;//Philip 20220510 0.0.1
-
-extern void SaveRunTimeStatus(void);//Philip 20220510 0.0.1
-extern unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigned int crc_data);
+extern void SaveRunTimeStatus(void);
 extern void SendFirmwareVersion(unsigned char flag);//flag == 0 : Firmware Version, flag == 1 : External Device Firmware Version
 extern void SendFan1_1_GetSV_Response(void);
 extern void SendFan1_1_GetPI_Response(void);
@@ -68,7 +68,6 @@ extern void Write_Alarm1_Parameter(void);
 extern void Write_Alarm2_Parameter(void);
 extern void Write_Alarm3_Parameter(void);
 extern void Write_Alarm4_Parameter(void);
-//Philip 20220325 0.0.1 ==============================================================================================
 extern void SendMTR4MaualControlCommand(void);
 extern void SendFAN1MaualControlCommand(void);
 extern void SendFAN2MaualControlCommand(void);
@@ -79,12 +78,9 @@ extern void SendSystemAutoStartStopControlCommand(void);
 extern void SendV21MaualControlCommand(void);
 extern void SendPCD2MaualControlCommand(void);
 extern void SendPCD6MaualControlCommand(void);
-//Philip 20220325 0.0.1 ==============================================================================================
-extern void SendSystemResetControlCommand(void);//Philip 20220414 0.0.1
-
+extern void SendSystemResetControlCommand(void);
 extern void Send_LoopBackResponse(void);
 extern void SaveSystemParameter(unsigned int addr);
-//Philip 20220530 0.0.1 ====================================================
 extern void SendSystemAutoGasInControlCommand(void);
 extern void SendSystemGasInOutControlCommand(void);
 extern void SendSystemManualControlCommand(void);
@@ -92,9 +88,12 @@ extern void SendFAN1_1_PID_OnControlCommand(void);
 extern void SendFAN1_1_PID_AutoControlCommand(void);
 extern void Send_PCD_20_PID_AutoControlCommand(void);
 extern void SendHeater_PID_AutoControlCommand(void);
-extern void SendFaultOFFControlCommand(void);
+//Isen：20230531 ====================================================
 extern void SendFunctionResetControlCommand(void);
-//Philip 20220530 0.0.1 ====================================================
+extern void SendFaultLED_ONOFFControlCommand(void);
+extern void SendAlarmLED_ONOFFControlCommand(void);
+//Isen：20230915，For測試用新增
+extern unsigned int UART1RxBufCount;
 
 unsigned char COM1_Rx_Size;
 
@@ -143,7 +142,6 @@ void WriteParameterParsing(void)
     SaveSystemParameter(SYSTEM_PARAMETER_START_ADDR);
 }
 
-//Philip 20220325 0.0.1 =========================================================================
 void Android_ButtonProcess(void)
 {
     switch(UART1RxBuffer[1])
@@ -307,21 +305,62 @@ void Android_ButtonProcess(void)
             SaveRunTimeStatus();
             SendSystemManualControlCommand();//Philip 20220530 0.0.1
             break;
-        case 34 ://SysOPFaultOFFBtn
-            SendFaultOFFControlCommand();
-            break;
-        case 35 ://SysOPFunctionResetBtn
+         case 34 ://SysOPFunctionResetBtn
+            HMI_BtnStatus.FunctionResetBtn = 1; //Isen：20230703，待定義及測試
             SendFunctionResetControlCommand();
+            break;
+        case 35 ://SysOPBuzzerStopBtn
+            RunTimeStatus.OnFaultLED = 0;//Isen：20230703，此處為BuzzerOFF觸發讓FaultLED OFF。
+            SystemRunTimeStatus.Value.FaultLED = RunTimeStatus.OnFaultLED;
+            SaveRunTimeStatus();
+            SendFaultLED_ONOFFControlCommand();
+            break;            
+        case 36 ://FaultLED ON
+            RunTimeStatus.OnFaultLED = 1;//Isen：20230703，此處為FaultLED Trigger ON。
+            SystemRunTimeStatus.Value.FaultLED = RunTimeStatus.OnFaultLED;           
+            SaveRunTimeStatus();
+            SendFaultLED_ONOFFControlCommand();
+            break;
+        case 37 ://AlarmLED ON
+            RunTimeStatus.OnAlarmLED = 1;//Isen：20230727，改為依條件Trigger ON
+            SystemRunTimeStatus.Value.AlarmLED = RunTimeStatus.OnAlarmLED;
+            SaveRunTimeStatus();
+            SendAlarmLED_ONOFFControlCommand();
+            break;
+        case 38 ://AlarmLED OFF
+            RunTimeStatus.OnAlarmLED = 0;//Isen：20230727，改為依條件Trigger OFF
+            SystemRunTimeStatus.Value.AlarmLED = RunTimeStatus.OnAlarmLED;
+            SaveRunTimeStatus();
+            SendAlarmLED_ONOFFControlCommand();
             break;
         
     }
 }
 
+//Isen：20230913-1，新增讀取UART1暫存區的功能函式
+//Isen：讀取UART1的數據並立即回傳
+char readUART1Data(void) {
+    if (UART1RxBufCount > 0) { // 檢查是否有可用的數據
+        char receivedData = UART1RxBuffer[0]; // 讀取緩衝區的第一個字節
+        int i;
+        for(i = 0; i < UART1RxBufCount; i++) {
+            UART1RxBuffer[i] = UART1RxBuffer[i + 1]; // 移動緩衝區的數據
+        }
+        UART1RxBufCount--; // 減少緩衝區的數據計數器
+        return receivedData; // 返回接收到的數據
+    }
+    return 0; // 如果沒有可用的數據，返回0
+}
+
 void Android_HMI_Parsing(void)
 {
+    //Isen：20230913，嘗試將這裡的if判斷拿掉
+    //將UART_Driver.c中原本Parsing執行時序與Sending對調，此處函式會執行，但傳輸值都為0，連頭碼、尾碼也是0
+    //回溯UART_Driver.c中原本Parsing執行時序，結果仍然未執行。
+    //確認問題方向有2個：(1)為何CRC_CHECK判斷後沒有回傳1？ (2)為何已經將if判斷式暫時拿掉Parsing仍然不會執行？
     unsigned int crc_data;
-    U1_SendingWord.Byte[0] = UART1RxBuffer[COM1_Rx_Size - 1];
-    U1_SendingWord.Byte[1] = UART1RxBuffer[COM1_Rx_Size - 2];
+    U1_SendingWord.Byte[0] = UART1RxBuffer[COM1_Rx_Size - 1];//Isen：從讀取暫存區擷取倒數第01個byte作為CRC_Check[0]字元
+    U1_SendingWord.Byte[1] = UART1RxBuffer[COM1_Rx_Size - 2];//Isen：從讀取暫存區擷取倒數第02個byte作為CRC_Check[1]字元
     crc_data = U1_SendingWord.WordData;
     
     if( CRC_CHECK(UART1RxBuffer, (COM1_Rx_Size - 2), crc_data) == 1 )
@@ -476,20 +515,16 @@ void Android_HMI_Parsing(void)
             case Android_HMI_D1_Alarm3_Set_CommandEnum ://36
                 RoutineSendFlag = 0;
                 Send_GetD1_Alarm3_SetResponse();                
-                break;
-                //Philip 20220325 0.0.1 =========================================================================                
+                break;             
             case Android_HMI_Button_CommandEnum ://37
                 Android_ButtonProcess();
                 Send_LoopBackResponse();
-                break;
-                //Philip 20220325 0.0.1 ========================================================================= 
-                
+                break;               
             case Android_HMI_WriteParameter_CommandEnum ://50
                 RoutineSendFlag = 0;
                 WriteParameterParsing();
                 Send_LoopBackResponse();
-                break;
-               
+                break;               
         }
     }
 }

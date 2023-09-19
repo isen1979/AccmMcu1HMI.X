@@ -14,7 +14,6 @@ extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
 extern _SENDING_DATA SendingData;
 
-#define IO_PAGE_ID 0x3F09
 #define IO_CURSOR_X_ADDR 0x3F21
 #define IO_CURSOR_Y_ADDR 0x3F22
 #define IO_CURSOR_W_ADDR 0x3F23
@@ -25,7 +24,6 @@ extern _SENDING_DATA SendingData;
 #define IO_DG_POS_X 0x3F2E
 #define IO_DG_POS_Y 0x3F2F
 #define IO_DG_SELECT 0x3F31
-
 
 void OpenDialog(unsigned int DialogNumber)
 {
@@ -49,11 +47,6 @@ void CloseDialog(void)
     data[0] = 0xFF;
     size = 1;   
     RegisterSendingPacket(state, addr, data, size);
-}
-
-void uC_HMI_SetPage(unsigned int page)
-{
-    uC_HMI_RunWriteSingleLongWordSend(IO_PAGE_ID, page);
 }
 
 void SetSelectItemFontColor(char id)

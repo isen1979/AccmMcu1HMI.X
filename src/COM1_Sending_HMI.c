@@ -26,7 +26,6 @@ _PARSING_WORD U1_SendingWord;
 _PARSING_DATA U1_SendingWord2;
 unsigned char RoutineSendFlag = 1;
 
-
 void SendFirmwareVersion(unsigned char flag)//flag == 0 : Firmware Version, flag == 1 : External Device Firmware Version
 {
     switch(flag)
@@ -344,8 +343,7 @@ void RoutineSendingProcess(void)
             RoutineSendIndex = 2;
             break;
         case 2 :
-            Get_PDT1_2_3_SendPacket();
-//Philip 20220124 0.0.1 ====================================================================            
+            Get_PDT1_2_3_SendPacket();          
             RoutineSendIndex = 3;
             break;
         case 3 :
@@ -371,30 +369,23 @@ void RoutineSendingProcess(void)
         case 8 :
             Get_UsingRecord_RunTime_SendPacket();
             RoutineSendIndex = 9;//Philip 20220406 0.0.1
-            break;
-//Philip 20220406 0.0.1 =====================================================================            
+            break;          
         case 9 :            
             Get_AlarmStatus_RunTime_SendPacket(0);
             RoutineSendIndex = 10;
             break;   
-//Philip 20220406 0.0.1 =====================================================================  
-//Philip 20220510 0.0.1 =====================================================================  
         case 10 :
             Get_SystemStatus_RunTime_SendPacket();
             RoutineSendIndex = 11;//Philip 20220526 0.0.1//0;
-            break;
-//Philip 20220510 0.0.1 =====================================================================
-//Philip 20220526 0.0.1 =====================================================================            
+            break;       
         case 11 :            
             Get_AlarmStatus_RunTime_SendPacket(1);
             RoutineSendIndex = 0;
-            break;   
-//Philip 20220526 0.0.1 =====================================================================            
+            break;            
         default :
             Get_TE1_3_5_6_SendPacket();
             RoutineSendIndex = 1;
-            break;
-//Philip 20220124 0.0.1 ====================================================================            
+            break;          
     }    
 }
 
@@ -440,5 +431,4 @@ void Android_HMI_SendingControl(void)
             }
             break;
     }
-//if( DelayTimerCounter[UART1_SendingDelayEnum] > 0 )
 }

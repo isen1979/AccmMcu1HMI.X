@@ -228,7 +228,7 @@ extern void COM3_SendControl(void);
 extern void Get_uCHMI_DateCodeSend(void);
 
 unsigned char OneMiliSecFlag;
-extern unsigned char StartupFinsihFlag;
+unsigned char StartupFinsihFlag = 0;
 
 void SystemControl(void)
 { 

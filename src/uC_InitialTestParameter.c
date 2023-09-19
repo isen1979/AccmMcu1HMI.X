@@ -248,346 +248,7 @@ void uC_HMI_Send_Other_Display(void)
     
     uC_HMI_RunWriteMultiWordSend(OTHER_DISPLAY_ADDR, length, data);
 }
-/*
-void Fill_RunTimeDisplayData(void)
-{
-    FAN1_1_RunTimeDisplay.PID_Output = 30;
-    FAN1_1_RunTimeDisplay.RealFreq = 24;
-    FAN1_1_RunTimeDisplay.RealPressure = 250;
-    FAN1_1_RunTimeDisplay.Current = 3000;
-    FAN1_1_RunTimeDisplay.ErrorCode = 0x1234;    
-    
-    FAN2_RunTimeDisplay.RealSpeed = 46;
-    FAN2_RunTimeDisplay.SV = 43;
-    FAN2_RunTimeDisplay.TE12 = 0;
-    FAN2_RunTimeDisplay.Current = 4000;
-    
-    SCR_RunTimeDisplay.OvenSP = 1235;
-    SCR_RunTimeDisplay.OvenSV = 1230;
-    SCR_RunTimeDisplay.RealOutputPercent = 65;
-    SCR_RunTimeDisplay.AverageTemperature = 1017;
-    SCR_RunTimeDisplay.TE11 = 0;
-    SCR_RunTimeDisplay.TE14 = 0;  
-    
-    MTR4_RunTimeDisplay.RealFreq = 47;
-    MTR4_RunTimeDisplay.RPH = 126;
-    MTR4_RunTimeDisplay.TE5 = 0;
-    MTR4_RunTimeDisplay.Current = 6000;
-    MTR4_RunTimeDisplay.ErrorCode = 0x2345;    
-    
-    PCD20_RunTimeDisplay.RealOpenSize = 23;
-    PCD20_RunTimeDisplay.TE3 = 0;
-    OtherRunTimeDisplay.PCD22_RealOpenSize = 25;
-    OtherRunTimeDisplay.PCD25_RealOpenSize =65;    
 
-    OtherRunTimeDisplay.TE1 = 0;
-    OtherRunTimeDisplay.TE6 = 0;
-    OtherRunTimeDisplay.TE8 = 0;
-    OtherRunTimeDisplay.TE10 = 0;
-    OtherRunTimeDisplay.PDT1 = -700;
-    OtherRunTimeDisplay.PDT2 = -700;
-    OtherRunTimeDisplay.PDT3 = -700;
-}
-
-void Fill_Fault_Alarm_Status_Data(void)
-{
-    FAN1_1_RunTimeFault.bitmap.PressureSensorTurnOnFault = 1;
-    FAN1_1_RunTimeFault.bitmap.PressureSensorTurnOffFault = 1;
-    FAN1_1_RunTimeFault.bitmap.PressureSensorRunningFault = 1;
-    FAN1_1_RunTimeFault.bitmap.InverterFault = 1;
-    FAN1_1_RunTimeFault.bitmap.MotorOverTempFault = 1;
-    FAN1_1_RunTimeFault.bitmap.InverterContactFault = 1;
-    FAN1_1_RunTimeFault.bitmap.Dummy = 0;
-    
-    FAN2_RunTimeFault.bitmap.PressureSensorTurnOnFault = 1;
-    FAN2_RunTimeFault.bitmap.PressureSensorTurnOffFault = 0;
-    FAN2_RunTimeFault.bitmap.PressureSensorRunningFault = 1;
-    FAN2_RunTimeFault.bitmap.InverterTurnOnFault = 0;
-    FAN2_RunTimeFault.bitmap.InverterRunningFault = 1;
-    FAN2_RunTimeFault.bitmap.InverterTurnOffFault = 0;
-    FAN2_RunTimeFault.bitmap.Dummy = 0; 
-    
-    SCR_RunTimeStatus.bitmap.FinishCleanOven = 1;
-    SCR_RunTimeStatus.bitmap.DropOutTemperatureReady = 0;
-    SCR_RunTimeStatus.bitmap.OvenControllerEn = 1;
-    SCR_RunTimeStatus.bitmap.OvenTemperatureReady = 0;
-    SCR_RunTimeStatus.bitmap.SCR_Heater_TurnOn = 1;
-    SCR_RunTimeStatus.bitmap.Dummy = 0;
-    
-    SCR_RunTimeFault.bitmap.SCR_HeatingSystemFault = 1;
-    SCR_RunTimeFault.bitmap.HighTemperatureContorlFault = 0;
-    SCR_RunTimeFault.bitmap.SuperHighTemperatureFault = 1;
-    SCR_RunTimeFault.bitmap.SuperLowTemperatureFault = 0;
-    SCR_RunTimeFault.bitmap.TwoTemperatureSensorFault = 1;
-    SCR_RunTimeFault.bitmap.Dummy = 0;
-    
-    SCR_RunTimeAlarm.bitmap.HighTemperatureAlarm = 1;
-    SCR_RunTimeAlarm.bitmap.LowTemperatureAlarm = 0;
-    SCR_RunTimeAlarm.bitmap.TemperatureSensor1Alarm = 1;
-    SCR_RunTimeAlarm.bitmap.TemperatureSensor2Alarm = 0;
-    SCR_RunTimeAlarm.bitmap.Dummy = 0;
-    
-    Wheel_RunTimeFault.bitmap.InverterFault = 1;
-    Wheel_RunTimeFault.bitmap.InverterRunningFault = 0;
-    Wheel_RunTimeFault.bitmap.RunningFault = 1;
-    Wheel_RunTimeFault.bitmap.StopFault = 1;
-    Wheel_RunTimeFault.bitmap.WheelRotateFault = 0;    
-    Wheel_RunTimeFault.bitmap.Dummy = 0;
-    
-    PCD2_RunTimeFault.bitmap.CloseFault = 1;
-    PCD2_RunTimeFault.bitmap.LimitFault = 0;
-    PCD2_RunTimeFault.bitmap.OpenFault = 1;    
-    PCD2_RunTimeFault.bitmap.Dummy = 0;
-    
-    PCD2_RunTimeAlarm.bitmap.CloseAlarm = 1;
-    PCD2_RunTimeAlarm.bitmap.OpenAlarm = 0;    
-    PCD2_RunTimeAlarm.bitmap.Dummy = 0;
-    
-    PCD20_RunTimeFault.bitmap.LimitFault = 1;
-    PCD20_RunTimeFault.bitmap.OpenFault = 0;
-    PCD20_RunTimeFault.bitmap.CloseFault = 1;
-    PCD20_RunTimeFault.bitmap.Dummy = 0;
-    
-    PCD20_RunTimeAlarm.bitmap.OpenAlarm = 1;
-    PCD20_RunTimeAlarm.bitmap.CloseAlarm = 0;
-    PCD20_RunTimeAlarm.bitmap.Dummy = 0;
-    
-    V21_RunTimeFault.bitmap.LimitFault = 1;
-    V21_RunTimeFault.bitmap.CloseFault = 0;
-    V21_RunTimeFault.bitmap.OpenFault = 1;
-    V21_RunTimeFault.bitmap.Dummy = 0;
-    
-    V21_RunTimeAlarm.bitmap.OpenAlarm = 1;
-    V21_RunTimeAlarm.bitmap.CloseAlarm = 0;
-    V21_RunTimeAlarm.bitmap.Dummy = 0;
-}
-
-void Fill_FAN1_SystemParameter(void)
-{
-    SystemParameter.FAN1_1.value.SuperHighPressureAlarmSet = 1000;
-    SystemParameter.FAN1_1.value. HighPressureAlarmSet = 800;
-    SystemParameter.FAN1_1.value.LowPressureAlarmSet = 300;
-    SystemParameter.FAN1_1.value.SuperLowPressureAlarmSet = 100;
-    SystemParameter.FAN1_1.value.PT_1 = 100;
-    SystemParameter.FAN1_1.value.FAN1_1ManualOpenSize = 50;
-    
-    SystemParameter.FAN1_1.value.PID_P = 120;
-    SystemParameter.FAN1_1.value.PID_I = 567;//mSec
-    SystemParameter.FAN1_1.value.PID_D = 678;//mSec
-    SystemParameter.FAN1_1.value.FAN1_1_2_DelayTime = 1234;//mSec
-    
-    SystemParameter.FAN1_1.value.DeadBand = 23;//0-100%    
-    SystemParameter.FAN1_1.value.FAN1_LowLimit = 15;//0-100%
-    SystemParameter.FAN1_1.value.FAN1_High1 = 75;//0-100%
-    SystemParameter.FAN1_1.value.FAN1_High2 = 95;//0-100%
-    SystemParameter.FAN1_1.value.ManualStartFrequency = 15;//0-100%
-    SystemParameter.FAN1_1.value.ManualStopFrequency = 5;    
-}
-
-void Fill_FAN2_SystemParameter(void)
-{
-    SystemParameter.FAN_2.value.FAN_2_Target_Temp1 = 123;
-    SystemParameter.FAN_2.value.FAN_2_Target_Temp2 = 234;
-    SystemParameter.FAN_2.value.FAN_2_Target_Temp3 = 345;
-    SystemParameter.FAN_2.value.FAN_2_TargetTemp1_Hz = 200;
-    SystemParameter.FAN_2.value.FAN_2_TargetTemp2_Hz = 400;    
-    SystemParameter.FAN_2.value.FAN_2_TargetTemp3_Hz = 600;
-//    SystemParameter.FAN_2.value.FAN_2 = 55;//Inverter Frequency(0-60Hz)//10Bytes
-    SystemParameter.FAN_2.value.FAN_2_Top = 600;//Inverter MAx Frequency(0-60.0Hz)//11Bytes
-    SystemParameter.FAN_2.value.FAN_2_Low = 100;//Inverter Low Frequency(0-60.0Hz)//12Bytes    
-}   
-
-void Fill_HEATER_SET_SystemParameter(void)
-{
-    SystemParameter.HeaterSet.value.OP_Temp = 4000;
-    SystemParameter.HeaterSet.value.StandBy_Temp = 4001;
-    SystemParameter.HeaterSet.value.KeepWarmTemp = 4002;
-    SystemParameter.HeaterSet.value.SuperHighTemp = 4003;
-    SystemParameter.HeaterSet.value.HighTemp = 4004;
-    SystemParameter.HeaterSet.value.LowTemp = 4005;
-    SystemParameter.HeaterSet.value.SuperLowTemp = 4006;
-    SystemParameter.HeaterSet.value.PID_P = 1423;
-    SystemParameter.HeaterSet.value.PID_I = 589;
-    SystemParameter.HeaterSet.value.PID_D = 698;
-    SystemParameter.HeaterSet.value.DeadBand = 255;
-    SystemParameter.HeaterSet.value.MoreThanSP_StopTemp = 4007; 
-    SystemParameter.HeaterSet.value.LessThanSP_StartTemp = 4008;
-    SystemParameter.HeaterSet.value.ReFireTemp = 4009;//0 - 400.0
-    SystemParameter.HeaterSet.value.FireCount = 999;//0 - 999
-    SystemParameter.HeaterSet.value.TopLimit = 1000;//0 - 100.0%
-    SystemParameter.HeaterSet.value.LowLimit = 200;//0 - 100.0%
-    SystemParameter.HeaterSet.value.ManualOpenSize = 300;//0 - 100.0% 
-}
-
-void Fill_Wheel_SystemParameter(void)
-{
-    SystemParameter.Wheel.value.T5_CheckTemp1 = 111;
-    SystemParameter.Wheel.value.T5_CheckTemp2 = 222;
-    SystemParameter.Wheel.value.T5_CheckTemp3 = 333;
-    SystemParameter.Wheel.value.T5_CheckTemp1Frequency = 560;
-    SystemParameter.Wheel.value.T5_CheckTemp2Frequency = 670;
-    SystemParameter.Wheel.value.T5_CheckTemp3Frequency = 790;
-    SystemParameter.Wheel.value.StopTemp = 444;
-    SystemParameter.Wheel.value.TopLimitFrequency = 600;
-    SystemParameter.Wheel.value.LowLimitFrequency = 120;
-}
-
-void Fill_PDC_6_20_22_25_SystemParameter(void)
-{
-    SystemParameter.PDC_20.value.OP_Temp = 356;
-    SystemParameter.PDC_20.value.StandByTemp = 125;
-    SystemParameter.PDC_20.value.CoolingTemp = 100;
-    SystemParameter.PDC_20.value.PID_P = 102;;
-    SystemParameter.PDC_20.value.PID_I = 687;//mSec
-    SystemParameter.PDC_20.value.PID_D = 765;//mSec
-    SystemParameter.PDC_20.value.DeadBand = 10;
-    SystemParameter.PDC_20.value.TopLimit = 95;//0 - 100%
-    SystemParameter.PDC_20.value.LowLimit = 20;//0 - 100%
-    SystemParameter.PDC_20.value.ManualOpenSize = 100;//0 - 100.0%
-
-    SystemParameter.PDC_20.value.FaultDelayTime = 999;//Sec
-    SystemParameter.PDC_20.value.AlarmDelayTime = 998;//Sec
-    SystemParameter.PDC_20.value.OnOFFDelayTime = 997;//Sec
-    
-//    SystemParameter.PDC_20.value.T3_CheckTemp1 = 123;
-//    SystemParameter.PDC_20.value.T3_CheckTemp2 = 256;
-//    SystemParameter.PDC_20.value.T3_CheckTemp3 = 347;
-    
-    SystemParameter.PCD_6.value.FaultDelayTime = 12;
-    SystemParameter.PCD_6.value.AlarmDelayTime = 15;
-
-//    SystemParameter.PDC_20.value.OpenSizeTopLimit = 98;//0 - 100%
-//    SystemParameter.PDC_20.value.OpenSizeLowLimit = 3;//0 - 100%
-//    SystemParameter.PDC_20.value.T3_CheckTemp1_OpenSize = 25;//0 - 100%
-//    SystemParameter.PDC_20.value.T3_CheckTemp2_OpenSize = 78;//0 - 100%
-//    SystemParameter.PDC_20.value.T3_CheckTemp3_OpenSize = 94;//0 - 100%  
-    
-    SystemParameter.PDC_22.value.ReleaseTemp = 4000;//0 - 400.0 deg//2Bytes
-    SystemParameter.PDC_22.value.FaultDelayTime = 10;//0 - 999 Sec
-    SystemParameter.PDC_22.value.AlarmDelayTime = 11;//0 - 999 Sec
-    SystemParameter.PDC_22.value.OnOFFDelayTime = 12;//0 - 999 Sec
-
-    SystemParameter.PDC_25.value.FaultDelayTime = 13;//0 - 999 Sec
-    SystemParameter.PDC_25.value.AlarmDelayTime = 14;//0 - 999 Sec
-    SystemParameter.PDC_25.value.OnOFFDelayTime = 15;//0 - 999 Sec
-
-    SystemParameter.PDC_25.value.TopLimit = 500;//0 - 100.0%
-    SystemParameter.PDC_25.value.LowLimit = 80;//0 - 100.0%
-    SystemParameter.PDC_25.value.ManualOpenSize = 90;//0 - 100.0%
-}
-
-void Fill_PDC_2_SystemParameter(void)
-{
-    SystemParameter.PDC2.FaultDelayTime = 1001;
-    SystemParameter.PDC2.AlarmDelayTime = 1002;    
-}
-
-void Fill_V21_SystemParameter(void)
-{
-    SystemParameter.V21.FaultDelayTime = 1003;
-    SystemParameter.V21.AlarmDelayTime = 1004;    
-}
-
-void Fill_AlarmTypeASystemParameter(void)
-{
-    SystemParameter.AlarmTypeASet.A1_TE8 = 1;
-    SystemParameter.AlarmTypeASet.A1_TE5 = 2;
-    SystemParameter.AlarmTypeASet.A1_TE5GTwhenTE3 = 3;
-    SystemParameter.AlarmTypeASet.A1_TE3Offset = 4;
-    SystemParameter.AlarmTypeASet.A1_TE5GTwhenFAN2Stop = 5;
-    
-    SystemParameter.AlarmTypeASet.A2_TE8 = 6;
-    SystemParameter.AlarmTypeASet.A2_TE5 = 7;
-    SystemParameter.AlarmTypeASet.A2_TE5GTwhenTE3 = 8;
-    SystemParameter.AlarmTypeASet.A2_TE3Offset = 9;
-    SystemParameter.AlarmTypeASet.A2_TE5LTwhenFAN2Stop = 10;
-}
-
-void Fill_AlarmTypeBSystemParameter(void)
-{
-    SystemParameter.AlarmTypeBSet.TE5 = 11;
-    SystemParameter.AlarmTypeBSet.TE5GTwhenFAN2Stop = 12;
-}
-
-void Fill_BurnSystemAlarmSystemParameter(void)
-{
-    SystemParameter.BurnSystemAlarmSet.SuperHighTE11 = 13;
-    SystemParameter.BurnSystemAlarmSet.SuperLowTE11 = 14;
-    SystemParameter.BurnSystemAlarmSet.SuperHighTE12 = 15;
-    SystemParameter.BurnSystemAlarmSet.SuperLowTE12 = 16;
-    SystemParameter.BurnSystemAlarmSet.SuperHighPDT2 = 17;
-    SystemParameter.BurnSystemAlarmSet.SuperLowPDT2 = 18;  
-    SystemParameter.BurnSystemAlarmSet.SuperHighPDT3 = 19;
-    SystemParameter.BurnSystemAlarmSet.SuperLowPDT3 = 20;       
-}
-
-void Fill_WheelAlarmSystemParameter(void)
-{
-    SystemParameter.WheelAlarmSet.SuperHighTE3 = 17;
-    SystemParameter.WheelAlarmSet.SuperLowTE3 = 18;
-    SystemParameter.WheelAlarmSet.SuperHighTE8 = 19;
-    SystemParameter.WheelAlarmSet.SuperLowTE8 = 20;
-    SystemParameter.WheelAlarmSet.SuperHighTE5 = 21;
-    SystemParameter.WheelAlarmSet.SuperLowTE5 = 22;
-    SystemParameter.WheelAlarmSet.SuperHighPDT1 = 23;
-    SystemParameter.WheelAlarmSet.SuperLowPDT1 = 24;    
-}
-
-void Fill_AlarmTypeDSystemParameter(void)
-{  
-    SystemParameter.AlarmTypeDSet.SuperHighTE3 = 23;
-    SystemParameter.AlarmTypeDSet.SuperLowTE3 = 24;
-    SystemParameter.AlarmTypeDSet.SuperHighTE5 = 25;
-    SystemParameter.AlarmTypeDSet.SuperLowTE5 = 26;
-    SystemParameter.AlarmTypeDSet.SuperHighTE8 = 27;
-    SystemParameter.AlarmTypeDSet.SuperLowTE8 = 28;
-    SystemParameter.AlarmTypeDSet.SuperHighTE11 = 29;
-    SystemParameter.AlarmTypeDSet.SuperLowTE11 = 30;    
-    SystemParameter.AlarmTypeDSet.SuperHighTE12 = 31;
-    SystemParameter.AlarmTypeDSet.SuperLowTE12 = 32;
-       
-    SystemParameter.AlarmTypeDSet.SuperHighTE14 = 33;
-    SystemParameter.AlarmTypeDSet.SuperLowTE14 = 34;    
-    SystemParameter.AlarmTypeDSet.SuperHighTE1 = 35;
-    SystemParameter.AlarmTypeDSet.SuperLowTE1 = 36;
-    
-    SystemParameter.AlarmTypeDSet.SuperHighPDT1 = 37;
-    SystemParameter.AlarmTypeDSet.SuperLowPDT1 = 38;    
-    SystemParameter.AlarmTypeDSet.SuperHighPDT2 = 39;
-    SystemParameter.AlarmTypeDSet.SuperLowPDT2 = 40;
-
-    SystemParameter.AlarmTypeDSet.SuperHighPDT3 = 41;
-    SystemParameter.AlarmTypeDSet.SuperLowPDT3 = 42; 
-}
-
-void Fill_AlarmSetSystemParameter(void)
-{
-    Fill_AlarmTypeASystemParameter();
-    Fill_AlarmTypeBSystemParameter();
-    Fill_BurnSystemAlarmSystemParameter();
-    Fill_WheelAlarmSystemParameter();
-    Fill_AlarmTypeDSystemParameter();
-}
-
-void Fill_SystemParameterData(void)
-{
-    Fill_FAN1_SystemParameter();
-    Fill_FAN2_SystemParameter();
-    Fill_HEATER_SET_SystemParameter();
-    Fill_Wheel_SystemParameter();
-    Fill_PDC_6_20_22_25_SystemParameter();
-    Fill_PDC_2_SystemParameter();
-    Fill_V21_SystemParameter();
-    Fill_AlarmSetSystemParameter();
-}
-
-void Fill_TestParameter(void)
-{
-//   Fill_Fault_Alarm_Status_Data();
-//   Fill_SystemParameterData();
-   Fill_RunTimeDisplayData();
-}
-*///Philip 20220315 0.0.1
 #define FAN1_SYSTEM_PARAMETER_START_ADDR 100
 #define FAN1_LONG_WORD_SYSTEM_PARAMETER_START_ADDR 114
 #define FAN2_SYSTEM_PARAMETER_START_ADDR 118
@@ -1133,44 +794,37 @@ void Send_AlarmTypeD_uCHMI_SystemParameter(void)
     unsigned char data[30];
 
     length = 0;
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE3;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE3;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE3;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE3;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE5;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE5;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE5;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE5;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE8;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE8;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE8;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE8;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];  
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE11;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE11;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE11;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE11;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE12;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE12;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE12;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE12;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-/*
-    SendingWord.WordData = SystemParameter.AlarmTypeDSet.SuperHighTE1;
-    data[length++] = SendingWord.Byte[1];
-    data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.AlarmTypeDSet.SuperLowTE1;
-    data[length++] = SendingWord.Byte[1];
-    data[length++] = SendingWord.Byte[0];    
-*/    
+ 
     uC_HMI_RunWriteMultiWordSend(ALARM_TYPE_D_SET_ADDR, length, data);    
 }
 
@@ -1180,34 +834,34 @@ void Send_AlarmTypeD1_uCHMI_SystemParameter(void)
     unsigned char data[30];
 
     length = 0;
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE14;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE10;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE14;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE10;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE1;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE6;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE1;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE6;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT1;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT1;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT1;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT1;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT2;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT2;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT2;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT2;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];  
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT3;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT3;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT3;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT3;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
   

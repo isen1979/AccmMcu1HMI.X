@@ -104,12 +104,10 @@ enum COM3_TxCommand_Enum
     COM3_Button_Status_Command_Enum,
     COM3_Button_Command_Enum,//40
 //Philip 20220530 0.0.1 ========================================    
-   
-    
+     
     COM3_TxCommand_EnumEnd
 };
 
-//Philip 20220530 0.0.1 ===========================================================================
 enum Android_HMI_Button_Command_Enum
 {
     Android_HMI_NOP_Command_Enum=0,
@@ -117,47 +115,45 @@ enum Android_HMI_Button_Command_Enum
     Android_HMI_Fan1_1ManualControlEnum,
     Android_HMI_Fan2ManualControlEnum,
     Android_HMI_PCD20ManualControlEnum,
+    
     Android_HMI_PCD22ManualControlEnum,//5
     Android_HMI_PCD25ManualControlEnum,    
-    Android_HMI_PCD2ManualControlEnum,//7
+    Android_HMI_PCD2ManualControlEnum,
     Android_HMI_PCD6ManualControlEnum,
     Android_HMI_V21ManualControlEnum,
+    
     Android_HMI_SystemAutoStartStopControlEnum,//10
-    Android_HMI_System_Fault_RESET_Enum,
+    Android_HMI_SetFaultResetEnum,
     Android_HMI_AUTO_GAS_IN_SET_Enum,
     Android_HMI_GAS_IN_OUT_SET_Enum,
     Android_HMI_MANUAL_MODE_SET_Enum,
+    
     Android_HMI_FAN1_1_PID_ON_SET_Enum,//15
     Android_HMI_FAN1_1_PID_AUTO_STATE_SET_Enum,
     Android_HMI_HEATER_PID_AUTO_STATE_SET_Enum,
-    Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum,//18
-    Android_HMI_System_Function_RESET_Enum,
-    Android_HMI_System_Fault_STATE_SET_Enum,//20
-    Android_HMI_System_Alarm_STATE_SET_Enum,
-    Android_HMI_System_Run_STATE_SET_Enum,//22
+    Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum,
+    Android_HMI_System_Function_RESET_Enum,//19，Isen：20230817新增
     
-    Android_HMI_Button_Command_EnumEnd
+    Android_HMI_FaultLED_STATE_SET_Enum,//20，Isen：20230817新增
+    Android_HMI_AlarmLED_STATE_SET_Enum,//21，Isen：20230817新增
+    
+    Android_HMI_Button_Command_EnumEnd//22
 };
-//Philip 20220530 0.0.1 ===========================================================================
-
 
 enum COM3_RX_CommandEnum
 {    
     COM3_RX_TE10_PT1_TypeEnum=COM3_TxCommand_EnumEnd,
     COM3_ROTATOR_PDT5_TypeEnum,
-    
     COM3_RX_TE01_TE06_TypeEnum,
     COM3_RX_TE08_PDT1_FAN2_TypeEnum,
     COM3_RX_FAN1_1_PCD25_TypeEnum,
 //Philip 20220330 0.0.1 ========================================================================    
     COM3_RX_IO_STATUS_TypeEnum,
     COM3_RX_ALARM_STATUS_TypeEnum,
-//Philip 20220330 0.0.1 ========================================================================
-    
+//Philip 20220330 0.0.1 ======================================================================== 
     COM3_RX_FAN1_FAN2_Current_TypeEnum,//Philip 20220406 0.0.1
     COM3_RX_SystemRunStatusEnum,//Philip 20220517 0.0.1
     COM3_RX_RunTimeHeaterFAN1_StatusEnum,//Philip 20220518 0.0.1
-    
     COM3_RX_ALARM1_STATUS_TypeEnum,//Philip 20220526 0.0.1
     
     COM3_RX_CommandEnumEnd
@@ -230,59 +226,55 @@ typedef union __IO_STATUS
 
 
 typedef struct __ALARM_STATUS_VALUE
-{
-//Philip 20220526 0.0.1 =========================================================    
+{    
     unsigned int PCD_2_OpenFault : 1;
     unsigned int PCD_2_OpenAlarm : 1;
     unsigned int PCD_2_CloseFault : 1;
     unsigned int PCD_2_CloseAlarm : 1;
     unsigned int PCD_2_LimitFault : 1;
-    
     unsigned int PCD_6_OpenFault : 1;
     unsigned int PCD_6_OpenAlarm : 1;
-    unsigned int PCD_6_CloseFault : 1;
+    unsigned int PCD_6_CloseFault : 1;//1Bytes
+    
     unsigned int PCD_6_CloseAlarm : 1;
     unsigned int PCD_6_LimitFault : 1;  
-    
     unsigned int PCD_20_OpenFault : 1;
     unsigned int PCD_20_OpenAlarm : 1;
     unsigned int PCD_20_CloseFault : 1;
     unsigned int PCD_20_CloseAlarm : 1;
-     unsigned int PCD_20_LimitFault : 1;
-     
+    unsigned int PCD_20_LimitFault : 1;
     unsigned int PCD_22_OpenFault : 1;//2Bytes
+    
     unsigned int PCD_22_OpenAlarm : 1;
     unsigned int PCD_22_CloseFault : 1;
     unsigned int PCD_22_CloseAlarm : 1;
     unsigned int PCD_22_LimitFault : 1;
-    
     unsigned int PCD_25_OpenFault : 1;
     unsigned int PCD_25_OpenAlarm : 1;
     unsigned int PCD_25_CloseFault : 1;
-    unsigned int PCD_25_CloseAlarm : 1;
-    unsigned int PCD_25_LimitFault : 1;
+    unsigned int PCD_25_CloseAlarm : 1;//3Bytes
     
+    unsigned int PCD_25_LimitFault : 1;
     unsigned int V21_OpenFault : 1;
     unsigned int V21_OpenAlarm : 1;
     unsigned int V21_CloseFault : 1;
     unsigned int V21_CloseAlarm : 1;
-    unsigned int V21_LimitFault : 1;//14th bit
-    
+    unsigned int V21_LimitFault : 1;
     unsigned int FAN1_1_StartFault : 1;
     unsigned int FAN1_1_RuningFault : 1;//4Bytes
+    
     unsigned int FAN1_1_StopFault : 1;
     unsigned int FAN1_1_ContactFault : 1;
     unsigned int FAN1_1_Fault : 1;
     unsigned int FAN1_1_MotorHtempFault : 1;
-    
     unsigned int FAN2_StartFault : 1;
     unsigned int FAN2_RuningFault : 1;
     unsigned int FAN2_StopFault : 1;
-    unsigned int FAN2_InverterFault : 1;   
+    unsigned int FAN2_InverterFault : 1;//5Bytes   
+    
     unsigned int FAN2_InverterRuningFault : 1;
     unsigned int FAN2_InverterStopFault : 1;
     unsigned int FAN2_InverterStartFault : 1;
-    
     unsigned int MTR4_InverterFault : 1;
     unsigned int MTR4_InverterRuningFault : 1;
     unsigned int MTR4_StopFault : 1;
@@ -296,10 +288,10 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int MoreThanFireCountLimitF : 1;
     unsigned int TE11_SensorFault : 1;
     unsigned int HighTempControllerF : 1;
-    unsigned int HeaterHHTempFault : 1;
+    unsigned int HeaterHHTempFault : 1;//7Bytes
+    
     unsigned int HeaterLLTempFault : 1;
     unsigned int OvenOutLowPressureF : 1;
-    
     unsigned int HeaterHTempAlarm : 1;
     unsigned int HeaterLTempAlarm : 1;
     unsigned int HeaterReFireFaultAlarm : 1;
@@ -314,7 +306,7 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int TE8_A2_Alarm : 1;
     unsigned int TE5_A2_Alarm : 1;
     unsigned int TE5_TE3_A2_Alarm : 1;
-    unsigned int TE5_FAN2_A2_Alarm : 1;
+    unsigned int TE5_FAN2_A2_Alarm : 1;//9Bytes
     
     unsigned int TE5_B_Alarm : 1;
     unsigned int TE5_FAN2_B_Alarm : 1;
@@ -324,6 +316,7 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int TE12_LTempHeaterAlarm : 1;
     unsigned int PDT_2_H_HeaterAlarm : 1;
     unsigned int PDT_2_L_HeaterAlarm : 1;//10Bytes
+    
     unsigned int PDT_3_H_HeaterAlarm : 1;
     unsigned int PDT_3_L_HeaterAlarm : 1;
     unsigned int TE3_H_MTR4Alarm : 1;
@@ -331,7 +324,8 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int TE8_H_MTR4Alarm : 1;
     unsigned int TE8_L_MTR4Alarm : 1;
     unsigned int TE5_H_MTR4Alarm : 1;
-    unsigned int TE5_L_MTR4Alarm : 1;
+    unsigned int TE5_L_MTR4Alarm : 1;//11Bytes
+    
     unsigned int PDT1_H_MTR4Alarm : 1;
     unsigned int PDT1_L_MTR4Alarm : 1;
     unsigned int TE3_H_D_Alarm : 1;
@@ -340,30 +334,34 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int TE5_L_D_Alarm : 1;
     unsigned int TE8_H_D_Alarm : 1;
     unsigned int TE8_L_D_Alarm : 1;//12Bytes
+    
     unsigned int TE11_H_D_Alarm : 1;
     unsigned int TE11_L_D_Alarm : 1;
     unsigned int TE12_H_D_Alarm : 1;
     unsigned int TE12_L_D_Alarm : 1;
-    unsigned int TE14_H_D_Alarm : 1;
-    unsigned int TE14_L_D_Alarm : 1;
-    unsigned int TE1_H_D_Alarm : 1;
-    unsigned int TE1_L_D_Alarm : 1;
+    unsigned int TE10_H_D_Alarm : 1;//Isen：20230817修改TE14-->TE10
+    unsigned int TE10_L_D_Alarm : 1;
+    unsigned int TE6_H_D_Alarm : 1;//Isen：20230817修改TE1-->TE6
+    unsigned int TE6_L_D_Alarm : 1;//13Bytes
+    
     unsigned int PDT1_H_D_Alarm : 1;
     unsigned int PDT1_L_D_Alarm : 1;
     unsigned int PDT2_H_D_Alarm : 1;
     unsigned int PDT2_L_D_Alarm : 1;
     unsigned int PDT3_H_D_Alarm : 1;
     unsigned int PDT3_L_D_Alarm : 1;
-    unsigned int Dummy2 : 1;
-    unsigned int Dummy3 : 1;//14Bytes
-    unsigned int Dummy4 : 1;
-    unsigned int Dummy5 : 1;
-    unsigned int Dummy6 : 1;
+    unsigned int BFault_TE6_HH : 1;//Isen：20230817新增
+    unsigned int BFault_TE6_LL : 1;//14Bytes//Isen：20230817新增
+    
+    unsigned int BFault_TE10_HH : 1;//Isen：20230817新增
+    unsigned int BFault_TE10_LL : 1;//Isen：20230817新增
+    unsigned int A1Fault_TE5_TempUpFault : 1;//Isen：20230817新增
     unsigned int Dummy7 : 1;
     unsigned int Dummy8 : 1;
     unsigned int Dummy9 : 1;
     unsigned int Dummy10 : 1;
-    unsigned int Dummy11 : 1;
+    unsigned int Dummy11 : 1;//15Bytes
+    
     unsigned int Dummy12 : 1;
     unsigned int Dummy13 : 1;
     unsigned int Dummy14 : 1;
@@ -372,7 +370,7 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int Dummy17 : 1;
     unsigned int Dummy18 : 1;
     unsigned int Dummy19 : 1;//16Bytes
-//Philip 20220526 0.0.1 =========================================================
+
 } _ALARM_STATUS_VALUE;
 
 typedef union __ALARM_STATUS
@@ -380,8 +378,7 @@ typedef union __ALARM_STATUS
     _ALARM_STATUS_VALUE Value;
     unsigned char ByteData[16];
 } _ALARM_STATUS;
-//Philip 20220330 0.0.1 ========================================================================
-//Philip 20220510 0.0.1 ========================================================================
+
 typedef struct __SYSTEM_RUNTIME_STATUS_VALUE
 {
     unsigned char AutoGasIn : 1;
@@ -394,7 +391,16 @@ typedef struct __SYSTEM_RUNTIME_STATUS_VALUE
     unsigned char SystemManualMode : 1;//1st Byte
     unsigned char SystemAutoStartStatus;//2nd Byte
     unsigned char SystemAutoStopStatus;//3rd Byte
-    unsigned char Dummy4;//4th Byte
+    
+    unsigned char FaultLED : 1;//Isen：20230703新增，20230806修正Bit位置至Dummy4Bit1
+    unsigned char AlarmLED : 1;//Isen：20230703新增，20230806修正Bit位置至Dummy4Bit1
+    unsigned char Dummy4bit3 : 1;//Isen：20230806將不小心刪除的Dummy4補回
+    unsigned char Dummy4bit4 : 1;//Isen：20230806將不小心刪除的Dummy4補回
+    unsigned char Dummy4bi45 : 1;//Isen：20230806將不小心刪除的Dummy4補回
+    unsigned char Dummy4bit6 : 1;//Isen：20230806將不小心刪除的Dummy4補回
+    unsigned char Dummy4bit7 : 1;//Isen：20230806將不小心刪除的Dummy4補回
+    unsigned char Dummy4bit8 : 1;//4th Byte
+    
     unsigned char Dummy5;
     unsigned char Dummy6;
     unsigned char Dummy7;
