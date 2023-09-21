@@ -12,7 +12,6 @@ extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_SendingWord;
 extern _PARSING_DATA U1_SendingWord2;
 extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
-extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 
 void Send_GetAlarm_A1_SetResponse(void)
 {

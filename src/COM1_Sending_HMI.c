@@ -17,10 +17,9 @@ extern unsigned int FirmwareVersion;
 extern unsigned long FirmwareDate;
 extern unsigned int ExtFirmwareVersion;
 extern unsigned long ExtFirmwareDate;
-//Philip 20220406 0.0.1 ===================================
+
 extern _IO_STATUS ioStatus;
 extern _ALARM_STATUS alarmStatus;
-//Philip 20220406 0.0.1 ===================================
 
 _PARSING_WORD U1_SendingWord;
 _PARSING_DATA U1_SendingWord2;
@@ -53,7 +52,7 @@ void SendFirmwareVersion(unsigned char flag)//flag == 0 : Firmware Version, flag
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11;
+    U1PacketLen = UART1_PACKET_SIZE;
 }
 
 void Send_LoopBackResponse(void)
@@ -90,7 +89,7 @@ void Get_TE1_3_5_6_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 void Get_TE8_10_11_12_SendPacket(void)
@@ -112,7 +111,7 @@ void Get_TE8_10_11_12_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 void Get_PDT1_2_3_SendPacket(void)
@@ -134,7 +133,7 @@ void Get_PDT1_2_3_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 //Philip 20220124 0.0.1 ====================================================================
@@ -157,7 +156,7 @@ void Get_FAN1_RunTime_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 void Get_FAN2_RunTime_SendPacket(void)
@@ -179,7 +178,7 @@ void Get_FAN2_RunTime_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 void Get_MTR4_RunTime_SendPacket(void)
@@ -203,7 +202,7 @@ void Get_MTR4_RunTime_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 void Get_Input_Heater_RunTime_SendPacket(void)//Philip 20220406 0.0.1
@@ -227,7 +226,7 @@ void Get_Input_Heater_RunTime_SendPacket(void)//Philip 20220406 0.0.1
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 void Get_PCD_RunTime_SendPacket(void)
@@ -250,7 +249,7 @@ void Get_PCD_RunTime_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 
 void Get_UsingRecord_RunTime_SendPacket(void)
@@ -270,7 +269,7 @@ void Get_UsingRecord_RunTime_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 //Philip 20220124 0.0.1 ====================================================================
 
@@ -300,7 +299,7 @@ void Get_AlarmStatus_RunTime_SendPacket(unsigned char flag)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 //Philip 20220406 0.0.1 =====================================================================
 
@@ -325,7 +324,7 @@ void Get_SystemStatus_RunTime_SendPacket(void)
     UART1TxBuffer[9] = U1_SendingWord.Byte[1];
     UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
     U1SendDataCount = 0;
-    U1PacketLen = 11; 
+    U1PacketLen = UART1_PACKET_SIZE; 
 }
 //Philip 20220510 0.0.1 =====================================================================
 
@@ -359,7 +358,7 @@ void RoutineSendingProcess(void)
             RoutineSendIndex = 6;
             break;
         case 6 :
-            Get_Input_Heater_RunTime_SendPacket();//Philip 20220406 0.0.1
+            Get_Input_Heater_RunTime_SendPacket();
             RoutineSendIndex = 7;
             break;
         case 7 :
@@ -368,7 +367,7 @@ void RoutineSendingProcess(void)
             break;
         case 8 :
             Get_UsingRecord_RunTime_SendPacket();
-            RoutineSendIndex = 9;//Philip 20220406 0.0.1
+            RoutineSendIndex = 9;
             break;          
         case 9 :            
             Get_AlarmStatus_RunTime_SendPacket(0);
@@ -376,7 +375,7 @@ void RoutineSendingProcess(void)
             break;   
         case 10 :
             Get_SystemStatus_RunTime_SendPacket();
-            RoutineSendIndex = 11;//Philip 20220526 0.0.1//0;
+            RoutineSendIndex = 11;
             break;       
         case 11 :            
             Get_AlarmStatus_RunTime_SendPacket(1);
@@ -392,7 +391,7 @@ void RoutineSendingProcess(void)
 void ResponseSendingProcess(void)
 {
     U1SendDataCount = 0;
-    U1PacketLen = 11;
+    U1PacketLen = UART1_PACKET_SIZE;
 }
 
 enum Android_HMI_SendStateEnum
@@ -414,11 +413,13 @@ void Android_HMI_SendingControl(void)
                 Android_HMI_SendState = Android_HMI_StartSendStateEnum;
             break;
         case Android_HMI_StartSendStateEnum :
-            if( RoutineSendFlag == 1 )
-                RoutineSendingProcess();
+            if( RoutineSendFlag == 1 ) 
+                RoutineSendingProcess(); //Isen：傳送11組Unit錶頭數值至UART1_TX_Buffer
             else
             {
-                ResponseSendingProcess();
+//                ResponseSendingProcess(); //Isen：若RoutineSendFlag不為1，則執行這段函式，但因為只有2行，故將其搬移至此，讓Code保持直觀好閱讀
+                U1SendDataCount = 0; //Isen：若RoutineSendFlag不為1，則清空 U1SendDataCount
+                U1PacketLen = UART1_PACKET_SIZE; //Isen：若RoutineSendFlag不為1，則賦值給 U1PacketLen 準備傳送至TX
                 RoutineSendFlag = 1;
             }
             Android_HMI_SendState = Wait_Android_HMI_FinishSendStateEnum;
@@ -426,7 +427,7 @@ void Android_HMI_SendingControl(void)
         case Wait_Android_HMI_FinishSendStateEnum :
             if( ( U1SendDataCount >= U1PacketLen) && (U1PacketLen > 0) )
             {
-                DelayTimerCounter[UART1_SendingDelayEnum] = 20;
+                DelayTimerCounter[UART1_SendingDelayEnum] = 200; //Isen：這裡定義UART1_Sending的間隔時間，若以5ms的速度來計算，則為每100ms傳送一筆
                 Android_HMI_SendState = Wait_Android_HMI_StartSendStateEnum;
             }
             break;

@@ -10,10 +10,6 @@
 extern void uC_HMI_RunWriteSingleLongWordSend(unsigned int addr, long Value);
 extern void RegisterSendingPacket(unsigned char state, unsigned int addr, unsigned char *data, unsigned char size);
 
-extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
-extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
-extern _SENDING_DATA SendingData;
-
 #define IO_CURSOR_X_ADDR 0x3F21
 #define IO_CURSOR_Y_ADDR 0x3F22
 #define IO_CURSOR_W_ADDR 0x3F23

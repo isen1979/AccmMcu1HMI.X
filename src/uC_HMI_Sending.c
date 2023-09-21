@@ -13,8 +13,6 @@
 
 extern unsigned int uC_HMI_CRC_CREATE(unsigned char *data, unsigned char lenth);
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
-extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
-extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
 extern _UC_HMI_SEND_BUF ucHMISuddenSendRegister;
 
 _SENDING_WORD SendingWord;

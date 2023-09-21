@@ -92,8 +92,6 @@ extern void SendHeater_PID_AutoControlCommand(void);
 extern void SendFunctionResetControlCommand(void);
 extern void SendFaultLED_ONOFFControlCommand(void);
 extern void SendAlarmLED_ONOFFControlCommand(void);
-//Isen：20230915，For測試用新增
-extern unsigned int UART1RxBufCount;
 
 unsigned char COM1_Rx_Size;
 
@@ -332,24 +330,8 @@ void Android_ButtonProcess(void)
             SystemRunTimeStatus.Value.AlarmLED = RunTimeStatus.OnAlarmLED;
             SaveRunTimeStatus();
             SendAlarmLED_ONOFFControlCommand();
-            break;
-        
+            break;        
     }
-}
-
-//Isen：20230913-1，新增讀取UART1暫存區的功能函式
-//Isen：讀取UART1的數據並立即回傳
-char readUART1Data(void) {
-    if (UART1RxBufCount > 0) { // 檢查是否有可用的數據
-        char receivedData = UART1RxBuffer[0]; // 讀取緩衝區的第一個字節
-        int i;
-        for(i = 0; i < UART1RxBufCount; i++) {
-            UART1RxBuffer[i] = UART1RxBuffer[i + 1]; // 移動緩衝區的數據
-        }
-        UART1RxBufCount--; // 減少緩衝區的數據計數器
-        return receivedData; // 返回接收到的數據
-    }
-    return 0; // 如果沒有可用的數據，返回0
 }
 
 void Android_HMI_Parsing(void)
@@ -368,7 +350,7 @@ void Android_HMI_Parsing(void)
         switch(UART1RxBuffer[0])
         {
             case Android_HMI_GetFirmwareVersionCommandEnum ://00
-                RoutineSendFlag = 0;
+                RoutineSendFlag = 0; //Isen：當UART1需要傳送讀取的數據時，最後一刻才將SendFlag清為0
                 SendFirmwareVersion(0);
                 break;
             case Android_HMI_GetExtFirmwareVersionCommandEnum ://01
@@ -466,8 +448,7 @@ void Android_HMI_Parsing(void)
             case Android_HMI_PCD25_Limit_ManualSet_CommandEnum ://24
                 RoutineSendFlag = 0;
                 Send_GetPCD25_Limit_ManualSetResponse();
-                break;              
-                
+                break;                           
             case Android_HMI_Alarm_A1_Set_CommandEnum :
                 RoutineSendFlag = 0;
                 Send_GetAlarm_A1_SetResponse();                

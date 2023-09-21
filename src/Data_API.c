@@ -108,7 +108,7 @@ unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth)
 	unsigned int reg_crc = 0,temp = 0xFFFF;
 	while(lenth--)
 	{
-		temp ^= *data++;
+		temp ^= *data++; //Isen：^= 是XOR賦值操作。
 		for(j=0;j<8;j++)
 		{
 			if(temp & 0x01) /* LSB(b0)=1 */

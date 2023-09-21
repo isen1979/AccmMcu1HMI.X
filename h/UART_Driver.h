@@ -45,29 +45,24 @@ extern "C" {
 #define UART3_DE _RK14
 
 void INIT_UART1(unsigned int baud_rate,unsigned int parity,unsigned int stopbit);    
-    
 //Example
-//INIT_UART2(BAUD_9600,NO_PARITY_8BIT,STOP_1BIT,2); //9600,8,N,1 used rx interrupt
+//INIT_UART1(BAUD_9600,NO_PARITY_8BIT,STOP_1BIT,2); //9600,8,N,1 used rx interrupt
 
 //************************************************************************
-//void INIT_UART2(unsigned int baud_rate,unsigned int parity,unsigned int stopbit);
 //Initial UART2 (RS232 / RS485 / RS422)
 //unsigned int baud_rate    setting UART baud rate  range : BAUD_4800  BAUD_9600  BAUD_19200  BAUD_38400  BAUD_115200
 //unsigned int parity       setting UART parity mode   range : NO_PARITY_9BIT / ODD_PARITY_8BIT / EVEN_PARITY_8BIT / NO_PARITY_8BIT
 //unsigned int stopbit      setting UART stop bit mode  range : STOP_2BIT / STOP_1BIT
-//unsigned char txrx_isr_en setting UART TX/RX Enable or Disable  range : 0(TX RX disable)          1(TX enable  RX disable)
-//                                                                        2(TX disable  RX enable)  3(TX RX enable)
+//unsigned char txrx_isr_en setting UART TX/RX Enable or Disable  range : 0(TX RX disable) / 1(TX enable  RX disable) / 2(TX disable  RX enable)  3(TX RX enable)
 //************************************************************************
 void INIT_UART2(unsigned int baud_rate,unsigned int parity,unsigned int stopbit,unsigned char txrx_isr_en);
 
 //************************************************************************
-//void INIT_UART3(unsigned int baud_rate,unsigned int parity,unsigned int stopbit);
 //Initial UART3 (RS232 / RS485 / RS422)
 //unsigned int baud_rate    setting UART baud rate  range : BAUD_4800  BAUD_9600  BAUD_19200  BAUD_38400  BAUD_115200
 //unsigned int parity       setting UART parity mode   range : NO_PARITY_9BIT / ODD_PARITY_8BIT / EVEN_PARITY_8BIT / NO_PARITY_8BIT
 //unsigned int stopbit      setting UART stop bit mode  range : STOP_2BIT / STOP_1BIT
-//unsigned char txrx_isr_en setting UART TX/RX Enable or Disable  range : 0(TX RX disable)          1(TX enable  RX disable)
-//                                                                        2(TX disable  RX enable)  3(TX RX enable)
+//unsigned char txrx_isr_en setting UART TX/RX Enable or Disable  range : 0(TX RX disable) 1(TX enable  RX disable) 2(TX disable  RX enable)  3(TX RX enable)
 //************************************************************************
 void INIT_UART3(unsigned int baud_rate,unsigned int parity,unsigned int stopbit,unsigned char txrx_isr_en);
 

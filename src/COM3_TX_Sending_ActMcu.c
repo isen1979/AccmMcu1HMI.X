@@ -26,7 +26,6 @@ extern _SYSTEM_PARAMETER SystemParameter;
 extern _RUNTIME_STATUS RunTimeStatus;
 extern _HMI_BUTTON_STATUS HMI_BtnStatus;
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
-extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
 extern unsigned char UART3TxBuffer[UART3_BUFFER_SIZE];
 extern unsigned char UART3RxBuffer[UART3_BUFFER_SIZE];
 extern unsigned int UART3TimeOutCount, UART3RxBufCount, U3SendDataCount, U3PacketLen;
