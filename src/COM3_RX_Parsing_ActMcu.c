@@ -37,7 +37,7 @@ _PARSING_DATA U3_ParsingData;
 _PARSING_WORD U3_ParsingWord;
 _IO_STATUS ioStatus;
 _ALARM_STATUS alarmStatus;
-unsigned char COM3_Rx_Size;
+unsigned char COM3_RxData_Size;
 unsigned int ExtFirmwareVersion;
 unsigned long ExtFirmwareDate;
 unsigned int U3_CommnunicationFaultCount=0;
@@ -237,9 +237,9 @@ void Get_ExtControllerFirmware(void)
 void U3CommandParsing(void)
 {
     unsigned int crc_data;
-    crc_data = UART3RxBuffer[COM3_Rx_Size - 2];
-    crc_data = (crc_data << 8) | UART3RxBuffer[COM3_Rx_Size - 1];
-    if( CRC_CHECK(UART3RxBuffer, (COM3_Rx_Size-2), crc_data) == 1 )
+    crc_data = UART3RxBuffer[COM3_RxData_Size - 2];
+    crc_data = (crc_data << 8) | UART3RxBuffer[COM3_RxData_Size - 1];
+    if( CRC_CHECK(UART3RxBuffer, (COM3_RxData_Size-2), crc_data) == 1 )
     {
         switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
         {        

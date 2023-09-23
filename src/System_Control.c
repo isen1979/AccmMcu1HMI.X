@@ -230,10 +230,6 @@ void SystemControl(void)
     switch(SystemInitialState)
     {
         case SystemLoadSystemParameterEnum :             
-            #ifndef ANDROID_HMI            
-            Send_uCHMI_ControllerFirmwareVersion();
-            #endif            
-
             LoadSystemParameter(SYSTEM_PARAMETER_START_ADDR);
             DelayTimerCounter[ParameterLoadTimeEnum] = 1000;      
             SystemInitialState = waitSystemLoadSystemParameterEnum;
@@ -253,12 +249,7 @@ void SystemControl(void)
             {                
                 COM3_Send_All_Command();
                 DelayTimerCounter[ParameterLoadTimeEnum] = 2000;
-         
-                #ifdef ANDROID_HMI
-                SystemInitialState = SystemStartRunningEnum;
-                #else                
-                SystemInitialState = SystemFinishLoadSystemParamterEnum;
-                #endif         
+                SystemInitialState = SystemStartRunningEnum;        
             }
 
             else if( DelayTimerCounter[ParameterLoadTimeEnum] == 0 )

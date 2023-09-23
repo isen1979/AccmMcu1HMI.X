@@ -7,8 +7,28 @@
 #include "SystemControl.h"
 #include "COM3_Command.h"
 
-extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);
+enum Android_HMI_SendStateEnum
+{
+    Wait_Android_HMI_StartSendStateEnum=0,
+    Android_HMI_StartSendStateEnum,
+    Wait_Android_HMI_FinishSendStateEnum,
+    
+    Android_HMI_SendStateEnumEnd
+};
 
+extern _IO_STATUS ioStatus;
+extern _ALARM_STATUS alarmStatus;
+extern _FAN1_1_RUNTIME_DISPLAY FAN1_1_RunTimeDisplay;
+extern _FAN2_RUNTIME_DISPLAY FAN2_RunTimeDisplay;
+extern _MTR4_RUNTIME_DISPLAY MTR4_RunTimeDisplay;
+extern _HEATER_RUNTIME_DISPLAY HEATER_RunTimeDisplay;
+extern _OTHER_RUNTIME_DISPLAY OtherRunTimeDisplay;
+extern _PCD20_RUNTIME_DISPLAY PCD20_RunTimeDisplay;
+extern _RUNTIME_STATUS RunTimeStatus;//Philip 20220124 0.0.1
+extern _PARSING_WORD U1_ParsingWord;
+extern _PARSING_DATA U1_ParsingData;
+
+extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);
 extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
 extern unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 extern unsigned int UART1TimeOutCount, UART1RxBufCount, U1SendDataCount, U1PacketLen;
@@ -18,12 +38,11 @@ extern unsigned long FirmwareDate;
 extern unsigned int ExtFirmwareVersion;
 extern unsigned long ExtFirmwareDate;
 
-extern _IO_STATUS ioStatus;
-extern _ALARM_STATUS alarmStatus;
-
-_PARSING_WORD U1_SendingWord;
-_PARSING_DATA U1_SendingWord2;
+_SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
 unsigned char RoutineSendFlag = 1;
+unsigned char RoutineSendIndex = 0;
+unsigned char Android_HMI_SendState = Wait_Android_HMI_StartSendStateEnum;
+unsigned char UART1TxBufCount;//Isen：20230922修改
 
 void SendFirmwareVersion(unsigned char flag)//flag == 0 : Firmware Version, flag == 1 : External Device Firmware Version
 {
@@ -31,63 +50,60 @@ void SendFirmwareVersion(unsigned char flag)//flag == 0 : Firmware Version, flag
     {
         case 0 :
             UART1TxBuffer[0] = Android_HMI_GetFirmwareVersionCommandEnum;
-            U1_SendingWord.WordData = FirmwareVersion;
-            U1_SendingWord2.value = FirmwareDate;
+            U1_ParsingWord.WordData = FirmwareVersion;
+            U1_ParsingData.value = FirmwareDate;
             break;
         case 1 :
             UART1TxBuffer[0] = Android_HMI_GetExtFirmwareVersionCommandEnum;
-            U1_SendingWord.WordData = ExtFirmwareVersion;
-            U1_SendingWord2.value = ExtFirmwareDate;            
+            U1_ParsingWord.WordData = ExtFirmwareVersion;
+            U1_ParsingData.value = ExtFirmwareDate;            
             break;
     }    
-    UART1TxBuffer[1] = U1_SendingWord2.data[0];
-    UART1TxBuffer[2] = U1_SendingWord2.data[1];
-    UART1TxBuffer[3] = U1_SendingWord2.data[2];
-    UART1TxBuffer[4] = U1_SendingWord2.data[3];
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
+    UART1TxBuffer[1] = U1_ParsingData.data[0];
+    UART1TxBuffer[2] = U1_ParsingData.data[1];
+    UART1TxBuffer[3] = U1_ParsingData.data[2];
+    UART1TxBuffer[4] = U1_ParsingData.data[3];
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
     UART1TxBuffer[7] = 0;
     UART1TxBuffer[8] = 0;
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE;
 }
 
 void Send_LoopBackResponse(void)
 {
-    unsigned char i;
-    
-    for(i=0;i<12;i++)
-        UART1TxBuffer[i] = UART1RxBuffer[i];
+    if (UART1RxBufCount >= UART1_PACKET_SIZE){
+        int i;
+        for(i = 0; i <= UART1_PACKET_SIZE; i++){
+            UART1TxBuffer[i] = UART1RxBuffer[i];
+            UART1TxBufCount = i;
+        }   
+    }
+    UART1RxBufCount = 0;
 }
-extern _FAN1_1_RUNTIME_DISPLAY FAN1_1_RunTimeDisplay;
-extern _FAN2_RUNTIME_DISPLAY FAN2_RunTimeDisplay;
-extern _MTR4_RUNTIME_DISPLAY MTR4_RunTimeDisplay;
-extern _HEATER_RUNTIME_DISPLAY HEATER_RunTimeDisplay;
-extern _OTHER_RUNTIME_DISPLAY OtherRunTimeDisplay;
-extern _PCD20_RUNTIME_DISPLAY PCD20_RunTimeDisplay;
-extern _RUNTIME_STATUS RunTimeStatus;//Philip 20220124 0.0.1
 
 void Get_TE1_3_5_6_SendPacket(void)
 {    
     UART1TxBuffer[0] = Android_HMI_RunTimeTE1_3_5_6_CommandEnum;
-    U1_SendingWord.WordData = OtherRunTimeDisplay.TE1;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = PCD20_RunTimeDisplay.TE3;
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = MTR4_RunTimeDisplay.TE5;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = OtherRunTimeDisplay.TE6;
-    UART1TxBuffer[7] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[8] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.TE1;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = PCD20_RunTimeDisplay.TE3;
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = MTR4_RunTimeDisplay.TE5;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.TE6;
+    UART1TxBuffer[7] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[8] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
@@ -95,21 +111,21 @@ void Get_TE1_3_5_6_SendPacket(void)
 void Get_TE8_10_11_12_SendPacket(void)
 {  
     UART1TxBuffer[0] = Android_HMI_RunTimeTE8_10_11_12_CommandEnum;
-    U1_SendingWord.WordData = OtherRunTimeDisplay.TE8;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = OtherRunTimeDisplay.TE10;
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = HEATER_RunTimeDisplay.TE11;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = FAN2_RunTimeDisplay.TE12;
-    UART1TxBuffer[7] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[8] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.TE8;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.TE10;
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = HEATER_RunTimeDisplay.TE11;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = FAN2_RunTimeDisplay.TE12;
+    UART1TxBuffer[7] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[8] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
@@ -117,44 +133,43 @@ void Get_TE8_10_11_12_SendPacket(void)
 void Get_PDT1_2_3_SendPacket(void)
 {
     UART1TxBuffer[0] = Android_HMI_RunTimePDT1_2_3_CommandEnum;
-    U1_SendingWord.WordData = OtherRunTimeDisplay.PDT1;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = OtherRunTimeDisplay.PDT2;
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = OtherRunTimeDisplay.PDT5;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = OtherRunTimeDisplay.PT1;
-    UART1TxBuffer[7] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[8] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.PDT1;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.PDT2;
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.PDT5;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.PT1;
+    UART1TxBuffer[7] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[8] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
 
-//Philip 20220124 0.0.1 ====================================================================
 void Get_FAN1_RunTime_SendPacket(void)
 {
     UART1TxBuffer[0] = Android_HMI_FAN1_RunTime_CommandEnum;
-    U1_SendingWord.WordData = FAN1_1_RunTimeDisplay.PID_Output;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = FAN1_1_RunTimeDisplay.RealFreq;
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = FAN1_1_RunTimeDisplay.ErrorCode;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = FAN1_1_RunTimeDisplay.Current;
-    UART1TxBuffer[7] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[8] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = FAN1_1_RunTimeDisplay.PID_Output;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = FAN1_1_RunTimeDisplay.RealFreq;
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = FAN1_1_RunTimeDisplay.ErrorCode;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = FAN1_1_RunTimeDisplay.Current;
+    UART1TxBuffer[7] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[8] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
@@ -162,21 +177,21 @@ void Get_FAN1_RunTime_SendPacket(void)
 void Get_FAN2_RunTime_SendPacket(void)
 {
     UART1TxBuffer[0] = Android_HMI_FAN2_RunTime_CommandEnum;
-    U1_SendingWord.WordData = FAN2_RunTimeDisplay.Current;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = FAN2_RunTimeDisplay.SV;//Maybe delete later
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = FAN2_RunTimeDisplay.RealSpeed;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = FAN2_RunTimeDisplay.ErrorCode;
-    UART1TxBuffer[7] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[8] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = FAN2_RunTimeDisplay.Current;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = FAN2_RunTimeDisplay.SV;//Maybe delete later
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = FAN2_RunTimeDisplay.RealSpeed;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = FAN2_RunTimeDisplay.ErrorCode;
+    UART1TxBuffer[7] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[8] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
@@ -184,47 +199,47 @@ void Get_FAN2_RunTime_SendPacket(void)
 void Get_MTR4_RunTime_SendPacket(void)
 {
     UART1TxBuffer[0] = Android_HMI_MTR4_RunTime_CommandEnum;
-    U1_SendingWord.WordData = MTR4_RunTimeDisplay.ErrorCode;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = MTR4_RunTimeDisplay.Current;
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = MTR4_RunTimeDisplay.RealFreq;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
+    U1_ParsingWord.WordData = MTR4_RunTimeDisplay.ErrorCode;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = MTR4_RunTimeDisplay.Current;
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = MTR4_RunTimeDisplay.RealFreq;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
 //Philip 20220414 0.0.1 ========================================================    
 //    U1_SendingWord.WordData = MTR4_RunTimeDisplay.RPH;//Maybe delete later
     UART1TxBuffer[7] = ioStatus.ByteData[2];//U1_SendingWord.Byte[0];
     UART1TxBuffer[8] = ioStatus.ByteData[3];//U1_SendingWord.Byte[1];
 //Philip 20220414 0.0.1 ========================================================    
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
 
-void Get_Input_Heater_RunTime_SendPacket(void)//Philip 20220406 0.0.1
+void Get_Input_Heater_RunTime_SendPacket(void)
 {
     UART1TxBuffer[0] = Android_HMI_Heater_RunTime_CommandEnum;
-    U1_SendingWord.WordData = HEATER_RunTimeDisplay.RealOutputPercent;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = HEATER_RunTimeDisplay.OvenSP;
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = HEATER_RunTimeDisplay.OvenSV;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
+    U1_ParsingWord.WordData = HEATER_RunTimeDisplay.RealOutputPercent;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = HEATER_RunTimeDisplay.OvenSP;
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = HEATER_RunTimeDisplay.OvenSV;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
 //Philip 20220406 0.0.1 =============================================
-    U1_SendingWord.WordData = 0;//Gas
-    UART1TxBuffer[7] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[8] = U1_SendingWord.Byte[1];
+    U1_ParsingWord.WordData = 0;//Gas
+    UART1TxBuffer[7] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[8] = U1_ParsingWord.Byte[1];
 //Philip 20220406 0.0.1 =============================================    
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
@@ -232,22 +247,22 @@ void Get_Input_Heater_RunTime_SendPacket(void)//Philip 20220406 0.0.1
 void Get_PCD_RunTime_SendPacket(void)
 {   
     UART1TxBuffer[0] = Android_HMI_PCD_RunTime_CommandEnum;
-    U1_SendingWord.WordData = PCD20_RunTimeDisplay.RealOpenSize;
-    UART1TxBuffer[1] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = OtherRunTimeDisplay.PCD22_RealOpenSize;
-    UART1TxBuffer[3] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = OtherRunTimeDisplay.PCD25_RealOpenSize;
-    UART1TxBuffer[5] = U1_SendingWord.Byte[0];
-    UART1TxBuffer[6] = U1_SendingWord.Byte[1];
+    U1_ParsingWord.WordData = PCD20_RunTimeDisplay.RealOpenSize;
+    UART1TxBuffer[1] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[2] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.PCD22_RealOpenSize;
+    UART1TxBuffer[3] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[4] = U1_ParsingWord.Byte[1];
+    U1_ParsingWord.WordData = OtherRunTimeDisplay.PCD25_RealOpenSize;
+    UART1TxBuffer[5] = U1_ParsingWord.Byte[0];
+    UART1TxBuffer[6] = U1_ParsingWord.Byte[1];
 //Philip 20220406 0.0.1 =============================================
     UART1TxBuffer[7] = ioStatus.ByteData[0];
     UART1TxBuffer[8] = ioStatus.ByteData[1];
 //Philip 20220406 0.0.1 ============================================= 
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
@@ -255,31 +270,26 @@ void Get_PCD_RunTime_SendPacket(void)
 void Get_UsingRecord_RunTime_SendPacket(void)
 {   
     UART1TxBuffer[0] = Android_HMI_UsingCount_RunTime_CommandEnum;
-    U1_SendingWord2.value = RunTimeStatus.UsingCount;
-    UART1TxBuffer[1] = U1_SendingWord2.data[0];
-    UART1TxBuffer[2] = U1_SendingWord2.data[1];
-    UART1TxBuffer[3] = U1_SendingWord2.data[2];
-    UART1TxBuffer[4] = U1_SendingWord2.data[3];
-    U1_SendingWord2.value = RunTimeStatus.UsingHours;
-    UART1TxBuffer[5] = U1_SendingWord2.data[0];
-    UART1TxBuffer[6] = U1_SendingWord2.data[1];
-    UART1TxBuffer[7] = U1_SendingWord2.data[2];
-    UART1TxBuffer[8] = U1_SendingWord2.data[3];
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingData.value = RunTimeStatus.UsingCount;
+    UART1TxBuffer[1] = U1_ParsingData.data[0];
+    UART1TxBuffer[2] = U1_ParsingData.data[1];
+    UART1TxBuffer[3] = U1_ParsingData.data[2];
+    UART1TxBuffer[4] = U1_ParsingData.data[3];
+    U1_ParsingData.value = RunTimeStatus.UsingHours;
+    UART1TxBuffer[5] = U1_ParsingData.data[0];
+    UART1TxBuffer[6] = U1_ParsingData.data[1];
+    UART1TxBuffer[7] = U1_ParsingData.data[2];
+    UART1TxBuffer[8] = U1_ParsingData.data[3];
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
-//Philip 20220124 0.0.1 ====================================================================
 
-//Philip 20220406 0.0.1 =====================================================================
 void Get_AlarmStatus_RunTime_SendPacket(unsigned char flag) 
-//flag == 0 : Android_HMI_Alarm_RunTime_CommandEnum,
-//flag == 1 : Android_HMI_Alarm1_RunTime_CommandEnum
 {   
     unsigned char i;
-//Philip 20220526 0.0.1 =====================================================================    
     switch(flag)
     {
         case 0 :
@@ -293,42 +303,35 @@ void Get_AlarmStatus_RunTime_SendPacket(unsigned char flag)
                 UART1TxBuffer[i+1] = alarmStatus.ByteData[i+8];
             break;
     }    
-//Philip 20220526 0.0.1 =====================================================================    
-    
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
-//Philip 20220406 0.0.1 =====================================================================
 
-//Philip 20220510 0.0.1 =====================================================================
-_SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
 void Get_SystemStatus_RunTime_SendPacket(void)
 {   
     unsigned char i;
     
     UART1TxBuffer[0] = Android_HMI_SystemStatus_RunTime_CommandEnum;
     SystemRunTimeStatus.Value.AutoGasIn = RunTimeStatus.AutoGasIn;
-//Philip 20220525 0.0.1 ====================================================================    
+
     SystemRunTimeStatus.Value.FAN1_1_PID_ON = RunTimeStatus.FAN1_1_PID_ON;
     SystemRunTimeStatus.Value.FAN1_1_PID_Auto = RunTimeStatus.FAN1_1_PID_Auto;
     SystemRunTimeStatus.Value.PCD20_PID_Auto = RunTimeStatus.PCD20_PID_Auto;
     SystemRunTimeStatus.Value.Heater_PID_Auto = RunTimeStatus.Heater_PID_Auto;
-//Philip 20220525 0.0.1 ====================================================================    
+  
     for(i=0;i<8;i++)
         UART1TxBuffer[i+1] = SystemRunTimeStatus.ByteData[i];
     
-    U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
-    UART1TxBuffer[9] = U1_SendingWord.Byte[1];
-    UART1TxBuffer[10] = U1_SendingWord.Byte[0];    
+    U1_ParsingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
+    UART1TxBuffer[9] = U1_ParsingWord.Byte[1];
+    UART1TxBuffer[10] = U1_ParsingWord.Byte[0];    
     U1SendDataCount = 0;
     U1PacketLen = UART1_PACKET_SIZE; 
 }
-//Philip 20220510 0.0.1 =====================================================================
 
-unsigned char RoutineSendIndex=0;
 void RoutineSendingProcess(void)
 {
     switch(RoutineSendIndex)
@@ -394,16 +397,6 @@ void ResponseSendingProcess(void)
     U1PacketLen = UART1_PACKET_SIZE;
 }
 
-enum Android_HMI_SendStateEnum
-{
-    Wait_Android_HMI_StartSendStateEnum=0,
-    Android_HMI_StartSendStateEnum,
-    Wait_Android_HMI_FinishSendStateEnum,
-    
-    Android_HMI_SendStateEnumEnd
-};
-
-unsigned char Android_HMI_SendState = Wait_Android_HMI_StartSendStateEnum;
 void Android_HMI_SendingControl(void)
 {
     switch(Android_HMI_SendState)

@@ -2,17 +2,23 @@
 #include "..\h\UART_Driver.h"
 #include "..\h\SYS_Driver.h"
 #include "..\h\SystemControl.h"
-
+#include "..\h\COM3_Command.h"
 #define UARTRXTimeOutCNT 10
 
+//Isen：20230922新增==================
+#define UART1_RXDATA_SIZE 9
+#define UART1_RXCRC_SIZE 2
+//Isen：20230922新增==================
+
+extern unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigned int crc_data);
 extern void Android_HMI_Parsing(void);
 extern void Android_HMI_SendingControl(void);
 extern void U2CommandParsing(void);
 extern void U3CommandParsing(void);
-//Isen：20230913-1，讀取UART1的數據並立即回傳
-extern char readUART1Data(void);
-extern unsigned char COM2_Rx_Size, COM3_Rx_Size;
+extern void Send_LoopBackResponse(void);//Isen：20230921新增
+extern unsigned char COM1_RxData_Size, COM2_RxData_Size, COM3_RxData_Size;
 extern unsigned char RoutineSendFlag;//Isen：20230921新增
+extern unsigned char UART1TxBufCount;//Isen：20230922新增
 
 unsigned char UART1RxBuffer[UART1_BUFFER_SIZE];
 unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
@@ -29,6 +35,12 @@ unsigned int UART1TimeOutCount, UART1RxBufCount, U1SendDataCount, U1PacketLen;
 unsigned int UART2TimeOutCount, UART2RxBufCount, U2SendDataCount, U2PacketLen;
 unsigned int UART3TimeOutCount, UART3RxBufCount, U3SendDataCount, U3PacketLen;
 
+//Isen：20230922新增========================
+extern _PARSING_WORD U1_ParsingWord;
+extern _PARSING_DATA U1_ParsingData;
+char UART1RxData[UART1_PACKET_SIZE];
+unsigned int COM1_TxData_Size = 0;
+
 //Isen：僅開機執行一次
 void ClearUART1_Counter(void)
 {
@@ -36,7 +48,8 @@ void ClearUART1_Counter(void)
     U1SendDataCount = UART1_PACKET_SIZE;          
     U1PacketLen = 0;
     UART1RxBufCount = 0;
-    UART1TimeOutCount = 0;    
+    UART1TimeOutCount = 0;   
+    COM1_RxData_Size = 0;//Isen：20230922新增
 }
 
 void ClearUART2_Counter(void)
@@ -239,16 +252,15 @@ void __attribute__( ( interrupt , no_auto_psv ) ) _U1RXInterrupt( void )
 {   
     IEC0bits.U1RXIE=0;
     IFS0bits.U1RXIF = 0;
-    //Isen：20230913-1通訊測試，確認下列Code是唯一取值的地方，並且運行正常
-    //觀察下列Code，發現是利用MCU1自身掃描時序來累加 [UART1RxBufCount++]，沒有使用 For-Next 或 While
-    //所以何時將 UART1RxBufCount 清除為0成為關鍵，若是使用不當，容易造成 UART1RxBuffer 陣列始終使用 [1] 來儲存Rx的問題。
-    int index = UART1RxBufCount++; //Isen：20230921，將原本寫在陣列裡累加的Count移至外面來，以傳統嚴謹的語法來執行。
-    UART1RxBuffer[index] = U1RXREG;
+
+    unsigned int index;
+    index = UART1RxBufCount++;
+    UART1RxBuffer[index] = U1RXREG;   
     StartUART1WaitTimer();
-    
+   
     IEC0bits.U1RXIE=1;
     U1STAbits.OERR = 0;
-}
+} 
 
 void __attribute__( ( interrupt , no_auto_psv ) ) _U2RXInterrupt( void )
 {	
@@ -274,11 +286,7 @@ void __attribute__( ( interrupt , no_auto_psv ) ) _U3RXInterrupt( void )
 	U3STAbits.OERR = 0;
 }
 
-#ifdef ANDROID_HMI
-extern unsigned char COM1_Rx_Size;
-#endif
-
-void UARTRXTimeOutCheck(void)
+void UARTRXTimeOutCheck(void)//Isen：原設計會因系統中斷後自動執行，繼續沿用
 {
     UART1TimeOutCount++;
     UART2TimeOutCount++;
@@ -287,18 +295,14 @@ void UARTRXTimeOutCheck(void)
     if( UART1TimeOutCount > UARTRXTimeOutCNT )
     {
         UART1TimeOutCount = UARTRXTimeOutCNT;
-        if( UART1RxBufCount >= UART1_PACKET_SIZE ) //Isen：20230921，改為接收到一筆完整且固定的11-Bytes封包再觸發傳遞。
-        {            
-        #ifdef ANDROID_HMI
-            COM1_Rx_Size = UART1RxBufCount;//Isen：這裡的COM1_Rx_Size並沒有定義初始值，因此 UART1RxBufCount 是甚麼，COM1_Rx_Size就是甚麼。
-            U1NewCommandReceivedFlag = 1;
-        #else            
-            if( (UART1RxBuffer[0] == 0xAF) && (UART1RxBuffer[UART1RxBufCount - 1] == 0xEF) ) //Isem：原始程式強制將 UART1RxBufCount 清0，這裡條件應該永遠不會成立，為何要寫這一段？
-                 U1NewCommandReceivedFlag = 1;
-        #endif           
+        if( UART1RxBufCount > 0 )
+        {     
+            if( UART1RxBufCount > UART1_PACKET_SIZE )
+            {
+                COM1_RxData_Size = UART1RxBufCount;
+                U1NewCommandReceivedFlag = 1;          
+            }
             UART1RxBufCount = 0;
-            //Isen：每當 UART1RxBufCount > 0，一進來這裡就清為0，這樣感覺 UART1RxBufCount永遠就等於0<->1間循環。
-            //Isen：20230921，改為接收到完整一串封包[0]~[11]後再觸發清0機制。
         }
     }     
     
@@ -307,7 +311,7 @@ void UARTRXTimeOutCheck(void)
         UART2TimeOutCount = UARTRXTimeOutCNT;        
         if( UART2RxBufCount >= UART2_PACKET_SIZE )
         {
-            COM2_Rx_Size = UART2RxBufCount;
+            COM2_RxData_Size = UART2RxBufCount;
             U2NewCommandReceivedFlag = 1;
         }
         else if( UART2RxBufCount > 0 )
@@ -321,7 +325,7 @@ void UARTRXTimeOutCheck(void)
         {
             if( UART3RxBufCount > 4 )
             {
-                COM3_Rx_Size = UART3RxBufCount;
+                COM3_RxData_Size = UART3RxBufCount;
                 U3NewCommandReceivedFlag = 1;
             }
             UART3RxBufCount = 0;            
@@ -344,6 +348,19 @@ char readUART1Data(void) {
     return 0; // 如果沒有可用的數據，返回0
 }
 
+//Isen：利用系統中斷<->掃描運行，來仿製For-Next功能的典型設計
+void UART1_RXtoTX(void){
+    int i;
+    for(i = 0; i < UART1RxBufCount; i++) {
+        UART1RxBuffer[i] = UART1RxBuffer[i + 1]; // Shift移動Rx緩衝區的數據
+    }
+}
+
+//Isen：20230922新增，設計這段只會執行一次函式 (當Count = 11時)，用於處理CRC檢查以及RX->TX
+void ParsingUART1_RXBufferData(void){
+    
+}
+
 //Isen：20230913-1，發送數據到UART1
 void sendUART1Data(char receivedData) {
     while (U1STAbits.UTXBF); // 等待傳輸緩衝區有空間
@@ -353,9 +370,24 @@ void sendUART1Data(char receivedData) {
 
 //Isen：20230913-1，檢查是否接收到有效數據
 void echoUART1Data(void) {
-    char receivedData = readUART1Data(); // 使用先前提供的函數讀取數據
-    if (receivedData != 0) { // 檢查是否接收到有效數據
-        sendUART1Data(receivedData); // 將數據回傳到終端機
+    char receivedData = readUART1Data(); // 讀取RX數據
+    if (receivedData != 0) { // 檢查不為0的數據才送出TX
+        sendUART1Data(receivedData); 
+    }
+}
+
+//Isen：20230913-1，發送數據到UART1
+void SendingUART1_TxBuffData(void) {
+    // 如果接收到11個byte
+    if (UART1RxBufCount == UART1_PACKET_SIZE) {
+        // 將接收到的資料複製到Tx
+        int i;
+        for (i = 0; i < UART1_PACKET_SIZE; i++) {
+            while (U1STAbits.UTXBF); // 等待Tx緩衝區有空間
+            U1TXREG = UART1RxBuffer[i];
+        }
+        // 重置計數器
+        UART1RxBufCount = 0;
     }
 }
 
@@ -363,11 +395,9 @@ void CommandParsingProcess(void)
 {        
     if(U1NewCommandReceivedFlag == 1)   
     { 
-    #ifdef ANDROID_HMI
-        readUART1Data();//Isen：20230913-1通訊測試用
-//        RoutineSendFlag = 0;//Isen：20230921，確保觸發封包Parsing前，已停止Sending傳送作業
+//        readUART1Data();//Isen：20230913-1通訊測試用  
+//        ParsingUART1_RXBufferData();
 //        Android_HMI_Parsing();
-    #endif
         U1NewCommandReceivedFlag = 0;
     }
     
@@ -382,12 +412,9 @@ void CommandParsingProcess(void)
         U3CommandParsing();
         U3NewCommandReceivedFlag = 0;
     }    
-    
-#ifdef ANDROID_HMI
-//    UARTRXTimeOutCheck();//Isen：20230921，測試用
-    echoUART1Data();//Isen：20230913-1通訊測試用
-    Android_HMI_SendingControl();
-#endif
+//    echoUART1Data();//Isen：20230913-1通訊測試用
+    SendingUART1_TxBuffData();//Isen：20230922-2通訊測試用
+//    Android_HMI_SendingControl();
     
 }
 

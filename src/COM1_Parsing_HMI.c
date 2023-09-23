@@ -12,8 +12,6 @@ extern unsigned char RoutineSendFlag;
 extern unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigned int crc_data);
 
 extern _SYSTEM_PARAMETER SystemParameter;
-extern _PARSING_WORD U1_SendingWord;
-extern _PARSING_DATA U1_SendingWord2;
 extern _HMI_BUTTON_STATUS HMI_BtnStatus;
 extern _RUNTIME_STATUS RunTimeStatus;
 extern _SYSTEM_RUNTIME_STATUS SystemRunTimeStatus;
@@ -93,7 +91,9 @@ extern void SendFunctionResetControlCommand(void);
 extern void SendFaultLED_ONOFFControlCommand(void);
 extern void SendAlarmLED_ONOFFControlCommand(void);
 
-unsigned char COM1_Rx_Size;
+_PARSING_WORD U1_ParsingWord;
+_PARSING_DATA U1_ParsingData;
+unsigned char COM1_RxData_Size;
 
 void WriteParameterParsing(void)
 {
@@ -340,14 +340,8 @@ void Android_HMI_Parsing(void)
     //將UART_Driver.c中原本Parsing執行時序與Sending對調，此處函式會執行，但傳輸值都為0，連頭碼、尾碼也是0
     //回溯UART_Driver.c中原本Parsing執行時序，結果仍然未執行。
     //確認問題方向有2個：(1)為何CRC_CHECK判斷後沒有回傳1？ (2)為何已經將if判斷式暫時拿掉Parsing仍然不會執行？
-    unsigned int crc_data;
-    U1_SendingWord.Byte[0] = UART1RxBuffer[COM1_Rx_Size - 1];//Isen：從讀取暫存區擷取倒數第01個byte作為CRC_Check[0]字元
-    U1_SendingWord.Byte[1] = UART1RxBuffer[COM1_Rx_Size - 2];//Isen：從讀取暫存區擷取倒數第02個byte作為CRC_Check[1]字元
-    crc_data = U1_SendingWord.WordData;
     
-    if( CRC_CHECK(UART1RxBuffer, (COM1_Rx_Size - 2), crc_data) == 1 )
-    {
-        switch(UART1RxBuffer[0])
+    switch(UART1RxBuffer[0])
         {
             case Android_HMI_GetFirmwareVersionCommandEnum ://00
                 RoutineSendFlag = 0; //Isen：當UART1需要傳送讀取的數據時，最後一刻才將SendFlag清為0
@@ -507,5 +501,4 @@ void Android_HMI_Parsing(void)
                 Send_LoopBackResponse();
                 break;               
         }
-    }
 }
