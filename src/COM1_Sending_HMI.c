@@ -74,16 +74,16 @@ void SendFirmwareVersion(unsigned char flag)//flag == 0 : Firmware Version, flag
     U1PacketLen = UART1_PACKET_SIZE;
 }
 
-void Send_LoopBackResponse(void)
+void Send_LoopBackResponse(void) 
 {
-    if (UART1RxBufCount >= UART1_PACKET_SIZE){
+    if(UART1RxBufCount == UART1_PACKET_SIZE){//Isen：20230925，已驗證此功能OK，且If判斷式絕對不能拿掉
         int i;
-        for(i = 0; i <= UART1_PACKET_SIZE; i++){
+        for(i = 0; i < UART1RxBufCount; i++){
             UART1TxBuffer[i] = UART1RxBuffer[i];
-            UART1TxBufCount = i;
-        }   
+        }
+        UART1TxBufCount = UART1RxBufCount;
+        UART1RxBufCount = 0;
     }
-    UART1RxBufCount = 0;
 }
 
 void Get_TE1_3_5_6_SendPacket(void)
@@ -383,7 +383,7 @@ void RoutineSendingProcess(void)
         case 11 :            
             Get_AlarmStatus_RunTime_SendPacket(1);
             RoutineSendIndex = 0;
-            break;            
+            break;
         default :
             Get_TE1_3_5_6_SendPacket();
             RoutineSendIndex = 1;
@@ -420,7 +420,7 @@ void Android_HMI_SendingControl(void)
         case Wait_Android_HMI_FinishSendStateEnum :
             if( ( U1SendDataCount >= U1PacketLen) && (U1PacketLen > 0) )
             {
-                DelayTimerCounter[UART1_SendingDelayEnum] = 200; //Isen：這裡定義UART1_Sending的間隔時間，若以5ms的速度來計算，則為每100ms傳送一筆
+                DelayTimerCounter[UART1_SendingDelayEnum] = 200; //Isen：這裡定義UART1_Sending的間隔時間，若以5ms的速度來計算，則為每100ms傳送一筆，20230920由20改為200
                 Android_HMI_SendState = Wait_Android_HMI_StartSendStateEnum;
             }
             break;

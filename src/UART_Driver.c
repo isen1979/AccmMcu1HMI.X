@@ -35,9 +35,14 @@ unsigned int UART1TimeOutCount, UART1RxBufCount, U1SendDataCount, U1PacketLen;
 unsigned int UART2TimeOutCount, UART2RxBufCount, U2SendDataCount, U2PacketLen;
 unsigned int UART3TimeOutCount, UART3RxBufCount, U3SendDataCount, U3PacketLen;
 
-//Isen：20230922新增========================
+//Isen：20230922~25測試新增========================
 extern _PARSING_WORD U1_ParsingWord;
 extern _PARSING_DATA U1_ParsingData;
+extern void Send_LoopBackResponse(void);
+extern void SendFirmwareVersion(unsigned char flag);
+extern void SendFan1_1_GetSV_Response(void);
+extern void SendFan1_1_GetPI_Response(void);
+extern void SendFan1_1_GetD_LowLimit_Response(void);
 char UART1RxData[UART1_PACKET_SIZE];
 unsigned int COM1_TxData_Size = 0;
 
@@ -333,51 +338,23 @@ void UARTRXTimeOutCheck(void)//Isen：原設計會因系統中斷後自動執行
     }
 }
 
-//Isen：20230913-1，新增讀取UART1暫存區的功能函式
-//Isen：讀取UART1的數據並立即回傳
-char readUART1Data(void) {   
-    if (UART1RxBufCount > 0) { // 檢查是否有可用的數據
-        char receivedData = UART1RxBuffer[0]; // 讀取緩衝區的第一個字節
-        int i;
-        for(i = 0; i < UART1RxBufCount; i++) {
-            UART1RxBuffer[i] = UART1RxBuffer[i + 1]; // 移動緩衝區的數據
-        }
-        UART1RxBufCount--; // 減少緩衝區的數據計數器
-        return receivedData; // 返回接收到的數據
-    }
-    return 0; // 如果沒有可用的數據，返回0
-}
-
-//Isen：利用系統中斷<->掃描運行，來仿製For-Next功能的典型設計
-void UART1_RXtoTX(void){
-    int i;
-    for(i = 0; i < UART1RxBufCount; i++) {
-        UART1RxBuffer[i] = UART1RxBuffer[i + 1]; // Shift移動Rx緩衝區的數據
-    }
-}
-
-//Isen：20230922新增，設計這段只會執行一次函式 (當Count = 11時)，用於處理CRC檢查以及RX->TX
-void ParsingUART1_RXBufferData(void){
+//Isen：20230925，新增用於測試HMI原本的Parsing-->Sending是否可用
+void SendingUART1_HMIData(void) {
+    // Isen：20230925，在此將HMI已Parsing後的資料，逐一放到TxBuffer讓PC檢視
+    SendFirmwareVersion(0);//OK，驗證後要Bypass避免TxBuffer覆蓋問題
+//    SendFirmwareVersion(1);//OK
     
+    //Isen：為保留原始程式完整性，以下綁定兩個參數定義，再執行
+//    U1SendDataCount = 0;
+//    U1PacketLen = UART1_PACKET_SIZE;
+//    SendFan1_1_GetSV_Response();//OK
+//    SendFan1_1_GetPI_Response();//OK，驗證後要Bypass避免TxBuffer覆蓋問題
+//    SendFan1_1_GetD_LowLimit_Response();//OK
+
 }
 
 //Isen：20230913-1，發送數據到UART1
-void sendUART1Data(char receivedData) {
-    while (U1STAbits.UTXBF); // 等待傳輸緩衝區有空間
-    U1TXREG = receivedData; // 將數據放入傳輸暫存器，開始傳輸
-    IFS0bits.U1RXIF = 0; // 清除接收中斷標誌
-}
-
-//Isen：20230913-1，檢查是否接收到有效數據
-void echoUART1Data(void) {
-    char receivedData = readUART1Data(); // 讀取RX數據
-    if (receivedData != 0) { // 檢查不為0的數據才送出TX
-        sendUART1Data(receivedData); 
-    }
-}
-
-//Isen：20230913-1，發送數據到UART1
-void SendingUART1_TxBuffData(void) {
+void SendingUART1_RxBuffToTx(void) {
     // 如果接收到11個byte
     if (UART1RxBufCount == UART1_PACKET_SIZE) {
         // 將接收到的資料複製到Tx
@@ -388,6 +365,7 @@ void SendingUART1_TxBuffData(void) {
         }
         // 重置計數器
         UART1RxBufCount = 0;
+        SendingUART1_HMIData();//Isen：20230925，將要驗證的Parsing放在這裡，確保PC送出一次封包，Tx只做一次回應
     }
 }
 
@@ -395,9 +373,7 @@ void CommandParsingProcess(void)
 {        
     if(U1NewCommandReceivedFlag == 1)   
     { 
-//        readUART1Data();//Isen：20230913-1通訊測試用  
-//        ParsingUART1_RXBufferData();
-//        Android_HMI_Parsing();
+        Android_HMI_Parsing();
         U1NewCommandReceivedFlag = 0;
     }
     
@@ -412,10 +388,10 @@ void CommandParsingProcess(void)
         U3CommandParsing();
         U3NewCommandReceivedFlag = 0;
     }    
-//    echoUART1Data();//Isen：20230913-1通訊測試用
-    SendingUART1_TxBuffData();//Isen：20230922-2通訊測試用
+    //Isen：20230925，Sending放在這裡是因為要處理完U1~U3所有的Parsing結果後，才會發出Sending給HMI
+    SendingUART1_RxBuffToTx();//Isen：20230925，測試用
+
 //    Android_HMI_SendingControl();
-    
 }
 
 void SEND_U1_RS422_CMD_Process(void)

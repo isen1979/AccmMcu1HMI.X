@@ -355,7 +355,7 @@ void Android_HMI_Parsing(void)
                 RoutineSendFlag = 0;
                 SendFan1_1_GetSV_Response();
                 break;
-            case Android_HMI_Fan1_1_GetPI_CommandEnum :
+            case Android_HMI_Fan1_1_GetPI_CommandEnum ://03
                 RoutineSendFlag = 0;
                 SendFan1_1_GetPI_Response();
                 break;

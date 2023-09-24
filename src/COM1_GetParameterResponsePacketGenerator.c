@@ -10,11 +10,8 @@ extern _SYSTEM_PARAMETER SystemParameter;
 extern _PARSING_WORD U1_ParsingWord;
 extern _PARSING_DATA U1_ParsingData;
 extern unsigned char UART1TxBuffer[UART1_BUFFER_SIZE];
-
 extern unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth);
 
-
-//U1_SendingWord2.value = ExtFirmwareDate;
 void SendFan1_1_GetSV_Response(void)
 {
     UART1TxBuffer[0] = Android_HMI_Fan1_1_GetSV_CommandEnum;
