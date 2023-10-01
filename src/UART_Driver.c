@@ -248,14 +248,14 @@ unsigned char uart3_rx(void)
 
 void __attribute__( ( interrupt , no_auto_psv ) ) _U1TXInterrupt( void )
 {
-    IEC0bits.U1TXIE=0;
+    IEC0bits.U1TXIE = 0;
     IFS0bits.U1TXIF = 0;
-    IEC0bits.U1TXIE=1;
+    IEC0bits.U1TXIE = 1;
 }
 
 void __attribute__( ( interrupt , no_auto_psv ) ) _U1RXInterrupt( void )
 {   
-    IEC0bits.U1RXIE=0;
+    IEC0bits.U1RXIE = 0;
     IFS0bits.U1RXIF = 0;
 
     unsigned int index;
@@ -263,31 +263,31 @@ void __attribute__( ( interrupt , no_auto_psv ) ) _U1RXInterrupt( void )
     UART1RxBuffer[index] = U1RXREG;   
     StartUART1WaitTimer();
    
-    IEC0bits.U1RXIE=1;
+    IEC0bits.U1RXIE = 1;
     U1STAbits.OERR = 0;
 } 
 
 void __attribute__( ( interrupt , no_auto_psv ) ) _U2RXInterrupt( void )
 {	
-    IEC1bits.U2RXIE=0;
+    IEC1bits.U2RXIE = 0;
     IFS1bits.U2RXIF = 0;
     
     UART2RxBuffer[UART2RxBufCount++] = U2RXREG;   
     StartUART2WaitTimer();    
 
-	IEC1bits.U2RXIE=1;
+	IEC1bits.U2RXIE = 1;
 	U2STAbits.OERR = 0;
 }
 
 void __attribute__( ( interrupt , no_auto_psv ) ) _U3RXInterrupt( void )
 {	
-    IEC5bits.U3RXIE=0;
+    IEC5bits.U3RXIE = 0;
     IFS5bits.U3RXIF = 0;
 
     UART3RxBuffer[UART3RxBufCount++] = U3RXREG; 
     StartUART3WaitTimer();
     
-	IEC5bits.U3RXIE=1;
+	IEC5bits.U3RXIE = 1;
 	U3STAbits.OERR = 0;
 }
 
@@ -373,7 +373,7 @@ void CommandParsingProcess(void)
 {        
     if(U1NewCommandReceivedFlag == 1)   
     { 
-        Android_HMI_Parsing();
+//        Android_HMI_Parsing();
         U1NewCommandReceivedFlag = 0;
     }
     
