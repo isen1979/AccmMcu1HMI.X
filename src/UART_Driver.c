@@ -342,15 +342,15 @@ void UARTRXTimeOutCheck(void)//Isen：原設計會因系統中斷後自動執行
 void SendingUART1_HMIData(void) {
     // Isen：20230925，在此將HMI已Parsing後的資料，逐一放到TxBuffer讓PC檢視
     SendFirmwareVersion(0);//OK，驗證後要Bypass避免TxBuffer覆蓋問題
-//    SendFirmwareVersion(1);//OK
+//    SendFirmwareVersion(1);//OK，驗證後要Bypass避免TxBuffer覆蓋問題
     
-    //Isen：為保留原始程式完整性，以下綁定兩個參數定義，再執行
+    //Isen：為保留原始程式完整性，以下函式需綁定兩個參數定義，再執行
 //    U1SendDataCount = 0;
 //    U1PacketLen = UART1_PACKET_SIZE;
-//    SendFan1_1_GetSV_Response();//OK
+    //Isen：為保留原始程式完整性，以下函式需綁定兩個參數定義，再執行
+//    SendFan1_1_GetSV_Response();//OK，驗證後要Bypass避免TxBuffer覆蓋問題
 //    SendFan1_1_GetPI_Response();//OK，驗證後要Bypass避免TxBuffer覆蓋問題
-//    SendFan1_1_GetD_LowLimit_Response();//OK
-
+//    SendFan1_1_GetD_LowLimit_Response();//OK，驗證後要Bypass避免TxBuffer覆蓋問題
 }
 
 //Isen：20230913-1，發送數據到UART1
