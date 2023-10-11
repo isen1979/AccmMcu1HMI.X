@@ -16,23 +16,22 @@ _FAS( AWRP_OFF & APL_OFF & APLK_OFF );
 _FPOR(FPWRT_PWR2 & BOREN_ON & ALTI2C1_OFF & ALTI2C2_OFF );
 _FICD( RSTPRI_PF & ICS_PGD1 & JTAGEN_OFF );
 
-unsigned int FirmwareVersion = 1;
-unsigned long FirmwareDate = 20230919;
+unsigned int FirmwareVersion = 3;
+unsigned long FirmwareDate = 20230817;
 //Isen：20230523，Normal測試OK，Keyin會有小數點bug
 //Isen：20230817，重新製作FaultLED、AlarmLED、TE06、TE10...等異常機制
-//Isen：20230919-1，重新撰寫20230817-3版本
 
 extern void INIT_PWM(void);
 extern void INIT_PWMX(void);
 extern void INIT_PWMY(void);
 extern void SystemControl(void);
-
 extern void INIT_TIMER5(unsigned char isr_period);  //Timer5 interrupt
 extern void enable_timer5(void);
 extern void INIT_TIMER7(unsigned char isr_period);  //Timer5 interrupt
 extern void enable_timer7(void);
 extern void INIT_TIMER9(unsigned char isr_period);  //Timer5 interrupt
 extern void enable_timer9(void);
+extern void uC_HMI_SetPage(unsigned int page);
 
 int main(void)
 {
@@ -55,7 +54,7 @@ int main(void)
     INIT_PWMX();
     INIT_PWMY();
 
-    INIT_UART1(BAUD_115200,NO_PARITY_8BIT,STOP_1BIT);
+    INIT_UART1(BAUD_9600,NO_PARITY_8BIT,STOP_1BIT);
     INIT_UART2(BAUD_9600,NO_PARITY_8BIT,STOP_1BIT,2);//2: RX Interrupt Enable//BAUD_115200
     INIT_UART3(BAUD_9600,NO_PARITY_8BIT,STOP_1BIT,2);//2: RX Interrupt Enable//BAUD_115200
   

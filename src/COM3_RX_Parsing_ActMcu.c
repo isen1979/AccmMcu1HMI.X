@@ -37,7 +37,7 @@ _PARSING_DATA U3_ParsingData;
 _PARSING_WORD U3_ParsingWord;
 _IO_STATUS ioStatus;
 _ALARM_STATUS alarmStatus;
-unsigned char COM3_RxData_Size;
+unsigned char COM3_Rx_Size;
 unsigned int ExtFirmwareVersion;
 unsigned long ExtFirmwareDate;
 unsigned int U3_CommnunicationFaultCount=0;
@@ -145,22 +145,6 @@ void COM3_GET_IO_STATUS_CMD(void)
         ioStatus.ByteData[i] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
 }
 
-void COM3_GET_ALARM_STATUS_CMD(void)
-{
-    unsigned char i;    
-    switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
-    {
-        case COM3_RX_ALARM_STATUS_TypeEnum :
-            for(i=0;i<8;i++)
-                alarmStatus.ByteData[i] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
-            break;
-        case COM3_RX_ALARM1_STATUS_TypeEnum :
-            for(i=0;i<8;i++)
-                alarmStatus.ByteData[i+8] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
-            break;
-    }
-}
-
 void COM3_GET_FAN1_FAN2_Current_CMD(void)
 {
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem1Enum];
@@ -214,6 +198,22 @@ void GetRunTimeHeaterFAN1_1_Status(void)
     FAN1_1_RunTimeDisplay.PID_Output = U3_ParsingWord.WordData;  
 }
 
+void COM3_GET_ALARM_STATUS_CMD(void)
+{
+    unsigned char i;    
+    switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
+    {
+        case COM3_RX_ALARM_STATUS_TypeEnum :
+            for(i=0;i<8;i++)
+                alarmStatus.ByteData[i] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
+            break;
+        case COM3_RX_ALARM1_STATUS_TypeEnum :
+            for(i=0;i<8;i++)
+                alarmStatus.ByteData[i+8] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
+            break;
+    }
+}
+
 void Get_ExtControllerFirmware(void)
 {
     switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
@@ -237,9 +237,9 @@ void Get_ExtControllerFirmware(void)
 void U3CommandParsing(void)
 {
     unsigned int crc_data;
-    crc_data = UART3RxBuffer[COM3_RxData_Size - 2];
-    crc_data = (crc_data << 8) | UART3RxBuffer[COM3_RxData_Size - 1];
-    if( CRC_CHECK(UART3RxBuffer, (COM3_RxData_Size-2), crc_data) == 1 )
+    crc_data = UART3RxBuffer[COM3_Rx_Size - 2];
+    crc_data = (crc_data << 8) | UART3RxBuffer[COM3_Rx_Size - 1];
+    if( CRC_CHECK(UART3RxBuffer, (COM3_Rx_Size-2), crc_data) == 1 )
     {
         switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
         {        

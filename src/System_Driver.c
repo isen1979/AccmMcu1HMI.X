@@ -6,10 +6,13 @@
 #define SYS_CLK_60MHZ  65
 #define SYS_CLK_30MHZ  33
 
+//extern unsigned char ServoBoardResponseBufCount1, ServoBoardResponseBufCount2, ServoBoardResponseFlag;
+//extern unsigned char ServoBoardResponseTimeOutCount1, ServoBoardResponseTimeOutFlag1;
+
+
 extern void UARTRXTimeOutCheck(void);
 extern void DelayTimer(void);
 extern void ServoMotorPulseCalculate(void);
-extern unsigned char OneMiliSecFlag;
 
 void INIT_OSC(void)
 {
@@ -32,6 +35,7 @@ void INIT_OSC(void)
     RCONbits.SWDTEN=0; // Disable Watch Dog Timer
 }
 
+
 //delay 10ms
 void delay_ms(unsigned int ms)
 {
@@ -41,24 +45,21 @@ void delay_ms(unsigned int ms)
         for(cnt1=0;cnt1<7600;cnt1++);//1 machine cycle 33nS  
     }
 }
-
 void delay_ns(unsigned int ns)
 {
     unsigned int cnt1=0;
     ns=ns/32;
     for(cnt1=0;cnt1<ns;cnt1++);//1 machine cycle 33nS  
+  //  for(cnt1=0;cnt1<ns;cnt1++);
 }
 
-//API
-void clear_memory(unsigned char *buf,unsigned char lenth)
-{
-    unsigned char lenth_1=0;
-    for(lenth_1=0;lenth_1<lenth;lenth_1++)
-    *buf++=0;
-}
 
 void INIT_TIMER1(unsigned char isr_period)  //Timer1 interrupt
 {
+ //   _TRISE1=0;
+ //   _TRISE0=0;
+//    _ANSE1=0;
+//    _ANSE0=0;
     T1CON=0;//disable timer 1
     TMR1=0;//clear T1 counter
     switch(isr_period)
@@ -91,8 +92,11 @@ void INIT_TIMER1(unsigned char isr_period)  //Timer1 interrupt
     IPC0bits.T1IP = 0x03; // Set Timer1 Interrupt Priority Level
     IFS0bits.T1IF = 0; // Clear Timer` Interrupt Flag
     IEC0bits.T1IE = 1; // Enable Timer1 interrupt
+
     //Initial All of flags processing in the timer1.
+
 }
+
 void enable_timer1(void)
 {
     TMR1=0;
@@ -103,6 +107,9 @@ void disable_timer1(void)
     TMR1=0;
     T1CON&=~(0x8000);
 }
+
+
+extern unsigned char OneMiliSecFlag;
 void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void)
 {
     //system timer 1ms
@@ -115,6 +122,10 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void)
 
 void INIT_TIMER3(unsigned char isr_period)  //Timer2 interrupt
 {
+ //   _TRISE1=0;
+ //   _TRISE0=0;
+//    _ANSE1=0;
+//    _ANSE0=0;
     T3CON=0;//disable timer3
     TMR3=0;//clear T3 counter
     switch(isr_period)
@@ -153,6 +164,7 @@ void INIT_TIMER3(unsigned char isr_period)  //Timer2 interrupt
     IFS0bits.T3IF = 0; // Clear Timer2 Interrupt Flag
     IEC0bits.T3IE = 1; // Enable Timer2 interrupt
 }
+
 void enable_timer3(void)
 {
     TMR3=0;
@@ -163,6 +175,8 @@ void disable_timer3(void)
     TMR3=0;
     T3CON&=~(0x8000);
 }
+
+
 void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void)
 {
     IFS0bits.T3IF = 0; // Clear Timer8 Interrupt Flag
@@ -210,6 +224,7 @@ void INIT_TIMER5(unsigned char isr_period)  //Timer5 interrupt
     IFS1bits.T5IF = 0; // Clear Timer4 Interrupt Flag
     IEC1bits.T5IE = 1; // Enable Timer4 interrupt
 }
+
 void enable_timer5(void)
 {
     TMR5=0;
@@ -220,13 +235,27 @@ void disable_timer5(void)
     TMR5=0;
     T5CON&=~(0x8000);
 }
+
+
 void __attribute__((interrupt, no_auto_psv)) _T5Interrupt(void)
 {
     IFS1bits.T5IF = 0; // Clear Timer4 Interrupt Flag
 }
 
+//API
+void clear_memory(unsigned char *buf,unsigned char lenth)
+{
+    unsigned char lenth_1=0;
+    for(lenth_1=0;lenth_1<lenth;lenth_1++)
+    *buf++=0;
+}
+
 void INIT_TIMER7(unsigned char isr_period)  //Timer2 interrupt
 {
+ //   _TRISE1=0;
+ //   _TRISE0=0;
+//    _ANSE1=0;
+//    _ANSE0=0;
     T7CON=0;//disable timer2
     TMR7=0;//clear T2 counter
     switch(isr_period)
@@ -265,6 +294,7 @@ void INIT_TIMER7(unsigned char isr_period)  //Timer2 interrupt
     IFS3bits.T7IF = 0; // Clear Timer2 Interrupt Flag
     IEC3bits.T7IE = 1; // Enable Timer2 interrupt
 }
+
 void enable_timer7(void)
 {
     TMR7=0;
@@ -275,6 +305,8 @@ void disable_timer7(void)
     TMR7=0;
     T7CON&=~(0x8000);
 }
+
+
 void __attribute__((interrupt, no_auto_psv)) _T7Interrupt(void)
 {
     IFS3bits.T7IF = 0; // Clear Timer8 Interrupt Flag
@@ -321,6 +353,7 @@ void INIT_TIMER9(unsigned char isr_period)  //Timer4 interrupt
     IFS3bits.T9IF = 0; // Clear Timer4 Interrupt Flag
     IEC3bits.T9IE = 1; // Enable Timer4 interrupt
 }
+
 void enable_timer9(void)
 {
     TMR9=0;
@@ -331,7 +364,12 @@ void disable_timer9(void)
     TMR9=0;
     T9CON&=~(0x8000);
 }
+
+
 void __attribute__((interrupt, no_auto_psv)) _T9Interrupt(void)
 {
     IFS3bits.T9IF = 0; // Clear Timer4 Interrupt Flag
 }
+
+
+

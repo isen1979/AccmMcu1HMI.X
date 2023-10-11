@@ -93,15 +93,12 @@ enum COM3_TxCommand_Enum
     COM3_RxSetAlarm_Parameter9_CommandEnum,
     COM3_RxSetAlarm_Parameter10_CommandEnum,
     COM3_RxSetAlarm_Parameter11_CommandEnum,//35
-    COM3_RxSetAlarm_Parameter12_CommandEnum,
+    COM3_RxSetAlarm_Parameter12_CommandEnum,//36
 //Philip 20220330 0.0.1 ==================================================
-    
-    COM3_TxRequestFirmwareVersionCommand_Enum,
-    
+    COM3_TxRequestFirmwareVersionCommand_Enum,//37
     COM3_last_TxSet_Command_Enum,//Last Command for Aux Controller
-
 //Philip 20220530 0.0.1 ========================================
-    COM3_Button_Status_Command_Enum,
+    COM3_Button_Status_Command_Enum,//39
     COM3_Button_Command_Enum,//40
 //Philip 20220530 0.0.1 ========================================    
      
@@ -161,12 +158,12 @@ enum COM3_RX_CommandEnum
 
 enum COM3_PacketEnum
 {
-    COM3_PacketCommandItemEnum=0,
+    COM3_PacketCommandItemEnum = 0,
     COM3_PacketValueItem1Enum,
-	COM3_PacketValueItem2Enum,
-	COM3_PacketValueItem3Enum,
-	COM3_PacketValueItem4Enum,
-	COM3_PacketValueItem5Enum,
+    COM3_PacketValueItem2Enum,
+    COM3_PacketValueItem3Enum,
+    COM3_PacketValueItem4Enum,
+    COM3_PacketValueItem5Enum,
     COM3_PacketValueItem6Enum,
     COM3_PacketValueItem7Enum,
     COM3_PacketValueItem8Enum,

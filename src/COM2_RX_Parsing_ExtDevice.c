@@ -16,14 +16,14 @@ extern unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigne
 extern void uC_HMI_RunWriteSingleLongWordSend(unsigned int addr, long Value);
 
 _PARSING_WORD ParsingWord;
-unsigned char COM2_RxData_Size;
+unsigned char COM2_Rx_Size;
 
 void U2CommandParsing(void)
 {    
     unsigned int crc_data;
-    crc_data = UART2RxBuffer[COM2_RxData_Size-2];
-    crc_data = (crc_data << 8) | UART2RxBuffer[COM2_RxData_Size-1];
-    if( CRC_CHECK(UART2RxBuffer, COM2_RxData_Size-2, crc_data) == 1 )
+    crc_data = UART2RxBuffer[COM2_Rx_Size-2];
+    crc_data = (crc_data << 8) | UART2RxBuffer[COM2_Rx_Size-1];
+    if( CRC_CHECK(UART2RxBuffer, COM2_Rx_Size-2, crc_data) == 1 )
     {
         switch(UART2RxBuffer[0])
         {

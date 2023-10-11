@@ -13,10 +13,6 @@
 #include "..\h\Datien_IO_Define.h"
 
 #define LOAD_RUN_TIME_PARAMTER_TIME 1000
-#define MAX_EEPROM_ADDR 2032
-#define MAX_RUN_TIME_STATUS_SAVE_TIME 950000
-#define DYNAMIC_STORE_TIME 10000//10Sec
-#define FORMAT_EEPROM_UNIT_SIZE 56
 
 extern void Initial_EEPROM_Read_Write_Process(void);
 extern void RunEEPROM_ReadWriteProcess(void);//Philip 20180517 02
@@ -24,7 +20,7 @@ extern unsigned char RegisterReadEEPROM(unsigned int addr, unsigned char *buf, u
 extern void RegisterWriteEEPROM(unsigned int addr, unsigned char *buf, unsigned int size);
 extern void LoadRunTimeParameter(void);
 extern void CommandParsingProcess(void);
-extern void SEND_U1_RS422_CMD_Process(void);
+extern void SEND_U1_RS422CMD_Process(void);
 extern void SEND_U2_RS422_CMD_Process(void);
 extern void SEND_U3_RS422_CMD_Process(void);
 extern void BottomFeederFeedingTypeClutchSet(void);
@@ -36,30 +32,20 @@ extern void Fill_TestParameter(void);
 extern void Send_uCHMI_ControllerFirmwareVersion(void);
 extern void COM3_Send_All_Command(void);
 
-extern void ShowRunTimeDisplay(void);
-extern void StartCOM3SendCommand(void);
-extern unsigned char IsReadEEPROM_DataFinish(void);
-extern void ScanInputPort(void);
-extern void COM3_SendControl(void);
-extern void Get_uCHMI_DateCodeSend(void);
 
 _SYSTEM_PARAMETER SystemParameter, lastSystemParameter, *pSystemParameter;
 _RUNTIME_STATUS RunTimeStatus, lastRunTimeStatus, *pRunTimeStatus;
 
 unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
 unsigned char SystemInitialState=SystemLoadSystemParameterEnum;
-unsigned char FormatEEPROMdata[FORMAT_EEPROM_UNIT_SIZE];
-unsigned int DynamicStoreTimer=0;
-unsigned char OneMiliSecFlag;
-unsigned char StartupFinsihFlag = 0;
 
 void DelayTimer(void)
 {
     unsigned char i;
-    for(i=0;i< SystemDelayTimerEnumEnd;i++)
+    for(i=0;i<SystemDelayTimerEnumEnd;i++)
     {
         if(DelayTimerCounter[i] > 0)
-            DelayTimerCounter[i]--; //Isen：系統在這裡倒數，傳送通訊間隔的 Count
+            DelayTimerCounter[i]--;
     }
 }
 
@@ -94,6 +80,8 @@ void LoadRunTimeStatus(void)
     SystemParameterHandler = RegisterReadEEPROM(SystemParameter.RunTimeStatusAddr, (unsigned char *)pRunTimeStatus, RUNTIME_STATUS_SIZE); 
 }
 
+#define MAX_EEPROM_ADDR 2032
+#define MAX_RUN_TIME_STATUS_SAVE_TIME 950000
 void SaveRunTimeStatus(void)//SystemParameter
 {       
     pRunTimeStatus = &RunTimeStatus;
@@ -131,6 +119,8 @@ void InitialSystemParameter(void)
     SaveSystemParameter();*/
 }
 
+#define FORMAT_EEPROM_UNIT_SIZE 56
+unsigned char FormatEEPROMdata[FORMAT_EEPROM_UNIT_SIZE];
 void FormatEEPROM(void)
 {
     RegisterWriteEEPROM(0, (unsigned char *)FormatEEPROMdata, FORMAT_EEPROM_UNIT_SIZE);
@@ -215,6 +205,11 @@ void Initial_OutputPortsHigh(void)
     Y32 = 1;asm("nop");asm("nop");
 }
 
+//extern void ClearClothesLengthLongKeyReleaseCheck(void);
+
+
+#define DYNAMIC_STORE_TIME 10000//10Sec
+unsigned int DynamicStoreTimer=0;
 void DynamicStoreRunTimeData(void)
 {
     DynamicStoreTimer++;
@@ -225,16 +220,32 @@ void DynamicStoreRunTimeData(void)
     }
 }
 
+extern void ShowRunTimeDisplay(void);
+extern void StartCOM3SendCommand(void);
+extern unsigned char IsReadEEPROM_DataFinish(void);
+extern void ScanInputPort(void);
+extern void COM3_SendControl(void);
+extern void Get_uCHMI_DateCodeSend(void);
+
+unsigned char OneMiliSecFlag;
+extern unsigned char StartupFinsihFlag;
+
 void SystemControl(void)
 { 
     switch(SystemInitialState)
     {
-        case SystemLoadSystemParameterEnum :             
+        case SystemLoadSystemParameterEnum :           
+#ifndef ANDROID_HMI            
+            Send_uCHMI_ControllerFirmwareVersion();
+#endif            
             LoadSystemParameter(SYSTEM_PARAMETER_START_ADDR);
-            DelayTimerCounter[ParameterLoadTimeEnum] = 1000;      
+            DelayTimerCounter[ParameterLoadTimeEnum] = 1000;//Philip 20220510 0.0.1
+//Philip 20220510 0.0.1            LoadRunTimeStatus();
+//            Fill_TestParameter();            
             SystemInitialState = waitSystemLoadSystemParameterEnum;
             break;
         case waitSystemLoadSystemParameterEnum :
+//Philip 20220510 0.0.1 ===================================================================            
             if( IsReadEEPROM_DataFinish() == 1 )
             {
                 LoadRunTimeStatus();
@@ -243,23 +254,32 @@ void SystemControl(void)
             }
             else if( DelayTimerCounter[ParameterLoadTimeEnum] == 0 )
                 ;//Show Fault
-            break;          
+            break;
+//Philip 20220510 0.0.1 ===================================================================            
         case waitSystemLoadRunTimeStatusEnum :
             if( IsReadEEPROM_DataFinish() == 1 )
             {                
                 COM3_Send_All_Command();
                 DelayTimerCounter[ParameterLoadTimeEnum] = 2000;
-                SystemInitialState = SystemStartRunningEnum;        
+//Philip 20220315 0.0.1 ==========================================================                
+#ifdef ANDROID_HMI
+                SystemInitialState = SystemStartRunningEnum;
+#else                
+                SystemInitialState = SystemFinishLoadSystemParamterEnum;
+#endif
+//Philip 20220315 0.0.1 ==========================================================                
             }
-
+//Philip 20220510 0.0.1 ===================================================================
             else if( DelayTimerCounter[ParameterLoadTimeEnum] == 0 )
-                ;//Show Fault          
+                ;//Show Fault
+//Philip 20220510 0.0.1 ===================================================================            
             break;
         case SystemFinishLoadSystemParamterEnum :
             if( (StartupFinsihFlag == 1) || (DelayTimerCounter[ParameterLoadTimeEnum] == 0) )
             {
                 OneMiliSecFlag = 0;
                 Get_uCHMI_DateCodeSend();
+//                INIT_EXT_IO();
                 SystemInitialState = SystemStartRunningEnum;
             }
             break;
@@ -276,9 +296,9 @@ void SystemControl(void)
     }
     
     CommandParsingProcess();        
-    SEND_U1_RS422_CMD_Process(); 
-//    SEND_U2_RS422_CMD_Process();//Isen：目前尚未使用，先Bypass
-    SEND_U3_RS422_CMD_Process();   
+    SEND_U3_RS422_CMD_Process();    
+    SEND_U2_RS422_CMD_Process();
+    SEND_U1_RS422CMD_Process();
     RunEEPROM_ReadWriteProcess();
 }
 

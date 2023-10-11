@@ -71,6 +71,7 @@ unsigned char data16_strdec(unsigned int data,unsigned char *buf,unsigned char i
     return bufcnt;
 }
 
+
 long strdec_to_data(unsigned char *buf,unsigned char lenth)
 {
     unsigned char cnt=0;
@@ -90,25 +91,19 @@ long strdec_to_data(unsigned char *buf,unsigned char lenth)
     }
 }
 
+
 //************************************************************************
-/* CRC_CREATE函數: 
- * 當數據被傳輸或存儲時，可以使用CRC_CREATE生成一個CRC值。
-     輸入: 一個字節數組data和它的長度lenth。
-     輸出: 該數組的CRC值。
-   運作方式:
-     初始化兩個變數reg_crc和temp。
-     對於data中的每個字節，它都會進行XOR運算與temp，然後對結果進行8次位操作。
-     這8次操作會檢查最低位，並根據它是1還是0來更新temp的值。
-     最後，交換temp的高8位和低8位來得到最終的CRC值。
- */
+// CRC check
+//
+
 //************************************************************************
 unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth)
 {
 	unsigned char j;
-	unsigned int reg_crc = 0,temp = 0xFFFF;
+	unsigned int reg_crc=0,temp=0xFFFF;
 	while(lenth--)
 	{
-		temp ^= *data++; //Isen：^= 是XOR賦值操作。
+		temp ^= *data++;
 		for(j=0;j<8;j++)
 		{
 			if(temp & 0x01) /* LSB(b0)=1 */
@@ -121,22 +116,11 @@ unsigned int CRC_CREATE(unsigned char *data, unsigned char lenth)
 	return reg_crc;
 }
 
-//************************************************************************
-/* CRC_CHECK函數: 
- * 當數據被傳輸或存儲時，可以使用CRC_CREATE生成一個CRC值。
-     輸入: 一個字節數組data、長度lenth和一個CRC值crc_data。
-     輸出: 如果計算出的CRC值與給定的crc_data匹配，則返回1，否則返回0。
-  運作方式:
-     使用CRC_CREATE函數計算data的CRC值。
-     比較計算出的CRC值與給定的crc_data。
-     如果它們匹配，返回1，否則返回0。
- */
-//************************************************************************
 unsigned char CRC_CHECK(unsigned char *data, unsigned char lenth ,unsigned int crc_data)
 {
-	unsigned int crc_check = 0;
-	crc_check = CRC_CREATE(data,lenth);
-	if(crc_check == crc_data)
+	unsigned int crc_check=0;
+	crc_check=CRC_CREATE(data,lenth);
+	if(crc_check==crc_data)
 		return 1; //crc check ok
 	else
 		return 0; //crc check fail

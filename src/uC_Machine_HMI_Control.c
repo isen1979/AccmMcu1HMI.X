@@ -7,11 +7,7 @@
 #include "..\h\SystemControl.h"
 #include "uC_HMI_Control.h"
 
-#define IO_PAGE_ID 0x3F09
-#define INDEX_FILENAME_LENGTH 11
-#define RECORD_FILENAME_LENGTH 6
-#define DATE_TIME_FILENAME_LENGTH 10
-
+//extern void SaveEngineerMode(void);
 extern void RegisterSendingPacket(unsigned char state, unsigned int addr, unsigned char *data, unsigned char size);
 extern void uC_HMI_RunWriteSingleByteSend(unsigned int addr, unsigned char Value);
 extern void uC_HMI_RunWriteMultiByteSend(unsigned int addr, unsigned char length, unsigned char *data);
@@ -22,22 +18,21 @@ extern void uC_HMI_RunReadWordSend(unsigned int addr, unsigned char count);
 extern void uC_HMI_RunWriteTextVariableSend(unsigned int addr, unsigned char Count);
 extern void uC_HMI_RunWriteMultiWordSend(unsigned int addr, unsigned char length, unsigned char *data);
 extern void uC_HMI_Send_SystemParameter(void);
+extern void uC_HMI_SetPage(unsigned int page);
 
 extern unsigned long DelayTimerCounter[SystemDelayTimerEnumEnd];
 extern unsigned char MotorRunState;
 extern _SYSTEM_PARAMETER SystemParameter, lastSystemParameter;
 extern _SENDING_WORD SendingWord;
+extern unsigned int TxTextBuffer[MAX_WRITE_TEXT_SIZE];
 
-unsigned int TxTextBuffer[MAX_WRITE_TEXT_SIZE];
+#define INDEX_FILENAME_LENGTH 11
+#define RECORD_FILENAME_LENGTH 6
+#define DATE_TIME_FILENAME_LENGTH 10
 unsigned int IndexFileName[INDEX_FILENAME_LENGTH] = {0x0049, 0x006e, 0x0064, 0x0065, 0x0078, 0x0032, 0x0030, 0x002e, 0x0062, 0x0069, 0x006e};//Index20.bin//\u0049\u006e\u0064\u0065\u0078\u0032\u0030\u002e\u0062\u0069\u006e
 unsigned int RecordFileName[RECORD_FILENAME_LENGTH] = {0x0032, 0x0030, 0x002e, 0x0062, 0x0069, 0x006e};//20.bin//\u0032\u0030\u002e\u0062\u0069\u006e
 unsigned int DateTimeFileName[DATE_TIME_FILENAME_LENGTH] = {0x0054, 0x0069, 0x006d, 0x0065, 0x0032, 0x0030, 0x002e, 0x0062, 0x0069, 0x006e};//Time20.bin//\u0054\u0069\u006d\u0065\u0032\u0030\u002e\u0062\u0069\u006e
 unsigned long uCHMI_DateCode;
-
-void uC_HMI_SetPage(unsigned int page)
-{
-    uC_HMI_RunWriteSingleLongWordSend(IO_PAGE_ID, page);
-}
 
 void SendRecordFileName(void)
 {
@@ -89,6 +84,7 @@ void ReadSD_RecordData(void)
 {
     uC_HMI_RunWriteSingleByteSend(READ_RECORD_DATA_ADDR, 1);
 }
+
 
 unsigned long uCHMI_DateCode, PlayBackDayCode;
 void Get_uCHMI_DateCode(unsigned int addr, long Value)

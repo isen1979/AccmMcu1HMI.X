@@ -26,6 +26,7 @@
 #define PCD20_22_25_DISPLAY_ADDR 670
 #define OTHER_DISPLAY_ADDR 254
 
+
 extern unsigned int FirmwareVersion;
 extern unsigned long FirmwareDate;
 extern _SYSTEM_PARAMETER SystemParameter;

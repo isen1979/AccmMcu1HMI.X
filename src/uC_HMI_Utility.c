@@ -7,9 +7,9 @@
 #include "..\h\uC_HMI_Control.h"
 #include "SystemControl.h"
 
-extern _SYSTEM_PARAMETER SystemParameter;
 extern _SENDING_WORD SendingWord;
 extern _SENDING_DATA SendingData;
+extern _SYSTEM_PARAMETER SystemParameter;
 
 _UC_HMI_SEND_BUF ucHMISuddenSendRegister;
 
