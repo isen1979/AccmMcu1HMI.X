@@ -166,16 +166,16 @@ void Send_GetD_Alarm1_Set_SetResponse()
 {
     UART1TxBuffer[0] = Android_HMI_D_Alarm1_Set_CommandEnum;
 
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE3;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE3;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE3;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE3;
     UART1TxBuffer[3] = U1_SendingWord.Byte[0];
     UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE5;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE5;
     UART1TxBuffer[5] = U1_SendingWord.Byte[0];
     UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE5;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE5;
     UART1TxBuffer[7] = U1_SendingWord.Byte[0];
     UART1TxBuffer[8] = U1_SendingWord.Byte[1];
     U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
@@ -187,16 +187,16 @@ void Send_GetD_Alarm2_Set_SetResponse()
 {
     UART1TxBuffer[0] = Android_HMI_D_Alarm2_Set_CommandEnum;
 
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE8;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE8;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE8;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE8;
     UART1TxBuffer[3] = U1_SendingWord.Byte[0];
     UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE11;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE11;
     UART1TxBuffer[5] = U1_SendingWord.Byte[0];
     UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE11;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE11;
     UART1TxBuffer[7] = U1_SendingWord.Byte[0];
     UART1TxBuffer[8] = U1_SendingWord.Byte[1];
     U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
@@ -208,16 +208,16 @@ void Send_GetD_Alarm3__D1_SetResponse()
 {
     UART1TxBuffer[0] = Android_HMI_D_Alarm3__D1_Set_CommandEnum;
 
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE12;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE12;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE12;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE12;
     UART1TxBuffer[3] = U1_SendingWord.Byte[0];
     UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE10;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE14;
     UART1TxBuffer[5] = U1_SendingWord.Byte[0];
     UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE10;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE14;
     UART1TxBuffer[7] = U1_SendingWord.Byte[0];
     UART1TxBuffer[8] = U1_SendingWord.Byte[1];
     U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
@@ -229,16 +229,16 @@ void Send_GetD1_Alarm2_Set_SetResponse()
 {
     UART1TxBuffer[0] = Android_HMI_D1_Alarm2_Set_CommandEnum;
 
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighTE6;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE1;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowTE6;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE1;
     UART1TxBuffer[3] = U1_SendingWord.Byte[0];
     UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT1;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT1;
     UART1TxBuffer[5] = U1_SendingWord.Byte[0];
     UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT1;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT1;
     UART1TxBuffer[7] = U1_SendingWord.Byte[0];
     UART1TxBuffer[8] = U1_SendingWord.Byte[1];
     U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);
@@ -250,16 +250,16 @@ void Send_GetD1_Alarm3_SetResponse()
 {
     UART1TxBuffer[0] = Android_HMI_D1_Alarm3_Set_CommandEnum;
 
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT2;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT2;
     UART1TxBuffer[1] = U1_SendingWord.Byte[0];
     UART1TxBuffer[2] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT2;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT2;
     UART1TxBuffer[3] = U1_SendingWord.Byte[0];
     UART1TxBuffer[4] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.HighPDT3;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT3;
     UART1TxBuffer[5] = U1_SendingWord.Byte[0];
     UART1TxBuffer[6] = U1_SendingWord.Byte[1];
-    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.LowPDT3;
+    U1_SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowPDT3;
     UART1TxBuffer[7] = U1_SendingWord.Byte[0];
     UART1TxBuffer[8] = U1_SendingWord.Byte[1];
     U1_SendingWord.WordData = CRC_CREATE(UART1TxBuffer, 9);

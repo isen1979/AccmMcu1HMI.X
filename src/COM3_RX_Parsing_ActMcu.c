@@ -145,6 +145,22 @@ void COM3_GET_IO_STATUS_CMD(void)
         ioStatus.ByteData[i] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
 }
 
+void COM3_GET_ALARM_STATUS_CMD(void)
+{
+    unsigned char i;    
+    switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
+    {
+        case COM3_RX_ALARM_STATUS_TypeEnum :
+            for(i=0;i<8;i++)
+                alarmStatus.ByteData[i] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
+            break;
+        case COM3_RX_ALARM1_STATUS_TypeEnum :
+            for(i=0;i<8;i++)
+                alarmStatus.ByteData[i+8] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
+            break;
+    }
+}
+
 void COM3_GET_FAN1_FAN2_Current_CMD(void)
 {
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem1Enum];
@@ -196,22 +212,6 @@ void GetRunTimeHeaterFAN1_1_Status(void)
     U3_ParsingWord.Byte[0] = UART3RxBuffer[COM3_PacketValueItem7Enum];
     U3_ParsingWord.Byte[1] = UART3RxBuffer[COM3_PacketValueItem8Enum];
     FAN1_1_RunTimeDisplay.PID_Output = U3_ParsingWord.WordData;  
-}
-
-void COM3_GET_ALARM_STATUS_CMD(void)
-{
-    unsigned char i;    
-    switch(UART3RxBuffer[COM3_PacketCommandItemEnum])
-    {
-        case COM3_RX_ALARM_STATUS_TypeEnum :
-            for(i=0;i<8;i++)
-                alarmStatus.ByteData[i] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
-            break;
-        case COM3_RX_ALARM1_STATUS_TypeEnum :
-            for(i=0;i<8;i++)
-                alarmStatus.ByteData[i+8] = UART3RxBuffer[COM3_PacketValueItem1Enum+i];
-            break;
-    }
 }
 
 void Get_ExtControllerFirmware(void)
