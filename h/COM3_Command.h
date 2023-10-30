@@ -133,8 +133,13 @@ enum Android_HMI_Button_Command_Enum
     Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum,
     
     Android_HMI_System_Function_RESET_Enum,//19，Isen：20231020新增
+<<<<<<< HEAD
     Android_HMI_AlarmLED_STATE_SET_Enum,//20，Isen：20231030修改Bug
     Android_HMI_FaultLED_STATE_SET_Enum,//21，Isen：20231030修改Bug
+=======
+    Android_HMI_FaultLED_STATE_SET_Enum,//20，Isen：20231020新增
+    Android_HMI_AlarmLED_STATE_SET_Enum,//21，Isen：20231020新增
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
     
     Android_HMI_Button_Command_EnumEnd
 };

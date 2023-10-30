@@ -315,34 +315,58 @@ void Android_ButtonProcess(void)
             SendFunctionResetControlCommand();            
             break;
         case 35 :
+<<<<<<< HEAD
             //Isen：20231020，此處為BuzzerStop與FaultLED為互斥關係。
             RunTimeStatus.FaultLEDOn = 0;
             SystemRunTimeStatus.Value.FaultLEDOn = RunTimeStatus.FaultLEDOn;
             SystemRunTimeStatus.Value.BuzzerStop = 1;
+=======
+            RunTimeStatus.FaultLEDOn = 0;//Isen：20230703，此處為BuzzerOFF觸發讓FaultLED OFF。
+            SystemRunTimeStatus.Value.FaultLEDOn = RunTimeStatus.FaultLEDOn;
+            SystemRunTimeStatus.Value.BuzzerStop = 1;//20231020，Isen：與FaultLEDOn互斥
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
             SaveRunTimeStatus();
             SendFaultLED_ONOFFControlCommand();
             break;
         case 36 :
+<<<<<<< HEAD
             //20231020，Isen：AlarmLED_On與AlarmLED_Off為互斥關係。
             RunTimeStatus.AlarmLEDOn = 1;
             SystemRunTimeStatus.Value.AlarmLEDOn = RunTimeStatus.AlarmLEDOn;
             SystemRunTimeStatus.Value.AlarmLEDOff = 0;
+=======
+            RunTimeStatus.AlarmLEDOn = 1;//Isen：20231020，由HMITrigger ON
+            SystemRunTimeStatus.Value.AlarmLEDOn = RunTimeStatus.AlarmLEDOn;
+            SystemRunTimeStatus.Value.AlarmLEDOff = 0;//20231020，Isen：與AlarmLEDOn互斥
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
             SaveRunTimeStatus();
             SendAlarmLED_ONOFFControlCommand();
             break;
         case 37 :
+<<<<<<< HEAD
             //20231020，Isen：AlarmLED_On與AlarmLED_Off為互斥關係。
             RunTimeStatus.AlarmLEDOn = 0;
             SystemRunTimeStatus.Value.AlarmLEDOn = RunTimeStatus.AlarmLEDOn;
             SystemRunTimeStatus.Value.AlarmLEDOff = 1;
+=======
+            RunTimeStatus.AlarmLEDOn = 0;//Isen：20230727，由HMITrigger OFF
+            SystemRunTimeStatus.Value.AlarmLEDOn = RunTimeStatus.AlarmLEDOn;
+            SystemRunTimeStatus.Value.AlarmLEDOff = 1;//20231020，Isen：與AlarmLEDOn互斥
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
             SaveRunTimeStatus();
             SendAlarmLED_ONOFFControlCommand();
             break;
         case 38 :
+<<<<<<< HEAD
             //Isen：20231020，此處為BuzzerStop與FaultLED為互斥關係。
             RunTimeStatus.FaultLEDOn = 1;
             SystemRunTimeStatus.Value.FaultLEDOn = RunTimeStatus.FaultLEDOn;
             SystemRunTimeStatus.Value.BuzzerStop = 0;
+=======
+            RunTimeStatus.FaultLEDOn = 1;//Isen：20230703，此處為FaultLED Trigger ON。
+            SystemRunTimeStatus.Value.FaultLEDOn = RunTimeStatus.FaultLEDOn;
+            SystemRunTimeStatus.Value.BuzzerStop = 0;//20231020，Isen：與FaultLEDOn互斥
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
             SaveRunTimeStatus();
             SendFaultLED_ONOFFControlCommand();
             break;            

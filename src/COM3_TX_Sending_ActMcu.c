@@ -85,6 +85,7 @@ void SendFunctionResetControlCommand(void)
 }
 
 //Isen：20231020新增
+<<<<<<< HEAD
 void SendAlarmLED_ONOFFControlCommand(void)
 {
     Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_AlarmLED_STATE_SET_Enum);
@@ -94,6 +95,17 @@ void SendAlarmLED_ONOFFControlCommand(void)
 void SendFaultLED_ONOFFControlCommand(void)
 {
     Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_FaultLED_STATE_SET_Enum);
+=======
+void SendFaultLED_ONOFFControlCommand(void)
+{
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_FaultLED_STATE_SET_Enum);
+}
+
+//Isen：20231020新增
+void SendAlarmLED_ONOFFControlCommand(void)
+{
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_AlarmLED_STATE_SET_Enum);
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
 }
 
 void SendSystemResetControlCommand(void)
@@ -477,11 +489,19 @@ void COM3_FunctionReset_Control(void)
     } 
 }
 //20231020，Isen：新增
+<<<<<<< HEAD
 void COM3_AlarmLED_ONOFFControl(void)//Isen：20231020，於COM1_Parsing處理並記憶RunTime狀態後，由此處發送給MCU2
 {
     UART3TxBuffer[0] = COM3_Button_Command_Enum;
     UART3TxBuffer[1] = Android_HMI_AlarmLED_STATE_SET_Enum; 
     if( SystemRunTimeStatus.Value.AlarmLEDOn == 1 )
+=======
+void COM3_FaultLED_ONOFFControl(void)//Isen：20231020，於COM1_Parsing處理並記憶RunTime狀態後，由此處發送給MCU2
+{
+    UART3TxBuffer[0] = COM3_Button_Command_Enum; 
+    UART3TxBuffer[1] = Android_HMI_FaultLED_STATE_SET_Enum; 
+    if( SystemRunTimeStatus.Value.FaultLEDOn == 1 )
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
     {
         UART3TxBuffer[2] = 0x02;
     }
@@ -491,11 +511,19 @@ void COM3_AlarmLED_ONOFFControl(void)//Isen：20231020，於COM1_Parsing處理�
     }
 }
 //20231020，Isen：新增
+<<<<<<< HEAD
 void COM3_FaultLED_ONOFFControl(void)//Isen：20231020，於COM1_Parsing處理並記憶RunTime狀態後，由此處發送給MCU2
 {
     UART3TxBuffer[0] = COM3_Button_Command_Enum; 
     UART3TxBuffer[1] = Android_HMI_FaultLED_STATE_SET_Enum; 
     if( SystemRunTimeStatus.Value.FaultLEDOn == 1 )
+=======
+void COM3_AlarmLED_ONOFFControl(void)//Isen：20231020，於COM1_Parsing處理並記憶RunTime狀態後，由此處發送給MCU2
+{
+    UART3TxBuffer[0] = COM3_Button_Command_Enum;
+    UART3TxBuffer[1] = Android_HMI_AlarmLED_STATE_SET_Enum; 
+    if( SystemRunTimeStatus.Value.AlarmLEDOn == 1 )
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
     {
         UART3TxBuffer[2] = 0x02;
     }

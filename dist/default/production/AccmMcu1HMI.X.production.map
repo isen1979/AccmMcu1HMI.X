@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Microchip Technology Inc, vv1_11 (A) í
+=======
+Microchip Technology Inc, vv1_11 (A) …
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -491,8 +495,13 @@ External Symbols in Program Memory (by address):
                   0x003e74                  _Register_COM3_Send_Command
                   0x003eac                  _COM3_Send_All_Command
                   0x003eca                  _SendFunctionResetControlCommand
+<<<<<<< HEAD
                   0x003ed6                  _SendAlarmLED_ONOFFControlCommand
                   0x003ee2                  _SendFaultLED_ONOFFControlCommand
+=======
+                  0x003ed6                  _SendFaultLED_ONOFFControlCommand
+                  0x003ee2                  _SendAlarmLED_ONOFFControlCommand
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x003eee                  _SendSystemResetControlCommand
                   0x003efa                  _SendMTR4MaualControlCommand
                   0x003f06                  _SendFAN1MaualControlCommand
@@ -539,8 +548,13 @@ External Symbols in Program Memory (by address):
                   0x00441c                  _COM3_PCD_20_PID_AutoControl
                   0x004436                  _COM3_SystemFaultReset_Control
                   0x004448                  _COM3_FunctionReset_Control
+<<<<<<< HEAD
                   0x004474                  _COM3_AlarmLED_ONOFFControl
                   0x00449e                  _COM3_FaultLED_ONOFFControl
+=======
+                  0x004474                  _COM3_FaultLED_ONOFFControl
+                  0x00449e                  _COM3_AlarmLED_ONOFFControl
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x0044c8                  _COM3_Send_ButtonStatus
                   0x0044dc                  _COM3_TxSet_FAN1_Parameter
                   0x0045ea                  _COM3_TxSet_FAN2_Parameter
@@ -835,12 +849,20 @@ External Symbols in Program Memory (by name):
                   0x00ba3c                  _COM2_Build_Send_Packet
                   0x00bafa                  _COM2_SendControl
                   0x00ba6e                  _COM2_SendControl_Process
+<<<<<<< HEAD
                   0x004474                  _COM3_AlarmLED_ONOFFControl
+=======
+                  0x00449e                  _COM3_AlarmLED_ONOFFControl
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x004380                  _COM3_AutoGasInControl
                   0x004bb8                  _COM3_CreateCRC
                   0x0043e8                  _COM3_FAN1_1_PID_AutoControl
                   0x0043ce                  _COM3_FAN1_1_PID_OnControl
+<<<<<<< HEAD
                   0x00449e                  _COM3_FaultLED_ONOFFControl
+=======
+                  0x004474                  _COM3_FaultLED_ONOFFControl
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x004448                  _COM3_FunctionReset_Control
                   0x00a196                  _COM3_GET_ALARM_STATUS_CMD
                   0x00a116                  _COM3_GET_FAN1_1_PCD25_CMD
@@ -1024,7 +1046,11 @@ External Symbols in Program Memory (by name):
                   0x00a84a                  _ScanPortD
                   0x00a77e                  _ScanPortH
                   0x00a844                  _ScanPortJ
+<<<<<<< HEAD
                   0x003ed6                  _SendAlarmLED_ONOFFControlCommand
+=======
+                  0x003ee2                  _SendAlarmLED_ONOFFControlCommand
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x008fca                  _SendChartRecordFileName
                   0x003f06                  _SendFAN1MaualControlCommand
                   0x003fa2                  _SendFAN1_1_PID_AutoControlCommand
@@ -1035,7 +1061,11 @@ External Symbols in Program Memory (by name):
                   0x004dd0                  _SendFan1_1_GetSV_Response
                   0x004fa4                  _SendFan1_1_Get_ManualSet_Response
                   0x004f30                  _SendFan1_1_Get_TopLimit_Response
+<<<<<<< HEAD
                   0x003ee2                  _SendFaultLED_ONOFFControlCommand
+=======
+                  0x003ed6                  _SendFaultLED_ONOFFControlCommand
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x006844                  _SendFirmwareVersion
                   0x003eca                  _SendFunctionResetControlCommand
                   0x003fae                  _SendHeater_PID_AutoControlCommand
@@ -5037,8 +5067,13 @@ __c30_signature
                   0x003e74                  _Register_COM3_Send_Command
                   0x003eac                  _COM3_Send_All_Command
                   0x003eca                  _SendFunctionResetControlCommand
+<<<<<<< HEAD
                   0x003ed6                  _SendAlarmLED_ONOFFControlCommand
                   0x003ee2                  _SendFaultLED_ONOFFControlCommand
+=======
+                  0x003ed6                  _SendFaultLED_ONOFFControlCommand
+                  0x003ee2                  _SendAlarmLED_ONOFFControlCommand
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x003eee                  _SendSystemResetControlCommand
                   0x003efa                  _SendMTR4MaualControlCommand
                   0x003f06                  _SendFAN1MaualControlCommand
@@ -5085,8 +5120,13 @@ __c30_signature
                   0x00441c                  _COM3_PCD_20_PID_AutoControl
                   0x004436                  _COM3_SystemFaultReset_Control
                   0x004448                  _COM3_FunctionReset_Control
+<<<<<<< HEAD
                   0x004474                  _COM3_AlarmLED_ONOFFControl
                   0x00449e                  _COM3_FaultLED_ONOFFControl
+=======
+                  0x004474                  _COM3_FaultLED_ONOFFControl
+                  0x00449e                  _COM3_AlarmLED_ONOFFControl
+>>>>>>> dfad39c9cb67e7201b44635c3b35f43feed003e7
                   0x0044c8                  _COM3_Send_ButtonStatus
                   0x0044dc                  _COM3_TxSet_FAN1_Parameter
                   0x0045ea                  _COM3_TxSet_FAN2_Parameter
