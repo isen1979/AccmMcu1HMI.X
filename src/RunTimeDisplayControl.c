@@ -16,7 +16,7 @@ extern void uC_HMI_Send_Other_Display(void);
 
 extern _FAN1_1_RUNTIME_DISPLAY lastFAN1_1_RunTimeDisplay, FAN1_1_RunTimeDisplay;
 extern _FAN2_RUNTIME_DISPLAY lastFAN2_RunTimeDisplay, FAN2_RunTimeDisplay;
-extern _SCR_RUNTIME_DISPLAY SCR_RunTimeDisplay, lastSCR_RunTimeDisplay;
+extern _HEATER_RUNTIME_DISPLAY HEATER_RunTimeDisplay, lastSCR_RunTimeDisplay;
 extern _MTR4_RUNTIME_DISPLAY MTR4_RunTimeDisplay, lastMTR4_RunTimeDisplay;
 extern _PCD20_RUNTIME_DISPLAY PCD20_RunTimeDisplay, lastPCD20_RunTimeDisplay;
 extern _OTHER_RUNTIME_DISPLAY OtherRunTimeDisplay, lastOtherRunTimeDisplay;
@@ -51,15 +51,15 @@ void ShowFAN2_RunTimeDisplayControl(void)
 
 void SCR_RunTimeDisplayContorl(void)
 {
-    if( (lastSCR_RunTimeDisplay.TE11 != SCR_RunTimeDisplay.TE11) || (lastSCR_RunTimeDisplay.TE14 != SCR_RunTimeDisplay.TE14) ||
-        (lastSCR_RunTimeDisplay.OvenSP != SCR_RunTimeDisplay.OvenSP) || (lastSCR_RunTimeDisplay.OvenSV != SCR_RunTimeDisplay.OvenSV) ||
-        (lastSCR_RunTimeDisplay.RealOutputPercent != SCR_RunTimeDisplay.RealOutputPercent) )
+    if( (lastSCR_RunTimeDisplay.TE11 != HEATER_RunTimeDisplay.TE11) || (lastSCR_RunTimeDisplay.TE14 != HEATER_RunTimeDisplay.TE14) ||
+        (lastSCR_RunTimeDisplay.OvenSP != HEATER_RunTimeDisplay.OvenSP) || (lastSCR_RunTimeDisplay.OvenSV != HEATER_RunTimeDisplay.OvenSV) ||
+        (lastSCR_RunTimeDisplay.RealOutputPercent != HEATER_RunTimeDisplay.RealOutputPercent) )
     {
-        lastSCR_RunTimeDisplay.TE11 = SCR_RunTimeDisplay.TE11;
-        lastSCR_RunTimeDisplay.TE14 = SCR_RunTimeDisplay.TE14;
-        lastSCR_RunTimeDisplay.OvenSP = SCR_RunTimeDisplay.OvenSP;
-        lastSCR_RunTimeDisplay.OvenSV = SCR_RunTimeDisplay.OvenSV;
-        lastSCR_RunTimeDisplay.RealOutputPercent = SCR_RunTimeDisplay.RealOutputPercent;
+        lastSCR_RunTimeDisplay.TE11 = HEATER_RunTimeDisplay.TE11;
+        lastSCR_RunTimeDisplay.TE14 = HEATER_RunTimeDisplay.TE14;
+        lastSCR_RunTimeDisplay.OvenSP = HEATER_RunTimeDisplay.OvenSP;
+        lastSCR_RunTimeDisplay.OvenSV = HEATER_RunTimeDisplay.OvenSV;
+        lastSCR_RunTimeDisplay.RealOutputPercent = HEATER_RunTimeDisplay.RealOutputPercent;
         uC_HMI_Send_SCR_Display();
     }
 }

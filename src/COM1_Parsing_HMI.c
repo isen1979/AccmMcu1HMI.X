@@ -94,6 +94,11 @@ extern void Send_PCD_20_PID_AutoControlCommand(void);
 extern void SendHeater_PID_AutoControlCommand(void);
 //Philip 20220530 0.0.1 ====================================================
 
+//Isen：20230531 ====================================================
+extern void SendFunctionResetControlCommand(void);
+extern void SendFaultLED_ONOFFControlCommand(void);
+extern void SendAlarmLED_ONOFFControlCommand(void);
+
 unsigned char COM1_Rx_Size;
 
 void WriteParameterParsing(void)
@@ -227,7 +232,7 @@ void Android_ButtonProcess(void)
             SendMTR4MaualControlCommand();
             break;              
         case 21 ://SystemReset
-            SendSystemResetControlCommand();//Philip 20220414 0.0.1
+            SendSystemResetControlCommand();//20231020，Isen：待定義及測試
             break;
         case 22 ://Gas In Type Select
             RunTimeStatus.AutoGasIn = ~RunTimeStatus.AutoGasIn;
@@ -305,6 +310,42 @@ void Android_ButtonProcess(void)
             SaveRunTimeStatus();
             SendSystemManualControlCommand();//Philip 20220530 0.0.1
             break;
+        case 34 :
+            SystemRunTimeStatus.Value.FunctionReset = 1;//20231020，Isen：待定義及測試
+            SendFunctionResetControlCommand();            
+            break;
+        case 35 :
+            //Isen：20231020，此處為BuzzerStop與FaultLED為互斥關係。
+            RunTimeStatus.FaultLEDOn = 0;
+            SystemRunTimeStatus.Value.FaultLEDOn = RunTimeStatus.FaultLEDOn;
+            SystemRunTimeStatus.Value.BuzzerStop = 1;
+            SaveRunTimeStatus();
+            SendFaultLED_ONOFFControlCommand();
+            break;
+        case 36 :
+            //20231020，Isen：AlarmLED_On與AlarmLED_Off為互斥關係。
+            RunTimeStatus.AlarmLEDOn = 1;
+            SystemRunTimeStatus.Value.AlarmLEDOn = RunTimeStatus.AlarmLEDOn;
+            SystemRunTimeStatus.Value.AlarmLEDOff = 0;
+            SaveRunTimeStatus();
+            SendAlarmLED_ONOFFControlCommand();
+            break;
+        case 37 :
+            //20231020，Isen：AlarmLED_On與AlarmLED_Off為互斥關係。
+            RunTimeStatus.AlarmLEDOn = 0;
+            SystemRunTimeStatus.Value.AlarmLEDOn = RunTimeStatus.AlarmLEDOn;
+            SystemRunTimeStatus.Value.AlarmLEDOff = 1;
+            SaveRunTimeStatus();
+            SendAlarmLED_ONOFFControlCommand();
+            break;
+        case 38 :
+            //Isen：20231020，此處為BuzzerStop與FaultLED為互斥關係。
+            RunTimeStatus.FaultLEDOn = 1;
+            SystemRunTimeStatus.Value.FaultLEDOn = RunTimeStatus.FaultLEDOn;
+            SystemRunTimeStatus.Value.BuzzerStop = 0;
+            SaveRunTimeStatus();
+            SendFaultLED_ONOFFControlCommand();
+            break;            
         
     }
 }

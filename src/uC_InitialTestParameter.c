@@ -53,7 +53,7 @@ _RUNTIME_V21_ALARM V21_RunTimeAlarm;
 
 _FAN1_1_RUNTIME_DISPLAY lastFAN1_1_RunTimeDisplay, FAN1_1_RunTimeDisplay;
 _FAN2_RUNTIME_DISPLAY lastFAN2_RunTimeDisplay, FAN2_RunTimeDisplay;
-_SCR_RUNTIME_DISPLAY SCR_RunTimeDisplay, lastSCR_RunTimeDisplay;
+_HEATER_RUNTIME_DISPLAY HEATER_RunTimeDisplay, lastSCR_RunTimeDisplay;
 _MTR4_RUNTIME_DISPLAY MTR4_RunTimeDisplay, lastMTR4_RunTimeDisplay;
 _PCD20_RUNTIME_DISPLAY PCD20_RunTimeDisplay, lastPCD20_RunTimeDisplay;
 _OTHER_RUNTIME_DISPLAY OtherRunTimeDisplay, lastOtherRunTimeDisplay;
@@ -149,22 +149,22 @@ void uC_HMI_Send_SCR_Display(void)
     unsigned char data[20];  
     
     length = 0;
-    SendingWord.WordData = SCR_RunTimeDisplay.RealOutputPercent;
+    SendingWord.WordData = HEATER_RunTimeDisplay.RealOutputPercent;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SCR_RunTimeDisplay.OvenSP;
+    SendingWord.WordData = HEATER_RunTimeDisplay.OvenSP;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SCR_RunTimeDisplay.OvenSV;
+    SendingWord.WordData = HEATER_RunTimeDisplay.OvenSV;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SCR_RunTimeDisplay.AverageTemperature;
+    SendingWord.WordData = HEATER_RunTimeDisplay.AverageTemperature;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];       
-    SendingWord.WordData = SCR_RunTimeDisplay.TE11;//TE11A;
+    SendingWord.WordData = HEATER_RunTimeDisplay.TE11;//TE11A;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SCR_RunTimeDisplay.TE14;//TE11B;
+    SendingWord.WordData = HEATER_RunTimeDisplay.TE14;//TE11B;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
     

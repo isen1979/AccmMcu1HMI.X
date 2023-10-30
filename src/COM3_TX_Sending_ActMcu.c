@@ -78,6 +78,24 @@ void COM3_Send_All_Command(void)
     Register_COM3_Send_Command(COM3_Button_Status_Command_Enum);//Philip 20220530 0.0.1 
 }
 
+//Isen：20231020新增
+void SendFunctionResetControlCommand(void)
+{
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_System_Function_RESET_Enum);
+}
+
+//Isen：20231020新增
+void SendAlarmLED_ONOFFControlCommand(void)
+{
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_AlarmLED_STATE_SET_Enum);
+}
+
+//Isen：20231020新增
+void SendFaultLED_ONOFFControlCommand(void)
+{
+    Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_FaultLED_STATE_SET_Enum);
+}
+
 void SendSystemResetControlCommand(void)
 {
     Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_SetFaultResetEnum);
@@ -392,12 +410,6 @@ void COM3_SystemAutoStartStop_Control(void)
     }    
 }
 
-void COM3_SystemFaultReset_Control(void)
-{
-    UART3TxBuffer[0] = COM3_Button_Command_Enum;
-    UART3TxBuffer[1] = Android_HMI_SetFaultResetEnum;
-}
-
 void COM3_AutoGasInControl(void)
 {
     UART3TxBuffer[0] = COM3_Button_Command_Enum;
@@ -445,6 +457,52 @@ void COM3_PCD_20_PID_AutoControl(void)
     UART3TxBuffer[0] = COM3_Button_Command_Enum;
     UART3TxBuffer[1] = Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum;
     UART3TxBuffer[2] = SystemRunTimeStatus.ByteData[0];    
+}
+
+//20231020，Isen：Sys-OP操作功能統一集中在此處
+void COM3_SystemFaultReset_Control(void)
+{
+    UART3TxBuffer[0] = COM3_Button_Command_Enum;
+    UART3TxBuffer[1] = Android_HMI_SetFaultResetEnum;
+}
+//20231020，Isen：新增
+void COM3_FunctionReset_Control(void)
+{
+    UART3TxBuffer[0] = COM3_Button_Command_Enum;
+    UART3TxBuffer[1] = Android_HMI_System_Function_RESET_Enum;
+    if( HMI_BtnStatus.FunctionResetBtn == 1 ) //Isen：20230703僅需Pulse一次的按鈕功能。
+    {
+        UART3TxBuffer[2] = 0x02;
+        HMI_BtnStatus.FunctionResetBtn = 0;
+    } 
+}
+//20231020，Isen：新增
+void COM3_AlarmLED_ONOFFControl(void)//Isen：20231020，於COM1_Parsing處理並記憶RunTime狀態後，由此處發送給MCU2
+{
+    UART3TxBuffer[0] = COM3_Button_Command_Enum;
+    UART3TxBuffer[1] = Android_HMI_AlarmLED_STATE_SET_Enum; 
+    if( SystemRunTimeStatus.Value.AlarmLEDOn == 1 )
+    {
+        UART3TxBuffer[2] = 0x02;
+    }
+    else
+    {
+        UART3TxBuffer[2] = 0x01;
+    }
+}
+//20231020，Isen：新增
+void COM3_FaultLED_ONOFFControl(void)//Isen：20231020，於COM1_Parsing處理並記憶RunTime狀態後，由此處發送給MCU2
+{
+    UART3TxBuffer[0] = COM3_Button_Command_Enum; 
+    UART3TxBuffer[1] = Android_HMI_FaultLED_STATE_SET_Enum; 
+    if( SystemRunTimeStatus.Value.FaultLEDOn == 1 )
+    {
+        UART3TxBuffer[2] = 0x02;
+    }
+    else
+    {
+        UART3TxBuffer[2] = 0x01;
+    }
 }
 
 void COM3_Send_ButtonStatus(void)
@@ -725,7 +783,16 @@ void Send_Button_Command(unsigned char id)
             break;
         case Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum :
             COM3_PCD_20_PID_AutoControl();
-            break;           
+            break; 
+        case Android_HMI_System_Function_RESET_Enum ://Isen：20231020新增
+            COM3_FunctionReset_Control();
+            break; 
+        case Android_HMI_FaultLED_STATE_SET_Enum ://Isen：20231020新增
+            COM3_FaultLED_ONOFFControl();
+            break; 
+        case Android_HMI_AlarmLED_STATE_SET_Enum ://Isen：20231020新增
+            COM3_AlarmLED_ONOFFControl();
+            break;
     }
 }
 

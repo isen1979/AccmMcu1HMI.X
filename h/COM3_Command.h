@@ -132,7 +132,11 @@ enum Android_HMI_Button_Command_Enum
     Android_HMI_HEATER_PID_AUTO_STATE_SET_Enum,
     Android_HMI_PCD_20_PID_AUTO_STATE_SET_Enum,
     
-    Android_HMI_Button_Command_EnumEnd//19
+    Android_HMI_System_Function_RESET_Enum,//19，Isen：20231020新增
+    Android_HMI_AlarmLED_STATE_SET_Enum,//20，Isen：20231030修改Bug
+    Android_HMI_FaultLED_STATE_SET_Enum,//21，Isen：20231030修改Bug
+    
+    Android_HMI_Button_Command_EnumEnd
 };
 //Philip 20220530 0.0.1 ===========================================================================
 
@@ -152,7 +156,7 @@ enum COM3_RX_CommandEnum
     
     COM3_RX_FAN1_FAN2_Current_TypeEnum,//Philip 20220406 0.0.1
     COM3_RX_SystemRunStatusEnum,//Philip 20220517 0.0.1
-    COM3_RX_RunTimeHeaterFNA1_1_StatusEnum,//Philip 20220518 0.0.1
+    COM3_RX_RunTimeHeaterFAN1_StatusEnum,//Philip 20220518 0.0.1
     
     COM3_RX_ALARM1_STATUS_TypeEnum,//Philip 20220526 0.0.1
     
@@ -380,6 +384,7 @@ typedef union __ALARM_STATUS
 //Philip 20220510 0.0.1 ========================================================================
 typedef struct __SYSTEM_RUNTIME_STATUS_VALUE
 {
+    //1st Byte，Isen：由8個Bit組成
     unsigned char AutoGasIn : 1;
     unsigned char GasIn : 1;
     unsigned char GasOut : 1;
@@ -387,14 +392,25 @@ typedef struct __SYSTEM_RUNTIME_STATUS_VALUE
     unsigned char FAN1_1_PID_Auto : 1;
     unsigned char PCD20_PID_Auto : 1;
     unsigned char Heater_PID_Auto : 1;     
-    unsigned char SystemManualMode : 1;//1st Byte
-    unsigned char SystemAutoStartStatus;//2nd Byte
-    unsigned char SystemAutoStopStatus;//3rd Byte
-    unsigned char Dummy4;//4th Byte
-    unsigned char Dummy5;
-    unsigned char Dummy6;
-    unsigned char Dummy7;
-    unsigned char Dummy8;
+    unsigned char SystemManualMode : 1;
+    
+    unsigned char SystemAutoStartStatus;//2nd Byte，Isen：由Auto-Start Flow-Value數據組成
+    unsigned char SystemAutoStopStatus;//3rd Byte，Isen：由Auto-Stop Flow-Value數據組成
+    
+    //4th Byte，Isen：在此新增System-OP常用狀態給MCU使用
+    unsigned char FunctionReset : 1;
+    unsigned char BuzzerStop : 1;
+    unsigned char AlarmLEDOn : 1;
+    unsigned char AlarmLEDOff : 1;
+    unsigned char FaultLEDOn : 1;//20231020，Isen：將Fault改到後面來，之後若Buzzer與Fault LED燈分離時，後面要追加FaultLEDOff就方便很多。
+    unsigned char DummyBit6 : 1;
+    unsigned char DummyBit7 : 1;
+    unsigned char DummyBit8 : 1;
+    
+    unsigned char Dummy5;//5rd Byte
+    unsigned char Dummy6;//6rd Byte
+    unsigned char Dummy7;//7rd Byte
+    unsigned char Dummy8;//8rd Byte
 } _SYSTEM_RUNTIME_STATUS_VALUE;
 
 typedef union __SYSTEM_RUNTIME_STATUS

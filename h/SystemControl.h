@@ -634,7 +634,11 @@ typedef struct __RUNTIME_STATUS
     unsigned int FAN1_1_PID_Auto : 1;//0 : for Manual, 1 : for Auto
     unsigned int PCD20_PID_Auto : 1;//0 : for Manual, 1 : for Auto
     unsigned int Heater_PID_Auto : 1;//0 : for Manual, 1 : for Auto
-    unsigned int Dummy : 11;
+    
+    unsigned int FaultLEDOn : 1;//0 : for OFF, 1 : for ON //Isen：20230703新增
+    unsigned int AlarmLEDOn : 1;//0 : for OFF, 1 : for ON //Isen：20230703新增   
+    
+    unsigned int DummyBit : 9;
 //Philip 20220124 0.0.1 ===============================================================    
 } _RUNTIME_STATUS;//1+1+4+4+4=14Bytes = 1 Pages, Next Address = Now Address + 16
 //#define RUNTIME_STATUS_START_ADDR 128
@@ -824,8 +828,6 @@ typedef union __RUNTIME_V21_FAULT
     
 } _RUNTIME_V21_FAULT;
 
-
-
 typedef struct __RUNTIME_V21_ALARM_BITMAP
 {
     unsigned char OpenAlarm : 1;
@@ -858,7 +860,7 @@ typedef struct __FAN2_RUNTIME_DISPLAY
     unsigned int ErrorCode;
 } _FAN2_RUNTIME_DISPLAY;
 
-typedef struct __SCR_RUNTIME_DISPLAY
+typedef struct __HEATER_RUNTIME_DISPLAY
 {
     unsigned int RealOutputPercent;
     unsigned int OvenSP;
@@ -866,7 +868,7 @@ typedef struct __SCR_RUNTIME_DISPLAY
     int AverageTemperature;
     int TE11;//A;
     int TE14;//1B;
-} _SCR_RUNTIME_DISPLAY;
+} _HEATER_RUNTIME_DISPLAY;
 
 typedef struct __MTR4_RUNTIME_DISPLAY
 {
@@ -900,6 +902,7 @@ typedef struct __OTHER_RUNTIME_DISPLAY
 
 typedef struct __HMI_BUTTON_STATUS
 {
+    //Isen：1st Byte
     unsigned char MTR4ManualOpenBtn : 1;
     unsigned char MTR4ManualCloseBtn : 1;
     unsigned char PCD20ManualOpenBtn : 1;
@@ -908,26 +911,27 @@ typedef struct __HMI_BUTTON_STATUS
     unsigned char FAN1ManualCloseBtn : 1;
     unsigned char FAN2ManualOpenBtn : 1;
     unsigned char FAN2ManualCloseBtn : 1;
-//Philip 20220324 0.0.1 ===========================    
+    
+    //Isen：2st Byte    
     unsigned char PCD2ManualOpenBtn : 1;
     unsigned char PCD2ManualCloseBtn : 1;
     unsigned char PCD6ManualOpenBtn : 1;
     unsigned char PCD6ManualCloseBtn : 1; 
-//Philip 20220324 0.0.1 ===========================    
     unsigned char PCD22ManualOpenBtn : 1;
     unsigned char PCD22ManualCloseBtn : 1;
     unsigned char PCD25ManualOpenBtn : 1;
     unsigned char PCD25ManualCloseBtn : 1;
-
-//Philip 20220324 0.0.1 ===========================    
+    
+    //Isen：3st Byte 
     unsigned char V21ManualOpenBtn : 1;
     unsigned char V21ManualCloseBtn : 1;     
     unsigned char SystemAutoStartBtn : 1;
     unsigned char SystemAutoStopBtn : 1;
-    unsigned char Dummy : 4;
-//Philip 20220324 0.0.1 ===========================    
-} _HMI_BUTTON_STATUS;
+    unsigned char FaultResetBtn : 1;
+    unsigned char FunctionResetBtn : 1;
+    unsigned char Dummy3Bit : 2;
 
+} _HMI_BUTTON_STATUS;
 
 typedef union __SENDING_DATA
 {
