@@ -80,7 +80,7 @@ extern void SendV21MaualControlCommand(void);
 extern void SendPCD2MaualControlCommand(void);
 extern void SendPCD6MaualControlCommand(void);
 //Philip 20220325 0.0.1 ==============================================================================================
-extern void SendSystemResetControlCommand(void);//Philip 20220414 0.0.1
+extern void SendFaultResetControlCommand(void);//Philip 20220414 0.0.1
 
 extern void Send_LoopBackResponse(void);
 extern void SaveSystemParameter(unsigned int addr);
@@ -232,7 +232,8 @@ void Android_ButtonProcess(void)
             SendMTR4MaualControlCommand();
             break;              
         case 21 ://SystemReset
-            SendSystemResetControlCommand();//20231020，Isen：待定義及測試
+            HMI_BtnStatus.FaultResetBtn = 1;
+            SendFaultResetControlCommand();//20231031定義及測試
             break;
         case 22 ://Gas In Type Select
             RunTimeStatus.AutoGasIn = ~RunTimeStatus.AutoGasIn;
@@ -311,7 +312,7 @@ void Android_ButtonProcess(void)
             SendSystemManualControlCommand();//Philip 20220530 0.0.1
             break;
         case 34 :
-            SystemRunTimeStatus.Value.FunctionReset = 1;//20231020，Isen：待定義及測試
+            HMI_BtnStatus.FunctionResetBtn = 1;//20231031定義及測試
             SendFunctionResetControlCommand();            
             break;
         case 35 :

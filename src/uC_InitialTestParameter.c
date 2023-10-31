@@ -1180,16 +1180,16 @@ void Send_AlarmTypeD1_uCHMI_SystemParameter(void)
     unsigned char data[30];
 
     length = 0;
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE14;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE10;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE14;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE10;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE1;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE06;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];    
-    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE1;
+    SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE06;
     data[length++] = SendingWord.Byte[1];
     data[length++] = SendingWord.Byte[0];
     SendingWord.WordData = SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT1;

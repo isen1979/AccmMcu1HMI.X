@@ -96,7 +96,7 @@ void SendFaultLED_ONOFFControlCommand(void)
     Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_FaultLED_STATE_SET_Enum);
 }
 
-void SendSystemResetControlCommand(void)
+void SendFaultResetControlCommand(void)
 {
     Register_COM3_Send_ButtonCommand(COM3_Button_Command_Enum, Android_HMI_SetFaultResetEnum);
 }

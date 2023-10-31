@@ -568,10 +568,10 @@ typedef struct __ALARM_TYPE_D_SET
     int SuperHighTE12;
     int SuperLowTE12;
 //D1
-    int SuperHighTE14;
-    int SuperLowTE14;
-    int SuperHighTE1;
-    int SuperLowTE1;
+    int SuperHighTE10;
+    int SuperLowTE10;
+    int SuperHighTE06;
+    int SuperLowTE06;
     int SuperHighPDT1;
     int SuperLowPDT1;    
     int SuperHighPDT2;

@@ -1031,16 +1031,16 @@ void GetAlarmTypeD1SystemParameter(unsigned char FloatCount, long Value)
     switch(SystemParameterId)
     {   
         case -41 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE14 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE10 = Value;
             break;
         case -42 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE14 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE10 = Value;
             break;
         case -43 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE1 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE06 = Value;
             break;
         case -44 :
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE1 = Value;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE06 = Value;
             break;
         case -45 :
             SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighPDT1 = Value;

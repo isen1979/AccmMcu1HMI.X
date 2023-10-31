@@ -20,10 +20,11 @@ _FPOR(FPWRT_PWR2 & BOREN_ON & ALTI2C1_OFF & ALTI2C2_OFF );
 _FICD( RSTPRI_PF & ICS_PGD1 & JTAGEN_OFF );
 
 unsigned int FirmwareVersion = 1;
-unsigned long FirmwareDate = 20231030; 
+unsigned long FirmwareDate = 20231031; 
 //20230523：運行正常版
 //20231020：撰寫System-OP常用狀態功能給MCU2使用
 //20231030：解決1020-1版本疏忽掉Fault與Alarm Enum定義相反問題Bug
+//20231031-1：傳送Fault及Func. Reset按鈕命令給MCU2，新增TE06、TE10 Alarm功能
 
 extern void INIT_PWM(void);
 extern void INIT_PWMX(void);

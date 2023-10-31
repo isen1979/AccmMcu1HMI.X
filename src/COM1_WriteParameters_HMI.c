@@ -814,25 +814,25 @@ void Write_Alarm4_Parameter(void)
         case 119 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE14 = U1_SendingWord.WordData;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE10 = U1_SendingWord.WordData;
             Register_COM3_Send_Command(COM3_RxSetAlarm_Parameter10_CommandEnum);//Philip 20220408 0.0.1
             break;
         case 120 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE14 = U1_SendingWord.WordData;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE10 = U1_SendingWord.WordData;
             Register_COM3_Send_Command(COM3_RxSetAlarm_Parameter10_CommandEnum);//Philip 20220408 0.0.1
             break;
         case 121 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE1 = U1_SendingWord.WordData;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperHighTE06 = U1_SendingWord.WordData;
             Register_COM3_Send_Command(COM3_RxSetAlarm_Parameter11_CommandEnum);//Philip 20220408 0.0.1
             break;
         case 122 :
             U1_SendingWord.Byte[0] = UART1RxBuffer[2];
             U1_SendingWord.Byte[1] = UART1RxBuffer[3];
-            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE1 = U1_SendingWord.WordData;
+            SystemParameter.Alarm.Value.AlarmTypeDSet.SuperLowTE06 = U1_SendingWord.WordData;
             Register_COM3_Send_Command(COM3_RxSetAlarm_Parameter11_CommandEnum);//Philip 20220408 0.0.1
             break;
         case 123 :

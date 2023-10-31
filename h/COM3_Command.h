@@ -237,52 +237,49 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int PCD_2_CloseFault : 1;
     unsigned int PCD_2_CloseAlarm : 1;
     unsigned int PCD_2_LimitFault : 1;
-    
     unsigned int PCD_6_OpenFault : 1;
     unsigned int PCD_6_OpenAlarm : 1;
     unsigned int PCD_6_CloseFault : 1;
+    
     unsigned int PCD_6_CloseAlarm : 1;
     unsigned int PCD_6_LimitFault : 1;  
-    
     unsigned int PCD_20_OpenFault : 1;
     unsigned int PCD_20_OpenAlarm : 1;
     unsigned int PCD_20_CloseFault : 1;
     unsigned int PCD_20_CloseAlarm : 1;
      unsigned int PCD_20_LimitFault : 1;
-     
     unsigned int PCD_22_OpenFault : 1;//2Bytes
+    
     unsigned int PCD_22_OpenAlarm : 1;
     unsigned int PCD_22_CloseFault : 1;
     unsigned int PCD_22_CloseAlarm : 1;
     unsigned int PCD_22_LimitFault : 1;
-    
     unsigned int PCD_25_OpenFault : 1;
     unsigned int PCD_25_OpenAlarm : 1;
     unsigned int PCD_25_CloseFault : 1;
     unsigned int PCD_25_CloseAlarm : 1;
-    unsigned int PCD_25_LimitFault : 1;
     
+    unsigned int PCD_25_LimitFault : 1;
     unsigned int V21_OpenFault : 1;
     unsigned int V21_OpenAlarm : 1;
     unsigned int V21_CloseFault : 1;
     unsigned int V21_CloseAlarm : 1;
     unsigned int V21_LimitFault : 1;//14th bit
-    
     unsigned int FAN1_1_StartFault : 1;
     unsigned int FAN1_1_RuningFault : 1;//4Bytes
+    
     unsigned int FAN1_1_StopFault : 1;
     unsigned int FAN1_1_ContactFault : 1;
     unsigned int FAN1_1_Fault : 1;
     unsigned int FAN1_1_MotorHtempFault : 1;
-    
     unsigned int FAN2_StartFault : 1;
     unsigned int FAN2_RuningFault : 1;
     unsigned int FAN2_StopFault : 1;
     unsigned int FAN2_InverterFault : 1;   
+    
     unsigned int FAN2_InverterRuningFault : 1;
     unsigned int FAN2_InverterStopFault : 1;
     unsigned int FAN2_InverterStartFault : 1;
-    
     unsigned int MTR4_InverterFault : 1;
     unsigned int MTR4_InverterRuningFault : 1;
     unsigned int MTR4_StopFault : 1;
@@ -297,9 +294,9 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int TE11_SensorFault : 1;
     unsigned int HighTempControllerF : 1;
     unsigned int HeaterHHTempFault : 1;
+    
     unsigned int HeaterLLTempFault : 1;
     unsigned int OvenOutLowPressureF : 1;
-    
     unsigned int HeaterHTempAlarm : 1;
     unsigned int HeaterLTempAlarm : 1;
     unsigned int HeaterReFireFaultAlarm : 1;
@@ -324,6 +321,7 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int TE12_LTempHeaterAlarm : 1;
     unsigned int PDT_2_H_HeaterAlarm : 1;
     unsigned int PDT_2_L_HeaterAlarm : 1;//10Bytes
+    
     unsigned int PDT_3_H_HeaterAlarm : 1;
     unsigned int PDT_3_L_HeaterAlarm : 1;
     unsigned int TE3_H_MTR4Alarm : 1;
@@ -332,38 +330,43 @@ typedef struct __ALARM_STATUS_VALUE
     unsigned int TE8_L_MTR4Alarm : 1;
     unsigned int TE5_H_MTR4Alarm : 1;
     unsigned int TE5_L_MTR4Alarm : 1;
+    
     unsigned int PDT1_H_MTR4Alarm : 1;
     unsigned int PDT1_L_MTR4Alarm : 1;
     unsigned int TE3_H_D_Alarm : 1;
     unsigned int TE3_L_D_Alarm : 1;
     unsigned int TE5_H_D_Alarm : 1;
     unsigned int TE5_L_D_Alarm : 1;
-    unsigned int TE8_H_D_Alarm : 1;
+    unsigned int TE8_H_D_Alarm : 1;    
     unsigned int TE8_L_D_Alarm : 1;//12Bytes
+    
     unsigned int TE11_H_D_Alarm : 1;
     unsigned int TE11_L_D_Alarm : 1;
     unsigned int TE12_H_D_Alarm : 1;
     unsigned int TE12_L_D_Alarm : 1;
-    unsigned int TE14_H_D_Alarm : 1;
-    unsigned int TE14_L_D_Alarm : 1;
-    unsigned int TE1_H_D_Alarm : 1;
-    unsigned int TE1_L_D_Alarm : 1;
+    unsigned int TE10_H_D_Alarm : 1;//20231031修改
+    unsigned int TE10_L_D_Alarm : 1;//20231031修改
+    unsigned int TE06_H_D_Alarm : 1;//20231031修改
+    unsigned int TE06_L_D_Alarm : 1;//20231031修改
+    
     unsigned int PDT1_H_D_Alarm : 1;
     unsigned int PDT1_L_D_Alarm : 1;
     unsigned int PDT2_H_D_Alarm : 1;
     unsigned int PDT2_L_D_Alarm : 1;
     unsigned int PDT3_H_D_Alarm : 1;
     unsigned int PDT3_L_D_Alarm : 1;
-    unsigned int Dummy2 : 1;
-    unsigned int Dummy3 : 1;//14Bytes
-    unsigned int Dummy4 : 1;
-    unsigned int Dummy5 : 1;
+    unsigned int TE06_HH_Fault : 1;//20231031新增
+    unsigned int TE06_LL_Fault : 1;//14Bytes//20231031新增
+    
+    unsigned int TE10_HH_Fault : 1;//20231031新增
+    unsigned int TE10_LL_Fault : 1;//20231031新增
     unsigned int Dummy6 : 1;
     unsigned int Dummy7 : 1;
     unsigned int Dummy8 : 1;
     unsigned int Dummy9 : 1;
     unsigned int Dummy10 : 1;
     unsigned int Dummy11 : 1;
+    
     unsigned int Dummy12 : 1;
     unsigned int Dummy13 : 1;
     unsigned int Dummy14 : 1;
