@@ -46,7 +46,7 @@ _SENDING_DATA SendingData;
 unsigned char COM3_SendControlState =COM3_WaitStartSendControlStateEnum;
 unsigned char COM3_SendCommandBuffer[COM3_MAX_SENDING_COMMAND_BUFFER_SIZE];
 unsigned char COM3_SendButtonCommandBuffer[COM3_MAX_SENDING_COMMAND_BUFFER_SIZE];
-unsigned char COM3_SendIndex=0, COM3_SendCommandBufferWrite=0, COM3_SendCommandBufferSize=0;
+unsigned char COM3_SendIndex = 0, COM3_SendCommandBufferWrite = 0, COM3_SendCommandBufferSize = 0;
 unsigned char COM3_TxRetryCount=0;
 
 void Register_COM3_Send_ButtonCommand(unsigned char cmd, unsigned char ButtonId)
